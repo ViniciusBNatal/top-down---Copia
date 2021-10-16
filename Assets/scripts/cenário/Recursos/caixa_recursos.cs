@@ -5,11 +5,11 @@ using UnityEngine;
 public class caixa_recursos : MonoBehaviour, CentroDeRecurso
 {
     [Header("Componentes do recurso dropado")]
-    public List<Item> itens = new List<Item>();
-    public List<int> qntdDoRecursoDropado = new List<int>();
-    public float forca;
+    [SerializeField] private List<Item> itens = new List<Item>();
+    [SerializeField] private List<int> qntdDoRecursoDropado = new List<int>();
+    [SerializeField] private float forca;
     [Header ("Não Mexer")]
-    public GameObject recursoColetavelPreFab;
+    [SerializeField] private GameObject recursoColetavelPreFab;
 
     public void DropaRecursos()
     {

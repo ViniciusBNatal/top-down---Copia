@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/BaseDeConstrucao.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/teste.unity
-    guid: 35bd31ad17146094ebf97738a05e647d
+    path: Assets/Scenes/Floresta.unity
+    guid: 2ed614b7db3e55646bfd8e664d092f68
+  - enabled: 1
+    path: Assets/Scenes/Futuro.unity
+    guid: 4545cfe1285e99d4aa42e04d28b3f739
+  - enabled: 1
+    path: Assets/Scenes/Lixao.unity
+    guid: acc284a88c3ad544e8751300e4d23e84
   m_configObjects: {}

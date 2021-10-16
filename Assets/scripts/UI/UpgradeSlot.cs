@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class UpgradeSlot : MonoBehaviour
 {
-    public itemCrafting receita;
-    public GameObject IconeETextoDorecursoNecessarioPrefab;
-    public GameObject recursosGrid;
+    public ReceitaDeCrafting receita;
+    [SerializeField] private GameObject IconeETextoDorecursoNecessarioPrefab;
+    [SerializeField] private GameObject recursosGrid;
     public GameObject BtnConstruirUpgrade;
     public GameObject BtnTrocartempo;
-    public string CenaParaCarregar;
     private int divisor = 3;
     private void Start()
     {
@@ -20,7 +19,7 @@ public class UpgradeSlot : MonoBehaviour
             float largura = obj.GetComponent<RectTransform>().rect.width;
             float altura = obj.GetComponent<RectTransform>().rect.height;
             obj.transform.localPosition = new Vector3((i % divisor) * largura, -(i / divisor) * altura, 0);
-            obj.GetComponentInChildren<Text>().text = receita.quantidadeDoRecurso[i].ToString("000");
+            obj.GetComponentInChildren<Text>().text = receita.quantidadeDosRecursos[i].ToString("000");
             obj.GetComponentInChildren<Image>().sprite = receita.itensNecessarios[i].icone;
         }
     }

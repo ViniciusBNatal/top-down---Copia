@@ -1,31 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class jogadorScript : MonoBehaviour
 {
     public static jogadorScript Instance { get; private set; }
     //variáveis publicas
     [Header ("Valores Numéricos")]
-    public float velocidade;
+    [SerializeField] private float velocidade;
     //private float vidaMaxima = 1;
-    public float velocidadeProjetil;
-    public float taxaDeDisparo;
-    public float taxaDeAtaqueMelee;
-    public float alcanceMelee;
-    public float distanciaAtaqueMelee;
-    public float danoMelee;
-    public float danoProjetil;
+    [SerializeField] private float velocidadeProjetil;
+    [SerializeField] private float taxaDeDisparo;
+    [SerializeField] private float taxaDeAtaqueMelee;
+    [SerializeField] private float alcanceMelee;
+    [SerializeField] private float distanciaAtaqueMelee;
+    [SerializeField] private float danoMelee;
+    [SerializeField] private float danoProjetil;
     [Header("Componentes")]
-    public JogadorAnimScript animScript;
-    public Transform posicaoMelee;
+    [SerializeField] private JogadorAnimScript animScript;
+    [SerializeField] private Transform posicaoMelee;
     public Camera mainCamera;
-    public GameObject projetil;
-    public GameObject armaMelee;
-    public Transform pontoDeDisparo;
-    public LayerMask objetosAcertaveisLayer;
+    [SerializeField] private GameObject projetil;
+    [SerializeField] private GameObject armaMelee;
+    [SerializeField] private Transform pontoDeDisparo;
+    [SerializeField] private LayerMask objetosAcertaveisLayer;
     public UIinventario inventario;
-    public SpriteRenderer iconeInteracao;
+    [SerializeField] private SpriteRenderer iconeInteracao;
     public CinemachineBehaviour comportamentoCamera;
     //variáveis privadas
     //private float vidaAtual;
@@ -44,7 +45,8 @@ public class jogadorScript : MonoBehaviour
         EmContrucao
     };
     public estados estadosJogador;// 0 = em acao, 1 = em menus, 2 = em construcao 
-    public itemCrafting moduloCriado;
+    public ReceitaDeCrafting moduloCriado;
+    private bool podeAnimar = true;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -79,8 +81,10 @@ public class jogadorScript : MonoBehaviour
     private void FixedUpdate()
     {
         if (!sendoEmpurrado && estadosJogador == estados.EmAcao)
-        rb.velocity = movimento * velocidade + baguncarControles;
-        
+            rb.velocity = movimento * velocidade + baguncarControles;
+        if (estadosJogador != estados.EmAcao)
+            rb.velocity = Vector2.zero;
+
     }
     private void MovimentoInput()
     {
@@ -155,17 +159,21 @@ public class jogadorScript : MonoBehaviour
         {
             case 0:
                 estadosJogador = estados.EmAcao;
+                podeAnimar = true;
                 break;
             case 1:
                 estadosJogador = estados.EmMenus;
+                podeAnimar = false;
                 break;
             case 2:
                 estadosJogador = estados.EmContrucao;
+                podeAnimar = false;
                 break;
         }
-        //estadoJogador = i;
-        if (i != 1)
-            rb.velocity = Vector2.zero;
+    }
+    public bool GetPodeAnimar()
+    {
+        return podeAnimar;
     }
     public IEnumerator Knockback(float duracaoEmpurrao, float forca, Transform obj)
     {

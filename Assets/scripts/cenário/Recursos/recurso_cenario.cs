@@ -5,11 +5,11 @@ using UnityEngine;
 public class recurso_cenario : MonoBehaviour, CentroDeRecurso
 {
     [Header("Componentes do recurso dropado")]
-    public Item item;
-    public GameObject recursoColetavelPreFab;
+    [SerializeField] private Item item;
+    [SerializeField] private GameObject recursoColetavelPreFab;
     [Header("Valores numéricos")]
-    public int qntdDoRecursoDropado = 1;
-    public float forca;
+    [SerializeField] private int qntdDoRecursoDropado = 1;
+    [SerializeField] private float forca;
     public void DropaRecursos()
     {
         float localDeDropX = Random.Range(-1, 1);

@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     public Item item;
-    private Sprite icone;
-    public Text qntdItemText;
+    [SerializeField] private Text qntdItemText;
     public int qntdRecurso;
 
+    private void Start()
+    {
+        GetComponent<Image>().sprite = item.icone;
+    }
     public void atualizaQuantidade(int quantidade)
     {
         qntdRecurso += quantidade;

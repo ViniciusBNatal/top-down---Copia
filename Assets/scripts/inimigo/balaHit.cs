@@ -6,8 +6,8 @@ public class balaHit : MonoBehaviour
 {
     public float DuracaoDaBala;
     public float dano;
-    public bool balaJogador = false;
-    public bool balaInimigo = false;
+    [SerializeField] private bool balaJogador = false;
+    [SerializeField] private bool balaInimigo = false;
 
     private void Start()
     {

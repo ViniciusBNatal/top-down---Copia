@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DirecionaInimigo : MonoBehaviour
 {
-    public List<Vector2> NovaDirecao = new List<Vector2>();
+    [SerializeField] private List<Vector2> NovaDirecao = new List<Vector2>();
     private int direcaoIndex;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "inimigo" && collision.GetComponent<inimigo>().movimentacaoFixa)
+        if (collision.tag == "inimigo" && collision.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigo>().movimentacaoFixa)
         {
             //direcaoIndex = Random.Range(0, NovaDirecao.Count + 1);
             float dirX = NovaDirecao[direcaoIndex].x / Mathf.Abs(NovaDirecao[direcaoIndex].x);

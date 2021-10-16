@@ -27,26 +27,26 @@ public class BaseScript : MonoBehaviour
         {
             if (modulos[i] == null)
                 return;
-            for (int a = 0; a < desastresManager.qntdDeDesastresOcorridos; a++)
+            for (int a = 0; a < desastresManager.qntdDeDesastresParaOcorrer; a++)
             {
-                if (desastresManager.desastresSorteados[a] == modulos[i].indexDesastre() && desastresManager.forcasSorteados[a] == modulos[i].valorResistencia())
+                if (desastresManager.desastresSorteados[a] == modulos[i].nomeDesastre() && desastresManager.forcasSorteados[a] == modulos[i].valorResistencia())
                 {
                     modulos[i].VisibilidadeSpriteDoModulo(false);
                     modulos[i].SetSpriteDoDesastre(null);
                     modulos[i].SetSpriteDoMultiplicador(null);
                     modulos[i].SetValorResistencia(0);
-                    modulos[i].SetIndexDesastre(0);
+                    modulos[i].SetNomeDesastre(null);
                     defendido++;
                 }
             }
         }
-        if (desastresManager.qntdDeDesastresOcorridos == defendido)
+        if (desastresManager.qntdDeDesastresParaOcorrer == defendido)
         {
             Debug.Log("defendido");
         }
         else
         {
-            for (int i = 0; i < desastresManager.qntdDeDesastresOcorridos - defendido; i++)
+            for (int i = 0; i < desastresManager.qntdDeDesastresParaOcorrer - defendido; i++)
             {
                 vidaAtual--;
                 if (vidaAtual <= 0)
@@ -55,11 +55,6 @@ public class BaseScript : MonoBehaviour
                 }
             }
             Debug.Log(vidaAtual);
-        }
-        for (int i = 0; i < desastresManager.desastresSorteados.Length; i++)
-        {
-            desastresManager.forcasSorteados[i] = 0;
-            desastresManager.desastresSorteados[i] = 0;
         }
     }
 
@@ -81,10 +76,6 @@ public class BaseScript : MonoBehaviour
             }
         }
     } 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -94,6 +85,7 @@ public class BaseScript : MonoBehaviour
                 desastresManager.desastreAcontecendo = false;
                 desastresManager.encerramentoDesastres();
                 VerificarModulos();
+                desastresManager.LimpaArraysDeSorteio();
                 if (duranteMelhoria)
                 {
                     DefesasFeitas++;

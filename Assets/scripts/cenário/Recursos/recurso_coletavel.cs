@@ -5,8 +5,8 @@ using UnityEngine;
 public class recurso_coletavel : MonoBehaviour
 {
     public Item item;
-    private SpriteRenderer icone;
     public int qntd;
+    private SpriteRenderer icone;
     // Start is called before the first frame update
     void Start()
     {

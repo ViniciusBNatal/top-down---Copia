@@ -10,18 +10,18 @@ public class SlotModulo : MonoBehaviour, Clicavel
     [SerializeField] private SpriteRenderer iconeDoDesastre;
     [SerializeField] private SpriteRenderer iconeDeMultiplicador;
     [SerializeField] private int resistenciaModulo;
-    [SerializeField] private int desastre;
+    [SerializeField] private string desastre;
     public void Click(GameObject jogador)
     {
         if (iconeDoModulo.enabled == false)
         {
             VisibilidadeSpriteDoModulo(true);
-            SetValorResistencia(jogadorScript.Instance.moduloCriado.resistencia);
-            SetIndexDesastre(jogadorScript.Instance.moduloCriado.desastre);
+            SetValorResistencia(jogadorScript.Instance.moduloCriado.GetForca());
+            SetNomeDesastre(jogadorScript.Instance.moduloCriado.desastre);
             //cria o icone do desastre dependedo do desastre natural do crafting
-            SetSpriteDoDesastre(SelecionadorDeIconeDesastreEMultiplicador.Instance.SelecionarSpriteDesastre(desastre));
+            SetSpriteDoDesastre(DesastresList.Instance.SelecionaSpriteDesastre(desastre));
             //cria o icone de multiplicador dependedo do nivel do crafting
-            SetSpriteDoMultiplicador(SelecionadorDeIconeDesastreEMultiplicador.Instance.SelecionarSpriteMultiplicador(resistenciaModulo));
+            SetSpriteDoMultiplicador(DesastresList.Instance.SelecionaSpriteMultiplicador(resistenciaModulo));
             jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(1);
             jogadorScript.Instance.MudarEstadoJogador(0);
         }
@@ -42,7 +42,7 @@ public class SlotModulo : MonoBehaviour, Clicavel
     {
         return resistenciaModulo;
     }
-    public int indexDesastre()
+    public string nomeDesastre()
     {
         return desastre;
     }
@@ -50,8 +50,8 @@ public class SlotModulo : MonoBehaviour, Clicavel
     {
         resistenciaModulo = valor;
     }
-    public void SetIndexDesastre(int valor)
+    public void SetNomeDesastre(string nome)
     {
-        desastre = valor;
+        desastre = nome;
     }
 }

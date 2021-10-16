@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelecionadorDeIconeDeInteracao : MonoBehaviour
 {
     public static SelecionadorDeIconeDeInteracao Instance { get; private set; }
-    public List<Sprite> listaDosIconesDeInteracao = new List<Sprite>();
+    [SerializeField] private List<Sprite> listaDosIconesDeInteracao = new List<Sprite>();
 
     private void Awake()
     {

@@ -7,6 +7,7 @@ public class JogadorAnimScript : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private Vector2 movimento;
+    [SerializeField] private jogadorScript jogador;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,11 +18,14 @@ public class JogadorAnimScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movimento.x = Input.GetAxisRaw("Horizontal");
-        movimento.y = Input.GetAxisRaw("Vertical");
-        animator.SetFloat("HORIZONTAL", movimento.x);
-        animator.SetFloat("VERTICAL", movimento.y);
-        animator.SetFloat("VELOCIDADE", movimento.sqrMagnitude);
+        if (jogador.GetPodeAnimar())
+        {
+            movimento.x = Input.GetAxisRaw("Horizontal");
+            movimento.y = Input.GetAxisRaw("Vertical");
+            animator.SetFloat("HORIZONTAL", movimento.x);
+            animator.SetFloat("VERTICAL", movimento.y);
+            animator.SetFloat("VELOCIDADE", movimento.sqrMagnitude);
+        }
     }
     public void AnimarAtaqueMelee(float dirX, float dirY)
     {

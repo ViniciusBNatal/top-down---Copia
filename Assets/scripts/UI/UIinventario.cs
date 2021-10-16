@@ -8,17 +8,17 @@ public class UIinventario : MonoBehaviour
 {
     public static UIinventario Instance { get; private set; }
     private bool inventarioAberto = false;
-    public List<ItemSlot> listaSlotItem = new List<ItemSlot>();
-    public List<UpgradeSlot> listaSlotUpgradesBase = new List<UpgradeSlot>();
-    public GameObject jogador;
+    private List<ItemSlot> listaSlotItem = new List<ItemSlot>();
+    [SerializeField] private List<UpgradeSlot> listaSlotUpgradesBase = new List<UpgradeSlot>();
+    [SerializeField] private GameObject jogador;
     [Header ("Nao Mexer")]
-    public GameObject inventarioParent;
-    public GameObject abaInventario;
-    public GameObject abaCriação;
-    public GameObject btnCriacao;
-    public GameObject slotItemPrefab;
-    public Transform transformItemInventario;
-    public GameObject abaSelecionarTempo;
+    [SerializeField] private GameObject inventarioParent;
+    [SerializeField] private GameObject abaInventario;
+    [SerializeField] private GameObject abaCriação;
+    [SerializeField] private GameObject btnCriacao;
+    [SerializeField] private GameObject slotItemPrefab;
+    [SerializeField] private Transform posicaoDosIconesDeItens;
+    [SerializeField] private GameObject abaSelecionarTempo;
     private int TempoAtual = 0;
     public bool InventarioAberto => inventarioAberto;
 
@@ -83,19 +83,31 @@ public class UIinventario : MonoBehaviour
         abaCriação.SetActive(true);
     }
 
+    private void CriaNovoSlotDeItem(Item item, int quantidade)
+    {
+        GameObject obj = Instantiate(slotItemPrefab, posicaoDosIconesDeItens.position, Quaternion.identity, posicaoDosIconesDeItens);
+        ItemSlot script = obj.GetComponent<ItemSlot>();
+        script.item = item;
+        script.atualizaQuantidade(quantidade);
+        listaSlotItem.Add(script);
+    }
     public void AtualizaInventarioUI(Item item, int quantidade)
     {
+        if (listaSlotItem.Count == 0)
+        {
+            CriaNovoSlotDeItem(item, quantidade);
+            return;
+        }
         for (int i = 0; i < listaSlotItem.Count; i++)
         {
             if (listaSlotItem[i].item.ID.ToUpper() == item.ID.ToUpper())
             {
-                if (listaSlotItem[i].gameObject.activeSelf == false)
-                {
-                    listaSlotItem[i].gameObject.GetComponent<Image>().sprite = item.icone;
-                    listaSlotItem[i].gameObject.SetActive(true);
-                }
                 listaSlotItem[i].atualizaQuantidade(quantidade);
                 break;
+            }
+            else
+            {
+                CriaNovoSlotDeItem(item, quantidade);
             }
         }
     }
@@ -107,7 +119,7 @@ public class UIinventario : MonoBehaviour
         {
             for (int tipoRecursosInventario = 0; tipoRecursosInventario < listaSlotItem.Count; tipoRecursosInventario++)//procura se existe o recurso X na lista de crafting do objeto
             {
-                if (listaSlotItem[tipoRecursosInventario].item.ID.ToUpper() == slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID.ToUpper() && listaSlotItem[tipoRecursosInventario].qntdRecurso >= slot.receita.quantidadeDoRecurso[tiposRecursosParaCrafting])
+                if (listaSlotItem[tipoRecursosInventario].item.ID.ToUpper() == slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID.ToUpper() && listaSlotItem[tipoRecursosInventario].qntdRecurso >= slot.GetNovaListaDeQntdRecursosNecessarios()[tiposRecursosParaCrafting])//slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]
                 {
                     int i = tipoRecursosInventario;
                     recursosEncontrados.Add(i);// guarda a posição do recurso na lista de itens
@@ -120,12 +132,16 @@ public class UIinventario : MonoBehaviour
         {
             for (int tipoRecursoCrafting = 0; tipoRecursoCrafting < slot.receita.itensNecessarios.Count; tipoRecursoCrafting++)
             {
-                listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.receita.quantidadeDoRecurso[tipoRecursoCrafting]);
-                jogadorScript.Instance.moduloCriado = slot.receita;
-                jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(2);
-                fechaInventario();
-                jogadorScript.Instance.MudarEstadoJogador(2);
+                listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.GetNovaListaDeQntdRecursosNecessarios()[tipoRecursoCrafting]);//-slot.construcaoConfirmada().quantidadeDosRecursos[tipoRecursoCrafting]
             }
+            jogadorScript.Instance.moduloCriado = slot.construcaoConfirmada();
+            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(2);
+            fechaInventario();
+            jogadorScript.Instance.MudarEstadoJogador(2);
+        }
+        else
+        {
+            Debug.Log("recursos insuficientes");
         }
     }
     public void AoClicarparaMelhorar(UpgradeSlot slot)
@@ -136,7 +152,7 @@ public class UIinventario : MonoBehaviour
         {
             for (int tipoRecursosInventario = 0; tipoRecursosInventario < listaSlotItem.Count; tipoRecursosInventario++)//procura se existe o recurso X na lista de crafting do objeto
             {
-                if (listaSlotItem[tipoRecursosInventario].item.ID.ToUpper() == slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID.ToUpper() && listaSlotItem[tipoRecursosInventario].qntdRecurso >= slot.receita.quantidadeDoRecurso[tiposRecursosParaCrafting])
+                if (listaSlotItem[tipoRecursosInventario].item.ID.ToUpper() == slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID.ToUpper() && listaSlotItem[tipoRecursosInventario].qntdRecurso >= slot.receita.quantidadeDosRecursos[tiposRecursosParaCrafting])
                 {
                     int i = tipoRecursosInventario;
                     recursosEncontrados.Add(i);// guarda a posição do recurso na lista de itens
@@ -147,20 +163,21 @@ public class UIinventario : MonoBehaviour
         }
         if (possuiTodosOsRecursos == slot.receita.itensNecessarios.Count)// caso tenha todos os itens e a quantidade necessária, consome eles para criar a receita
         {
+            BaseScript.Instance.duranteMelhoria = true;
             for (int tipoRecursoCrafting = 0; tipoRecursoCrafting < slot.receita.itensNecessarios.Count; tipoRecursoCrafting++)
             {
-                listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.receita.quantidadeDoRecurso[tipoRecursoCrafting]);
-                BaseScript.Instance.duranteMelhoria = true;
-                //BaseScript.Instance.função q aumenta a qntd de defesas de acordo com algo
-                slot.BtnConstruirUpgrade.GetComponent<Image>().sprite = slot.receita.iconeDeCrafting; // coloca a nova imagem no botão
-                slot.BtnConstruirUpgrade.GetComponent<Button>().enabled = false; // desliga a função de botão do botão de criar o upgrade
-                slot.BtnTrocartempo.SetActive(true);
-                TempoAtual++;
-                listaSlotUpgradesBase[TempoAtual].gameObject.SetActive(true); // liga o próximo botão da lista
-                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloDuranteADefesa, desastreManager.Instance.tempoAcumulado);
-                desastreManager.Instance.StartCoroutine(desastreManager.Instance.LogicaDesastres());
-                fechaMenuDeTempos();
+                listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.receita.quantidadeDosRecursos[tipoRecursoCrafting]);
             }
+            //BaseScript.Instance.função q aumenta a qntd de defesas de acordo com algo
+            slot.BtnConstruirUpgrade.GetComponent<Image>().sprite = slot.receita.iconeDeAprimoramentoDabase; // coloca a nova imagem no botão
+            slot.BtnConstruirUpgrade.GetComponent<Button>().enabled = false; // desliga a função de botão do botão de criar o upgrade
+            slot.BtnTrocartempo.SetActive(true);
+            TempoAtual++;
+            listaSlotUpgradesBase[TempoAtual].gameObject.SetActive(true); // liga o próximo botão da lista
+            DesastresList.Instance.ativar[TempoAtual + 2] = true;//ativa a possibilidade do evento desse tempo acontecer
+            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloDuranteADefesa, desastreManager.Instance.tempoAcumulado);
+            desastreManager.Instance.StartCoroutine(desastreManager.Instance.LogicaDesastres());
+            fechaMenuDeTempos();
         }
     }
     public void AoClicarEmMudarDeTempo(UpgradeSlot slot)

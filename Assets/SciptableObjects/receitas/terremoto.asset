@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8952a940ca52c04c93836bb4831858a, type: 3}
+  m_Name: terremoto
+  m_EditorClassIdentifier: 
+  iconeDeAprimoramentoDabase: {fileID: 0}
+  desastre: TERREMOTO
+  incrementoEntreForcas: 3
+  itensNecessarios:
+  - {fileID: 11400000, guid: 84bccf2522a8f0b4cb0fb343340e841d, type: 2}
+  - {fileID: 11400000, guid: 6080dc09a9bfd66488d79c0e9da77802, type: 2}
+  quantidadeDosRecursos: 0300000006000000

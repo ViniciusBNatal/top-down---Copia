@@ -5,21 +5,22 @@ using UnityEngine;
 public class inimigo : MonoBehaviour
 {
     [Header("Caracteristicas do Inimigo")]
+    [SerializeField] private bool imortal;
     public bool movimentacaoFixa;
-    public bool movimentacaoLivre;
-    public bool disparo;
-    public CircleCollider2D areaDetecao;
-    public GameObject projetil;
-    public Transform pontoDisparo;
-    public Rigidbody2D rb;
+    [SerializeField] private bool movimentacaoLivre;
+    [SerializeField] private bool disparo;
+    [SerializeField] private CircleCollider2D areaDetecao;
+    [SerializeField] private GameObject projetil;
+    [SerializeField] private Transform pontoDisparo;
+    private Rigidbody2D rb;
     [Header("Valores numéricos")]
-    public float vidaMaxima;
-    public float velocidade;
-    public float taxaDisparo;
-    public float raioVisao;
-    public float velocidadeProjetil;
+    [SerializeField] private float vidaMaxima;
+    [SerializeField] private float velocidade;
+    [SerializeField] private float taxaDisparo;
+    [SerializeField] private float raioVisao;
+    [SerializeField] private float velocidadeProjetil;
     public float danoMelee;
-    public float danoRanged;
+    [SerializeField] private float danoRanged;
     public float forcaRepulsao;
     public float tempoDeStunNoJogador = 1f;
     public Vector2 direcao;
@@ -32,8 +33,8 @@ public class inimigo : MonoBehaviour
     void Start()
     {
         areaDetecao.radius = raioVisao;
+        rb = GetComponent<Rigidbody2D>();
         vidaAtual = vidaMaxima;
-
     }
 
     private void FixedUpdate()
@@ -95,15 +96,18 @@ public class inimigo : MonoBehaviour
     }
     public void mudancaVida(float valor)
     {
-        vidaAtual += valor;
-        if (vidaAtual > vidaMaxima)
+        if (!imortal)
         {
-            vidaAtual = vidaMaxima;
-        }
-        else if (vidaAtual <= 0)
-        {
-            vidaAtual = 0f;
-            Destroy(this.gameObject);
+            vidaAtual += valor;
+            if (vidaAtual > vidaMaxima)
+            {
+                vidaAtual = vidaMaxima;
+            }
+            else if (vidaAtual <= 0)
+            {
+                vidaAtual = 0f;
+                Destroy(this.gameObject);
+            }
         }
     }
 }

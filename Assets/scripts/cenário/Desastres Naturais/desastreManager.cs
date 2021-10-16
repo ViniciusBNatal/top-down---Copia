@@ -7,57 +7,56 @@ public class desastreManager : MonoBehaviour
 {
     public static desastreManager Instance { get; private set; }
     [Header("Configuração do Manager")]
-    public float intervaloEntreOsDesastres;
-    public int chanceDeDesastre;
+    public float intervaloEntreOsDesastres = 90;
+    [SerializeField] private int chanceDeDesastre;
     public float intervaloDuranteADefesa;
-    public int QuaisEQuantosDesastresPossiveis = 1;
     public int QntdDeDefesasNecessarias;
     private List<Image> iconesDesenhados = new List<Image>();
     private List<Image> multiplicadoresDesenhados = new List<Image>();
     private int minutos;
     private int segundos;
     [Header("Terremoto")]
-    public float intensidadeScreenShakeTerremoto;
-    public float taxaDeMudancaDosControles;
-    public float unidadesX;
-    public float unidadesY;
-    public float forcaTerremoto;
+    [SerializeField] private float intensidadeScreenShakeTerremoto;
+    [SerializeField] private float taxaDeMudancaDosControles;
+    [SerializeField] private float unidadesX;
+    [SerializeField] private float unidadesY;
+    [SerializeField] private float forcaTerremoto;
     [Header("Enxame De Insetos")]
-    public GameObject enxamePrefab;
     private GameObject enxameInst;
-    public float velocidadeEnxame;
-    public float danoEnxame;
-    public float intervaloEntreAtaques;
+    [SerializeField] private GameObject enxamePrefab;
+    [SerializeField] private float velocidadeEnxame;
+    [SerializeField] private float danoEnxame;
+    [SerializeField] private float intervaloEntreAtaques;
     [Header("Virus")]
-    public float distanciaXdoJogador_virus;
-    public float distanciaYdoJogador_virus;
-    public float intervaloEntreSpawnsVirus;
-    public float tempParaSumirUI;
-    public GameObject paredeVirusPrefab;
+    [SerializeField] private float distanciaXdoJogador_virus;
+    [SerializeField] private float distanciaYdoJogador_virus;
+    [SerializeField] private float intervaloEntreSpawnsVirus;
+    [SerializeField] private float tempParaSumirUI;
+    [SerializeField] private GameObject paredeVirusPrefab;
     [Header("Chuva Ácida")]
-    public GameObject chuvaParticulaPrefab;
-    public float danoDoAcido;
-    public float intervaloEntreHitsChuvaAcida;
+    [SerializeField] private GameObject chuvaParticulaPrefab;
+    [SerializeField] private float danoDoAcido;
+    [SerializeField] private float intervaloEntreHitsChuvaAcida;
     private GameObject chuvaInstance;
     [Header("Errupção Terrena")]
-    public GameObject errupcaoPrefab;
-    public float intervaloEntreSpawnsErrupcao;
-    public float distanciaXdoJogador_errupcao;
-    public float distanciaYdoJogador_errupcao;
+    [SerializeField] private GameObject errupcaoPrefab;
+    [SerializeField] private float intervaloEntreSpawnsErrupcao;
+    [SerializeField] private float distanciaXdoJogador_errupcao;
+    [SerializeField] private float distanciaYdoJogador_errupcao;
     [Header ("Não Mexer")]
     public bool desastreAcontecendo = false;
     public float tempoAcumulado = 0f;
     public float tempoRestante;
-    public int qntdDeDesastresOcorridos;
-    public int[] desastresSorteados = new int[5];
+    public int qntdDeDesastresParaOcorrer;
+    public string[] desastresSorteados = new string[5];
     public int[] forcasSorteados = new int[5];
     public List<GameObject> errupcoesEmCena = new List<GameObject>();
     public List<GameObject> virusEmCena = new List<GameObject>();
-    public PostProcessScript CMefeitos;
-    public Image iconesDesastrPrefab;
-    public GameObject PosicaoIconesDesastre;
-    public GameObject PosicaoIconesMultiplicador;
-    public Text timer;
+    [SerializeField] private PostProcessScript CMefeitos;
+    [SerializeField] private Image iconesDesastrPrefab;
+    [SerializeField] private GameObject PosicaoIconesDesastre;
+    [SerializeField] private GameObject PosicaoIconesMultiplicador;
+    [SerializeField] private Text timer;
     private void Awake()
     {
         Instance = this;
@@ -65,7 +64,7 @@ public class desastreManager : MonoBehaviour
     private void Start()
     {
         tempoRestante = intervaloEntreOsDesastres;
-        //ConfigurarTimer();
+        //ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
         //StartCoroutine(this.LogicaDesastres());
     }
     private void Update()
@@ -110,61 +109,91 @@ public class desastreManager : MonoBehaviour
         StartCoroutine(this.criaObjetosDoDesastre(distanciaXdoJogador_errupcao, distanciaYdoJogador_errupcao, intervaloEntreSpawnsErrupcao, errupcaoPrefab));
     }
     //sorteadores
-    private void SorteiaDesastre(int posicao)
+    public void ConfigurarTimer(float tempoRestante, float tempoAcumuladoduranteDesastres)
     {
-        int desastreEscolhido = Random.Range(1, QuaisEQuantosDesastresPossiveis + 1);
-        for (int i = 0; i < QuaisEQuantosDesastresPossiveis; i++)
+        minutos = Mathf.FloorToInt((tempoRestante - tempoAcumuladoduranteDesastres) / 60);
+        if (minutos < 0)
+            minutos = 0;
+        segundos = Mathf.FloorToInt((tempoRestante - minutos * 60) - tempoAcumuladoduranteDesastres);
+        if (segundos < 0)
+            segundos = 0;
+        timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
+    }
+    public IEnumerator LogicaDesastres()
+    {
+        SortearGeral(chanceDeDesastre);
+        //qntdDeDesastresParaOcorrer = 1;
+        //desastresSorteados[0] = "terremoto";
+        //forcasSorteados[0] = 1;
+        //desastresSorteados[1] = 2;
+        //forcasSorteados[1] = 2;
+        //desastresSorteados[2] = 3;
+        //forcasSorteados[2] = 3;
+        PreenchePlaca();
+        while (desastreAcontecendo == false)
         {
-            if (desastresSorteados[i] == desastreEscolhido)
+            timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
+            yield return new WaitForSeconds(1);
+            if (minutos == 0 && segundos == 0)
+                IniciarDesastres();
+            else if(segundos == 0 && minutos > 0)
             {
-                SorteiaDesastre(posicao);
+                minutos--;
+                segundos = 59;
+                tempoRestante--;
             }
-            else if (desastresSorteados[i] != desastreEscolhido && desastresSorteados[i] == 0)
+            else
             {
-                desastresSorteados[posicao] = desastreEscolhido;
+                segundos--;
+                tempoRestante--;
             }
         }
     }
+    //IEnumerators
     private void SortearGeral(int chanceDEDesastre)
     {
         int qntd = 0;
-        for (int i = 0; i < QuaisEQuantosDesastresPossiveis; i++)
+        for (int i = 0; i < DesastresList.Instance.ativar.Count; i++)
         {
-            int r = Random.Range(1, 101);
-            if (r <= chanceDEDesastre)
+            if (DesastresList.Instance.ativar[i])
                 qntd++;
         }
-        qntdDeDesastresOcorridos = qntd;
+        qntdDeDesastresParaOcorrer = qntd;
         for (int i = 0; i < qntd; i++)
         {
             int forcaEscolhida = Random.Range(1, 4);
             forcasSorteados[i] = forcaEscolhida;
-            SorteiaDesastre(i);
+            SorteiaDesastre();
+        }
+    }
+    private void SorteiaDesastre()
+    {
+        bool EventoRepetido = false;
+        int index = Random.Range(1, DesastresList.Instance.ativar.Count + 1);
+        string desastreEscolhido = DesastresList.Instance.desastreNome[index - 1].ToUpper();
+        for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)
+        {
+            if (desastresSorteados[i].ToUpper() == desastreEscolhido)
+            {
+                EventoRepetido = true;
+                break;
+            }
+        }
+        if (!DesastresList.Instance.ativar[index - 1] || EventoRepetido)
+        {
+            SorteiaDesastre();
+            return;
+        }
+        for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)
+        {
+            if (desastresSorteados[i] == "")
+            {
+                desastresSorteados[i] = desastreEscolhido;
+                break;
+            }
         }
     }
     //visual
-    private void PreenchePlaca()
-    {
-        //limpa os icones para os próximos desastres
-        LimpaPlaca();
-        for (int i = 0; i < QuaisEQuantosDesastresPossiveis; i++)//preenche a tela de acordo com o que foi sorteado e a quantidade de desastres
-        {
-            //icone do multiplicador
-            Image iconeDeMultiplicador = Instantiate(iconesDesastrPrefab, PosicaoIconesMultiplicador.transform.position, Quaternion.identity, PosicaoIconesMultiplicador.transform);
-            Sprite iconeMult = SelecionadorDeIconeDesastreEMultiplicador.Instance.SelecionarSpriteMultiplicador(forcasSorteados[i]);
-            float alturaiconeMultiplicador = iconeDeMultiplicador.rectTransform.rect.height;
-            iconeDeMultiplicador.transform.localPosition = new Vector3(0f, -(alturaiconeMultiplicador * i + .1f), 0f);
-            iconeDeMultiplicador.GetComponent<Image>().sprite = iconeMult;
-            multiplicadoresDesenhados.Add(iconeDeMultiplicador);
-            //icone do desastre
-            Image iconeDeDesastre = Instantiate(iconesDesastrPrefab, PosicaoIconesDesastre.transform.position, Quaternion.identity, PosicaoIconesDesastre.transform);
-            Sprite iconeDes = SelecionadorDeIconeDesastreEMultiplicador.Instance.SelecionarSpriteDesastre(desastresSorteados[i]);
-            float alturaiconeDesastre = iconeDeDesastre.rectTransform.rect.height;
-            iconeDeDesastre.transform.localPosition = new Vector3(0f, -(alturaiconeDesastre * i + .1f), 0f);
-            iconeDeDesastre.GetComponent<Image>().sprite = iconeDes;
-            iconesDesenhados.Add(iconeDeDesastre);
-        }
-    }
     private void LimpaPlaca()
     {
         if (iconesDesenhados != null)
@@ -184,15 +213,29 @@ public class desastreManager : MonoBehaviour
             }
         }
     }
-    public void ConfigurarTimer(float tempoRestante, float tempoAcumuladoduranteDesastres)
+    private void PreenchePlaca()
     {
-        minutos = Mathf.FloorToInt((tempoRestante - tempoAcumuladoduranteDesastres) / 60);
-        if (minutos < 0)
-            minutos = 0;
-        segundos = Mathf.FloorToInt((tempoRestante - minutos * 60) - tempoAcumuladoduranteDesastres);
-        if (segundos < 0)
-            segundos = 0;
-        timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
+        //limpa os icones para os próximos desastres
+        LimpaPlaca();
+        for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)//preenche a tela de acordo com o que foi sorteado e a quantidade de desastres
+        {
+            //icone do multiplicador
+            Image iconeDeMultiplicador = Instantiate(iconesDesastrPrefab, PosicaoIconesMultiplicador.transform.position, Quaternion.identity, PosicaoIconesMultiplicador.transform);
+            Sprite iconeMult = DesastresList.Instance.SelecionaSpriteMultiplicador(forcasSorteados[i]);
+                //SelecionadorDeIconeDesastreEMultiplicador.Instance.SelecionarSpriteMultiplicador(forcasSorteados[i]);
+            float alturaiconeMultiplicador = iconeDeMultiplicador.rectTransform.rect.height;
+            iconeDeMultiplicador.transform.localPosition = new Vector3(0f, -(alturaiconeMultiplicador * i + .1f), 0f);
+            iconeDeMultiplicador.GetComponent<Image>().sprite = iconeMult;
+            multiplicadoresDesenhados.Add(iconeDeMultiplicador);
+            //icone do desastre
+            Image iconeDeDesastre = Instantiate(iconesDesastrPrefab, PosicaoIconesDesastre.transform.position, Quaternion.identity, PosicaoIconesDesastre.transform);
+            Sprite iconeDes = DesastresList.Instance.SelecionaSpriteDesastre(desastresSorteados[i]);
+                //SelecionadorDeIconeDesastreEMultiplicador.Instance.SelecionarSpriteDesastre(desastresSorteados[i]);
+            float alturaiconeDesastre = iconeDeDesastre.rectTransform.rect.height;
+            iconeDeDesastre.transform.localPosition = new Vector3(0f, -(alturaiconeDesastre * i + .1f), 0f);
+            iconeDeDesastre.GetComponent<Image>().sprite = iconeDes;
+            iconesDesenhados.Add(iconeDeDesastre);
+        }
     }
     //logica dos desastres
     private void IniciarDesastres()
@@ -200,24 +243,24 @@ public class desastreManager : MonoBehaviour
         desastreAcontecendo = true;
         //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
         //Terremoto();
-        for (int i = 0; i < qntdDeDesastresOcorridos; i++)
+        for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)
         {
-            switch (desastresSorteados[i])
+            switch (desastresSorteados[i].ToUpper())
             {
-                case 1:
+                case "TERREMOTO":
                     Terremoto();
                     break;
-                case 2:
+                case "ERRUPCAO TERRENA":
+                    ErrupcaoTerrena();
+                    break;
+                case "NUVEM DE INSETOS":
                     NuvemDeInsetos();
                     break;
-                case 3:
+                case "VIRUS":
                     Virus();
                     break;
-                case 4:
+                case "CHUVA ACIDA":
                     ChuvaAcida();
-                    break;
-                case 5:
-                    ErrupcaoTerrena();
                     break;
             }
         }
@@ -248,36 +291,14 @@ public class desastreManager : MonoBehaviour
             errupcoesEmCena.RemoveAt(i - 1);
         }
     }
-    public IEnumerator LogicaDesastres()
+    public void LimpaArraysDeSorteio()
     {
-        //SortearGeral(chanceDeDesastre);
-        desastresSorteados[0] = 1;
-        forcasSorteados[0] = 1;
-        //desastresSorteados[1] = 2;
-        //forcasSorteados[1] = 2;
-        //desastresSorteados[2] = 3;
-        //forcasSorteados[2] = 3;
-        PreenchePlaca();
-        while (desastreAcontecendo == false)
+        for (int i = 0; i < desastresSorteados.Length; i++)
         {
-            timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
-            yield return new WaitForSeconds(1);
-            if (minutos == 0 && segundos == 0)
-                IniciarDesastres();
-            else if(segundos == 0 && minutos > 0)
-            {
-                minutos--;
-                segundos = 59;
-                tempoRestante--;
-            }
-            else
-            {
-                segundos--;
-                tempoRestante--;
-            }
+            forcasSorteados[i] = 0;
+            desastresSorteados[i] = "";
         }
     }
-    //IEnumerators
     IEnumerator baguncaControleJogador()
     {
         while (desastreAcontecendo)
@@ -302,7 +323,6 @@ public class desastreManager : MonoBehaviour
         if (desastreAcontecendo)
             UIinventario.Instance.GetComponent<Canvas>().enabled = false;
     }
-    
     IEnumerator HitChuvaAcida()
     {
         while (desastreAcontecendo)

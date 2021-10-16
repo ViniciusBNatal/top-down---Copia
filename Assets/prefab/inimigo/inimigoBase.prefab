@@ -114,22 +114,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7e673c8e2950084a84253a83f2ff9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movimentacao: 1
+  imortal: 0
+  movimentacaoFixa: 0
+  movimentacaoLivre: 0
   disparo: 0
   areaDetecao: {fileID: 566375125526406925}
   projetil: {fileID: 1029496171083325692, guid: 0612f2afecd8da940b203880a2641b0c,
     type: 3}
   pontoDisparo: {fileID: 5766492688547367779}
-  rb: {fileID: 6736636612218344493}
-  vidaMaxima: 0
+  vidaMaxima: 100
   velocidade: 3
   taxaDisparo: 2
   raioVisao: 4
   velocidadeProjetil: 10
-  danoMelee: 0.1
+  danoMelee: 10
   danoRanged: 0.1
   forcaRepulsao: 20
   tempoDeStunNoJogador: 0.5
+  direcao: {x: 1, y: 0}
 --- !u!50 &6736636612218344493
 Rigidbody2D:
   serializedVersion: 4
