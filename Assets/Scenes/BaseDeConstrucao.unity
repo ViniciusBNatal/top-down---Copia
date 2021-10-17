@@ -20479,8 +20479,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2130173965009783799, guid: ab13f81476680d340aa5c02f8d0b88b9,
         type: 3}
-      propertyPath: ativar.Array.data[4]
+      propertyPath: ativar.Array.data[0]
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130173965009783799, guid: ab13f81476680d340aa5c02f8d0b88b9,
+        type: 3}
+      propertyPath: ativar.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130173965009783799, guid: ab13f81476680d340aa5c02f8d0b88b9,
+        type: 3}
+      propertyPath: ativar.Array.data[4]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2467229751901996654, guid: ab13f81476680d340aa5c02f8d0b88b9,
         type: 3}
@@ -20605,7 +20615,7 @@ PrefabInstance:
     - target: {fileID: 6387882807815604241, guid: ab13f81476680d340aa5c02f8d0b88b9,
         type: 3}
       propertyPath: danoDoAcido
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6387882807815604241, guid: ab13f81476680d340aa5c02f8d0b88b9,
         type: 3}
@@ -20750,7 +20760,7 @@ PrefabInstance:
     - target: {fileID: 6387882807815604241, guid: ab13f81476680d340aa5c02f8d0b88b9,
         type: 3}
       propertyPath: intervaloEntreOsDesastres
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6387882807815604241, guid: ab13f81476680d340aa5c02f8d0b88b9,
         type: 3}
@@ -20786,6 +20796,11 @@ PrefabInstance:
         type: 3}
       propertyPath: distanciaYdoJogador_errupcao
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6387882807815604241, guid: ab13f81476680d340aa5c02f8d0b88b9,
+        type: 3}
+      propertyPath: intervaloEntreHitsChuvaAcida
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6387882807815604241, guid: ab13f81476680d340aa5c02f8d0b88b9,
         type: 3}

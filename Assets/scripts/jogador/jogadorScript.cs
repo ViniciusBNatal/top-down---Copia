@@ -213,7 +213,7 @@ public class jogadorScript : MonoBehaviour
         }
         else
         {
-            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.tempoRestante += valor, 0f);
+            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.tempoRestante -= valor, 0f);
         }
         //vidaAtual += valor;
         //inventario.BarraDeVida.GetComponent<barraDeVida>().AtualizaBarraDeVida(vidaAtual);

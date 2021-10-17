@@ -28,7 +28,7 @@ public class ErrupcaoTerrena : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             //StartCoroutine(jogadorScript.Instance.DanoContinuo(dano, intervalo, qntdHits));
-            jogadorScript.Instance.mudancaRelogio(-dano);
+            jogadorScript.Instance.mudancaRelogio(dano);
             //jogadorScript.Instance.Knockback(tempoStun, forca, this.transform);
             StartCoroutine(jogadorScript.Instance.Knockback(tempoStun, forca, this.transform));
         }

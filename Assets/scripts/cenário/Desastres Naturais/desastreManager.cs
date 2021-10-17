@@ -109,12 +109,13 @@ public class desastreManager : MonoBehaviour
         StartCoroutine(this.criaObjetosDoDesastre(distanciaXdoJogador_errupcao, distanciaYdoJogador_errupcao, intervaloEntreSpawnsErrupcao, errupcaoPrefab));
     }
     //sorteadores
-    public void ConfigurarTimer(float tempoRestante, float tempoAcumuladoduranteDesastres)
+    public void ConfigurarTimer(float tempRestante, float tempoAcumuladoduranteDesastres)
     {
-        minutos = Mathf.FloorToInt((tempoRestante - tempoAcumuladoduranteDesastres) / 60);
+        tempoRestante = tempRestante;
+        minutos = Mathf.FloorToInt((tempRestante - tempoAcumuladoduranteDesastres) / 60);
         if (minutos < 0)
             minutos = 0;
-        segundos = Mathf.FloorToInt((tempoRestante - minutos * 60) - tempoAcumuladoduranteDesastres);
+        segundos = Mathf.FloorToInt((tempRestante - minutos * 60) - tempoAcumuladoduranteDesastres);
         if (segundos < 0)
             segundos = 0;
         timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
@@ -327,7 +328,7 @@ public class desastreManager : MonoBehaviour
     {
         while (desastreAcontecendo)
         {
-            jogadorScript.Instance.mudancaRelogio(-danoDoAcido);
+            jogadorScript.Instance.mudancaRelogio(danoDoAcido);
             yield return new WaitForSeconds(intervaloEntreHitsChuvaAcida);
         }
     }

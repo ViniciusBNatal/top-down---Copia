@@ -99,7 +99,9 @@ public class BaseScript : MonoBehaviour
                         desastresManager.ConfigurarTimer(desastresManager.intervaloDuranteADefesa, desastresManager.tempoAcumulado);
                 }
                 else
+                {
                     desastresManager.ConfigurarTimer(desastresManager.intervaloEntreOsDesastres, desastresManager.tempoAcumulado);
+                }
                 desastresManager.tempoAcumulado = 0f;
                 StartCoroutine(desastresManager.LogicaDesastres());
             }
