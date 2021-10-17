@@ -10,6 +10,7 @@ public class blocoVirusScript : MonoBehaviour
     [SerializeField] private float tempoAteDestruir;
     [SerializeField] private LayerMask blocoVirusMascara;
     [SerializeField] private Vector3 diferenca;
+    private BoxCollider2D tamanho;
     private GameObject blocoVirus;
     private float largura;
     private float altura;
@@ -18,6 +19,7 @@ public class blocoVirusScript : MonoBehaviour
     void Start()
     {
         blocoVirus = this.gameObject;
+        tamanho = GetComponent<BoxCollider2D>();
         desastreManager.Instance.virusEmCena.Add(this.gameObject);
         StartCoroutine(this.DestruirObjeto());
         StartCoroutine(this.Multiplicar());
@@ -37,16 +39,16 @@ public class blocoVirusScript : MonoBehaviour
                 switch (r)//dependendo do número direciona a criação do bloco para ser em X ou em Y
                 {
                     case 0://X
-                        largura = this.transform.localScale.x;
+                        largura = tamanho.size.x;
                         break;
                     case 1://Y
-                        altura = this.transform.localScale.y;
+                        altura = tamanho.size.y;
                         break;
                 }
                 direcao = Random.Range(-1, 2);
                 if (direcao == 0)
                     direcao = 1;
-                Collider2D[] obj = Physics2D.OverlapBoxAll(transform.position + new Vector3(largura, altura, 0f) * direcao, new Vector2(this.transform.localScale.x - diferenca.x, this.transform.localScale.y - diferenca.y), 0f, blocoVirusMascara);
+                Collider2D[] obj = Physics2D.OverlapBoxAll(transform.position + new Vector3(largura, altura, 0f) * direcao, new Vector2(tamanho.size.x - diferenca.x, tamanho.size.y - diferenca.y), 0f, blocoVirusMascara);
                 if (obj.Length == 0)
                 {
                     GameObject parede = Instantiate(blocoVirus,transform.position + new Vector3(largura, altura, 0f) * direcao, Quaternion.identity);

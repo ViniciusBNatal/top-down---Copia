@@ -27,4 +27,8 @@ public class DesastresList : MonoBehaviour
     {
         return iconesMultiplicador[forca - 1];
     }
+    public void LiberarNovosDesastres(int i)
+    {
+        ativar[i] = true;
+    }
 }

@@ -174,7 +174,7 @@ public class UIinventario : MonoBehaviour
             slot.BtnTrocartempo.SetActive(true);
             TempoAtual++;
             listaSlotUpgradesBase[TempoAtual].gameObject.SetActive(true); // liga o próximo botão da lista
-            DesastresList.Instance.ativar[TempoAtual + 2] = true;//ativa a possibilidade do evento desse tempo acontecer
+            DesastresList.Instance.LiberarNovosDesastres(TempoAtual + 2);//ativa a possibilidade do evento desse tempo acontecer, +2 por já começar com 2 desastres
             desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloDuranteADefesa, desastreManager.Instance.tempoAcumulado);
             desastreManager.Instance.StartCoroutine(desastreManager.Instance.LogicaDesastres());
             fechaMenuDeTempos();
