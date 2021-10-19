@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8952a940ca52c04c93836bb4831858a, type: 3}
-  m_Name: teste upgrade
+  m_Name: Tempo 1
   m_EditorClassIdentifier: 
-  iconeDeAprimoramentoDabase: {fileID: 0}
+  iconeDeAprimoramentoDabase: {fileID: -7935756784417215701, guid: eee20d4829f99f9439d33d8dd7779976,
+    type: 3}
   desastre: 
   incrementoEntreForcas: 0
-  itensNecessarios:
-  - {fileID: 11400000, guid: cb53092315aef7b478ee5d73e0e5a918, type: 2}
-  - {fileID: 11400000, guid: 84bccf2522a8f0b4cb0fb343340e841d, type: 2}
-  - {fileID: 11400000, guid: 6080dc09a9bfd66488d79c0e9da77802, type: 2}
-  quantidadeDosRecursos: 010000000a0000000a000000
+  itensNecessarios: []
+  quantidadeDosRecursos: 

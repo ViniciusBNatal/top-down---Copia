@@ -18,7 +18,7 @@ public class jogadorScript : MonoBehaviour
     [SerializeField] private float danoMelee;
     [SerializeField] private float danoProjetil;
     [Header("Componentes")]
-    [SerializeField] private JogadorAnimScript animScript;
+    //[SerializeField] private JogadorAnimScript animScript;
     [SerializeField] private Transform posicaoMelee;
     public Camera mainCamera;
     [SerializeField] private GameObject projetil;
@@ -32,17 +32,20 @@ public class jogadorScript : MonoBehaviour
     //private float vidaAtual;
     private Vector2 movimento;
     private Rigidbody2D rb;
-    private float podeAtacar = 0f;
     private Animator animatorPicareta;
     private bool atirando = false;
-    private bool sendoEmpurrado = false;
+    private bool atacando = false;
+    private float forcaEmpurrao;
+    private Vector2 direcaoEmpurrao;
     [Header("Não Mexer")]
     public Vector2 baguncarControles = new Vector2(1,1);
     public enum estados
     {
         EmAcao,
         EmMenus,
-        EmContrucao
+        EmContrucao,
+        EmDialogo,
+        SendoEmpurrado
     };
     public estados estadosJogador;// 0 = em acao, 1 = em menus, 2 = em construcao 
     public ReceitaDeCrafting moduloCriado;
@@ -67,8 +70,8 @@ public class jogadorScript : MonoBehaviour
         {
             case estados.EmAcao: //movimentando
                 MovimentoInput();
-                Atirar();
-                ataqueMelee();
+                InputAtirar();
+                InputAtaqueMelee();
                 break;
             case estados.EmMenus://interface aberta
 
@@ -76,15 +79,25 @@ public class jogadorScript : MonoBehaviour
             case estados.EmContrucao://construindo
                 mousePrecionado();
                 break;
+            case estados.EmDialogo:
+                InputProsseguirDialogo();
+                break;
         }
     }
     private void FixedUpdate()
     {
-        if (!sendoEmpurrado && estadosJogador == estados.EmAcao)
+         if (estadosJogador == estados.EmAcao)
+        {
             rb.velocity = movimento * velocidade + baguncarControles;
-        if (estadosJogador != estados.EmAcao)
+        }
+         else if (estadosJogador == estados.SendoEmpurrado)
+        {
+            rb.velocity = -forcaEmpurrao * direcaoEmpurrao;
+        }
+         else
+        {
             rb.velocity = Vector2.zero;
-
+        }
     }
     private void MovimentoInput()
     {
@@ -99,32 +112,26 @@ public class jogadorScript : MonoBehaviour
         posicaoMouse.z = 0f;
         return posicaoMouse;
     }
-    private void Atirar()//dispara ao apertar o botão direito do mouse
+    private void InputAtirar()//dispara ao apertar o botão direito do mouse
     {
         if (Input.GetKey(KeyCode.Mouse1))
         {
             StartCoroutine("atirar");
         }
     }
-    private void ataqueMelee()// animação e inflinge dano caso encontre algo
+    private void InputAtaqueMelee()// animação e inflinge dano caso encontre algo
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && Time.time > podeAtacar)
+        if (Input.GetKeyDown(KeyCode.Mouse0)) //&& Time.time > podeAtacar)
         {
-            animatorPicareta.SetTrigger("ATACANDO");
-            animScript.AnimarAtaqueMelee(posicaoMelee.localPosition.x, posicaoMelee.localPosition.y);
-            Collider2D[] objetosAcertados = Physics2D.OverlapCircleAll(posicaoMelee.position, alcanceMelee, objetosAcertaveisLayer);//hit em objetos
-            foreach(Collider2D objeto in objetosAcertados)
-            {
-                if (objeto.gameObject.layer == 8)
-                {
-                    objeto.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigo>().mudancaVida(-danoMelee);
-                }
-                else if (objeto.gameObject.layer == 9)
-                {
-                    objeto.gameObject.GetComponent<CentroDeRecurso>().DropaRecursos();
-                }
-            }
-            podeAtacar = Time.time + 1 / taxaDeAtaqueMelee;
+            StartCoroutine(this.atacarMelee());
+        }
+    }
+    
+    private void InputProsseguirDialogo()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            DialogeManager.Instance.MostraProximoDialogo();
         }
     }
     private void MudaAreaAtaque(float movX, float movY)// atualiza a direção do ataque melee sempre que o jogador muda de direção
@@ -169,32 +176,33 @@ public class jogadorScript : MonoBehaviour
                 estadosJogador = estados.EmContrucao;
                 podeAnimar = false;
                 break;
+            case 3:
+                estadosJogador = estados.EmDialogo;
+                podeAnimar = false;
+                break;
+            case 4:
+                estadosJogador = estados.SendoEmpurrado;
+                podeAnimar = false;
+                break;
         }
     }
-    public bool GetPodeAnimar()
+    public void Knockback(float duracaoEmpurrao, float forca, Transform obj)
     {
-        return podeAnimar;
+        MudarEstadoJogador(4);
+        direcaoEmpurrao = (obj.transform.position - this.transform.position).normalized;
+        forcaEmpurrao = forca;;
+        StartCoroutine(this.duracaoKnockback(duracaoEmpurrao));
     }
-    public IEnumerator Knockback(float duracaoEmpurrao, float forca, Transform obj)
+    private IEnumerator duracaoKnockback(float duracaoEmpurrao)
     {
-        sendoEmpurrado = true;
-        MudarEstadoJogador(1);
-        float tempo = 0f;
-        Vector2 direcao = (obj.transform.position - this.transform.position).normalized;
-        while (duracaoEmpurrao > tempo)
-        {
-            tempo += Time.deltaTime;
-            rb.AddForce(-forca * direcao);
-            yield return null;
-        }
-        sendoEmpurrado = false;
+        yield return new WaitForSeconds(duracaoEmpurrao);
         MudarEstadoJogador(0);
     }
     IEnumerator atirar()
     {
         if (!atirando)
         {
-            animScript.AnimarDisparo(PegaPosicoMouse().x, PegaPosicoMouse().y);
+            JogadorAnimScript.Instance.AnimarDisparo(PegaPosicoMouse().x, PegaPosicoMouse().y);
             atirando = true;
             GameObject bala = Instantiate(projetil, pontoDeDisparo.position, Quaternion.identity);
             Vector3 direcao = PegaPosicoMouse() - pontoDeDisparo.position;
@@ -203,6 +211,29 @@ public class jogadorScript : MonoBehaviour
             rb.velocity = Vector2.zero;
             yield return new WaitForSeconds(taxaDeDisparo);
             atirando = false;
+        }
+    }
+    IEnumerator atacarMelee()
+    {
+        if (!atacando)
+        {
+            atacando = true;
+            animatorPicareta.SetTrigger("ATACANDO");
+            JogadorAnimScript.Instance.AnimarAtaqueMelee(posicaoMelee.localPosition.x, posicaoMelee.localPosition.y);
+            Collider2D[] objetosAcertados = Physics2D.OverlapCircleAll(posicaoMelee.position, alcanceMelee, objetosAcertaveisLayer);//hit em objetos
+            foreach (Collider2D objeto in objetosAcertados)
+            {
+                if (objeto.gameObject.layer == 8)
+                {
+                    objeto.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigo>().mudancaVida(-danoMelee);
+                }
+                else if (objeto.gameObject.layer == 9)
+                {
+                    objeto.gameObject.GetComponent<CentroDeRecurso>().DropaRecursos();
+                }
+            }
+            yield return new WaitForSeconds(taxaDeAtaqueMelee);
+            atacando = false;
         }
     }
     public void mudancaRelogio(float valor)
@@ -251,5 +282,9 @@ public class jogadorScript : MonoBehaviour
         if (posicaoMelee == null)
             return;
         Gizmos.DrawWireSphere(posicaoMelee.position, alcanceMelee);
+    }
+    public bool GetPodeAnimar()
+    {
+        return podeAnimar;
     }
 }

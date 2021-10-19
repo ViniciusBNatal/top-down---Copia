@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class UIinventario : MonoBehaviour
 {
     public static UIinventario Instance { get; private set; }
     private bool inventarioAberto = false;
-    private List<ItemSlot> listaSlotItem = new List<ItemSlot>();
     [SerializeField] private List<UpgradeSlot> listaSlotUpgradesBase = new List<UpgradeSlot>();
-    [SerializeField] private GameObject jogador;
-    [Header ("Nao Mexer")]
+    private List<Teleportador> listaTeleportadores = new List<Teleportador>();
+    private List<ItemSlot> listaSlotItem = new List<ItemSlot>();
+    [Header("Nao Mexer")]
+    [SerializeField] private GameObject CaixaDeDialogos;
     [SerializeField] private GameObject inventarioParent;
     [SerializeField] private GameObject abaInventario;
     [SerializeField] private GameObject abaCriação;
@@ -19,7 +19,7 @@ public class UIinventario : MonoBehaviour
     [SerializeField] private GameObject slotItemPrefab;
     [SerializeField] private Transform posicaoDosIconesDeItens;
     [SerializeField] private GameObject abaSelecionarTempo;
-    private int TempoAtual = 0;
+    public int TempoAtual = 0;
     public bool InventarioAberto => inventarioAberto;
 
     private void Awake()
@@ -93,22 +93,29 @@ public class UIinventario : MonoBehaviour
     }
     public void AtualizaInventarioUI(Item item, int quantidade)
     {
-        if (listaSlotItem.Count == 0)
+        bool JaNaLista = false;
+        int posNaLista = 0;
+        if (listaSlotItem.Count == 0) //lista vazia
         {
             CriaNovoSlotDeItem(item, quantidade);
             return;
         }
-        for (int i = 0; i < listaSlotItem.Count; i++)
+        for (int i = 0; i < listaSlotItem.Count; i++)//se já existe no inventário, muda a quantidade
         {
             if (listaSlotItem[i].item.ID.ToUpper() == item.ID.ToUpper())
             {
-                listaSlotItem[i].atualizaQuantidade(quantidade);
+                JaNaLista = true;
+                posNaLista = i;
                 break;
             }
-            else
-            {
-                CriaNovoSlotDeItem(item, quantidade);
-            }
+        }
+        if (JaNaLista)
+        {
+            listaSlotItem[posNaLista].atualizaQuantidade(quantidade);
+        }
+        else
+        {
+            CriaNovoSlotDeItem(item, quantidade);
         }
     }
     public void AoClicarParaConstruirItem(craftingSlot slot)
@@ -168,21 +175,49 @@ public class UIinventario : MonoBehaviour
             {
                 listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.receita.quantidadeDosRecursos[tipoRecursoCrafting]);
             }
-            //BaseScript.Instance.função q aumenta a qntd de defesas de acordo com algo
-            slot.BtnConstruirUpgrade.GetComponent<Image>().sprite = slot.receita.iconeDeAprimoramentoDabase; // coloca a nova imagem no botão
-            slot.BtnConstruirUpgrade.GetComponent<Button>().enabled = false; // desliga a função de botão do botão de criar o upgrade
-            slot.BtnTrocartempo.SetActive(true);
-            TempoAtual++;
-            listaSlotUpgradesBase[TempoAtual].gameObject.SetActive(true); // liga o próximo botão da lista
-            DesastresList.Instance.LiberarNovosDesastres(TempoAtual + 2);//ativa a possibilidade do evento desse tempo acontecer, +2 por já começar com 2 desastres
-            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloDuranteADefesa, desastreManager.Instance.tempoAcumulado);
-            desastreManager.Instance.StartCoroutine(desastreManager.Instance.LogicaDesastres());
+            LiberarNovBtnDeTrocaDeTempo(slot, true);
             fechaMenuDeTempos();
         }
     }
     public void AoClicarEmMudarDeTempo(UpgradeSlot slot)
     {
-        Debug.Log("abre fase");
-        //SceneManager.LoadScene(slot.CenaParaCarregar.ToUpper());
+        int index = 0;
+        for (int i = 0; i < listaTeleportadores.Count; i++)
+        {
+            if (slot.fase == listaTeleportadores[i].GetFaseDoTeleportador())
+            {
+                index = i;
+                break;
+            }
+        }
+        jogadorScript.Instance.transform.position = listaTeleportadores[index].GetPosicao().position;
+        jogadorScript.Instance.MudarEstadoJogador(0);
+        fechaMenuDeTempos();
+        //Debug.Log("abre fase");
     }
+    public void LiberarNovBtnDeTrocaDeTempo(UpgradeSlot slot, bool ativarDesastres)
+    {
+        slot.LiberarViagemNoTempo();
+        TempoAtual++;
+        listaSlotUpgradesBase[TempoAtual].gameObject.SetActive(true); // liga o próximo botão da lista
+        desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloDuranteADefesa, desastreManager.Instance.tempoAcumulado);
+        if (ativarDesastres)
+        {
+            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloDuranteADefesa, 0f);
+            BaseScript.Instance.duranteMelhoria = true;
+            desastreManager.Instance.StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
+        }
+    }
+    public void AdicionaTeleportadorALista(Teleportador obj)
+    {
+        listaTeleportadores.Add(obj);
+    }
+    public UpgradeSlot GetBtnEspecifico(int i)
+    {
+        return listaSlotUpgradesBase[i];
+    }
+    //public void AtivaEDesativaCaixaDeDialogo(bool liga_desliga)
+    //{
+    //    CaixaDeDialogos.SetActive(liga_desliga);
+    //}
 }

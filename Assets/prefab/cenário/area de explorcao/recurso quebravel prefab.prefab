@@ -98,8 +98,10 @@ MonoBehaviour:
   item: {fileID: 0}
   recursoColetavelPreFab: {fileID: 769133423071464344, guid: 501ac6922bc98ff4a90c352f139fbe97,
     type: 3}
+  quantasVezesPodeSerExtraida: 3
   qntdDoRecursoDropado: 1
   forca: 100
+  tempoAteProximaColeta: 3
 --- !u!70 &6895422993060629283
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -10,9 +10,9 @@ public class ReceitaDeCrafting : ScriptableObject
     public Sprite iconeDeAprimoramentoDabase;
     [Header("Componentes Do Slot De Criar Modulos")]
     public string desastre;
+    public int incrementoEntreForcas;
     private int forca;
     [Header("Receita")]
-    public int incrementoEntreForcas;
     public List<Item> itensNecessarios = new List<Item>();
     public List<int> quantidadeDosRecursos = new List<int>();
 

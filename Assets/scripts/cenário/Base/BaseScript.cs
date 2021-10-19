@@ -6,9 +6,10 @@ public class BaseScript : MonoBehaviour
 {
     public static BaseScript Instance { get; private set; }
     [SerializeField] private List<SlotModulo> modulos = new List<SlotModulo>();
-    [SerializeField] private desastreManager desastresManager;
     [SerializeField] private int vidaMax;
+    [SerializeField] private Transform posicaoDeChegada;
     public bool duranteMelhoria = false;
+    public bool tutorial;
     private int vidaAtual;
     private int DefesasFeitas = 0;
 
@@ -27,9 +28,9 @@ public class BaseScript : MonoBehaviour
         {
             if (modulos[i] == null)
                 return;
-            for (int a = 0; a < desastresManager.qntdDeDesastresParaOcorrer; a++)
+            for (int a = 0; a < desastreManager.Instance.qntdDeDesastresParaOcorrer; a++)
             {
-                if (desastresManager.desastresSorteados[a] == modulos[i].nomeDesastre() && desastresManager.forcasSorteados[a] == modulos[i].valorResistencia())
+                if (desastreManager.Instance.desastresSorteados[a] == modulos[i].nomeDesastre() && desastreManager.Instance.forcasSorteados[a] == modulos[i].valorResistencia())
                 {
                     modulos[i].VisibilidadeSpriteDoModulo(false);
                     modulos[i].SetSpriteDoDesastre(null);
@@ -40,24 +41,26 @@ public class BaseScript : MonoBehaviour
                 }
             }
         }
-        if (desastresManager.qntdDeDesastresParaOcorrer == defendido)
+        if (desastreManager.Instance.qntdDeDesastresParaOcorrer == defendido)
         {
             Debug.Log("defendido");
         }
         else
         {
-            for (int i = 0; i < desastresManager.qntdDeDesastresParaOcorrer - defendido; i++)
-            {
-                vidaAtual--;
-                if (vidaAtual <= 0)
+            //if (!tutorial)
+            //{
+                for (int i = 0; i < desastreManager.Instance.qntdDeDesastresParaOcorrer - defendido; i++)
                 {
-                    Debug.Log("Perdeu");
+                    vidaAtual--;
+                    if (vidaAtual <= 0)
+                    {
+                        Debug.Log("Perdeu");
+                    }
                 }
-            }
-            Debug.Log(vidaAtual);
+                Debug.Log(vidaAtual);
+            //}
         }
     }
-
     public void AbreEFechaMenuDeTrocaDeTempo()
     {
         if (duranteMelhoria)
@@ -76,35 +79,60 @@ public class BaseScript : MonoBehaviour
             }
         }
     } 
+    public Transform GetPosicao()
+    {
+        return posicaoDeChegada;
+    }
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            if (desastresManager.desastreAcontecendo)
+            if (desastreManager.Instance.desastreAcontecendo)
             {
-                desastresManager.desastreAcontecendo = false;
-                desastresManager.encerramentoDesastres();
-                VerificarModulos();
-                desastresManager.LimpaArraysDeSorteio();
-                if (duranteMelhoria)
+                if (tutorial)
                 {
-                    DefesasFeitas++;
-                    if (DefesasFeitas == desastreManager.Instance.QntdDeDefesasNecessarias)
-                    {
-                        duranteMelhoria = false;
-                        DefesasFeitas = 0;
-                        desastresManager.ConfigurarTimer(desastresManager.intervaloEntreOsDesastres, desastresManager.tempoAcumulado);
-                    }
-                    else
-                        desastresManager.ConfigurarTimer(desastresManager.intervaloDuranteADefesa, desastresManager.tempoAcumulado);
+                    Tutorial();
+                    return;
                 }
-                else
-                {
-                    desastresManager.ConfigurarTimer(desastresManager.intervaloEntreOsDesastres, desastresManager.tempoAcumulado);
-                }
-                desastresManager.tempoAcumulado = 0f;
-                StartCoroutine(desastresManager.LogicaDesastres());
+                EncerrarDesastresEVerificarDefesa();
+                RecomecarDesastres();
             }
         }
+    }
+    private void Tutorial()
+    {
+        UIinventario.Instance.GetBtnEspecifico(0).gameObject.SetActive(true);
+        EncerrarDesastresEVerificarDefesa();
+        RecomecarDesastres();
+        tutorial = false;
+    }
+    private void EncerrarDesastresEVerificarDefesa()
+    {
+        desastreManager.Instance.desastreAcontecendo = false;
+        desastreManager.Instance.encerramentoDesastres();
+        VerificarModulos();
+        desastreManager.Instance.LimpaArraysDeSorteio();
+    }
+    private void RecomecarDesastres()
+    {
+        if (duranteMelhoria)
+        {
+            DefesasFeitas++;
+            if (DefesasFeitas == desastreManager.Instance.QntdDeDefesasNecessarias)
+            {
+                duranteMelhoria = false;
+                DefesasFeitas = 0;
+                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloEntreOsDesastres, desastreManager.Instance.tempoAcumulado);
+                DesastresList.Instance.LiberarNovosDesastres(UIinventario.Instance.TempoAtual + 2);//ativa a possibilidade do evento desse tempo acontecer, +2 por já começar com 2 desastres
+            }
+            else
+                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloDuranteADefesa, desastreManager.Instance.tempoAcumulado);
+        }
+        else
+        {
+            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloEntreOsDesastres, desastreManager.Instance.tempoAcumulado);
+        }
+        desastreManager.Instance.tempoAcumulado = 0f;
+        StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
     }
 }

@@ -8,20 +8,36 @@ public class recurso_cenario : MonoBehaviour, CentroDeRecurso
     [SerializeField] private Item item;
     [SerializeField] private GameObject recursoColetavelPreFab;
     [Header("Valores numéricos")]
+    [SerializeField] private int quantasVezesPodeSerExtraida;
     [SerializeField] private int qntdDoRecursoDropado = 1;
     [SerializeField] private float forca;
+    [SerializeField] private float tempoAteProximaColeta;
+    private int vezesExtraida;
     public void DropaRecursos()
     {
-        float localDeDropX = Random.Range(-1f, 1f);
-        if (localDeDropX == 0)
-            localDeDropX = 1;
-        float localDeDropY = Random.Range(-1f, 1f);
-        if (localDeDropY == 0)
-            localDeDropY = 1;
-        //GameObject recurso = Instantiate(recursoColetavelPreFab, new Vector3(transform.position.x + localDeDropX, transform.position.y + localDeDropY, 0), Quaternion.identity);
-        GameObject recurso = Instantiate(recursoColetavelPreFab, transform.position, Quaternion.identity);
-        recurso.GetComponent<recurso_coletavel>().item = item;
-        recurso.GetComponent<recurso_coletavel>().qntd = qntdDoRecursoDropado;
-        recurso.GetComponent<Rigidbody2D>().AddForce(new Vector2(localDeDropX, localDeDropY).normalized * forca);
+        if (vezesExtraida < quantasVezesPodeSerExtraida)
+        {
+            float localDeDropX = Random.Range(-1f, 1f);
+            if (localDeDropX == 0)
+                localDeDropX = 1;
+            float localDeDropY = Random.Range(-1f, 1f);
+            if (localDeDropY == 0)
+                localDeDropY = 1;
+            //GameObject recurso = Instantiate(recursoColetavelPreFab, new Vector3(transform.position.x + localDeDropX, transform.position.y + localDeDropY, 0), Quaternion.identity);
+            GameObject recurso = Instantiate(recursoColetavelPreFab, transform.position, Quaternion.identity);
+            recurso.GetComponent<recurso_coletavel>().item = item;
+            recurso.GetComponent<recurso_coletavel>().qntd = qntdDoRecursoDropado;
+            recurso.GetComponent<Rigidbody2D>().AddForce(new Vector2(localDeDropX, localDeDropY).normalized * forca);
+            vezesExtraida++;
+            if (vezesExtraida == quantasVezesPodeSerExtraida)
+            {
+                StartCoroutine(this.RecursoCooldown());
+            }
+        }
+    }
+    IEnumerator RecursoCooldown()
+    {
+        yield return new WaitForSeconds(tempoAteProximaColeta);
+        vezesExtraida = 0;
     }
 }

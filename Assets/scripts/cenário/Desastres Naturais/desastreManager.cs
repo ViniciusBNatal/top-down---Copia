@@ -8,6 +8,7 @@ public class desastreManager : MonoBehaviour
     public static desastreManager Instance { get; private set; }
     [Header("Configuração do Manager")]
     public float intervaloEntreOsDesastres = 90;
+    public float intervaloDuranteTutorial;
     [SerializeField] private int chanceDeDesastre;
     public float intervaloDuranteADefesa;
     public int QntdDeDefesasNecessarias;
@@ -72,7 +73,7 @@ public class desastreManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
-            StartCoroutine(this.LogicaDesastres());
+            StartCoroutine(this.LogicaDesastres(true));
             //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
         }
     }
@@ -120,9 +121,12 @@ public class desastreManager : MonoBehaviour
             segundos = 0;
         timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
     }
-    public IEnumerator LogicaDesastres()
+    public IEnumerator LogicaDesastres(bool sortearDesastres)
     {
-        SortearGeral(chanceDeDesastre);
+        if (sortearDesastres)
+        {
+            SortearGeral(chanceDeDesastre);
+        }
         //qntdDeDesastresParaOcorrer = 1;
         //desastresSorteados[0] = "terremoto";
         //forcasSorteados[0] = 1;

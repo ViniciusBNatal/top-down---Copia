@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class JogadorAnimScript : MonoBehaviour
 {
+    public static JogadorAnimScript Instance { get; private set; }
     private Rigidbody2D rb;
     private Animator animator;
     private Vector2 movimento;
     [SerializeField] private jogadorScript jogador;
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (jogador.GetPodeAnimar())
@@ -40,5 +43,9 @@ public class JogadorAnimScript : MonoBehaviour
         animator.SetFloat("VERTDISPARO", dirY);
         animator.SetTrigger("ATACANDO");
         animator.SetTrigger("DISPARO");
+    }
+    public void Levantar()
+    {
+        animator.SetBool("CAIDO", false);
     }
 }
