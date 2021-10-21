@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface CentroDeRecurso
 {
-    void DropaRecursos();
+    void RecebeuHit();
 }

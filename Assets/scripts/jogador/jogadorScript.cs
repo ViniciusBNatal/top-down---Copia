@@ -118,7 +118,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            StartCoroutine("atirar");
+            StartCoroutine(this.atirar());
         }
     }
     private void InputAtaqueMelee()// animação e inflinge dano caso encontre algo
@@ -204,11 +204,12 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         if (!atirando)
         {
-            JogadorAnimScript.Instance.AnimarDisparo(PegaPosicoMouse().x, PegaPosicoMouse().y);
             atirando = true;
+            Vector3 dirAnim = (PegaPosicoMouse() - transform.position).normalized;
+            JogadorAnimScript.Instance.AnimarDisparo(dirAnim.x, dirAnim.y);
             GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
             Vector3 direcao = PegaPosicoMouse() - pontoDeDisparo.position;
-            bala.GetComponent<Rigidbody2D>().velocity = direcao * velocidadeProjetil;
+            bala.GetComponent<Rigidbody2D>().velocity = direcao.normalized * velocidadeProjetil;
             bala.GetComponent<balaHit>().dano = danoProjetil;
             rb.velocity = Vector2.zero;
             yield return new WaitForSeconds(taxaDeDisparo);
@@ -231,7 +232,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 }
                 else if (objeto.gameObject.layer == 9)
                 {
-                    objeto.gameObject.GetComponent<CentroDeRecurso>().DropaRecursos();
+                    objeto.gameObject.GetComponent<CentroDeRecurso>().RecebeuHit();
                 }
             }
             yield return new WaitForSeconds(taxaDeAtaqueMelee);

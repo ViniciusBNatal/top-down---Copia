@@ -18,17 +18,17 @@ public class inimigoScript : MonoBehaviour
     [SerializeField] private float vidaMaxima;
     [SerializeField] private float velocidade;
     [SerializeField] private float taxaDisparo;
-    [SerializeField] private Vector2 distanciaMinimaParaFugir;
     //[SerializeField] private float raioVisao;
     [SerializeField] private float velocidadeProjetil;
     public float danoMelee;
     [SerializeField] private float danoRanged;
     public float forcaRepulsao;
     public float tempoDeStunNoJogador = 1f;
+    [SerializeField] private Vector2 distanciaMinimaParaFugir;
     public Vector2 direcaoDeMovimentacao;
     //variaveis privadas
     [Header("Não Mexer")]
-    public inimigoAnimScript inimigoAnimScript;
+    private inimigoAnimScript inimigoAnimScript;
     private Vector2 direcaoProjetil;
     private Transform alvo;
     private float vidaAtual;
@@ -42,6 +42,7 @@ public class inimigoScript : MonoBehaviour
         movimentacaoEntrePontosFixa
     }
     private int proximoPontoDeFuga;
+    private recurso_cenario CentroDeSpawn = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -153,6 +154,10 @@ public class inimigoScript : MonoBehaviour
             }
             else if (vidaAtual <= 0)
             {
+                if (CentroDeSpawn != null)
+                {
+                    CentroDeSpawn.InimigoDerrotado();
+                }
                 vidaAtual = 0f;
                 Destroy(this.gameObject);
             }
@@ -161,5 +166,13 @@ public class inimigoScript : MonoBehaviour
     public bool GetMovimentacaoFixa()
     {
         return movimentacaoFixa;
+    }
+    public inimigoAnimScript GetAnimScript()
+    {
+        return inimigoAnimScript;
+    }
+    public void SetCentroDeSpawn(recurso_cenario cDeSpawn)
+    {
+        CentroDeSpawn = cDeSpawn;
     }
 }

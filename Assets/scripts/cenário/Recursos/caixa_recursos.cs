@@ -11,7 +11,7 @@ public class caixa_recursos : MonoBehaviour, CentroDeRecurso
     [Header ("Não Mexer")]
     [SerializeField] private GameObject recursoColetavelPreFab;
 
-    public void DropaRecursos()
+    public void RecebeuHit()
     {
         for (int i = 0; i < itens.Count; i++)
         {

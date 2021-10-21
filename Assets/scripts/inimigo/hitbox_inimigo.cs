@@ -17,7 +17,7 @@ public class hitbox_inimigo : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            inimigo.inimigoAnimScript.AtaqueMelee();
+            inimigo.GetAnimScript().AtaqueMelee();
             jogadorScript.Instance.mudancaRelogio(inimigo.danoMelee);
             jogadorScript.Instance.Knockback(duracaoStun, forcaRepulsao, this.transform);
         }

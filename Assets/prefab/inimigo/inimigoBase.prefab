@@ -133,7 +133,7 @@ MonoBehaviour:
   forcaRepulsao: 20
   tempoDeStunNoJogador: 0.5
   direcaoDeMovimentacao: {x: 0, y: 0}
-  inimigoAnimScript: {fileID: 0}
+  inimigoAnimScript: {fileID: 3239065451192483997}
 --- !u!50 &6736636612218344493
 Rigidbody2D:
   serializedVersion: 4
