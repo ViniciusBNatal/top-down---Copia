@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 566375125526406925}
   - component: {fileID: 566375125526406915}
   - component: {fileID: 6736636612218344493}
+  - component: {fileID: 4662088269654304648}
+  - component: {fileID: 3239065451192483997}
   m_Layer: 0
   m_Name: inimigoBase
   m_TagString: Untagged
@@ -115,23 +117,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imortal: 0
-  movimentacaoFixa: 0
-  movimentacaoLivre: 0
+  tiposDeMovimentacao: 0
   disparo: 0
-  areaDetecao: {fileID: 566375125526406925}
   projetil: {fileID: 1029496171083325692, guid: 0612f2afecd8da940b203880a2641b0c,
     type: 3}
   pontoDisparo: {fileID: 5766492688547367779}
+  pontosDeFuga: []
   vidaMaxima: 100
   velocidade: 3
   taxaDisparo: 2
-  raioVisao: 4
+  distanciaMinimaParaFugir: {x: 0, y: 0}
   velocidadeProjetil: 10
   danoMelee: 10
   danoRanged: 0.1
   forcaRepulsao: 20
   tempoDeStunNoJogador: 0.5
-  direcao: {x: 1, y: 0}
+  direcaoDeMovimentacao: {x: 0, y: 0}
+  inimigoAnimScript: {fileID: 0}
 --- !u!50 &6736636612218344493
 Rigidbody2D:
   serializedVersion: 4
@@ -153,6 +155,37 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &4662088269654304648
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566375125526406914}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2d161524378ae6e40a7dcd655abe8430, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3239065451192483997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566375125526406914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff927407a0bac54ab0631443ab5515b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8395206356854495248
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f800da4a25ee1547a6ab82c4d1fa1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inimigo: {fileID: 566375125526406914}
+  inimigo: {fileID: 566375125526406915}
 --- !u!1 &8940923266747376119
 GameObject:
   m_ObjectHideFlags: 0

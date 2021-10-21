@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class hitbox_inimigo : MonoBehaviour
 {
-    public GameObject inimigo;
+    public inimigoScript inimigo;
     private float forcaRepulsao;
     private float duracaoStun;
     private void Start()
     {
-        forcaRepulsao = inimigo.GetComponent<inimigo>().forcaRepulsao; // * inimigo.GetComponent<inimigo>().raioVisao;
-        duracaoStun = inimigo.GetComponent<inimigo>().tempoDeStunNoJogador;
+        forcaRepulsao = inimigo.forcaRepulsao; // * inimigo.GetComponent<inimigo>().raioVisao;
+        duracaoStun = inimigo.tempoDeStunNoJogador;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            jogadorScript.Instance.mudancaRelogio(inimigo.GetComponent<inimigo>().danoMelee);
+            inimigo.inimigoAnimScript.AtaqueMelee();
+            jogadorScript.Instance.mudancaRelogio(inimigo.danoMelee);
             jogadorScript.Instance.Knockback(duracaoStun, forcaRepulsao, this.transform);
         }
     }

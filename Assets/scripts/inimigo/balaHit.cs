@@ -33,7 +33,7 @@ public class balaHit : MonoBehaviour
         {
             if (collision.gameObject.tag == "inimigo")
             {
-                collision.gameObject.GetComponentInChildren<hitbox_inimigo>().inimigo.GetComponent<inimigo>().mudancaVida(-dano);
+                collision.gameObject.GetComponentInChildren<hitbox_inimigo>().inimigo.GetComponent<inimigoScript>().mudancaVida(-dano);
                 Destroy(this.gameObject);
             }
             destruirAoTocar(collision);

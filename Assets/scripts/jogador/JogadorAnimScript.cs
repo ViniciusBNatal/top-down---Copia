@@ -5,7 +5,6 @@ using UnityEngine;
 public class JogadorAnimScript : MonoBehaviour
 {
     public static JogadorAnimScript Instance { get; private set; }
-    private Rigidbody2D rb;
     private Animator animator;
     private Vector2 movimento;
     [SerializeField] private jogadorScript jogador;
@@ -15,7 +14,6 @@ public class JogadorAnimScript : MonoBehaviour
     }
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
 
@@ -44,8 +42,8 @@ public class JogadorAnimScript : MonoBehaviour
         animator.SetTrigger("ATACANDO");
         animator.SetTrigger("DISPARO");
     }
-    public void Levantar()
+    public void Levantar(bool b)
     {
-        animator.SetBool("CAIDO", false);
+        animator.SetBool("CAIDO", b);
     }
 }

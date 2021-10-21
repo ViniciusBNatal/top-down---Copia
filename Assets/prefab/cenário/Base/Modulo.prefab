@@ -129,6 +129,7 @@ MonoBehaviour:
   iconeDeMultiplicador: {fileID: 6476883124414127307}
   resistenciaModulo: 0
   desastre: 0
+  tutorial: 1
 --- !u!1 &5273500416890866044
 GameObject:
   m_ObjectHideFlags: 0

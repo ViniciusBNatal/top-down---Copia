@@ -7,15 +7,15 @@ public class mesaCraftingScript : MonoBehaviour
 
     public void AbrirEFecharMenuDeCrafting()
     {
-        if (!jogadorScript.Instance.inventario.InventarioAberto)
+        if (!jogadorScript.Instance.InterfaceJogador.InventarioAberto)
         {
-            jogadorScript.Instance.inventario.abreInventario();
-            jogadorScript.Instance.inventario.AoClicarBtnCriacao();
+            jogadorScript.Instance.InterfaceJogador.abreInventario();
+            jogadorScript.Instance.InterfaceJogador.AoClicarBtnCriacao();
         }
         else
         {
-            jogadorScript.Instance.inventario.fechaInventario();
-            jogadorScript.Instance.inventario.AoClicarBtnInventario();
+            jogadorScript.Instance.InterfaceJogador.fechaInventario();
+            jogadorScript.Instance.InterfaceJogador.AoClicarBtnInventario();
         }
     }
 }

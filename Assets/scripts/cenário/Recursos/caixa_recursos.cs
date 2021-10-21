@@ -23,11 +23,10 @@ public class caixa_recursos : MonoBehaviour, CentroDeRecurso
                 localDeDropY = 1;
             //GameObject recurso = Instantiate(recursoColetavelPreFab, new Vector3(transform.position.x + localDeDropX, transform.position.y + localDeDropY, 0), Quaternion.identity);
             GameObject recurso = Instantiate(recursoColetavelPreFab, transform);
-            recurso.transform.SetParent(null);
+            recurso.transform.SetParent(null);//desasosia recursos da caixa
             recurso.GetComponent<recurso_coletavel>().item = itens[i];
             recurso.GetComponent<recurso_coletavel>().qntd = qntdDoRecursoDropado[i];
             recurso.GetComponent<Rigidbody2D>().AddForce(new Vector2(localDeDropX, localDeDropY).normalized * forca);
-            Debug.Log(recurso.transform.position);
         }
         Destroy(this.gameObject);
     }

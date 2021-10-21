@@ -4,7 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.UI;
 
-public class SlotModulo : MonoBehaviour, Clicavel
+public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial
 {
     [SerializeField] private SpriteRenderer iconeDoModulo;
     [SerializeField] private SpriteRenderer iconeDoDesastre;
@@ -12,6 +12,11 @@ public class SlotModulo : MonoBehaviour, Clicavel
     [SerializeField] private int resistenciaModulo;
     [SerializeField] private string desastre;
     [SerializeField] private bool tutorial = true;
+
+    private void Start()
+    {
+        BaseScript.Instance.AdicionarModulo(this);
+    }
     public void Click(GameObject jogador)
     {
         if (iconeDoModulo.enabled == false)
@@ -23,17 +28,9 @@ public class SlotModulo : MonoBehaviour, Clicavel
             SetSpriteDoDesastre(DesastresList.Instance.SelecionaSpriteDesastre(desastre));
             //cria o icone de multiplicador dependedo do nivel do crafting
             SetSpriteDoMultiplicador(DesastresList.Instance.SelecionaSpriteMultiplicador(resistenciaModulo));
-            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(1);
+            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform);
             jogadorScript.Instance.MudarEstadoJogador(0);
-            if (tutorial)
-            {
-                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloDuranteTutorial, 0f);
-                desastreManager.Instance.qntdDeDesastresParaOcorrer = 1;
-                desastreManager.Instance.desastresSorteados[0] = "terremoto";
-                desastreManager.Instance.forcasSorteados[0] = 1;
-                StartCoroutine(desastreManager.Instance.LogicaDesastres(false));
-                tutorial = false;
-            }
+            Tutorial();
         }
     }
     public void VisibilidadeSpriteDoModulo(bool Ligar_desligar)
@@ -48,13 +45,13 @@ public class SlotModulo : MonoBehaviour, Clicavel
     {
         iconeDeMultiplicador.sprite = Sprite;
     }
-    public int valorResistencia()
+    public int GetvalorResistencia()
     {
         return resistenciaModulo;
     }
-    public string nomeDesastre()
+    public string GetnomeDesastre()
     {
-        return desastre;
+        return desastre.ToUpper();
     }
     public void SetValorResistencia(int valor)
     {
@@ -63,5 +60,28 @@ public class SlotModulo : MonoBehaviour, Clicavel
     public void SetNomeDesastre(string nome)
     {
         desastre = nome;
+    }
+    public void Tutorial()
+    {
+        if (tutorial)
+        {
+            //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
+            DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+            desastreManager.Instance.slotUsadoNoTutorial = this.gameObject;
+            TutorialSetUp.Instance.IniciarDialogo();
+            tutorial = false;
+        }
+    }
+    public void SetTutorial(bool b)//para desligar a funçao de tutorial de todos os modulos atravéz da basescript
+    {
+        tutorial = b;
+    }
+    protected virtual void AoFinalizarDialogo(object origem, System.EventArgs args)
+    {
+        TutorialSetUp.Instance.AoTerminoDoDialogoInstaladoOModuloDeDefesa();
+    }
+    public void CancelarInscricaoEmDialogoFinalizado()
+    {
+        DialogeManager.Instance.DialogoFinalizado -= AoFinalizarDialogo;
     }
 }

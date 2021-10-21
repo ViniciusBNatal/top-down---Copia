@@ -10,7 +10,7 @@ public class Teleportador : MonoBehaviour
     private void Start()
     {
         UIinventario.Instance.AdicionaTeleportadorALista(this);
-        destino = BaseScript.Instance.GetPosicao();
+        destino = BaseScript.Instance.GetPosicaoParaTeleporte();
     }
     public void TeleportarPorInteracao()
     {

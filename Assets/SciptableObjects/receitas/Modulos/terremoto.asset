@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8952a940ca52c04c93836bb4831858a, type: 3}
-  m_Name: terremoto
+  m_Name: Terremoto
   m_EditorClassIdentifier: 
   iconeDeAprimoramentoDabase: {fileID: 0}
   desastre: TERREMOTO

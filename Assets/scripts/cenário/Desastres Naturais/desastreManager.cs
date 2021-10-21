@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class desastreManager : MonoBehaviour
+public class desastreManager : MonoBehaviour, AcoesNoTutorial
 {
     public static desastreManager Instance { get; private set; }
     [Header("Configuração do Manager")]
@@ -12,6 +12,7 @@ public class desastreManager : MonoBehaviour
     [SerializeField] private int chanceDeDesastre;
     public float intervaloDuranteADefesa;
     public int QntdDeDefesasNecessarias;
+    [SerializeField] private bool tutorial;
     private List<Image> iconesDesenhados = new List<Image>();
     private List<Image> multiplicadoresDesenhados = new List<Image>();
     private int minutos;
@@ -44,7 +45,8 @@ public class desastreManager : MonoBehaviour
     [SerializeField] private float intervaloEntreSpawnsErrupcao;
     [SerializeField] private float distanciaXdoJogador_errupcao;
     [SerializeField] private float distanciaYdoJogador_errupcao;
-    [Header ("Não Mexer")]
+    [Header("Não Mexer")]
+    public GameObject slotUsadoNoTutorial;
     public bool desastreAcontecendo = false;
     public float tempoAcumulado = 0f;
     public float tempoRestante;
@@ -73,7 +75,7 @@ public class desastreManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
-            StartCoroutine(this.LogicaDesastres(true));
+            //StartCoroutine(this.LogicaDesastres(true));
             //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
         }
     }
@@ -199,7 +201,7 @@ public class desastreManager : MonoBehaviour
         }
     }
     //visual
-    private void LimpaPlaca()
+    public void LimpaPlaca()
     {
         if (iconesDesenhados != null)
         {
@@ -218,7 +220,7 @@ public class desastreManager : MonoBehaviour
             }
         }
     }
-    private void PreenchePlaca()
+    public void PreenchePlaca()
     {
         //limpa os icones para os próximos desastres
         LimpaPlaca();
@@ -295,6 +297,8 @@ public class desastreManager : MonoBehaviour
             Destroy(errupcoesEmCena[i - 1]);
             errupcoesEmCena.RemoveAt(i - 1);
         }
+        LimpaPlaca();
+        Tutorial();
     }
     public void LimpaArraysDeSorteio()
     {
@@ -334,6 +338,18 @@ public class desastreManager : MonoBehaviour
         {
             jogadorScript.Instance.mudancaRelogio(danoDoAcido);
             yield return new WaitForSeconds(intervaloEntreHitsChuvaAcida);
+        }
+    }
+
+    public void Tutorial()
+    {
+        if (tutorial)
+        {
+            DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
+            //slotUsadoNoTutorial.GetComponent<SlotModulo>().CancelarInscricaoEmDialogoFinalizado();
+            TutorialSetUp.Instance.IniciarDialogo();
+            BaseScript.Instance.DesligarTutorialDosModulos();
+            tutorial = false;
         }
     }
 }

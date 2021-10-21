@@ -305,22 +305,8 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.8333333
-    functionName: MudarEstadoJogador
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 3
-    messageOptions: 0
-  - time: 0.9166667
-    functionName: AtivarDialogo
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 1
-    functionName: Levantar
+    functionName: AoLevantar
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -8,7 +8,7 @@ public class DirecionaInimigo : MonoBehaviour
     private int direcaoIndex;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "inimigo" && collision.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigo>().movimentacaoFixa)
+        if (collision.tag == "inimigo" && collision.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigoScript>().GetMovimentacaoFixa())
         {
             //direcaoIndex = Random.Range(0, NovaDirecao.Count + 1);
             float dirX = NovaDirecao[direcaoIndex].x / Mathf.Abs(NovaDirecao[direcaoIndex].x);
@@ -17,7 +17,7 @@ public class DirecionaInimigo : MonoBehaviour
                 dirY = 0;
             if (NovaDirecao[direcaoIndex].x == 0)
                 dirX = 0;
-            collision.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigo>().direcao = new Vector2(dirX, dirY);
+            collision.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigoScript>().direcaoDeMovimentacao = new Vector2(dirX, dirY);
             direcaoIndex++;
             if (direcaoIndex >= NovaDirecao.Count)
                 direcaoIndex = 0;

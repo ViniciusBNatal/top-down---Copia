@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIinventario : MonoBehaviour
+public class UIinventario : MonoBehaviour, AcoesNoTutorial
 {
     public static UIinventario Instance { get; private set; }
     private bool inventarioAberto = false;
+    [SerializeField] private bool tutorial;
     [SerializeField] private List<UpgradeSlot> listaSlotUpgradesBase = new List<UpgradeSlot>();
     private List<Teleportador> listaTeleportadores = new List<Teleportador>();
     private List<ItemSlot> listaSlotItem = new List<ItemSlot>();
@@ -126,7 +127,7 @@ public class UIinventario : MonoBehaviour
         {
             for (int tipoRecursosInventario = 0; tipoRecursosInventario < listaSlotItem.Count; tipoRecursosInventario++)//procura se existe o recurso X na lista de crafting do objeto
             {
-                if (listaSlotItem[tipoRecursosInventario].item.ID.ToUpper() == slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID.ToUpper() && listaSlotItem[tipoRecursosInventario].qntdRecurso >= slot.GetNovaListaDeQntdRecursosNecessarios()[tiposRecursosParaCrafting])//slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]
+                if (listaSlotItem[tipoRecursosInventario].item.ID.ToUpper() == slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID.ToUpper() && listaSlotItem[tipoRecursosInventario].qntdRecurso >= slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting])//slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]
                 {
                     int i = tipoRecursosInventario;
                     recursosEncontrados.Add(i);// guarda a posição do recurso na lista de itens
@@ -139,10 +140,10 @@ public class UIinventario : MonoBehaviour
         {
             for (int tipoRecursoCrafting = 0; tipoRecursoCrafting < slot.receita.itensNecessarios.Count; tipoRecursoCrafting++)
             {
-                listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.GetNovaListaDeQntdRecursosNecessarios()[tipoRecursoCrafting]);//-slot.construcaoConfirmada().quantidadeDosRecursos[tipoRecursoCrafting]
+                listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.construcaoConfirmada().quantidadeDosRecursos[tipoRecursoCrafting]);//-slot.GetNovaListaDeQntdRecursosNecessarios()[tipoRecursoCrafting]               
             }
             jogadorScript.Instance.moduloCriado = slot.construcaoConfirmada();
-            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(2);
+            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(BaseScript.Instance.transform);
             fechaInventario();
             jogadorScript.Instance.MudarEstadoJogador(2);
         }
@@ -175,8 +176,9 @@ public class UIinventario : MonoBehaviour
             {
                 listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.receita.quantidadeDosRecursos[tipoRecursoCrafting]);
             }
-            LiberarNovBtnDeTrocaDeTempo(slot, true);
             fechaMenuDeTempos();
+            Tutorial();
+            LiberarNovBtnDeTrocaDeTempo(slot, !tutorial);
         }
     }
     public void AoClicarEmMudarDeTempo(UpgradeSlot slot)
@@ -191,7 +193,7 @@ public class UIinventario : MonoBehaviour
             }
         }
         jogadorScript.Instance.transform.position = listaTeleportadores[index].GetPosicao().position;
-        jogadorScript.Instance.MudarEstadoJogador(0);
+        Tutorial();
         fechaMenuDeTempos();
         //Debug.Log("abre fase");
     }
@@ -200,7 +202,7 @@ public class UIinventario : MonoBehaviour
         slot.LiberarViagemNoTempo();
         TempoAtual++;
         listaSlotUpgradesBase[TempoAtual].gameObject.SetActive(true); // liga o próximo botão da lista
-        desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloDuranteADefesa, desastreManager.Instance.tempoAcumulado);
+        //desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloDuranteADefesa, desastreManager.Instance.tempoAcumulado);
         if (ativarDesastres)
         {
             desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloDuranteADefesa, 0f);
@@ -216,8 +218,30 @@ public class UIinventario : MonoBehaviour
     {
         return listaSlotUpgradesBase[i];
     }
-    //public void AtivaEDesativaCaixaDeDialogo(bool liga_desliga)
-    //{
-    //    CaixaDeDialogos.SetActive(liga_desliga);
-    //}
+    private void AoFinalizarDialogo(object origem, System.EventArgs args)
+    {
+        TutorialSetUp.Instance.AoTerminoDoDialogoReparadaAMaquinaDoTempo();
+    }
+
+    public void Tutorial()
+    {
+        if (tutorial)
+        {
+            if (TempoAtual == 0)//antes de definir o tempo atual, inica um dialogo
+            {
+                //DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+                BaseScript.Instance.CancelarInscricaoEmDialogoFinalizado();
+                BaseScript.Instance.duranteMelhoria = false;
+                TutorialSetUp.Instance.IniciarDialogo();
+            }
+            else
+            {
+                //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
+                desastreManager.Instance.tempoAcumulado = 0f;
+                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloEntreOsDesastres, desastreManager.Instance.tempoAcumulado);
+                StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
+                tutorial = false;
+            }
+        }
+    }
 }

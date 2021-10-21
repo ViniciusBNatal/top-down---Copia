@@ -59,7 +59,7 @@ public class craftingSlot : MonoBehaviour
     public ReceitaDeCrafting construcaoConfirmada()
     {
         ReceitaDeCrafting moduloConfig = ScriptableObject.CreateInstance<ReceitaDeCrafting>();
-        moduloConfig.desastre = receita.desastre;
+        moduloConfig.desastre = receita.desastre.ToUpper();
         moduloConfig.SetForca(forca);
         for (int i = 0; i < receita.quantidadeDosRecursos.Count; i++)
         {
@@ -71,8 +71,8 @@ public class craftingSlot : MonoBehaviour
     {
         return forca;
     }
-    public List<int> GetNovaListaDeQntdRecursosNecessarios()
-    {
-        return novosValores;
-    }
+    //public List<int> GetNovaListaDeQntdRecursosNecessarios()
+    //{
+    //    return novosValores;
+    //}
 }

@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57630913105721e419316e5e4a9f418b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areaDeInteracao: {fileID: 7549156829451131496}
   modulos:
   - {fileID: 0}
   - {fileID: 0}
@@ -136,6 +137,7 @@ MonoBehaviour:
   vidaMax: 3
   posicaoDeChegada: {fileID: 8464710752081308346}
   duranteMelhoria: 0
+  tutorial: 1
 --- !u!61 &8083962399815963917
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -273,8 +275,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: area interagivel quadrada
       objectReference: {fileID: 0}
+    - target: {fileID: 9026574210593306821, guid: 59f09c031e293154ab34b2aec70998e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59f09c031e293154ab34b2aec70998e2, type: 3}
+--- !u!1 &7549156829451131496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9026574210593306821, guid: 59f09c031e293154ab34b2aec70998e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1551256188450742957}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4188773910729065362 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3433617467775492415, guid: 59f09c031e293154ab34b2aec70998e2,

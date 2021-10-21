@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class jogadorScript : MonoBehaviour
+public class jogadorScript : MonoBehaviour, AcoesNoTutorial
 {
     public static jogadorScript Instance { get; private set; }
     //variáveis publicas
-    [Header ("Valores Numéricos")]
+    [Header("Valores Numéricos")]
+    [SerializeField] private bool tutorial;
     [SerializeField] private float velocidade;
     //private float vidaMaxima = 1;
     [SerializeField] private float velocidadeProjetil;
@@ -21,11 +22,11 @@ public class jogadorScript : MonoBehaviour
     //[SerializeField] private JogadorAnimScript animScript;
     [SerializeField] private Transform posicaoMelee;
     public Camera mainCamera;
-    [SerializeField] private GameObject projetil;
+    [SerializeField] private GameObject projetilPrefab;
     [SerializeField] private GameObject armaMelee;
     [SerializeField] private Transform pontoDeDisparo;
     [SerializeField] private LayerMask objetosAcertaveisLayer;
-    public UIinventario inventario;
+    public UIinventario InterfaceJogador;
     [SerializeField] private SpriteRenderer iconeInteracao;
     public CinemachineBehaviour comportamentoCamera;
     //variáveis privadas
@@ -61,6 +62,7 @@ public class jogadorScript : MonoBehaviour
         //vidaAtual = vidaMaxima;
         //inventario.BarraDeVida.GetComponent<barraDeVida>().AtualizaBarraDeVida(vidaAtual);
         animatorPicareta = armaMelee.GetComponent<Animator>();
+        Tutorial();
     }
 
     // Update is called once per frame
@@ -204,7 +206,7 @@ public class jogadorScript : MonoBehaviour
         {
             JogadorAnimScript.Instance.AnimarDisparo(PegaPosicoMouse().x, PegaPosicoMouse().y);
             atirando = true;
-            GameObject bala = Instantiate(projetil, pontoDeDisparo.position, Quaternion.identity);
+            GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
             Vector3 direcao = PegaPosicoMouse() - pontoDeDisparo.position;
             bala.GetComponent<Rigidbody2D>().velocity = direcao * velocidadeProjetil;
             bala.GetComponent<balaHit>().dano = danoProjetil;
@@ -225,7 +227,7 @@ public class jogadorScript : MonoBehaviour
             {
                 if (objeto.gameObject.layer == 8)
                 {
-                    objeto.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigo>().mudancaVida(-danoMelee);
+                    objeto.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigoScript>().mudancaVida(-danoMelee);
                 }
                 else if (objeto.gameObject.layer == 9)
                 {
@@ -286,5 +288,24 @@ public class jogadorScript : MonoBehaviour
     public bool GetPodeAnimar()
     {
         return podeAnimar;
+    }
+
+    public void Tutorial()
+    {
+        if (tutorial)
+        {
+            TutorialSetUp.Instance.SetupInicialJogador();
+            tutorial = false;
+        }
+    }
+    public void AoLevantar()
+    {
+        JogadorAnimScript.Instance.Levantar(false);
+        TutorialSetUp.Instance.IniciarDialogo();
+    }
+
+    public void AoFinalizarDialogo(object origem, System.EventArgs args)
+    {
+        TutorialSetUp.Instance.AoTerminoDoDialogoFocarCameraNoJogador();
     }
 }

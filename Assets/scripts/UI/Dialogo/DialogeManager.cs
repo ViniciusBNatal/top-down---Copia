@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class DialogeManager : MonoBehaviour
 {
+    public delegate void DialogeManagerEventHandler(object origem, System.EventArgs args);
+    public event DialogeManagerEventHandler DialogoFinalizado;
     [SerializeField] private Text NomeNPCText;
     [SerializeField] private Text DialogoText;
     [SerializeField] private float velocidadeDasLetras;
@@ -44,7 +46,16 @@ public class DialogeManager : MonoBehaviour
             return;
         }
         string textoDialogo = Frases.Dequeue();
-        animatorImage.SetFloat("ESTADO", dialogoAtual.EstadoImagemNPC[index]);
+        if (dialogoAtual.EstadoImagemNPC.Length == dialogoAtual.Frases.Length)
+            animatorImage.SetFloat("ESTADO", dialogoAtual.EstadoImagemNPC[index]);
+        else
+            animatorImage.SetFloat("ESTADO", 1f);
+        if (dialogoAtual.FocarComCamera.Length == dialogoAtual.Frases.Length)
+        {
+            DialogoFinalizado += jogadorScript.Instance.AoFinalizarDialogo;//se existir troca de foco na camera, ao final do dialogo retorna a camera ao jogador
+            if (dialogoAtual.FocarComCamera[index] != null)
+                jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(dialogoAtual.FocarComCamera[index]);
+        }
         index++;
         StopAllCoroutines();
         StartCoroutine(this.EscreveDialogo(textoDialogo));
@@ -53,6 +64,7 @@ public class DialogeManager : MonoBehaviour
     {
         animator.SetBool("aberto", false);
         jogadorScript.Instance.MudarEstadoJogador(0);
+        AoFinalizarDialogo();
     }
     IEnumerator EscreveDialogo(string frase)
     {
@@ -62,5 +74,19 @@ public class DialogeManager : MonoBehaviour
             DialogoText.text += letra;
             yield return new WaitForSeconds(velocidadeDasLetras);
         }
+    }
+    protected virtual void AoFinalizarDialogo()
+    {
+        if(DialogoFinalizado != null)
+        {
+            DialogoFinalizado(this, System.EventArgs.Empty);
+        }
+        if (dialogoAtual.FocarComCamera.Length > 0)
+            DialogoFinalizado -= jogadorScript.Instance.AoFinalizarDialogo;
+    }
+
+    public void LimparListaDeAoFinalizarDialogo()
+    {
+        DialogoFinalizado = null;
     }
 }

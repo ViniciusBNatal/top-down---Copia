@@ -6,25 +6,14 @@ using Cinemachine;
 public class CinemachineBehaviour : MonoBehaviour
 {
     private CinemachineVirtualCamera CM;
-    public Transform centroBase;
-    public Transform jogador;
     // Start is called before the first frame update
     void Start()
     {
         CM = this.GetComponent<CinemachineVirtualCamera>();
     }
-    public void MudaFocoCamera(int i)
+    public void MudaFocoCamera(Transform obj)
     {
-        switch (i)
-        {
-            case 1:
-                CM.LookAt = jogador;
-                CM.Follow = jogador;
-                break;
-            case 2:
-                CM.LookAt = centroBase;
-                CM.Follow = centroBase;
-                break;
-        }
+        CM.LookAt = obj;
+        CM.Follow = obj;
     }
 }

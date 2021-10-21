@@ -11,6 +11,8 @@ public class Botao : MonoBehaviour
     [SerializeField] private Porta portaRelacionada;
     [SerializeField] private int valorBotao;
     [SerializeField] private bool usoUnico;
+    [SerializeField] private float tempoParaAbrirPorta;
+    [SerializeField] private float tempoParaFecharPorta;
     private bool precionado = false;
     [Header("Compnentes para acao com inimigos")]
     [SerializeField] private bool Criar;
@@ -34,7 +36,8 @@ public class Botao : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            animator.SetBool("PRECIONADO", false);
+            if (!usoUnico)
+                animator.SetBool("PRECIONADO", false);
         }
     }
 
@@ -45,12 +48,12 @@ public class Botao : MonoBehaviour
             if (!precionado)
             {
                 precionado = true;
-                portaRelacionada.AbrirPorta(valorBotao);
+                portaRelacionada.VerificarParaAbrirPorta(valorBotao, tempoParaAbrirPorta, tempoParaFecharPorta);
             }
         }
         else
         {
-            portaRelacionada.AbrirPorta(valorBotao);
+            portaRelacionada.VerificarParaAbrirPorta(valorBotao, tempoParaAbrirPorta, tempoParaFecharPorta);
         }
     }
     public void acaoComInimigos()
@@ -61,7 +64,7 @@ public class Botao : MonoBehaviour
         }
         else
         {
-            inimigo.GetComponent<inimigo>().enabled = true;
+            inimigo.GetComponent<inimigoScript>().enabled = true;
         }
     }
 }

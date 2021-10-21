@@ -17,7 +17,7 @@ public class recurso_coletavel : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<jogadorScript>().inventario.AtualizaInventarioUI(item, qntd);
+            collision.gameObject.GetComponent<jogadorScript>().InterfaceJogador.AtualizaInventarioUI(item, qntd);
             Destroy(this.gameObject);
         }
     }

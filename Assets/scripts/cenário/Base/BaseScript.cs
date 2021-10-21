@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseScript : MonoBehaviour
+public class BaseScript : MonoBehaviour, AcoesNoTutorial
 {
     public static BaseScript Instance { get; private set; }
-    [SerializeField] private List<SlotModulo> modulos = new List<SlotModulo>();
+    [SerializeField] private GameObject areaDeInteracao;
     [SerializeField] private int vidaMax;
     [SerializeField] private Transform posicaoDeChegada;
     public bool duranteMelhoria = false;
     public bool tutorial;
+    private List<SlotModulo> listaModulos = new List<SlotModulo>();
     private int vidaAtual;
     private int DefesasFeitas = 0;
 
@@ -24,19 +25,17 @@ public class BaseScript : MonoBehaviour
     public void VerificarModulos()
     {
         int defendido = 0;
-        for (int i = 0; i < modulos.Count; i++)
+        for (int a = 0; a < desastreManager.Instance.qntdDeDesastresParaOcorrer; a++)
         {
-            if (modulos[i] == null)
-                return;
-            for (int a = 0; a < desastreManager.Instance.qntdDeDesastresParaOcorrer; a++)
+            for (int i = 0; i < listaModulos.Count; i++)
             {
-                if (desastreManager.Instance.desastresSorteados[a] == modulos[i].nomeDesastre() && desastreManager.Instance.forcasSorteados[a] == modulos[i].valorResistencia())
+                if (desastreManager.Instance.desastresSorteados[a].ToUpper() == listaModulos[i].GetnomeDesastre() && desastreManager.Instance.forcasSorteados[a] == listaModulos[i].GetvalorResistencia())
                 {
-                    modulos[i].VisibilidadeSpriteDoModulo(false);
-                    modulos[i].SetSpriteDoDesastre(null);
-                    modulos[i].SetSpriteDoMultiplicador(null);
-                    modulos[i].SetValorResistencia(0);
-                    modulos[i].SetNomeDesastre(null);
+                    listaModulos[i].VisibilidadeSpriteDoModulo(false);
+                    listaModulos[i].SetSpriteDoDesastre(null);
+                    listaModulos[i].SetSpriteDoMultiplicador(null);
+                    listaModulos[i].SetValorResistencia(0);
+                    listaModulos[i].SetNomeDesastre(null);
                     defendido++;
                 }
             }
@@ -69,49 +68,58 @@ public class BaseScript : MonoBehaviour
         }
         else
         {
-            if (!jogadorScript.Instance.inventario.InventarioAberto)
+            if (!jogadorScript.Instance.InterfaceJogador.InventarioAberto)
             {
-                jogadorScript.Instance.inventario.abreMenuDeTempos();
+                jogadorScript.Instance.InterfaceJogador.abreMenuDeTempos();
             }
             else
             {
-                jogadorScript.Instance.inventario.fechaMenuDeTempos();
+                jogadorScript.Instance.InterfaceJogador.fechaMenuDeTempos();
             }
         }
     } 
-    public Transform GetPosicao()
+    public Transform GetPosicaoParaTeleporte()
     {
         return posicaoDeChegada;
     }
-    private void OnTriggerStay2D(Collider2D collision)
+    public void AdicionarModulo(SlotModulo modulo)
+    {
+        listaModulos.Add(modulo);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
             if (desastreManager.Instance.desastreAcontecendo)
             {
+                EncerrarDesastresEVerificarDefesa();
                 if (tutorial)
                 {
                     Tutorial();
                     return;
                 }
-                EncerrarDesastresEVerificarDefesa();
                 RecomecarDesastres();
             }
         }
     }
-    private void Tutorial()
+    public void Tutorial()
     {
-        UIinventario.Instance.GetBtnEspecifico(0).gameObject.SetActive(true);
-        EncerrarDesastresEVerificarDefesa();
-        RecomecarDesastres();
-        tutorial = false;
+        if (tutorial)
+        {
+            DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+            TutorialSetUp.Instance.IniciarDialogo();
+            tutorial = false;
+            return;
+        }
+        areaDeInteracao.SetActive(true);
+        //RecomecarDesastres();
     }
     private void EncerrarDesastresEVerificarDefesa()
     {
         desastreManager.Instance.desastreAcontecendo = false;
-        desastreManager.Instance.encerramentoDesastres();
         VerificarModulos();
         desastreManager.Instance.LimpaArraysDeSorteio();
+        desastreManager.Instance.encerramentoDesastres();
     }
     private void RecomecarDesastres()
     {
@@ -134,5 +142,21 @@ public class BaseScript : MonoBehaviour
         }
         desastreManager.Instance.tempoAcumulado = 0f;
         StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
+    }
+    protected virtual void AoFinalizarDialogo(object origem, System.EventArgs args)
+    {
+        Debug.Log("devo aparecer 1 vez");
+        TutorialSetUp.Instance.AoTerminoDoDialogoTerminadoOPrimeiroDesastre();
+    }
+    public void CancelarInscricaoEmDialogoFinalizado()
+    {
+        DialogeManager.Instance.DialogoFinalizado -= AoFinalizarDialogo;
+    }
+    public void DesligarTutorialDosModulos()
+    {
+        for (int i = 0; i < listaModulos.Count; i++)
+        {
+            listaModulos[i].SetTutorial(false);
+        }
     }
 }
