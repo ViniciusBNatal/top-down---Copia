@@ -11,9 +11,6 @@ public class JogadorAnimScript : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-    }
-    void Start()
-    {
         animator = GetComponent<Animator>();
     }
 

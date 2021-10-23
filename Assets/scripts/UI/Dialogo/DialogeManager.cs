@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class DialogeManager : MonoBehaviour
 {
+    public static DialogeManager Instance { get; private set; }
     public delegate void DialogeManagerEventHandler(object origem, System.EventArgs args);
     public event DialogeManagerEventHandler DialogoFinalizado;
     [SerializeField] private Text NomeNPCText;
     [SerializeField] private Text DialogoText;
     [SerializeField] private float velocidadeDasLetras;
     [SerializeField] private Animator animatorImage;
+    public bool tutorialSlot = false;
     private Animator animator;
-    public static DialogeManager Instance { get; private set; }
     private Queue<string> Frases = new Queue<string>();
     private int index = 0;
     private Dialogo dialogoAtual;
@@ -42,7 +43,6 @@ public class DialogeManager : MonoBehaviour
         if (Frases.Count == 0)
         {
             FimDialogo();
-            index = 0;
             return;
         }
         string textoDialogo = Frases.Dequeue();
@@ -52,7 +52,7 @@ public class DialogeManager : MonoBehaviour
             animatorImage.SetFloat("ESTADO", 1f);
         if (dialogoAtual.FocarComCamera.Length == dialogoAtual.Frases.Length)
         {
-            DialogoFinalizado += jogadorScript.Instance.AoFinalizarDialogo;//se existir troca de foco na camera, ao final do dialogo retorna a camera ao jogador
+            RetornarCameraAoJogadorNoFinalDoDialogo();
             if (dialogoAtual.FocarComCamera[index] != null)
                 jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(dialogoAtual.FocarComCamera[index]);
         }
@@ -63,6 +63,7 @@ public class DialogeManager : MonoBehaviour
     private void FimDialogo()
     {
         animator.SetBool("aberto", false);
+        index = 0;
         jogadorScript.Instance.MudarEstadoJogador(0);
         AoFinalizarDialogo();
     }
@@ -83,10 +84,20 @@ public class DialogeManager : MonoBehaviour
         }
         if (dialogoAtual.FocarComCamera.Length > 0)
             DialogoFinalizado -= jogadorScript.Instance.AoFinalizarDialogo;
+        if (tutorialSlot)
+        {
+            TutorialSetUp.Instance.AoTerminoDoDialogoInstaladoOModuloDeDefesa();
+            tutorialSlot = false;
+        }
     }
 
     public void LimparListaDeAoFinalizarDialogo()
     {
         DialogoFinalizado = null;
+    }
+    private void RetornarCameraAoJogadorNoFinalDoDialogo()
+    {
+        if (DialogoFinalizado != jogadorScript.Instance.AoFinalizarDialogo)
+            DialogoFinalizado += jogadorScript.Instance.AoFinalizarDialogo;
     }
 }

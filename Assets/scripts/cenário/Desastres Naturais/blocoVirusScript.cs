@@ -20,7 +20,7 @@ public class blocoVirusScript : MonoBehaviour
     {
         blocoVirus = this.gameObject;
         tamanho = GetComponent<BoxCollider2D>();
-        desastreManager.Instance.virusEmCena.Add(this.gameObject);
+        desastreManager.Instance.AdionarVirusALista(this.gameObject);
         StartCoroutine(this.DestruirObjeto());
         StartCoroutine(this.Multiplicar());
     }
@@ -59,7 +59,7 @@ public class blocoVirusScript : MonoBehaviour
     IEnumerator DestruirObjeto()
     {
         yield return new WaitForSeconds(tempoAteDestruir);
-        desastreManager.Instance.virusEmCena.Remove(this.gameObject);
+        desastreManager.Instance.RemoverVirusDaLista(this.gameObject);
         Destroy(this.gameObject);
     }
     //private void OnDrawGizmosSelected()

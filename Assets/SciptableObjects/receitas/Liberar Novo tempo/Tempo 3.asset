@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8952a940ca52c04c93836bb4831858a, type: 3}
   m_Name: Tempo 3
   m_EditorClassIdentifier: 
-  iconeDeAprimoramentoDabase: {fileID: 0}
+  iconeDeAprimoramentoDabase: {fileID: -7093657676781841736, guid: 0eeb831efeeaeff4f977fbf1d8a036c1,
+    type: 3}
   desastre: 
   incrementoEntreForcas: 0
-  itensNecessarios: []
-  quantidadeDosRecursos: 
+  itensNecessarios:
+  - {fileID: 11400000, guid: cb53092315aef7b478ee5d73e0e5a918, type: 2}
+  quantidadeDosRecursos: 01000000

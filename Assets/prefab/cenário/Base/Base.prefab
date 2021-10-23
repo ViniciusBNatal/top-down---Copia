@@ -129,14 +129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57630913105721e419316e5e4a9f418b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaDeInteracao: {fileID: 7549156829451131496}
-  modulos:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  posicaoDeChegadaPorTeleporte: {fileID: 8464710752081308346}
   vidaMax: 3
-  posicaoDeChegada: {fileID: 8464710752081308346}
-  duranteMelhoria: 0
+  areaDeInteracao: {fileID: 7549156829451131496}
+  intervaloDuranteADefesa: 20
+  QntdDeDefesasNecessarias: 2
   tutorial: 1
 --- !u!61 &8083962399815963917
 BoxCollider2D:

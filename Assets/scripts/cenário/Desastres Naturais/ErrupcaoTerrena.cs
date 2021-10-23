@@ -12,7 +12,7 @@ public class ErrupcaoTerrena : MonoBehaviour
 
     private void Start()
     {
-        desastreManager.Instance.errupcoesEmCena.Add(this.gameObject);
+        desastreManager.Instance.AdionarErrupcaoALista(this.gameObject);
     }
     private void ativarGaiser()
     {
@@ -20,7 +20,7 @@ public class ErrupcaoTerrena : MonoBehaviour
     }
     private void DestruirObjeto()
     {
-        desastreManager.Instance.errupcoesEmCena.Remove(this.gameObject);
+        desastreManager.Instance.RemoverErrupcaoDaLista(this.gameObject);
         Destroy(this.gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)

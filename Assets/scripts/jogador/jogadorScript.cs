@@ -39,7 +39,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     private float forcaEmpurrao;
     private Vector2 direcaoEmpurrao;
     [Header("Não Mexer")]
-    public Vector2 baguncarControles = new Vector2(1,1);
+    private Vector2 baguncarControles = new Vector2(0,0);
     public enum estados
     {
         EmAcao,
@@ -48,8 +48,8 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         EmDialogo,
         SendoEmpurrado
     };
-    public estados estadosJogador;// 0 = em acao, 1 = em menus, 2 = em construcao 
-    public ReceitaDeCrafting moduloCriado;
+    private estados estadosJogador = estados.EmAcao;// 0 = em acao, 1 = em menus, 2 = em construcao 
+    private ReceitaDeCrafting moduloCriado;
     private bool podeAnimar = true;
     // Start is called before the first frame update
     private void Awake()
@@ -241,13 +241,15 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     public void mudancaRelogio(float valor)
     {
-        if (desastreManager.Instance.desastreAcontecendo)
+        if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
         {
-            desastreManager.Instance.tempoAcumulado += valor;
+            desastreManager.Instance.MudarTempoAcumuladoParaDesastre(desastreManager.Instance.GetTempoAcumuladoParaDesastre() + valor);
         }
         else
         {
-            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.tempoRestante -= valor, 0f);
+            desastreManager.Instance.DiminuirTempoRestanteParaDesastre(valor);
+            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetTempoRestanteParaDesastre(), 0f);
+            //desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.tempoRestante -= valor, 0f);
         }
         //vidaAtual += valor;
         //inventario.BarraDeVida.GetComponent<barraDeVida>().AtualizaBarraDeVida(vidaAtual);
@@ -291,6 +293,10 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         return podeAnimar;
     }
 
+    public void SetTutorial(bool b)
+    {
+        tutorial = b;
+    }
     public void Tutorial()
     {
         if (tutorial)
@@ -308,5 +314,18 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     public void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
         TutorialSetUp.Instance.AoTerminoDoDialogoFocarCameraNoJogador();
+    }
+    public void SetDirecaoDeMovimentacaoAleatoria(Vector2 vec)
+    {
+        baguncarControles = vec;
+    }
+    public ReceitaDeCrafting GetModuloConstruido()
+    {
+        return moduloCriado;
+    }
+    public void SetModuloConstruido(ReceitaDeCrafting modulo)
+    {
+        moduloCriado = ScriptableObject.CreateInstance<ReceitaDeCrafting>();
+        moduloCriado = modulo;
     }
 }

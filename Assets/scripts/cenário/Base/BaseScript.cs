@@ -5,11 +5,14 @@ using UnityEngine;
 public class BaseScript : MonoBehaviour, AcoesNoTutorial
 {
     public static BaseScript Instance { get; private set; }
-    [SerializeField] private GameObject areaDeInteracao;
+    [Header("COMPONENTES DA BASE")]
+    [SerializeField] private Transform posicaoDeChegadaPorTeleporte;
     [SerializeField] private int vidaMax;
-    [SerializeField] private Transform posicaoDeChegada;
-    public bool duranteMelhoria = false;
-    public bool tutorial;
+    [SerializeField] private GameObject areaDeInteracao;
+    [SerializeField] private float intervaloDuranteADefesa;
+    [SerializeField] private int QntdDeDefesasNecessarias;
+    private bool duranteMelhoria = false;
+    [SerializeField] private bool tutorial;
     private List<SlotModulo> listaModulos = new List<SlotModulo>();
     private int vidaAtual;
     private int DefesasFeitas = 0;
@@ -25,22 +28,18 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
     public void VerificarModulos()
     {
         int defendido = 0;
-        for (int a = 0; a < desastreManager.Instance.qntdDeDesastresParaOcorrer; a++)
+        for (int a = 0; a < desastreManager.Instance.GetQntdDesastresParaOcorrer(); a++)
         {
             for (int i = 0; i < listaModulos.Count; i++)
             {
-                if (desastreManager.Instance.desastresSorteados[a].ToUpper() == listaModulos[i].GetnomeDesastre() && desastreManager.Instance.forcasSorteados[a] == listaModulos[i].GetvalorResistencia())
+                if (desastreManager.Instance.GetDesastreSorteado(a) == listaModulos[i].GetnomeDesastre() && desastreManager.Instance.GetForcaSorteada(a) == listaModulos[i].GetvalorResistencia())
                 {
-                    listaModulos[i].VisibilidadeSpriteDoModulo(false);
-                    listaModulos[i].SetSpriteDoDesastre(null);
-                    listaModulos[i].SetSpriteDoMultiplicador(null);
-                    listaModulos[i].SetValorResistencia(0);
-                    listaModulos[i].SetNomeDesastre(null);
+                    listaModulos[i].RemoverModulo();
                     defendido++;
                 }
             }
         }
-        if (desastreManager.Instance.qntdDeDesastresParaOcorrer == defendido)
+        if (desastreManager.Instance.GetQntdDesastresParaOcorrer() == defendido)
         {
             Debug.Log("defendido");
         }
@@ -48,7 +47,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
         {
             //if (!tutorial)
             //{
-                for (int i = 0; i < desastreManager.Instance.qntdDeDesastresParaOcorrer - defendido; i++)
+                for (int i = 0; i < desastreManager.Instance.GetQntdDesastresParaOcorrer() - defendido; i++)
                 {
                     vidaAtual--;
                     if (vidaAtual <= 0)
@@ -62,12 +61,12 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
     }
     public void AbreEFechaMenuDeTrocaDeTempo()
     {
-        if (duranteMelhoria)
-        {
-            Debug.Log("espere a defesa acabar para interagir");
-        }
-        else
-        {
+       //if (duranteMelhoria)
+       //{
+       //    Debug.Log("espere a defesa acabar para interagir");
+       //}
+       //else
+       //{
             if (!jogadorScript.Instance.InterfaceJogador.InventarioAberto)
             {
                 jogadorScript.Instance.InterfaceJogador.abreMenuDeTempos();
@@ -76,21 +75,17 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
             {
                 jogadorScript.Instance.InterfaceJogador.fechaMenuDeTempos();
             }
-        }
+        //}
     } 
-    public Transform GetPosicaoParaTeleporte()
-    {
-        return posicaoDeChegada;
-    }
     public void AdicionarModulo(SlotModulo modulo)
     {
         listaModulos.Add(modulo);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            if (desastreManager.Instance.desastreAcontecendo)
+            if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
             {
                 EncerrarDesastresEVerificarDefesa();
                 if (tutorial)
@@ -107,18 +102,15 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
         if (tutorial)
         {
             DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-            TutorialSetUp.Instance.IniciarDialogo();
             tutorial = false;
+            TutorialSetUp.Instance.IniciarDialogo();
             return;
         }
         areaDeInteracao.SetActive(true);
-        //RecomecarDesastres();
     }
     private void EncerrarDesastresEVerificarDefesa()
     {
-        desastreManager.Instance.desastreAcontecendo = false;
         VerificarModulos();
-        desastreManager.Instance.LimpaArraysDeSorteio();
         desastreManager.Instance.encerramentoDesastres();
     }
     private void RecomecarDesastres()
@@ -126,26 +118,31 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
         if (duranteMelhoria)
         {
             DefesasFeitas++;
-            if (DefesasFeitas == desastreManager.Instance.QntdDeDefesasNecessarias)
+            if (DefesasFeitas == QntdDeDefesasNecessarias)
             {
                 duranteMelhoria = false;
                 DefesasFeitas = 0;
-                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloEntreOsDesastres, desastreManager.Instance.tempoAcumulado);
-                DesastresList.Instance.LiberarNovosDesastres(UIinventario.Instance.TempoAtual + 2);//ativa a possibilidade do evento desse tempo acontecer, +2 por já começar com 2 desastres
+                if (UIinventario.Instance.VerificarSeLiberouBossFinal())
+                    return;
+                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre());
+                DesastresList.Instance.LiberarNovosDesastres(UIinventario.Instance.GetTempoAtual());//ativa a possibilidade do evento desse tempo acontecer
             }
             else
-                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloDuranteADefesa, desastreManager.Instance.tempoAcumulado);
+                desastreManager.Instance.ConfigurarTimer(intervaloDuranteADefesa, desastreManager.Instance.GetTempoAcumuladoParaDesastre());
         }
         else
         {
-            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloEntreOsDesastres, desastreManager.Instance.tempoAcumulado);
+            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre());
         }
-        desastreManager.Instance.tempoAcumulado = 0f;
+        desastreManager.Instance.MudarTempoAcumuladoParaDesastre(0f);
         StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
+    }
+    public void Ativar_DesativarInteracao(bool b)
+    {
+        areaDeInteracao.SetActive(b);
     }
     protected virtual void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
-        Debug.Log("devo aparecer 1 vez");
         TutorialSetUp.Instance.AoTerminoDoDialogoTerminadoOPrimeiroDesastre();
     }
     public void CancelarInscricaoEmDialogoFinalizado()
@@ -158,5 +155,21 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
         {
             listaModulos[i].SetTutorial(false);
         }
+    }
+    public void Ativar_DesativarDuranteDefesaParaMelhorarBase(bool b)
+    {
+        duranteMelhoria = b;
+    }
+    public Transform GetPosicaoParaTeleporte()
+    {
+        return posicaoDeChegadaPorTeleporte;
+    }
+    public bool GetDuranteDefesaParaMelhorarBase()
+    {
+        return duranteMelhoria;
+    }
+    public float GetIntervaloDuranteOAprimoramentoDaBase()
+    {
+        return intervaloDuranteADefesa;
     }
 }

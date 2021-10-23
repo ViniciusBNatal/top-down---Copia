@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8952a940ca52c04c93836bb4831858a, type: 3}
   m_Name: Tempo 2
   m_EditorClassIdentifier: 
-  iconeDeAprimoramentoDabase: {fileID: 0}
+  iconeDeAprimoramentoDabase: {fileID: 610190682692980046, guid: eee20d4829f99f9439d33d8dd7779976,
+    type: 3}
   desastre: 
   incrementoEntreForcas: 0
   itensNecessarios:

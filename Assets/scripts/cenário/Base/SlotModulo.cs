@@ -21,17 +21,34 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial
     {
         if (iconeDoModulo.enabled == false)
         {
-            VisibilidadeSpriteDoModulo(true);
-            SetValorResistencia(jogadorScript.Instance.moduloCriado.GetForca());
-            SetNomeDesastre(jogadorScript.Instance.moduloCriado.desastre);
-            //cria o icone do desastre dependedo do desastre natural do crafting
-            SetSpriteDoDesastre(DesastresList.Instance.SelecionaSpriteDesastre(desastre));
-            //cria o icone de multiplicador dependedo do nivel do crafting
-            SetSpriteDoMultiplicador(DesastresList.Instance.SelecionaSpriteMultiplicador(resistenciaModulo));
-            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform);
-            jogadorScript.Instance.MudarEstadoJogador(0);
-            Tutorial();
+            ConstruirModulo();
         }
+        else
+        {
+            RemoverModulo();
+            ConstruirModulo();
+        }
+    }
+    private void ConstruirModulo()
+    {
+        VisibilidadeSpriteDoModulo(true);
+        SetValorResistencia(jogadorScript.Instance.GetModuloConstruido().GetForca());
+        SetNomeDesastre(jogadorScript.Instance.GetModuloConstruido().desastre);
+        //cria o icone do desastre dependedo do desastre natural do crafting
+        SetSpriteDoDesastre(DesastresList.Instance.SelecionaSpriteDesastre(desastre));
+        //cria o icone de multiplicador dependedo do nivel do crafting
+        SetSpriteDoMultiplicador(DesastresList.Instance.SelecionaSpriteMultiplicador(resistenciaModulo));
+        jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform);
+        jogadorScript.Instance.MudarEstadoJogador(0);
+        Tutorial();
+    }
+    public void RemoverModulo()
+    {
+        VisibilidadeSpriteDoModulo(false);
+        SetSpriteDoDesastre(null);
+        SetSpriteDoMultiplicador(null);
+        SetValorResistencia(0);
+        SetNomeDesastre("");
     }
     public void VisibilidadeSpriteDoModulo(bool Ligar_desligar)
     {
@@ -66,8 +83,8 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial
         if (tutorial)
         {
             //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
-            DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-            desastreManager.Instance.slotUsadoNoTutorial = this.gameObject;
+            //DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+            DialogeManager.Instance.tutorialSlot = true;
             TutorialSetUp.Instance.IniciarDialogo();
             tutorial = false;
         }

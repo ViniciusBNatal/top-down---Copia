@@ -6,60 +6,60 @@ using UnityEngine.UI;
 public class desastreManager : MonoBehaviour, AcoesNoTutorial
 {
     public static desastreManager Instance { get; private set; }
-    [Header("Configuração do Manager")]
-    public float intervaloEntreOsDesastres = 90;
-    public float intervaloDuranteTutorial;
+    [Header("CONFIGURAÇÃO DO MANAGER")]
+    [SerializeField] private float intervaloEntreOsDesastres;
     [SerializeField] private int chanceDeDesastre;
-    public float intervaloDuranteADefesa;
-    public int QntdDeDefesasNecessarias;
     [SerializeField] private bool tutorial;
     private List<Image> iconesDesenhados = new List<Image>();
     private List<Image> multiplicadoresDesenhados = new List<Image>();
     private int minutos;
     private int segundos;
-    [Header("Terremoto")]
+    [Header("TERREMOTO")]
     [SerializeField] private float intensidadeScreenShakeTerremoto;
     [SerializeField] private float taxaDeMudancaDosControles;
     [SerializeField] private float unidadesX;
     [SerializeField] private float unidadesY;
     [SerializeField] private float forcaTerremoto;
-    [Header("Enxame De Insetos")]
-    private GameObject enxameInst;
+    [Header("ENXAME DE INSETOS")]
     [SerializeField] private GameObject enxamePrefab;
     [SerializeField] private float velocidadeEnxame;
     [SerializeField] private float danoEnxame;
     [SerializeField] private float intervaloEntreAtaques;
-    [Header("Virus")]
-    [SerializeField] private float distanciaXdoJogador_virus;
-    [SerializeField] private float distanciaYdoJogador_virus;
+    private GameObject enxameInst;
+    [Header("VIRUS")]
     [SerializeField] private float intervaloEntreSpawnsVirus;
     [SerializeField] private float tempParaSumirUI;
     [SerializeField] private GameObject paredeVirusPrefab;
-    [Header("Chuva Ácida")]
+    [SerializeField] private float distanciaXdoJogador_virusMin;
+    //private float distanciaXdoJogador_virusMax = jogadorScript.Instance.mainCamera.orthographicSize * Screen.width / Screen.height - .5f;
+    [SerializeField] private float distanciaYdoJogador_virusMin;
+    //private float distanciaYdoJogador_virusMax = jogadorScript.Instance.mainCamera.orthographicSize - .5f;
+    [Header("CHUVA ÁCIDA")]
     [SerializeField] private GameObject chuvaParticulaPrefab;
     [SerializeField] private float danoDoAcido;
     [SerializeField] private float intervaloEntreHitsChuvaAcida;
     private GameObject chuvaInstance;
-    [Header("Errupção Terrena")]
+    [Header("ERRUPÇÃO TERRENA")]
     [SerializeField] private GameObject errupcaoPrefab;
     [SerializeField] private float intervaloEntreSpawnsErrupcao;
-    [SerializeField] private float distanciaXdoJogador_errupcao;
-    [SerializeField] private float distanciaYdoJogador_errupcao;
-    [Header("Não Mexer")]
-    public GameObject slotUsadoNoTutorial;
-    public bool desastreAcontecendo = false;
-    public float tempoAcumulado = 0f;
-    public float tempoRestante;
-    public int qntdDeDesastresParaOcorrer;
-    public string[] desastresSorteados = new string[5];
-    public int[] forcasSorteados = new int[5];
-    public List<GameObject> errupcoesEmCena = new List<GameObject>();
-    public List<GameObject> virusEmCena = new List<GameObject>();
+    [SerializeField] private float distanciaXdoJogador_errupcaoMin;
+    //private float distanciaXdoJogador_errupcaoMax = jogadorScript.Instance.mainCamera.orthographicSize * Screen.width / Screen.height - .5f;
+    [SerializeField] private float distanciaYdoJogador_errupcaoMin;
+    //private float distanciaYdoJogador_errupcaoMax = jogadorScript.Instance.mainCamera.orthographicSize - .5f;
+    [Header("NÃO MEXER")]
     [SerializeField] private PostProcessScript CMefeitos;
     [SerializeField] private Image iconesDesastrPrefab;
     [SerializeField] private GameObject PosicaoIconesDesastre;
     [SerializeField] private GameObject PosicaoIconesMultiplicador;
     [SerializeField] private Text timer;
+    private bool desastreAcontecendo = false;
+    private float tempoAcumulado = 0f;
+    private float tempoRestante;
+    private int qntdDeDesastresParaOcorrer;
+    public string[] desastresSorteados = new string[5];
+    public int[] forcasSorteados = new int[5];
+    private List<GameObject> errupcoesEmCena = new List<GameObject>();
+    private List<GameObject> virusEmCena = new List<GameObject>();
     private void Awake()
     {
         Instance = this;
@@ -72,12 +72,18 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
-            //StartCoroutine(this.LogicaDesastres(true));
-            //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    StopAllCoroutines();
+        //    ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
+        //    SetUpParaNovoSorteioDeDesastres();
+        //    StartCoroutine(this.LogicaDesastres(true));
+        //    //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
+        //}
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    StopAllCoroutines();
+        //}
     }
     //desastres
     private void Terremoto()
@@ -98,7 +104,9 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     private void Virus()
     {
         CMefeitos.visualVirus(true);
-        StartCoroutine(this.criaObjetosDoDesastre(distanciaXdoJogador_virus, distanciaYdoJogador_virus, intervaloEntreSpawnsVirus, paredeVirusPrefab));
+        float distanciaXdoJogador_virusMax = jogadorScript.Instance.mainCamera.orthographicSize * Screen.width / Screen.height - .5f;
+        float distanciaYdoJogador_virusMax = jogadorScript.Instance.mainCamera.orthographicSize - .5f;
+        StartCoroutine(this.criaObjetosDoDesastre(distanciaXdoJogador_virusMin, distanciaXdoJogador_virusMax, distanciaYdoJogador_virusMin, distanciaYdoJogador_virusMax, intervaloEntreSpawnsVirus, paredeVirusPrefab));
         StartCoroutine(this.delayVirus());
     }
     private void ChuvaAcida()
@@ -109,9 +117,11 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     private void ErrupcaoTerrena()
     {
         CMefeitos.visualErrupcaoTerrena(true);
-        StartCoroutine(this.criaObjetosDoDesastre(distanciaXdoJogador_errupcao, distanciaYdoJogador_errupcao, intervaloEntreSpawnsErrupcao, errupcaoPrefab));
+        float distanciaXdoJogador_errupcaoMax = jogadorScript.Instance.mainCamera.orthographicSize * Screen.width / Screen.height - .5f;
+        float distanciaYdoJogador_errupcaoMax = jogadorScript.Instance.mainCamera.orthographicSize - .5f;
+        StartCoroutine(this.criaObjetosDoDesastre(distanciaXdoJogador_errupcaoMin, distanciaXdoJogador_errupcaoMax, distanciaYdoJogador_errupcaoMin, distanciaYdoJogador_errupcaoMax, intervaloEntreSpawnsErrupcao, errupcaoPrefab));
     }
-    //sorteadores
+    //
     public void ConfigurarTimer(float tempRestante, float tempoAcumuladoduranteDesastres)
     {
         tempoRestante = tempRestante;
@@ -140,10 +150,13 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
         while (desastreAcontecendo == false)
         {
             timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
-            yield return new WaitForSeconds(1);
-            if (minutos == 0 && segundos == 0)
+            yield return new WaitForSeconds(1f);
+            if (segundos == 0 && minutos == 0)
+            {
                 IniciarDesastres();
-            else if(segundos == 0 && minutos > 0)
+                yield break;
+            }
+            else if (segundos == 0 && minutos > 0)
             {
                 minutos--;
                 segundos = 59;
@@ -156,46 +169,46 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
             }
         }
     }
-    //IEnumerators
     private void SortearGeral(int chanceDEDesastre)
     {
-        int qntd = 0;
+        int desastresParaocorrer = 0;
+        int desastresPossiveis = 0;
         for (int i = 0; i < DesastresList.Instance.ativar.Count; i++)
         {
-            if (DesastresList.Instance.ativar[i])
-                qntd++;
+            if (DesastresList.Instance.ativar[i] == true)
+                desastresPossiveis++;
         }
-        qntdDeDesastresParaOcorrer = qntd;
-        for (int i = 0; i < qntd; i++)
+        for (int i = 0; i < desastresPossiveis; i++)
+        {
+            int r = Random.Range(1, 101);
+            if (r <= chanceDEDesastre)
+                desastresParaocorrer++;
+        }
+        DefinirQntdDeDesastresParaOcorrer(desastresParaocorrer);
+        for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)
         {
             int forcaEscolhida = Random.Range(1, 4);
-            forcasSorteados[i] = forcaEscolhida;
-            SorteiaDesastre();
+            DefinirForcaParaDesastre(i, forcaEscolhida);
+            SorteiaDesastre(desastresPossiveis);
         }
     }
-    private void SorteiaDesastre()
+    private void SorteiaDesastre(int desastrPossiveis)
     {
-        bool EventoRepetido = false;
-        int index = Random.Range(1, DesastresList.Instance.ativar.Count + 1);
+        int index = Random.Range(1, desastrPossiveis + 1);
         string desastreEscolhido = DesastresList.Instance.desastreNome[index - 1].ToUpper();
         for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)
         {
             if (desastresSorteados[i].ToUpper() == desastreEscolhido)
             {
-                EventoRepetido = true;
-                break;
+                SorteiaDesastre(desastrPossiveis);
+                return;
             }
-        }
-        if (!DesastresList.Instance.ativar[index - 1] || EventoRepetido)
-        {
-            SorteiaDesastre();
-            return;
         }
         for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)
         {
             if (desastresSorteados[i] == "")
             {
-                desastresSorteados[i] = desastreEscolhido;
+                DefinirDesastre(i, desastreEscolhido);
                 break;
             }
         }
@@ -248,65 +261,91 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     private void IniciarDesastres()
     {
         desastreAcontecendo = true;
-        //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
-        //Terremoto();
-        for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)
+        if (qntdDeDesastresParaOcorrer == 0)
         {
-            switch (desastresSorteados[i].ToUpper())
+            if (BaseScript.Instance.GetDuranteDefesaParaMelhorarBase())
+                ConfigurarTimer(BaseScript.Instance.GetIntervaloDuranteOAprimoramentoDaBase(), tempoAcumulado);
+            else
+                ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
+            tempoAcumulado = 0f;
+            desastreAcontecendo = false;
+            StartCoroutine(this.LogicaDesastres(true));
+        }
+        //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
+        else
+        {
+            Ativar_desativarInteracoesDaBase(true);
+            for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)
             {
-                case "TERREMOTO":
-                    Terremoto();
-                    break;
-                case "ERRUPCAO TERRENA":
-                    ErrupcaoTerrena();
-                    break;
-                case "NUVEM DE INSETOS":
-                    NuvemDeInsetos();
-                    break;
-                case "VIRUS":
-                    Virus();
-                    break;
-                case "CHUVA ACIDA":
-                    ChuvaAcida();
-                    break;
+                switch (desastresSorteados[i].ToUpper())
+                {
+                    case "TERREMOTO":
+                        Terremoto();
+                        break;
+                    case "ERRUPCAO TERRENA":
+                        ErrupcaoTerrena();
+                        break;
+                    case "NUVEM DE INSETOS":
+                        NuvemDeInsetos();
+                        break;
+                    case "VIRUS":
+                        Virus();
+                        break;
+                    case "CHUVA ACIDA":
+                        ChuvaAcida();
+                        break;
+                }
             }
+            jogadorScript.Instance.GetComponent<Rigidbody2D>().AddForce(Vector2.one);//garante que se o jogador estiver parado dentro da maquina, irá verificar a defesa
         }
     }
     public void encerramentoDesastres()
     {
+        desastreAcontecendo = false;
         //terremoto
         CinemachineShake.Instance.ScreenShake(0f, false);
-        jogadorScript.Instance.baguncarControles = Vector2.zero;
+        jogadorScript.Instance.SetDirecaoDeMovimentacaoAleatoria(Vector2.zero);
         //nuvem de insetos
         if (enxamePrefab != null)
             Destroy(enxameInst);
         //virus
         CMefeitos.visualVirus(false);
         UIinventario.Instance.GetComponent<Canvas>().enabled = true;
-        for (int i = virusEmCena.Count; i > 0; i--)
+        if (virusEmCena.Count > 0)
         {
-            Destroy(virusEmCena[i - 1]);
-            virusEmCena.RemoveAt(i - 1);
+            for (int i = virusEmCena.Count; i > 0; i--)
+            {
+                Destroy(virusEmCena[i - 1]);
+                //virusEmCena.RemoveAt(i - 1);
+            }
+            virusEmCena.Clear();
         }
         //Chuva Acida
         Destroy(chuvaInstance);
         //Errupcao Terrena
         CMefeitos.visualErrupcaoTerrena(false);
-        for (int i = errupcoesEmCena.Count; i > 0; i--)
+        if (errupcoesEmCena.Count > 0)
         {
-            Destroy(errupcoesEmCena[i - 1]);
-            errupcoesEmCena.RemoveAt(i - 1);
+            for (int i = errupcoesEmCena.Count; i > 0; i--)
+            {
+                Destroy(errupcoesEmCena[i - 1]);
+                //errupcoesEmCena.RemoveAt(i - 1);
+            }
+            errupcoesEmCena.Clear();
         }
+        Ativar_desativarInteracoesDaBase(false);
         LimpaPlaca();
+        SetUpParaNovoSorteioDeDesastres();
         Tutorial();
     }
-    public void LimpaArraysDeSorteio()
+    private void SetUpParaNovoSorteioDeDesastres()
     {
         for (int i = 0; i < desastresSorteados.Length; i++)
         {
-            forcasSorteados[i] = 0;
-            desastresSorteados[i] = "";
+            DefinirDesastre(i, "");
+            DefinirForcaParaDesastre(i, 0);
         }
+        DefinirQntdDeDesastresParaOcorrer(0);
     }
     IEnumerator baguncaControleJogador()
     {
@@ -316,13 +355,19 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
             yield return new WaitForSeconds(taxaDeMudancaDosControles);
         }
     }
-    IEnumerator criaObjetosDoDesastre(float distX, float distY, float tempo, GameObject prefab)
+    IEnumerator criaObjetosDoDesastre(float distXMin, float distXMax, float disYMin, float disYMax, float tempo, GameObject prefab)
     {
         while (desastreAcontecendo)
         {
-            float X = Random.Range(-distX, distX + 1);
-            float Y = Random.Range(-distY, distY + 1);
-            GameObject obj = Instantiate(prefab, jogadorScript.Instance.transform.position + new Vector3(X, Y, 0f), Quaternion.identity);
+            int dirX = Random.Range(-1, 1);
+            int diry = Random.Range(-1, 1);
+            if (dirX == 0)
+                dirX = 1;
+            if (diry == 0)
+                diry = 1;
+            float X = Random.Range(distXMin, distXMax + 1);
+            float Y = Random.Range(disYMin, disYMax + 1);
+            GameObject obj = Instantiate(prefab, jogadorScript.Instance.transform.position + new Vector3(X * dirX, Y * diry, 0f), Quaternion.identity);
             yield return new WaitForSeconds(intervaloEntreSpawnsErrupcao);
         }
     }
@@ -340,16 +385,92 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
             yield return new WaitForSeconds(intervaloEntreHitsChuvaAcida);
         }
     }
-
     public void Tutorial()
     {
         if (tutorial)
         {
             DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
-            //slotUsadoNoTutorial.GetComponent<SlotModulo>().CancelarInscricaoEmDialogoFinalizado();
-            TutorialSetUp.Instance.IniciarDialogo();
             BaseScript.Instance.DesligarTutorialDosModulos();
             tutorial = false;
         }
+    }
+    public void AdionarVirusALista(GameObject obj) 
+    {
+        virusEmCena.Add(obj);
+    }
+    public void RemoverVirusDaLista(GameObject obj)
+    {
+        virusEmCena.Remove(obj);
+    }
+    public void AdionarErrupcaoALista(GameObject obj)
+    {
+        errupcoesEmCena.Add(obj);
+    }
+    public void RemoverErrupcaoDaLista(GameObject obj)
+    {
+        errupcoesEmCena.Remove(obj);
+    }
+    public void Ativar_desativarInteracoesDaBase(bool trancar_DestrancarInteracoes)
+    {
+        if (trancar_DestrancarInteracoes)
+        {
+            UIinventario.Instance.fechaInventario();
+            UIinventario.Instance.fechaMenuDeTempos();
+            mesaCraftingScript.Instance.Desativar_AtivarInteracao(false);
+            BaseScript.Instance.Ativar_DesativarInteracao(false);
+        }
+        else
+        {
+            mesaCraftingScript.Instance.Desativar_AtivarInteracao(true);
+            BaseScript.Instance.Ativar_DesativarInteracao(true);
+        }
+    }
+    public int GetForcaSorteada(int i)
+    {
+        return forcasSorteados[i];
+    }
+    public void DefinirForcaParaDesastre(int i, int forca)
+    {
+        forcasSorteados[i] = forca;
+    }
+    public string GetDesastreSorteado(int i)
+    {
+        return desastresSorteados[i].ToUpper();
+    }
+    public void DefinirDesastre(int i, string desastre)
+    {
+        desastresSorteados[i] = desastre.ToUpper();
+    }
+    public int GetQntdDesastresParaOcorrer()
+    {
+        return qntdDeDesastresParaOcorrer;
+    }
+    public void DefinirQntdDeDesastresParaOcorrer(int qntd)
+    {
+        qntdDeDesastresParaOcorrer = qntd;
+    }
+    public void DiminuirTempoRestanteParaDesastre(float temp)
+    {
+        tempoRestante -= temp;
+    }
+    public float GetTempoRestanteParaDesastre()
+    {
+        return tempoRestante;
+    }
+    public void MudarTempoAcumuladoParaDesastre(float temp)
+    {
+        tempoAcumulado = temp;
+    }
+    public float GetTempoAcumuladoParaDesastre()
+    {
+        return tempoAcumulado;
+    }
+    public bool VerificarSeUmDesastreEstaAcontecendo()
+    {
+        return desastreAcontecendo;
+    }
+    public float GetIntervaloDeTempoEntreOsDesastres()
+    {
+        return intervaloEntreOsDesastres;
     }
 }
