@@ -25,6 +25,7 @@ public class recurso_cenario : MonoBehaviour, CentroDeRecurso
     private int qntdInimigosAtuais = 0;
     private bool spawnandoInimigos = false;
     private SpriteRenderer SpriteDoObj;
+    private bool aplicandoDano;
 
     private void Start()
     {
@@ -101,12 +102,17 @@ public class recurso_cenario : MonoBehaviour, CentroDeRecurso
     }
     private void AplicarDano()
     {
-        VidaAtualDoCentroDeSpawn--;
-        if (VidaAtualDoCentroDeSpawn <= VidaMaxDoCentroDeSpawn)
+        if (!aplicandoDano)
         {
-            centroDeInimigos = false;
-            StopAllCoroutines();
-            DefineSprite(iconeCentroDeRecursos);
+            aplicandoDano = true;
+            VidaAtualDoCentroDeSpawn--;
+            if (VidaAtualDoCentroDeSpawn <= VidaMaxDoCentroDeSpawn)
+            {
+                centroDeInimigos = false;
+                StopAllCoroutines();
+                DefineSprite(iconeCentroDeRecursos);
+            }
+            aplicandoDano = false;
         }
     }
     private void DefineSprite(Sprite sprite)

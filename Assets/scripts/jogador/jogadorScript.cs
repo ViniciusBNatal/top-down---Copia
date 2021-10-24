@@ -15,7 +15,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private float taxaDeDisparo;
     [SerializeField] private float taxaDeAtaqueMelee;
     [SerializeField] private float alcanceMelee;
-    [SerializeField] private float distanciaAtaqueMelee;
+    private Vector2 distanciaAtaqueMelee;
     [SerializeField] private float danoMelee;
     [SerializeField] private float danoProjetil;
     [Header("Componentes")]
@@ -62,6 +62,8 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         //vidaAtual = vidaMaxima;
         //inventario.BarraDeVida.GetComponent<barraDeVida>().AtualizaBarraDeVida(vidaAtual);
         animatorPicareta = armaMelee.GetComponent<Animator>();
+        distanciaAtaqueMelee.x = posicaoMelee.localPosition.x;
+        distanciaAtaqueMelee.y = posicaoMelee.localPosition.y;
         Tutorial();
     }
 
@@ -140,12 +142,12 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         if (Input.GetButton("Horizontal")) //&& movX != 0)
         {
-            posicaoMelee.localPosition =  new Vector3(movX * Mathf.Abs(distanciaAtaqueMelee), 0f, 0f);
-            pontoDeDisparo.localPosition = new Vector3(movX * Mathf.Abs(pontoDeDisparo.localPosition.x), pontoDeDisparo.localPosition.y, 0f);
+            posicaoMelee.localPosition =  new Vector3(movX * Mathf.Abs(distanciaAtaqueMelee.x), distanciaAtaqueMelee.y, 0f);
+            pontoDeDisparo.localPosition = new Vector3(movX * Mathf.Abs(pontoDeDisparo.localPosition.x), 0f, 0f);
         } 
         if (Input.GetButton("Vertical")) //&& movY != 0)
         {
-            posicaoMelee.localPosition = new Vector3(0f, movY * Mathf.Abs(distanciaAtaqueMelee), 0f);
+            posicaoMelee.localPosition = new Vector3(0f, movY * Mathf.Abs(distanciaAtaqueMelee.x), 0f);
             pontoDeDisparo.localPosition = new Vector3(pontoDeDisparo.localPosition.x, movY * Mathf.Abs(pontoDeDisparo.localPosition.y), 0f);
         }
     }

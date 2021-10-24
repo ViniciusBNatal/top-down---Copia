@@ -16,6 +16,5 @@ MonoBehaviour:
   desastre: TERREMOTO
   incrementoEntreForcas: 3
   itensNecessarios:
-  - {fileID: 11400000, guid: 84bccf2522a8f0b4cb0fb343340e841d, type: 2}
-  - {fileID: 11400000, guid: 6080dc09a9bfd66488d79c0e9da77802, type: 2}
-  quantidadeDosRecursos: 0300000006000000
+  - {fileID: 11400000, guid: bf37def55dca4bf4aa6e606a6eedbbd6, type: 2}
+  quantidadeDosRecursos: 03000000

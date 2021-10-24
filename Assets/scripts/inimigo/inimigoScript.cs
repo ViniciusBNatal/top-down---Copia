@@ -41,7 +41,7 @@ public class inimigoScript : MonoBehaviour
         movimentacaoEntrePontosAleatorios,
         movimentacaoEntrePontosFixa
     }
-    private int proximoPontoDeFuga;
+    private int proximoPontoDeFuga = 0;
     private recurso_cenario CentroDeSpawn = null;
     // Start is called before the first frame update
     void Start()
@@ -83,7 +83,7 @@ public class inimigoScript : MonoBehaviour
             Vector2 distanciaDoAlvo = alvo.position - transform.position;
             if (Mathf.Abs(distanciaDoAlvo.x) <= distanciaMinimaParaFugir.x && Mathf.Abs(distanciaDoAlvo.y) <= distanciaMinimaParaFugir.y)
             {
-                Teleportar(TiposDeMovimentacao.movimentacaoEntrePontosAleatorios);
+                Teleportar(tiposDeMovimentacao);
             }
         }
     }
@@ -113,8 +113,10 @@ public class inimigoScript : MonoBehaviour
         {
             case TiposDeMovimentacao.movimentacaoEntrePontosFixa:
                 if (proximoPontoDeFuga <= pontosDeFuga.Count - 1)
+                {
                     transform.position = pontosDeFuga[proximoPontoDeFuga].position;
-                proximoPontoDeFuga++;
+                    proximoPontoDeFuga++;
+                }
                 break;
             case TiposDeMovimentacao.movimentacaoEntrePontosAleatorios:
                 int r = Random.Range(0, pontosDeFuga.Count);

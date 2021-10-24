@@ -15,5 +15,6 @@ MonoBehaviour:
   iconeDeAprimoramentoDabase: {fileID: 0}
   desastre: NUVEM DE INSETOS
   incrementoEntreForcas: 0
-  itensNecessarios: []
-  quantidadeDosRecursos: 
+  itensNecessarios:
+  - {fileID: 0}
+  quantidadeDosRecursos: 00000000

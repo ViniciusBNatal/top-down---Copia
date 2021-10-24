@@ -16,5 +16,5 @@ MonoBehaviour:
   desastre: ERRUPCAO TERRENA
   incrementoEntreForcas: 3
   itensNecessarios:
-  - {fileID: 11400000, guid: 6080dc09a9bfd66488d79c0e9da77802, type: 2}
+  - {fileID: 11400000, guid: 3c3693480a42c664091250d2df3f1290, type: 2}
   quantidadeDosRecursos: 03000000
