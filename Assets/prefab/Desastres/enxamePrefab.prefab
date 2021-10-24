@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4469575966397712590}
   - component: {fileID: 4469575966397712579}
   m_Layer: 0
-  m_Name: enxame
+  m_Name: enxamePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,13 +74,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3696468865957307940, guid: d478e26275feea640b27fce1d956918a,
+  m_Sprite: {fileID: 7856037652484059251, guid: 1f2975ba6ac4be74db6aede90640a6b9,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.36, y: 0.33}
+  m_Size: {x: 3, y: 2.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -96,7 +96,7 @@ Animator:
   m_GameObject: {fileID: 4469575966397712580}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fac896d2397162b4bb4be2e4c0662de5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -156,5 +156,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidade: 1
   dano: 0.1
-  intervaloEntreDanos: 1
-  alvo: {fileID: 0}
+  intervaloEntreAtaques: 0
