@@ -144,6 +144,8 @@ MonoBehaviour:
   portaRelacionada: {fileID: 0}
   valorBotao: 1
   usoUnico: 0
+  tempoParaAbrirPorta: 0
+  tempoParaFecharPorta: 0
   Criar: 0
   inimigo: {fileID: 0}
   pontoDeSpawnInimigo: {fileID: 6416464269283005163}

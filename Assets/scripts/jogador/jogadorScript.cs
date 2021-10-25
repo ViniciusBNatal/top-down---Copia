@@ -330,4 +330,32 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         moduloCriado = ScriptableObject.CreateInstance<ReceitaDeCrafting>();
         moduloCriado = modulo;
     }
+    public estados EstadoAtualJogador()
+    {
+        return estadosJogador;
+    }
+    public estados CompararComEstado(int e)
+    {
+        estados estadoEscolhido = estados.EmAcao;
+        switch (e)
+        {
+            case 0:
+                estadoEscolhido = estados.EmAcao;
+                return estadoEscolhido;
+            case 1:
+                estadoEscolhido = estados.EmMenus;
+                return estadoEscolhido;
+            case 2:
+                estadoEscolhido = estados.EmContrucao;
+                return estadoEscolhido;
+            case 3:
+                estadoEscolhido = estados.EmDialogo;
+                return estadoEscolhido;
+            case 4:
+                estadoEscolhido = estados.SendoEmpurrado;
+                return estadoEscolhido;
+            default:
+                return estadoEscolhido;
+        }
+    }
 }

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: e8c219bd24b4e2548a90375a5bb1336e, type: 3}
   m_Name: favo
   m_EditorClassIdentifier: Assembly-CSharp::Item
   icone: {fileID: 21300000, guid: f1df91cbcb231b446a91d6c3952960e6, type: 3}

@@ -67,6 +67,8 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
        //}
        //else
        //{
+       if (jogadorScript.Instance.EstadoAtualJogador() == jogadorScript.Instance.CompararComEstado(0))
+        {
             if (!jogadorScript.Instance.InterfaceJogador.InventarioAberto)
             {
                 jogadorScript.Instance.InterfaceJogador.abreMenuDeTempos();
@@ -75,6 +77,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
             {
                 jogadorScript.Instance.InterfaceJogador.fechaMenuDeTempos();
             }
+        }
         //}
     } 
     public void AdicionarModulo(SlotModulo modulo)

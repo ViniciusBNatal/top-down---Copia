@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconeDeAprimoramentoDabase: {fileID: 0}
   desastre: NUVEM DE INSETOS
-  incrementoEntreForcas: 0
+  incrementoEntreForcas: 3
   itensNecessarios:
-  - {fileID: 0}
-  quantidadeDosRecursos: 00000000
+  - {fileID: 11400000, guid: c46d4db61ed04784fb525b41adac2f46, type: 2}
+  - {fileID: 11400000, guid: 8c1df2e01c921d84898d0f9a381c59cb, type: 2}
+  quantidadeDosRecursos: 0300000003000000
