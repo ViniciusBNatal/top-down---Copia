@@ -61,24 +61,21 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
     }
     public void AbreEFechaMenuDeTrocaDeTempo()
     {
-       //if (duranteMelhoria)
-       //{
-       //    Debug.Log("espere a defesa acabar para interagir");
-       //}
-       //else
-       //{
-       if (jogadorScript.Instance.EstadoAtualJogador() == jogadorScript.Instance.CompararComEstado(0))
-        {
-            if (!jogadorScript.Instance.InterfaceJogador.InventarioAberto)
-            {
-                jogadorScript.Instance.InterfaceJogador.abreMenuDeTempos();
-            }
-            else
-            {
-                jogadorScript.Instance.InterfaceJogador.fechaMenuDeTempos();
-            }
-        }
-        //}
+       if (duranteMelhoria)
+       {
+           Debug.Log("espere a defesa acabar para interagir");
+       }
+       else
+       {
+                if (!jogadorScript.Instance.InterfaceJogador.InventarioAberto)
+                {
+                    jogadorScript.Instance.InterfaceJogador.abreMenuDeTempos();
+                }
+                else
+                {
+                    jogadorScript.Instance.InterfaceJogador.fechaMenuDeTempos();
+                }
+       }
     } 
     public void AdicionarModulo(SlotModulo modulo)
     {

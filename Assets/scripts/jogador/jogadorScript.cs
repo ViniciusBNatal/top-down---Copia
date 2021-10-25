@@ -113,7 +113,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     private Vector3 PegaPosicoMouse()
     {
         Vector3 posicaoMouse = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        posicaoMouse.z = 0f;
+        posicaoMouse.z = 1f;
         return posicaoMouse;
     }
     private void InputAtirar()//dispara ao apertar o botão direito do mouse
@@ -155,6 +155,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            Mydebug.mydebug.MyPrint("click do mouse");
             Vector2 mousePos = PegaPosicoMouse();
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
             if (hit)

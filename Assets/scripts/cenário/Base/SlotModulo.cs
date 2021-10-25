@@ -82,9 +82,8 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial
     {
         if (tutorial)
         {
-            //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
-            //DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-            DialogeManager.Instance.tutorialSlot = true;
+            DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
+            DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
             TutorialSetUp.Instance.IniciarDialogo();
             tutorial = false;
         }
