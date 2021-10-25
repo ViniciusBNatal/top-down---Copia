@@ -113,7 +113,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     private Vector3 PegaPosicoMouse()
     {
         Vector3 posicaoMouse = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        posicaoMouse.z = 0f;
+        posicaoMouse.z = 1f;
         return posicaoMouse;
     }
     private void InputAtirar()//dispara ao apertar o botão direito do mouse
