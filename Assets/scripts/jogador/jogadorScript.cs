@@ -155,6 +155,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            Mydebug.mydebug.MyPrint("click do mouse");
             Vector2 mousePos = PegaPosicoMouse();
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
             if (hit)

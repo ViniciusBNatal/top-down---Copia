@@ -12,7 +12,6 @@ public class DialogeManager : MonoBehaviour
     [SerializeField] private Text DialogoText;
     [SerializeField] private float velocidadeDasLetras;
     [SerializeField] private Animator animatorImage;
-    public bool tutorialSlot = false;
     private Animator animator;
     private Queue<string> Frases = new Queue<string>();
     private int index = 0;
@@ -84,16 +83,11 @@ public class DialogeManager : MonoBehaviour
         }
         if (dialogoAtual.FocarComCamera.Length > 0)
             DialogoFinalizado -= jogadorScript.Instance.AoFinalizarDialogo;
-        if (tutorialSlot)
-        {
-            TutorialSetUp.Instance.AoTerminoDoDialogoInstaladoOModuloDeDefesa();
-            tutorialSlot = false;
-        }
     }
 
     public void LimparListaDeAoFinalizarDialogo()
     {
-        DialogoFinalizado = null;
+        DialogoFinalizado = delegate { };
     }
     private void RetornarCameraAoJogadorNoFinalDoDialogo()
     {
