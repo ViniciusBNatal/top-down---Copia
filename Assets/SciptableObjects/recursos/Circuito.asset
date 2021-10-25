@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8c219bd24b4e2548a90375a5bb1336e, type: 3}
+  m_Script: {fileID: 0}
   m_Name: Circuito
-  m_EditorClassIdentifier: 
-  icone: {fileID: 0}
-  ID: Circuito
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  icone: {fileID: 21300000, guid: 4332b560e441b6a43a37ee9eabd45b79, type: 3}
+  ID: 
