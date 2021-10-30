@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Nuvem de insetos
   m_EditorClassIdentifier: 
   iconeDeAprimoramentoDabase: {fileID: 0}
+  modulo: 1
   desastre: NUVEM DE INSETOS
   incrementoEntreForcas: 3
   itensNecessarios:

@@ -19,7 +19,7 @@ public class TutorialSetUp : MonoBehaviour
         desastreManager.Instance.DefinirQntdDeDesastresParaOcorrer(1);
         desastreManager.Instance.DefinirDesastre(0, "ERRUPCAO TERRENA");
         desastreManager.Instance.DefinirForcaParaDesastre(0, 1);
-        desastreManager.Instance.PreenchePlaca();
+        IndicadorDosDesastres.Instance.PreenchePlaca();
         jogadorScript.Instance.MudarEstadoJogador(1);
     }
     public void AoTerminoDoDialogoFocarCameraNoJogador()
@@ -34,7 +34,7 @@ public class TutorialSetUp : MonoBehaviour
     }
     public void IniciarDialogo()
     {
-        jogadorScript.Instance.MudarEstadoJogador(3);
+        //jogadorScript.Instance.MudarEstadoJogador(3);
         DialogeManager.Instance.IniciarDialogo(dialogosDoTutorial[sequenciaDialogos]);
         sequenciaDialogos++;
     }

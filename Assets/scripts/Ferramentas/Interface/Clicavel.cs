@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface Clicavel
 {
-    void Click(GameObject jogador);
+    void Click(jogadorScript jogador);
 }

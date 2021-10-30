@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Virus
   m_EditorClassIdentifier: 
   iconeDeAprimoramentoDabase: {fileID: 0}
+  modulo: 1
   desastre: VIRUS
   incrementoEntreForcas: 0
   itensNecessarios: []

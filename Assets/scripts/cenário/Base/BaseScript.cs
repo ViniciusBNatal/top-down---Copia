@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseScript : MonoBehaviour, AcoesNoTutorial
+public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
 {
     public static BaseScript Instance { get; private set; }
     [Header("COMPONENTES DA BASE")]
@@ -24,6 +24,8 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
     private void Start()
     {
         vidaAtual = vidaMax;
+        jogadorScript.Instance.transform.position = posicaoDeChegadaPorTeleporte.position;
+        jogadorScript.Instance.Tutorial();
     }
     public void VerificarModulos()
     {
@@ -32,7 +34,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
         {
             for (int i = 0; i < listaModulos.Count; i++)
             {
-                if (desastreManager.Instance.GetDesastreSorteado(a) == listaModulos[i].GetnomeDesastre() && desastreManager.Instance.GetForcaSorteada(a) == listaModulos[i].GetvalorResistencia())
+                if (desastreManager.Instance.GetDesastreSorteado(a) == listaModulos[i].GetNomeDesastre() && desastreManager.Instance.GetForcaSorteada(a) == listaModulos[i].GetvalorResistencia())
                 {
                     listaModulos[i].RemoverModulo();
                     defendido++;
@@ -67,14 +69,14 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
        }
        else
        {
-                if (!jogadorScript.Instance.InterfaceJogador.InventarioAberto)
-                {
-                    jogadorScript.Instance.InterfaceJogador.abreMenuDeTempos();
-                }
-                else
-                {
-                    jogadorScript.Instance.InterfaceJogador.fechaMenuDeTempos();
-                }
+           if (!jogadorScript.Instance.InterfaceJogador.InventarioAberto)
+           {
+               jogadorScript.Instance.InterfaceJogador.abreMenuDeTempos();
+           }
+           else
+           {
+               jogadorScript.Instance.InterfaceJogador.fechaMenuDeTempos();
+           }
        }
     } 
     public void AdicionarModulo(SlotModulo modulo)
@@ -171,5 +173,32 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial
     public float GetIntervaloDuranteOAprimoramentoDaBase()
     {
         return intervaloDuranteADefesa;
+    }
+    public void SalvarEstadosDosModulos()
+    {
+        for (int i = 0; i < listaModulos.Count; i++)
+        {
+            listaModulos[i].SalvarEstado();
+        }
+    }
+    public void SalvarEstado()
+    {
+        if (GetComponent<SalvarEstadoDoObjeto>() != null)
+        {
+            GetComponent<SalvarEstadoDoObjeto>().SalvarSeJaFoiModificado();
+            GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDaBase(this, 0);
+        }
+    }
+    public void AcaoSeEstadoJaModificado()
+    {
+        GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDaBase(this, 1);
+    }
+    public void SetVidaAtual(int i)
+    {
+        vidaAtual = i;
+    }
+    public int GetVidaAtual()
+    {
+        return vidaAtual;
     }
 }

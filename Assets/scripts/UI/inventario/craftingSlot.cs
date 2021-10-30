@@ -8,6 +8,7 @@ public class craftingSlot : MonoBehaviour
     public ReceitaDeCrafting receita;
     [SerializeField] private GameObject recursoNecessarioUIPrefab;
     [SerializeField] private GameObject recursosGrid;
+    [SerializeField] private Image iconeDoModulo;
     [SerializeField] private Image iconeDoDesastre;
     private List<Text> qntdNecessariaParaCadarecursoText = new List<Text>();
     private List<int> novosValores = new List<int>();
@@ -15,7 +16,11 @@ public class craftingSlot : MonoBehaviour
     private int forca = 1;
     private void Start()
     {
-        iconeDoDesastre.sprite = DesastresList.Instance.SelecionaSpriteDesastre(receita.desastre);
+        if (receita.desastre == "")
+            iconeDoDesastre.enabled = false;
+        else
+            iconeDoDesastre.sprite = DesastresList.Instance.SelecionaSpriteDesastre(receita.desastre);
+        iconeDoModulo.sprite = DesastresList.Instance.SelecionaSpriteModulo(receita.modulo);
         for(int i = 0;i < receita.itensNecessarios.Count; i++)//adiciona a quantidade e a imagem para cada recurso na receita
         {
             GameObject obj = Instantiate(recursoNecessarioUIPrefab, recursosGrid.transform);
@@ -59,6 +64,7 @@ public class craftingSlot : MonoBehaviour
     public ReceitaDeCrafting construcaoConfirmada()
     {
         ReceitaDeCrafting moduloConfig = ScriptableObject.CreateInstance<ReceitaDeCrafting>();
+        moduloConfig.modulo = receita.modulo;
         moduloConfig.desastre = receita.desastre.ToUpper();
         moduloConfig.SetForca(forca);
         for (int i = 0; i < receita.quantidadeDosRecursos.Count; i++)
@@ -71,8 +77,4 @@ public class craftingSlot : MonoBehaviour
     {
         return forca;
     }
-    //public List<int> GetNovaListaDeQntdRecursosNecessarios()
-    //{
-    //    return novosValores;
-    //}
 }

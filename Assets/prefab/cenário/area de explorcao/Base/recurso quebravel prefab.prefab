@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -869401897
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f121df2bdac2a8d429d14c76f8f212be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,10 +98,17 @@ MonoBehaviour:
   item: {fileID: 0}
   recursoColetavelPreFab: {fileID: 769133423071464344, guid: 501ac6922bc98ff4a90c352f139fbe97,
     type: 3}
+  iconeCentroDeRecursos: {fileID: 0}
   quantasVezesPodeSerExtraida: 3
   qntdDoRecursoDropado: 1
   forca: 100
   tempoAteProximaColeta: 3
+  centroDeInimigos: 0
+  iconeCentroDeInimigos: {fileID: 0}
+  inimigoPrefab: {fileID: 0}
+  qntdMaximaDeInimigos: 0
+  intervaloEntreSpawns: 0
+  VidaMaxDoCentroDeSpawn: 0
 --- !u!70 &6895422993060629283
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

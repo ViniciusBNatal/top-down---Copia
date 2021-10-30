@@ -41,21 +41,21 @@ public class Botao : MonoBehaviour
         }
     }
 
-    public void TentarAbrirPorta()
-    {
-        if (usoUnico)
-        {
-            if (!precionado)
-            {
-                precionado = true;
-                portaRelacionada.VerificarParaAbrirPorta(valorBotao, tempoParaAbrirPorta, tempoParaFecharPorta);
-            }
-        }
-        else
-        {
-            portaRelacionada.VerificarParaAbrirPorta(valorBotao, tempoParaAbrirPorta, tempoParaFecharPorta);
-        }
-    }
+    //public void TentarAbrirPorta()
+    //{
+    //    if (usoUnico)
+    //    {
+    //        if (!precionado)
+    //        {
+    //            precionado = true;
+    //            portaRelacionada.VerificarParaAbrirPorta(valorBotao, tempoParaAbrirPorta, tempoParaFecharPorta);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        portaRelacionada.VerificarParaAbrirPorta(valorBotao, tempoParaAbrirPorta, tempoParaFecharPorta);
+    //    }
+    //}
     public void acaoComInimigos()
     {
         if (Criar)

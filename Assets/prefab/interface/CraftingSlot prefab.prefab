@@ -514,7 +514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3350ffb359168c640a44d92c0268a808, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -583,6 +583,7 @@ MonoBehaviour:
   recursoNecessarioUIPrefab: {fileID: 8703963735021367692, guid: 90d56447fc9b0fb48afa6afe872a8156,
     type: 3}
   recursosGrid: {fileID: 526244646486904992}
+  iconeDoModulo: {fileID: 6613528273911097987}
   iconeDoDesastre: {fileID: 521140759485858665}
 --- !u!1 &6997385792643878132
 GameObject:

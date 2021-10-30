@@ -43,7 +43,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     public enum estados
     {
         EmAcao,
-        EmMenus,
+        Paralisado,
         EmContrucao,
         EmDialogo,
         SendoEmpurrado
@@ -64,7 +64,10 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         animatorPicareta = armaMelee.GetComponent<Animator>();
         distanciaAtaqueMelee.x = posicaoMelee.localPosition.x;
         distanciaAtaqueMelee.y = posicaoMelee.localPosition.y;
-        Tutorial();
+        //string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(2);//pega o caminho da cena na pasta de arquivos
+        //string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
+        //if (SceneManager.GetActiveScene().name == cenaParaAbrir)
+            //Tutorial();
     }
 
     // Update is called once per frame
@@ -77,7 +80,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 InputAtirar();
                 InputAtaqueMelee();
                 break;
-            case estados.EmMenus://interface aberta
+            case estados.Paralisado://interface aberta
 
                 break;
             case estados.EmContrucao://construindo
@@ -91,17 +94,17 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     private void FixedUpdate()
     {
          if (estadosJogador == estados.EmAcao)
-        {
+         {
             rb.velocity = movimento * velocidade + baguncarControles;
-        }
+         }
          else if (estadosJogador == estados.SendoEmpurrado)
-        {
+         {
             rb.velocity = -forcaEmpurrao * direcaoEmpurrao;
-        }
+         }
          else
-        {
+         {
             rb.velocity = Vector2.zero;
-        }
+         }
     }
     private void MovimentoInput()
     {
@@ -113,7 +116,8 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     private Vector3 PegaPosicoMouse()
     {
         Vector3 posicaoMouse = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        posicaoMouse.z = 1f;
+        posicaoMouse.z = -1f;
+        //Debug.Log(posicaoMouse);
         return posicaoMouse;
     }
     private void InputAtirar()//dispara ao apertar o botão direito do mouse
@@ -130,7 +134,6 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
             StartCoroutine(this.atacarMelee());
         }
     }
-    
     private void InputProsseguirDialogo()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -155,13 +158,13 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Mydebug.mydebug.MyPrint("click do mouse");
+            //Mydebug.mydebug.MyPrint("click do mouse");
             Vector2 mousePos = PegaPosicoMouse();
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
             if (hit)
             {
                 Clicavel clicavel = hit.collider.GetComponent<Clicavel>();
-                clicavel?.Click(this.gameObject);
+                clicavel?.Click(this);
             }
         }
     }
@@ -174,7 +177,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 podeAnimar = true;
                 break;
             case 1:
-                estadosJogador = estados.EmMenus;
+                estadosJogador = estados.Paralisado;
                 podeAnimar = false;
                 break;
             case 2:
@@ -235,6 +238,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 }
                 else if (objeto.gameObject.layer == 9)
                 {
+                    Debug.Log("a");
                     objeto.gameObject.GetComponent<CentroDeRecurso>().RecebeuHit();
                 }
             }
@@ -246,13 +250,12 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
         {
-            desastreManager.Instance.MudarTempoAcumuladoParaDesastre(desastreManager.Instance.GetTempoAcumuladoParaDesastre() + valor);
+            desastreManager.Instance.MudarTempoAcumuladoParaDesastre(desastreManager.Instance.GetTempoAcumuladoParaDesastre() + Mathf.Clamp(valor, 0, desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres()));
         }
         else
         {
             desastreManager.Instance.DiminuirTempoRestanteParaDesastre(valor);
             desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetTempoRestanteParaDesastre(), 0f);
-            //desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.tempoRestante -= valor, 0f);
         }
         //vidaAtual += valor;
         //inventario.BarraDeVida.GetComponent<barraDeVida>().AtualizaBarraDeVida(vidaAtual);
@@ -295,7 +298,6 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         return podeAnimar;
     }
-
     public void SetTutorial(bool b)
     {
         tutorial = b;
@@ -313,7 +315,6 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         JogadorAnimScript.Instance.Levantar(false);
         TutorialSetUp.Instance.IniciarDialogo();
     }
-
     public void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
         TutorialSetUp.Instance.AoTerminoDoDialogoFocarCameraNoJogador();
@@ -344,7 +345,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 estadoEscolhido = estados.EmAcao;
                 return estadoEscolhido;
             case 1:
-                estadoEscolhido = estados.EmMenus;
+                estadoEscolhido = estados.Paralisado;
                 return estadoEscolhido;
             case 2:
                 estadoEscolhido = estados.EmContrucao;
