@@ -52,6 +52,11 @@ public class inimigoScript : MonoBehaviour
         vidaAtual = vidaMaxima;
         if (tiposDeMovimentacao == TiposDeMovimentacao.movimentacaoFixa)
             movimentacaoFixa = true;
+        if (CentroDeSpawn != null && !CentroDeSpawn.GetCentroDeInimigos())
+        {
+            CentroDeSpawn.InimigoDerrotado();
+            Destroy(this.gameObject);
+        }
     }
 
     private void FixedUpdate()

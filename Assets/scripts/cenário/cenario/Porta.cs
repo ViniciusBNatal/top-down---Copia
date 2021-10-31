@@ -100,7 +100,6 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
         }
         else
             FechaPorta();
-        //AbrePorta();
     }
     public bool GetAberto_Fechado()
     {

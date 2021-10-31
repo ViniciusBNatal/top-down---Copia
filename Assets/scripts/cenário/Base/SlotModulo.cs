@@ -13,7 +13,7 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial, SalvamentoEn
     [SerializeField] private bool tutorial = true;
     private int resistenciaModulo = 0;
     private string NomeDesastre = "";
-    private int modulo = 0;
+    private int tipoModulo = 0;
 
     private void Start()
     {
@@ -35,21 +35,24 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial, SalvamentoEn
     }
     public void ConstruirModulo(int forca, string desastre, int modulo)
     {
-        SetValorResistencia(forca);
-        SetNomeDesastre(desastre);
-        SetModulo(modulo);
-        //aplica o sprite do modulo dependendo do modulo no crafting
-        if (modulo == 2)
+        if (forca != 0 && modulo != 0 && desastre != "")
         {
+            SetValorResistencia(forca);
+            SetNomeDesastre(desastre);
+            SetModulo(modulo);
+            //aplica o sprite do modulo dependendo do modulo no crafting
+            if (modulo == 2)
+            {
+                SetSpriteDoModulo(DesastresList.Instance.SelecionaSpriteModulo(modulo));
+                BossAlho.Instance.BossDerotado();
+                return;
+            }
             SetSpriteDoModulo(DesastresList.Instance.SelecionaSpriteModulo(modulo));
-            BossAlho.Instance.BossDerotado();
-            return;
+            //cria o icone do desastre dependedo do desastre natural do crafting
+            SetSpriteDoDesastre(DesastresList.Instance.SelecionaSpriteDesastre(NomeDesastre));
+            //cria o icone de multiplicador dependedo do nivel do crafting
+            SetSpriteDoMultiplicador(DesastresList.Instance.SelecionaSpriteMultiplicador(resistenciaModulo));
         }
-        SetSpriteDoModulo(DesastresList.Instance.SelecionaSpriteModulo(modulo));
-        //cria o icone do desastre dependedo do desastre natural do crafting
-        SetSpriteDoDesastre(DesastresList.Instance.SelecionaSpriteDesastre(NomeDesastre));
-        //cria o icone de multiplicador dependedo do nivel do crafting
-        SetSpriteDoMultiplicador(DesastresList.Instance.SelecionaSpriteMultiplicador(resistenciaModulo));
     }
     public void RemoverModulo()
     {
@@ -89,11 +92,11 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial, SalvamentoEn
     }
     public void SetModulo(int i)
     {
-        modulo = i;
+        tipoModulo = i;
     }
     public int GetModulo()
     {
-        return modulo;
+        return tipoModulo;
     }
     public void Tutorial()
     {
@@ -128,6 +131,7 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial, SalvamentoEn
     public void AcaoSeEstadoJaModificado()
     {
         GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosModulos(this, 1);
+        ConstruirModulo(resistenciaModulo, NomeDesastre, tipoModulo);
     }
     private void RetornarCameraEMudarEstadoJogador()
     {

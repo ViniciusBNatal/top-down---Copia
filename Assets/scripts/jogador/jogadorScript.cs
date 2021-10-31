@@ -238,7 +238,6 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 }
                 else if (objeto.gameObject.layer == 9)
                 {
-                    Debug.Log("a");
                     objeto.gameObject.GetComponent<CentroDeRecurso>().RecebeuHit();
                 }
             }
