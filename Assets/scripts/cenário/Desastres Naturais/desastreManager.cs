@@ -10,8 +10,6 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private float intervaloEntreOsDesastres;
     [SerializeField] private int chanceDeDesastre;
     [SerializeField] private bool tutorial;
-    private List<Image> iconesDesenhados = new List<Image>();
-    private List<Image> multiplicadoresDesenhados = new List<Image>();
     private int minutos;
     private int segundos;
     [Header("TERREMOTO")]
@@ -468,6 +466,9 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     }
     public float GetIntervaloDeTempoEntreOsDesastres()
     {
-        return intervaloEntreOsDesastres;
+        if (BossAlho.Instance != null)
+            return intervaloEntreOsDesastres - BossAlho.Instance.GetReducaoIntervaloDesastres();
+        else
+            return intervaloEntreOsDesastres;
     }
 }

@@ -104,7 +104,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6563676759031992094, guid: ff298f82dae67ae4db184235a60d2209,
+  m_Sprite: {fileID: -2420899814122119278, guid: c079740d2834233479c5ca1b2c2ab775,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intervaloEntreAtaques: 5
+  ReducaoIntervaloDesastres: 60
   misselPrefab: {fileID: 1324030936459174767, guid: 11e3063f0b1839d4dafe4e17d1885505,
     type: 3}
   sementeDeAlhoPrefab: {fileID: 6681289161254987899, guid: ab4554795a0271b4895f3d8a8d9470fb,

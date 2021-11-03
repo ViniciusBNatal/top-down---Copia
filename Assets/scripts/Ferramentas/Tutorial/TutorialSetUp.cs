@@ -22,10 +22,10 @@ public class TutorialSetUp : MonoBehaviour
         IndicadorDosDesastres.Instance.PreenchePlaca();
         jogadorScript.Instance.MudarEstadoJogador(1);
     }
-    public void AoTerminoDoDialogoFocarCameraNoJogador()
-    {
-        jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform);
-    }
+    //public void AoTerminoDoDialogoFocarCameraNoJogador()
+    //{
+    //    jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform);
+    //}
     public void AoTerminoDoDialogoInstaladoOModuloDeDefesa()
     {
         //Debug.Log("devo aparecer 1 vez");

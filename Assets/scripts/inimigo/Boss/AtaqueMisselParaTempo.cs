@@ -30,7 +30,7 @@ public class AtaqueMisselParaTempo : MonoBehaviour
         for (int i = 0; i < itens.Count; i++)
         {
             GameObject recurso = Instantiate(recursoColetavelPreFab, transform);
-            recurso.transform.SetParent(null);//desasosia recursos da caixa
+            recurso.transform.SetParent(null);//desasosia recursos do missel
             recurso.GetComponent<recurso_coletavel>().DefineItem(itens[i]);
             recurso.GetComponent<recurso_coletavel>().DefineQuantidadeItem(qntdDoRecursoDropado[i]);
             recursosCriados.Add(recurso);

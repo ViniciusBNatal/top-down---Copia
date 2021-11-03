@@ -6,6 +6,7 @@ public class BossAlho : MonoBehaviour
 {
     public static BossAlho Instance { get; private set; }
     [SerializeField] private float intervaloEntreAtaques;
+    [SerializeField] private float ReducaoIntervaloDesastres;
     [SerializeField] private GameObject misselPrefab;
     [SerializeField] private GameObject sementeDeAlhoPrefab;
     [SerializeField] private Transform pontoDeSpawnDaSemente;
@@ -32,11 +33,11 @@ public class BossAlho : MonoBehaviour
             {
                 case 0:
                     animator.SetTrigger("MISSEL");
-                    AtaqueDeMissel(); //ligar por evento na animação
+                    //AtaqueDeMissel(); //ligar por evento na animação
                     break;
                 case 1:
                     animator.SetTrigger("SEMENTE");
-                    AtaqueDeSementeDeAlho(); //ligar por evento na animação
+                    //AtaqueDeSementeDeAlho(); //ligar por evento na animação
                     break;
             }
             yield return new WaitForSeconds(intervaloEntreAtaques);
@@ -52,7 +53,7 @@ public class BossAlho : MonoBehaviour
     }
     private void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
-        desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f);
+        desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres() - ReducaoIntervaloDesastres, 0f);
         desastreManager.Instance.StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
         StartCoroutine(this.PadraoDeAtaque());
         DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
@@ -69,5 +70,9 @@ public class BossAlho : MonoBehaviour
         yield return new WaitForSeconds(3f);
         jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform);
         Destroy(this.gameObject);
+    }
+    public float GetReducaoIntervaloDesastres()
+    {
+        return ReducaoIntervaloDesastres;
     }
 }

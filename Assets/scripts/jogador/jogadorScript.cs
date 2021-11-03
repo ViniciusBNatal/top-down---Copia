@@ -316,7 +316,8 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     public void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
-        TutorialSetUp.Instance.AoTerminoDoDialogoFocarCameraNoJogador();
+        comportamentoCamera.MudaFocoCamera(transform);
+        //TutorialSetUp.Instance.AoTerminoDoDialogoFocarCameraNoJogador();
     }
     public void SetDirecaoDeMovimentacaoAleatoria(Vector2 vec)
     {
