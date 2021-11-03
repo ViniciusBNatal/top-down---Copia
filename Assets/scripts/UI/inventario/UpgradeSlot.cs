@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UpgradeSlot : MonoBehaviour
 {
     [Header("Confugurações do Slot de Upgrade")]
-    public ReceitaDeCrafting receita;
-    public int fase;
+    [SerializeField] private ReceitaDeCrafting receita;
+    [SerializeField] private int IndexFaseNaBuild;
+    //public int fase;
     [Header("Não Mexer")]
     [SerializeField] private GameObject IconeETextoDorecursoNecessarioPrefab;
     [SerializeField] private GameObject recursosGrid;
@@ -35,5 +37,15 @@ public class UpgradeSlot : MonoBehaviour
         BtnConstruirUpgrade.GetComponent<Button>().enabled = false; // desliga a oção de pressionar o botão de criar o upgrade
         BtnTrocartempo.SetActive(true);
         Destroy(recursosGrid.gameObject);
+    }
+    public string FaseParaAbrir()
+    {
+        string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(IndexFaseNaBuild);//pega o caminho da cena na pasta de arquivos
+        string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
+        return cenaParaAbrir;
+    }
+    public ReceitaDeCrafting GetReceita()
+    {
+        return receita;
     }
 }

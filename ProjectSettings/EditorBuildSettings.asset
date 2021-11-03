@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Cena 1.unity
+    path: Assets/Scenes/Menu.unity
+    guid: 621c712eb93932a449a2339535079402
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/BaseJogador.unity
+    guid: e4eeb8a96bcdb3e48a00c570f3fc30bc
+  - enabled: 1
+    path: Assets/Scenes/Floresta.unity
+    guid: 5c72566dcc94e6f4dabecfb49702ca8a
+  - enabled: 1
+    path: Assets/Scenes/Futuro.unity
+    guid: 3d3ef817b7f7fbc459879199098aefd1
   m_configObjects: {}

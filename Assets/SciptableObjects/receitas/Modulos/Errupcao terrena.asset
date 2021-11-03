@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Errupcao terrena
   m_EditorClassIdentifier: 
   iconeDeAprimoramentoDabase: {fileID: 0}
+  modulo: 1
   desastre: ERRUPCAO TERRENA
   incrementoEntreForcas: 3
   itensNecessarios:

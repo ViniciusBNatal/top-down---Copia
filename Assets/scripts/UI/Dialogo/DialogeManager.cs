@@ -28,6 +28,7 @@ public class DialogeManager : MonoBehaviour
     public void IniciarDialogo(Dialogo dialogo)
     {
         Frases.Clear();
+        jogadorScript.Instance.MudarEstadoJogador(3);
         animator.SetBool("aberto", true);
         NomeNPCText.text = dialogo.NomeNPC;
         dialogoAtual = dialogo;

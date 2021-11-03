@@ -34,7 +34,8 @@ public class interagivel : MonoBehaviour
         {
             emAlcance = false;
             collision.GetComponent<jogadorScript>().IndicarInteracaoPossivel(SelecionadorDeIconeDeInteracao.Instance.SelecionaIconeDeInteracao(btnInteragir), emAlcance);
-
+            UIinventario.Instance.fechaMenuDeTempos();
+            UIinventario.Instance.fechaInventario();
         }
     }
 }

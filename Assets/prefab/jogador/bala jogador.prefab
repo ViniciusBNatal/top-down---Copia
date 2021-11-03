@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &6116428344267711366
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748577783877355436}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5461d93f89a213d46978753564cc9b8d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6047844935482320720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14,13 +33,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2740014679155963113, guid: 0612f2afecd8da940b203880a2641b0c,
         type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4096107664694887973, guid: 72b7df1edaeefc549836b5683d6db8fe,
+        type: 3}
+    - target: {fileID: 2740014679155963113, guid: 0612f2afecd8da940b203880a2641b0c,
+        type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2740014679155963113, guid: 0612f2afecd8da940b203880a2641b0c,
         type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2740014679155963113, guid: 0612f2afecd8da940b203880a2641b0c,
         type: 3}
@@ -31,6 +56,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615686617446429188, guid: 0612f2afecd8da940b203880a2641b0c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615686617446429188, guid: 0612f2afecd8da940b203880a2641b0c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615686617446429188, guid: 0612f2afecd8da940b203880a2641b0c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3615686617446429188, guid: 0612f2afecd8da940b203880a2641b0c,
         type: 3}
@@ -99,3 +139,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0612f2afecd8da940b203880a2641b0c, type: 3}
+--- !u!1 &6748577783877355436 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1029496171083325692, guid: 0612f2afecd8da940b203880a2641b0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6047844935482320720}
+  m_PrefabAsset: {fileID: 0}

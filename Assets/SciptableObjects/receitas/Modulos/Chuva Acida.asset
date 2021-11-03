@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Chuva Acida
   m_EditorClassIdentifier: 
   iconeDeAprimoramentoDabase: {fileID: 0}
+  modulo: 1
   desastre: CHUVA ACIDA
   incrementoEntreForcas: 0
   itensNecessarios: []

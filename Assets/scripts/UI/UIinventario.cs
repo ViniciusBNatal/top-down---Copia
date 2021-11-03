@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIinventario : MonoBehaviour, AcoesNoTutorial
@@ -9,7 +10,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     private bool inventarioAberto = false;
     [SerializeField] private bool tutorial;
     [SerializeField] private List<UpgradeSlot> listaSlotUpgradesBase = new List<UpgradeSlot>();
-    private List<Teleportador> listaTeleportadores = new List<Teleportador>();
+    //private List<Teleportador> listaTeleportes = new List<Teleportador>();
     private List<ItemSlot> listaSlotItem = new List<ItemSlot>();
     [Header("Nao Mexer")]
     [SerializeField] private GameObject CaixaDeDialogos;
@@ -21,6 +22,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private Transform posicaoDosIconesDeItens;
     [SerializeField] private GameObject abaSelecionarTempo;
     private int TempoAtual = 0;
+    const int BuildIndexDaFaseBasejogador = 2;
     public bool InventarioAberto => inventarioAberto;
 
     private void Awake()
@@ -156,11 +158,11 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     {
         List<int> recursosEncontrados = new List<int>();
         int possuiTodosOsRecursos = 0;
-        for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.receita.itensNecessarios.Count; tiposRecursosParaCrafting++)//passa para o próximo recurso na lista de crafting do objeto
+        for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.GetReceita().itensNecessarios.Count; tiposRecursosParaCrafting++)//passa para o próximo recurso na lista de crafting do objeto
         {
             for (int tipoRecursosInventario = 0; tipoRecursosInventario < listaSlotItem.Count; tipoRecursosInventario++)//procura se existe o recurso X na lista de crafting do objeto
             {
-                if (listaSlotItem[tipoRecursosInventario].item.ID.ToUpper() == slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID.ToUpper() && listaSlotItem[tipoRecursosInventario].qntdRecurso >= slot.receita.quantidadeDosRecursos[tiposRecursosParaCrafting])
+                if (listaSlotItem[tipoRecursosInventario].item.ID.ToUpper() == slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting].ID.ToUpper() && listaSlotItem[tipoRecursosInventario].qntdRecurso >= slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting])
                 {
                     int i = tipoRecursosInventario;
                     recursosEncontrados.Add(i);// guarda a posição do recurso na lista de itens
@@ -169,12 +171,12 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
                 }
             }
         }
-        if (possuiTodosOsRecursos == slot.receita.itensNecessarios.Count)// caso tenha todos os itens e a quantidade necessária, consome eles para criar a receita
+        if (possuiTodosOsRecursos == slot.GetReceita().itensNecessarios.Count)// caso tenha todos os itens e a quantidade necessária, consome eles para criar a receita
         {
             BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
-            for (int tipoRecursoCrafting = 0; tipoRecursoCrafting < slot.receita.itensNecessarios.Count; tipoRecursoCrafting++)
+            for (int tipoRecursoCrafting = 0; tipoRecursoCrafting < slot.GetReceita().itensNecessarios.Count; tipoRecursoCrafting++)
             {
-                listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.receita.quantidadeDosRecursos[tipoRecursoCrafting]);
+                listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.GetReceita().quantidadeDosRecursos[tipoRecursoCrafting]);
             }
             fechaMenuDeTempos();
             Tutorial();
@@ -183,18 +185,15 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     }
     public void AoClicarEmMudarDeTempo(UpgradeSlot slot)
     {
-        int index = 0;
-        for (int i = 0; i < listaTeleportadores.Count; i++)
-        {
-            if (slot.fase == listaTeleportadores[i].GetFaseDoTeleportador())
-            {
-                index = i;
-                break;
-            }
-        }
-        jogadorScript.Instance.transform.position = listaTeleportadores[index].GetPosicao().position;
         Tutorial();
         fechaMenuDeTempos();
+        jogadorScript.Instance.IndicarInteracaoPossivel(null, false);
+        if (NomeFasePorBuildIndex(SceneManager.GetActiveScene().buildIndex) == NomeFasePorBuildIndex(BuildIndexDaFaseBasejogador))//alvar apenas se tiver na fase BaseDoJogador
+        {
+            BaseScript.Instance.SalvarEstado();
+            BaseScript.Instance.SalvarEstadosDosModulos();
+        }
+        SceneManager.LoadScene(slot.FaseParaAbrir());
     }
     public void LiberarNovBtnDeTrocaDeTempo(UpgradeSlot slot, bool ativarDesastres)
     {
@@ -210,10 +209,6 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             desastreManager.Instance.StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
             desastreManager.Instance.StopAllCoroutines();
         }
-    }
-    public void AdicionaTeleportadorALista(Teleportador obj)
-    {
-        listaTeleportadores.Add(obj);
     }
     public UpgradeSlot GetBtnEspecifico(int i)
     {
@@ -254,5 +249,33 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     public int GetTempoAtual()
     {
         return TempoAtual;
+    }
+    public bool ProcurarChave(Item chave)
+    {
+        if (chave != null)
+        {
+            for (int i = 0; i < listaSlotItem.Count; i++)
+            {
+                if (listaSlotItem[i].item.ID == chave.ID)
+                {
+                    listaSlotItem[i].atualizaQuantidade(-1);
+                    if (listaSlotItem[i].qntdRecurso <= 0)
+                    {
+                        Destroy(listaSlotItem[i].gameObject);
+                        listaSlotItem.Remove(listaSlotItem[i]);
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+        else
+            return true;
+    }
+    private string NomeFasePorBuildIndex(int index)
+    {
+        string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(index);//pega o caminho da cena na pasta de arquivos
+        string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
+        return cenaParaAbrir;
     }
 }

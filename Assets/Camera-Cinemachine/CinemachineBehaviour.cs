@@ -13,6 +13,7 @@ public class CinemachineBehaviour : MonoBehaviour
     }
     public void MudaFocoCamera(Transform obj)
     {
+        CM = this.GetComponent<CinemachineVirtualCamera>();
         CM.LookAt = obj;
         CM.Follow = obj;
     }

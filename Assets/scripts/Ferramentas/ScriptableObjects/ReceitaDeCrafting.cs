@@ -9,6 +9,7 @@ public class ReceitaDeCrafting : ScriptableObject
     [Header("Componentes Do Slot De Melhorar a Base")]
     public Sprite iconeDeAprimoramentoDabase;
     [Header("Componentes Do Slot De Criar Modulos")]
+    public int modulo;
     public string desastre;
     public int incrementoEntreForcas;
     private int forca;

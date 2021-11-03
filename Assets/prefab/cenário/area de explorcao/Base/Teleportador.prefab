@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 5003102357623823439}
   - component: {fileID: 745973668899582535}
   - component: {fileID: 8947810304769247954}
+  - component: {fileID: 44119069456468876}
   m_Layer: 0
   m_Name: Teleportador
   m_TagString: obstaculo
@@ -174,8 +175,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e781b4e62d223634093550bec0dd3b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TeleportarParaFase: 0
   pontoDeChegada: {fileID: 6431238183348104839}
+--- !u!114 &44119069456468876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7456227160000876243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2ef34d9e9f3e74586bac9434320ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8299124172421597162
 PrefabInstance:
   m_ObjectHideFlags: 0

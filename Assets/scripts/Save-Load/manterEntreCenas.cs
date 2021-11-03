@@ -1,27 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class manterEntreCenas : MonoBehaviour
 {
-    public static List<GameObject> objetosSalvos = new List<GameObject>();
-    // Start is called before the first frame update
-    void Start()
+    //public static manterEntreCenas Instance;
+    //private static List<string> RefDosObjetosPorNome = new List<string>();
+    //private static int qntdDeObjsATransitar = 6;
+    //private void Awake()
+    //{
+    //    Instance = this;
+    //}
+    private void Start()
     {
-        bool jaNaLista = false;
-        for (int i = 0; i < objetosSalvos.Count; i++)
-        {
-            if (objetosSalvos[i] == gameObject)
-            {
-                jaNaLista = true;
-                break;
-            }
-        }
-        if (!jaNaLista)
-            objetosSalvos.Add(gameObject);
-        for (int i = 0; i < objetosSalvos.Count; i++)
-        {
-            DontDestroyOnLoad(objetosSalvos[i]);
-        }
+        //AdicionarALista(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
+    //public void AdicionarALista(GameObject gobj)
+    //{
+    //    int naoAchado = 0;
+    //    for (int i = 0; i < RefDosObjetosPorNome.Count; i++)
+    //    {
+    //        if (RefDosObjetosPorNome[i] == gobj.name)
+    //        {
+    //            DontDestroyOnLoad(gobj);
+    //            return;
+    //        }
+    //        else
+    //            naoAchado++;
+    //    }
+    //    if (naoAchado == qntdDeObjsATransitar)
+    //    {
+    //        Destroy(gobj);
+    //        return;
+    //    }
+    //    gobj.name = gobj.name + "0";
+    //    RefDosObjetosPorNome.Add(gobj.name);
+    //    DontDestroyOnLoad(gobj);
+    //}
 }
