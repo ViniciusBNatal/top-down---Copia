@@ -5,13 +5,14 @@ using UnityEngine;
 public class balaHit : MonoBehaviour
 {
     public float DuracaoDaBala;
-    public float dano;
+    private Animator animator;
+    private float dano;
     [SerializeField] private bool balaJogador = false;
     [SerializeField] private bool balaInimigo = false;
 
     private void Start()
     {
-        StartCoroutine("DestruirProjetil");
+        StartCoroutine(this.DestruirProjetil());
     }
     IEnumerator DestruirProjetil()
     {
@@ -45,5 +46,14 @@ public class balaHit : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+    public void SetDano(float d)
+    {
+        dano = d;
+    }
+    public Animator GetAnimator()
+    {
+        animator = GetComponent<Animator>();
+        return animator;
     }
 }

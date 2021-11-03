@@ -26,6 +26,132 @@ TextureImporter:
   - first:
       213: -4332978599890420819
     second: Aika_Spritesheet_7
+  - first:
+      213: -4889807736696649741
+    second: Aika_Spritesheet_8
+  - first:
+      213: -2102049630941829821
+    second: Aika_Spritesheet_9
+  - first:
+      213: -177006358244876733
+    second: Aika_Spritesheet_10
+  - first:
+      213: -6780649642560763960
+    second: Aika_Spritesheet_11
+  - first:
+      213: -2449653572510987097
+    second: Aika_Spritesheet_12
+  - first:
+      213: -3965615238700580699
+    second: Aika_Spritesheet_13
+  - first:
+      213: -7721180815256009584
+    second: Aika_Spritesheet_14
+  - first:
+      213: 8257999471774606883
+    second: Aika_Spritesheet_15
+  - first:
+      213: 6237988620425056307
+    second: Aika_Spritesheet_16
+  - first:
+      213: 7256598945300384799
+    second: Aika_Spritesheet_17
+  - first:
+      213: 9133838501775984968
+    second: Aika_Spritesheet_18
+  - first:
+      213: 1587550982905040201
+    second: Aika_Spritesheet_19
+  - first:
+      213: 8970713640814323570
+    second: Aika_Spritesheet_20
+  - first:
+      213: 8482843452165350914
+    second: Aika_Spritesheet_21
+  - first:
+      213: 3121947099295636985
+    second: Aika_Spritesheet_22
+  - first:
+      213: -6904706526545834920
+    second: Aika_Spritesheet_23
+  - first:
+      213: 8660325759570705262
+    second: Aika_Spritesheet_24
+  - first:
+      213: -6676538505187929365
+    second: Aika_Spritesheet_25
+  - first:
+      213: 5553568688251219082
+    second: Aika_Spritesheet_26
+  - first:
+      213: 3012282356072328831
+    second: Aika_Spritesheet_27
+  - first:
+      213: -1176175214472229785
+    second: Aika_Spritesheet_28
+  - first:
+      213: 5887762372466077134
+    second: Aika_Spritesheet_29
+  - first:
+      213: -6382361783904404167
+    second: Aika_Spritesheet_30
+  - first:
+      213: -7354959036418519191
+    second: Aika_Spritesheet_31
+  - first:
+      213: -3833924809834410883
+    second: Aika_Spritesheet_32
+  - first:
+      213: 8283461411109195891
+    second: Aika_Spritesheet_33
+  - first:
+      213: -575627132094486411
+    second: Aika_Spritesheet_34
+  - first:
+      213: 2949626614483753095
+    second: Aika_Spritesheet_35
+  - first:
+      213: -3834754867907036820
+    second: Aika_Spritesheet_36
+  - first:
+      213: 3282898560691146437
+    second: Aika_Spritesheet_37
+  - first:
+      213: 16637694500940428
+    second: Aika_Spritesheet_38
+  - first:
+      213: -5486583076268318107
+    second: Aika_Spritesheet_39
+  - first:
+      213: 8363886228333616254
+    second: Aika_Spritesheet_40
+  - first:
+      213: 8822743829205909679
+    second: Aika_Spritesheet_41
+  - first:
+      213: -2497273790250071238
+    second: Aika_Spritesheet_42
+  - first:
+      213: 1848503343446782892
+    second: Aika_Spritesheet_43
+  - first:
+      213: 3504796577887826077
+    second: Aika_Spritesheet_44
+  - first:
+      213: 1180677398521387317
+    second: Aika_Spritesheet_45
+  - first:
+      213: 6722760143370435957
+    second: Aika_Spritesheet_46
+  - first:
+      213: -1966925041914536394
+    second: Aika_Spritesheet_47
+  - first:
+      213: 7998042698634771330
+    second: Aika_Spritesheet_48
+  - first:
+      213: -1370176227573031021
+    second: Aika_Spritesheet_49
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -69,7 +195,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -88,7 +214,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,7 +226,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -114,10 +240,10 @@ TextureImporter:
       name: Aika_Spritesheet_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 90
-        width: 16
-        height: 16
+        x: 6
+        y: 323
+        width: 28
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,10 +261,10 @@ TextureImporter:
       name: Aika_Spritesheet_1
       rect:
         serializedVersion: 2
-        x: 29
-        y: 90
-        width: 15
-        height: 15
+        x: 45
+        y: 323
+        width: 30
+        height: 30
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +282,10 @@ TextureImporter:
       name: Aika_Spritesheet_2
       rect:
         serializedVersion: 2
-        x: 6
-        y: 62
-        width: 14
-        height: 16
+        x: 86
+        y: 323
+        width: 29
+        height: 29
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,10 +303,10 @@ TextureImporter:
       name: Aika_Spritesheet_3
       rect:
         serializedVersion: 2
-        x: 29
-        y: 62
-        width: 14
-        height: 15
+        x: 180
+        y: 283
+        width: 30
+        height: 63
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,10 +324,10 @@ TextureImporter:
       name: Aika_Spritesheet_4
       rect:
         serializedVersion: 2
-        x: 6
-        y: 34
-        width: 14
-        height: 16
+        x: 224
+        y: 283
+        width: 23
+        height: 61
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,10 +345,10 @@ TextureImporter:
       name: Aika_Spritesheet_5
       rect:
         serializedVersion: 2
-        x: 30
-        y: 34
-        width: 14
-        height: 15
+        x: 6
+        y: 283
+        width: 28
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,10 +366,10 @@ TextureImporter:
       name: Aika_Spritesheet_6
       rect:
         serializedVersion: 2
-        x: 5
-        y: 7
-        width: 16
-        height: 16
+        x: 45
+        y: 283
+        width: 30
+        height: 30
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,10 +387,10 @@ TextureImporter:
       name: Aika_Spritesheet_7
       rect:
         serializedVersion: 2
-        x: 29
-        y: 7
-        width: 15
-        height: 15
+        x: 86
+        y: 283
+        width: 29
+        height: 29
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -274,6 +400,888 @@ TextureImporter:
       bones: []
       spriteID: dab7926abea2ed3c0800000000000000
       internalID: -4332978599890420819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 283
+        width: 30
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f74d3255c9e32cb0800000000000000
+      internalID: -4889807736696649741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 243
+        width: 26
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 345a87f6ff404d2e0800000000000000
+      internalID: -2102049630941829821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 243
+        width: 28
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34e14dda7a52b8df0800000000000000
+      internalID: -177006358244876733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 243
+        width: 27
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c749c4531b46e1a0800000000000000
+      internalID: -6780649642560763960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 243
+        width: 24
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ac47bbfd05110ed0800000000000000
+      internalID: -2449653572510987097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 216
+        width: 30
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a0406d73fd47f8c0800000000000000
+      internalID: -3965615238700580699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 217
+        width: 23
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094ca1405fad8d490800000000000000
+      internalID: -7721180815256009584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 203
+        width: 26
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3262d7e44ce4a9270800000000000000
+      internalID: 8257999471774606883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 203
+        width: 28
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3305d599999c19650800000000000000
+      internalID: 6237988620425056307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 203
+        width: 27
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1c8a1c2b4e94b460800000000000000
+      internalID: 7256598945300384799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 151
+        width: 30
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 849c42669b9e1ce70800000000000000
+      internalID: 9133838501775984968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 151
+        width: 55
+        height: 41
+      alignment: 9
+      pivot: {x: 0.3, y: 0.01}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94d80ee253d180610800000000000000
+      internalID: 1587550982905040201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 151
+        width: 53
+        height: 32
+      alignment: 9
+      pivot: {x: 0.18, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2772d7607806e7c70800000000000000
+      internalID: 8970713640814323570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 151
+        width: 38
+        height: 40
+      alignment: 9
+      pivot: {x: 0.25, y: 0.01}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 206609bfc2d19b570800000000000000
+      internalID: 8482843452165350914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 151
+        width: 38
+        height: 40
+      alignment: 9
+      pivot: {x: 0.75, y: 0.01}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fdd3159852635b20800000000000000
+      internalID: 3121947099295636985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 151
+        width: 53
+        height: 32
+      alignment: 9
+      pivot: {x: 0.82, y: 0.05}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c0aee2ffd8d20a0800000000000000
+      internalID: -6904706526545834920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 151
+        width: 55
+        height: 41
+      alignment: 9
+      pivot: {x: 0.7, y: 0.01}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6b706ad468af2870800000000000000
+      internalID: 8660325759570705262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 151
+        width: 30
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be25e057a9b2853a0800000000000000
+      internalID: -6676538505187929365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 107
+        width: 30
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8c22f24c4d321d40800000000000000
+      internalID: 5553568688251219082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 107
+        width: 31
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7e2ed4d7d6cdc920800000000000000
+      internalID: 3012282356072328831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 107
+        width: 30
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76c83c3cfd26dafe0800000000000000
+      internalID: -1176175214472229785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 107
+        width: 28
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecd60ccdea885b150800000000000000
+      internalID: 5887762372466077134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 107
+        width: 30
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93d7952d5cb4d67a0800000000000000
+      internalID: -6382361783904404167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 107
+        width: 31
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96f89b089bfede990800000000000000
+      internalID: -7354959036418519191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 64
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7c434ec2b92bcac0800000000000000
+      internalID: -3833924809834410883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 64
+        width: 32
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 370d1d70444c4f270800000000000000
+      internalID: 8283461411109195891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 64
+        width: 31
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5786e645c26f208f0800000000000000
+      internalID: -575627132094486411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 64
+        width: 28
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 788975037cd2fe820800000000000000
+      internalID: 2949626614483753095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 64
+        width: 30
+        height: 31
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6973b9d3c638cac0800000000000000
+      internalID: -3834754867907036820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 64
+        width: 31
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ce03afe8d23f8d20800000000000000
+      internalID: 3282898560691146437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 35
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8a2c9e15eb1b3000800000000000000
+      internalID: 16637694500940428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 35
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5626b54e2cdbbd3b0800000000000000
+      internalID: -5486583076268318107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 35
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7c5b9df53e721470800000000000000
+      internalID: 8363886228333616254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 33
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa0861c84cea07a70800000000000000
+      internalID: 8822743829205909679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 33
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3b404908b6e75dd0800000000000000
+      internalID: -2497273790250071238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 33
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca374404ff337a910800000000000000
+      internalID: 1848503343446782892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 4
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d90320b1be983a030800000000000000
+      internalID: 3504796577887826077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 4
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5391335a6db926010800000000000000
+      internalID: 1180677398521387317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 4
+        width: 22
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57dbfbf4bba0c4d50800000000000000
+      internalID: 6722760143370435957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 4
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63e1dd8781414b4e0800000000000000
+      internalID: -1966925041914536394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 4
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b388e7571cefe60800000000000000
+      internalID: 7998042698634771330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Aika_Spritesheet_49
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 4
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39f13d30bf72cfce0800000000000000
+      internalID: -1370176227573031021
       vertices: []
       indices: 
       edges: []

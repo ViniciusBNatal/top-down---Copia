@@ -137,8 +137,9 @@ public class inimigoScript : MonoBehaviour
             direcaoProjetil = (alvo.position - pontoDisparo.position).normalized;
             inimigoAnimScript.AtaqueRanged(direcaoProjetil);
             GameObject balains = Instantiate(projetil, pontoDisparo.position, Quaternion.identity);
+            balains.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));
             balains.GetComponent<Rigidbody2D>().velocity = velocidadeProjetil * direcaoProjetil;
-            balains.GetComponent<balaHit>().dano = danoRanged;
+            balains.GetComponent<balaHit>().SetDano(danoRanged);
             yield return new WaitForSeconds(taxaDisparo);
             atirando = false;
         }

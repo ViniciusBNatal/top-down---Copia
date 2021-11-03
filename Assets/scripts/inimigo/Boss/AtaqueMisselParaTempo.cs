@@ -5,6 +5,7 @@ using UnityEngine;
 public class AtaqueMisselParaTempo : MonoBehaviour
 {
     [Header("Variáveis do Missel")]
+    [SerializeField] private GameObject parent;
     [SerializeField] private float duracaoExplosao;
     [Header("Componentes do recurso dropado")]
     [SerializeField] private float forca;
@@ -26,7 +27,7 @@ public class AtaqueMisselParaTempo : MonoBehaviour
     {
         areaDaExplosao.enabled = true;
         areaDaExplosaoIndicador.enabled = false;
-        animator.enabled = false;
+        //animator.enabled = false;
         for (int i = 0; i < itens.Count; i++)
         {
             GameObject recurso = Instantiate(recursoColetavelPreFab, transform);
@@ -35,6 +36,7 @@ public class AtaqueMisselParaTempo : MonoBehaviour
             recurso.GetComponent<recurso_coletavel>().DefineQuantidadeItem(qntdDoRecursoDropado[i]);
             recursosCriados.Add(recurso);
         }
+        animator.SetTrigger("EXPLODIR");
         StartCoroutine(this.destruirAposTempo());
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,6 +63,11 @@ public class AtaqueMisselParaTempo : MonoBehaviour
             if (recursosCriados[i] != null)
                 recursosCriados[i].GetComponent<recurso_coletavel>().LancaRecurso(forca);
         }
-        Destroy(this.gameObject);
+        Destroy(parent);
+    }
+    public void FimAnimacao()
+    {
+        animator.enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 }

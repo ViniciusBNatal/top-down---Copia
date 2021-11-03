@@ -124,7 +124,13 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            StartCoroutine(this.atirar());
+            if (!atirando)
+            {
+                atirando = true;
+                MudarEstadoJogador(1);
+                Vector3 dirAnim = (PegaPosicoMouse() - transform.position).normalized;
+                JogadorAnimScript.Instance.AnimarDisparo(dirAnim.x, dirAnim.y);
+            }
         }
     }
     private void InputAtaqueMelee()// animação e inflinge dano caso encontre algo
@@ -206,21 +212,27 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         yield return new WaitForSeconds(duracaoEmpurrao);
         MudarEstadoJogador(0);
     }
+    public void Atira()
+    {
+        StartCoroutine(this.atirar());
+          //GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
+          //Vector3 direcao = (PegaPosicoMouse() - pontoDeDisparo.position).normalized;
+          //bala.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg));//rotaciona a bala
+          //bala.GetComponent<Rigidbody2D>().velocity = direcao * velocidadeProjetil;
+          //bala.GetComponent<balaHit>().SetDano(danoProjetil);
+          //atirando = false;
+          //MudarEstadoJogador(0);
+    }
     IEnumerator atirar()
     {
-        if (!atirando)
-        {
-            atirando = true;
-            Vector3 dirAnim = (PegaPosicoMouse() - transform.position).normalized;
-            JogadorAnimScript.Instance.AnimarDisparo(dirAnim.x, dirAnim.y);
             GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
-            Vector3 direcao = PegaPosicoMouse() - pontoDeDisparo.position;
-            bala.GetComponent<Rigidbody2D>().velocity = direcao.normalized * velocidadeProjetil;
-            bala.GetComponent<balaHit>().dano = danoProjetil;
-            rb.velocity = Vector2.zero;
+            Vector3 direcao = (PegaPosicoMouse() - pontoDeDisparo.position).normalized;
+            bala.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg));//rotaciona a bala
+            bala.GetComponent<Rigidbody2D>().velocity = direcao * velocidadeProjetil;
+            bala.GetComponent<balaHit>().SetDano(danoProjetil);
+            MudarEstadoJogador(0);
             yield return new WaitForSeconds(taxaDeDisparo);
             atirando = false;
-        }
     }
     IEnumerator atacarMelee()
     {
