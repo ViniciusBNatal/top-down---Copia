@@ -173,14 +173,14 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         }
         if (possuiTodosOsRecursos == slot.GetReceita().itensNecessarios.Count)// caso tenha todos os itens e a quantidade necessária, consome eles para criar a receita
         {
-            BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
+            //BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
             for (int tipoRecursoCrafting = 0; tipoRecursoCrafting < slot.GetReceita().itensNecessarios.Count; tipoRecursoCrafting++)
             {
                 listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.GetReceita().quantidadeDosRecursos[tipoRecursoCrafting]);
             }
             fechaMenuDeTempos();
             Tutorial();
-            LiberarNovBtnDeTrocaDeTempo(slot, !tutorial);
+            LiberarNovBtnDeTrocaDeTempo(slot, false);
         }
     }
     public void AoClicarEmMudarDeTempo(UpgradeSlot slot)
@@ -233,8 +233,8 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             {
                 //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
                 desastreManager.Instance.MudarTempoAcumuladoParaDesastre(0f);
-                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre());
-                StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
+               //desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre());
+               //StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
                 tutorial = false;
             }
         }

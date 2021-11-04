@@ -47,7 +47,7 @@ public class TutorialSetUp : MonoBehaviour
     }
     public void AoTerminoDoDialogoReparadaAMaquinaDoTempo()
     {
-        desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f);
-        StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
+        //desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f);
+        //StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
     }
 }
