@@ -13,7 +13,7 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     {
         rb = GetComponent<Rigidbody2D>();
         icone = GetComponent<SpriteRenderer>();
-        //icone.sprite = item.icone;
+        icone.sprite = item.icone;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,8 +27,6 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     public void DefineItem(Item it)
     {
         item = it;
-        icone = GetComponent<SpriteRenderer>();
-        icone.sprite = item.icone;
     }
     public Item ReferenciaItem()
     {

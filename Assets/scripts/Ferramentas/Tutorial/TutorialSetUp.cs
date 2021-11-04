@@ -22,10 +22,6 @@ public class TutorialSetUp : MonoBehaviour
         IndicadorDosDesastres.Instance.PreenchePlaca();
         jogadorScript.Instance.MudarEstadoJogador(1);
     }
-    //public void AoTerminoDoDialogoFocarCameraNoJogador()
-    //{
-    //    jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform);
-    //}
     public void AoTerminoDoDialogoInstaladoOModuloDeDefesa()
     {
         //Debug.Log("devo aparecer 1 vez");
@@ -41,13 +37,10 @@ public class TutorialSetUp : MonoBehaviour
     public void AoTerminoDoDialogoTerminadoOPrimeiroDesastre()
     {
         BaseScript.Instance.Tutorial();// agr irá ativar a possibilidade de interagir com a maquina
-        //desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.intervaloEntreOsDesastres, desastreManager.Instance.tempoAcumulado);
-        //desastreManager.Instance.tempoAcumulado = 0f;
-        //StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
     }
     public void AoTerminoDoDialogoReparadaAMaquinaDoTempo()
     {
-        //desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f);
-        //StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
+        desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f);
+        StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
     }
 }

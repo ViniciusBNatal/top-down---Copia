@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class UIinventario : MonoBehaviour, AcoesNoTutorial
 {
@@ -10,7 +9,6 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     private bool inventarioAberto = false;
     [SerializeField] private bool tutorial;
     [SerializeField] private List<UpgradeSlot> listaSlotUpgradesBase = new List<UpgradeSlot>();
-    //private List<Teleportador> listaTeleportes = new List<Teleportador>();
     private List<ItemSlot> listaSlotItem = new List<ItemSlot>();
     [Header("Nao Mexer")]
     [SerializeField] private GameObject CaixaDeDialogos;
@@ -173,14 +171,13 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         }
         if (possuiTodosOsRecursos == slot.GetReceita().itensNecessarios.Count)// caso tenha todos os itens e a quantidade necessária, consome eles para criar a receita
         {
-            //BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
             for (int tipoRecursoCrafting = 0; tipoRecursoCrafting < slot.GetReceita().itensNecessarios.Count; tipoRecursoCrafting++)
             {
                 listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.GetReceita().quantidadeDosRecursos[tipoRecursoCrafting]);
             }
             fechaMenuDeTempos();
             Tutorial();
-            LiberarNovBtnDeTrocaDeTempo(slot, false);
+            LiberarNovBtnDeTrocaDeTempo(slot, !tutorial);
         }
     }
     public void AoClicarEmMudarDeTempo(UpgradeSlot slot)
@@ -195,13 +192,13 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         }
         SceneManager.LoadScene(slot.FaseParaAbrir());
     }
-    public void LiberarNovBtnDeTrocaDeTempo(UpgradeSlot slot, bool ativarDesastres)
+    public void LiberarNovBtnDeTrocaDeTempo(UpgradeSlot slot, bool ativarDefesa)
     {
         slot.LiberarViagemNoTempo();
         TempoAtual++;
         if (TempoAtual < listaSlotUpgradesBase.Count)
             listaSlotUpgradesBase[TempoAtual].gameObject.SetActive(true); // liga o próximo botão da lista
-        if (ativarDesastres)
+        if (ativarDefesa)
         {
             BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
             desastreManager.Instance.encerramentoDesastres();
@@ -233,8 +230,8 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             {
                 //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
                 desastreManager.Instance.MudarTempoAcumuladoParaDesastre(0f);
-               //desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre());
-               //StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
+                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre());
+                StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
                 tutorial = false;
             }
         }

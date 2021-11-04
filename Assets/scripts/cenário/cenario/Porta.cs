@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Porta : MonoBehaviour, SalvamentoEntreCenas
 {
-    //private int botoesPrecionados = 0;
+    private int botoesPrecionados = 0;
     private BoxCollider2D colisao;
     private bool iniciouCorrotina = false;
     [SerializeField] private bool aberta;
@@ -12,7 +12,7 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     [SerializeField] private float tempoParaFechar;
     [SerializeField] private GameObject chaveNecessaria;
     private Item chave = null;
-    //[SerializeField] private int nDeBotoesNecessarios;
+    [SerializeField] private int nDeBotoesNecessarios;
 
     private void Start()
     {
@@ -24,15 +24,16 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
         //else
         //    FechaPorta();
     }
-    //public void VerificarParaAbrirPorta(int valorBotao, float tempoAbrirPorta, float tempoFecharPorta)
-    //{
-    //    botoesPrecionados += valorBotao;
-    //    if (botoesPrecionados >= nDeBotoesNecessarios)
-    //    {
-    //        StartCoroutine(this.TempoPorta(tempoAbrirPorta, tempoFecharPorta));
-    //    }
-    //}
-    public void TentarAbrirPorta()
+    public void PortaPorBotao(int valorBotao)
+    {
+        botoesPrecionados += valorBotao;
+        if (botoesPrecionados >= nDeBotoesNecessarios)
+        {
+            AbrePorta();
+            //StartCoroutine(this.TempoPorta());
+        }
+    }
+    public void PortaPorChave()
     {
         if (!aberta)
         {

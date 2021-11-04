@@ -11,8 +11,6 @@ public class Botao : MonoBehaviour
     [SerializeField] private Porta portaRelacionada;
     [SerializeField] private int valorBotao;
     [SerializeField] private bool usoUnico;
-    [SerializeField] private float tempoParaAbrirPorta;
-    [SerializeField] private float tempoParaFecharPorta;
     private bool precionado = false;
     [Header("Compnentes para acao com inimigos")]
     [SerializeField] private bool Criar;
@@ -40,22 +38,21 @@ public class Botao : MonoBehaviour
                 animator.SetBool("PRECIONADO", false);
         }
     }
-
-    //public void TentarAbrirPorta()
-    //{
-    //    if (usoUnico)
-    //    {
-    //        if (!precionado)
-    //        {
-    //            precionado = true;
-    //            portaRelacionada.VerificarParaAbrirPorta(valorBotao, tempoParaAbrirPorta, tempoParaFecharPorta);
-    //        }
-    //    }
-    //    else
-    //    {
-    //        portaRelacionada.VerificarParaAbrirPorta(valorBotao, tempoParaAbrirPorta, tempoParaFecharPorta);
-    //    }
-    //}
+    public void TentarAbrirPorta()
+    {
+        if (usoUnico)
+        {
+            if (!precionado)
+            {
+                precionado = true;
+                portaRelacionada.PortaPorBotao(valorBotao);
+            }
+        }
+        else
+        {
+            portaRelacionada.PortaPorBotao(valorBotao);
+        }
+    }
     public void acaoComInimigos()
     {
         if (Criar)

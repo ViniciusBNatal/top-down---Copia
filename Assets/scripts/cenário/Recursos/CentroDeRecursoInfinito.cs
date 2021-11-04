@@ -9,23 +9,24 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     [SerializeField] private Item item;
     [SerializeField] private GameObject recursoColetavelPreFab;
     [Header("Valores numéricos de centro de recursos")]
-    [SerializeField] private Sprite iconeCentroDeRecursos;
+    [SerializeField] private Sprite iconeCentroDeRecursosPadrao;
+    [SerializeField] private Sprite iconeCentroDeRecursosGasto;
     [SerializeField] private TMP_Text Timer;
     [SerializeField] private Material[] materiais = new Material[2]; 
     [SerializeField] private int quantasVezesPodeSerExtraida;
     [SerializeField] private int qntdDoRecursoDropado = 1;
     [SerializeField] private float forca;
-    [SerializeField] private int tempoAteProximaColeta;//
+    [SerializeField] private int tempoAteProximaColeta;
     private int tempoRestante = 0;
-    private int vezesExtraida;//
+    private int vezesExtraida;
     [Header("Componentes de centro de spawn")]
-    [SerializeField] private bool centroDeInimigos;//
+    [SerializeField] private bool centroDeInimigos;
     [SerializeField] private Sprite iconeCentroDeInimigos;
     [SerializeField] private GameObject inimigoPrefab;
     [SerializeField] private int qntdMaximaDeInimigos;
     [SerializeField] private float intervaloEntreSpawns;
     [SerializeField] private int VidaMaxDoCentroDeSpawn;
-    private int VidaAtualDoCentroDeSpawn;//
+    private int VidaAtualDoCentroDeSpawn;
     private int qntdInimigosAtuais = 0;
     private bool spawnandoInimigos = false;
     private SpriteRenderer SpriteDoObj;
@@ -73,7 +74,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
         {
             centroDeInimigos = false;
             StopAllCoroutines();
-            DefineSprite(iconeCentroDeRecursos);
+            DefineSprite(iconeCentroDeRecursosPadrao);
         }
     }
     private void SetupCooldown()
@@ -81,6 +82,8 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
         Timer.gameObject.SetActive(true);
         SpriteDoObj.material = materiais[1];//aplica o material de escurecer
         ConfiguraTimer();
+        if (iconeCentroDeRecursosGasto != null)
+            DefineSprite(iconeCentroDeRecursosGasto);
     }
     private void ConfiguraTimer()
     {
@@ -112,6 +115,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
           vezesExtraida = 0;
           Timer.gameObject.SetActive(false);
           SpriteDoObj.material = materiais[0];//aplica o material padrão
+          DefineSprite(iconeCentroDeRecursosPadrao);
     }
     IEnumerator SpawnInimigos()
     {
@@ -143,7 +147,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
         }
         else
         {
-            DefineSprite(iconeCentroDeRecursos);
+            DefineSprite(iconeCentroDeRecursosPadrao);
             if (tempoRestante != 0)
             {
                 SetupCooldown();

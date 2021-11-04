@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class desastreManager : MonoBehaviour, AcoesNoTutorial
 {
@@ -46,7 +47,8 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     //private float distanciaYdoJogador_errupcaoMax = jogadorScript.Instance.mainCamera.orthographicSize - .5f;
     [Header("NÃO MEXER")]
     [SerializeField] private PostProcessScript CMefeitos;
-    [SerializeField] private Text timer;
+    //[SerializeField] private Text timer;
+    [SerializeField] private TMP_Text timer;
     private bool desastreAcontecendo = false;
     private float tempoAcumulado = 0f;
     private float tempoRestante;

@@ -33,11 +33,9 @@ public class BossAlho : MonoBehaviour
             {
                 case 0:
                     animator.SetTrigger("MISSEL");
-                    //AtaqueDeMissel(); //ligar por evento na animação
                     break;
                 case 1:
                     animator.SetTrigger("SEMENTE");
-                    //AtaqueDeSementeDeAlho(); //ligar por evento na animação
                     break;
             }
             yield return new WaitForSeconds(intervaloEntreAtaques);

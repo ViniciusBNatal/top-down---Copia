@@ -9215,6 +9215,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019367661785867171, guid: 991ac25e0652cf546a370350e792c213,
         type: 3}
+      propertyPath: BossPrefab
+      value: 
+      objectReference: {fileID: 3199460214712093557, guid: 113e7644540952345a2351fa022d79b5,
+        type: 3}
+    - target: {fileID: 2019367661785867171, guid: 991ac25e0652cf546a370350e792c213,
+        type: 3}
       propertyPath: posicaoDeChegadaPorTeleporte
       value: 
       objectReference: {fileID: 2017328086}
@@ -9411,7 +9417,7 @@ PrefabInstance:
     - target: {fileID: 3199460214712093557, guid: 113e7644540952345a2351fa022d79b5,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 113e7644540952345a2351fa022d79b5, type: 3}

@@ -130,7 +130,7 @@ MonoBehaviour:
   velocidadeProjetil: 10
   danoMelee: 10
   danoRanged: 0.1
-  forcaRepulsao: 20
+  forcaRepulsao: 8
   tempoDeStunNoJogador: 0.5
   distanciaMinimaParaFugir: {x: 0, y: 0}
   direcaoDeMovimentacao: {x: 0, y: 0}

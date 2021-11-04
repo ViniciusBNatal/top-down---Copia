@@ -33,7 +33,6 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     //private float vidaAtual;
     private Vector2 movimento;
     private Rigidbody2D rb;
-    private Animator animatorPicareta;
     private bool atirando = false;
     private bool atacando = false;
     private float forcaEmpurrao;
@@ -61,7 +60,6 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         rb = GetComponent<Rigidbody2D>();
         //vidaAtual = vidaMaxima;
         //inventario.BarraDeVida.GetComponent<barraDeVida>().AtualizaBarraDeVida(vidaAtual);
-        animatorPicareta = armaMelee.GetComponent<Animator>();
         distanciaAtaqueMelee.x = posicaoMelee.localPosition.x;
         distanciaAtaqueMelee.y = posicaoMelee.localPosition.y;
         //string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(2);//pega o caminho da cena na pasta de arquivos
@@ -239,7 +237,6 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         if (!atacando)
         {
             atacando = true;
-            animatorPicareta.SetTrigger("ATACANDO");
             JogadorAnimScript.Instance.AnimarAtaqueMelee(posicaoMelee.localPosition.x, posicaoMelee.localPosition.y);
             Collider2D[] objetosAcertados = Physics2D.OverlapCircleAll(posicaoMelee.position, alcanceMelee, objetosAcertaveisLayer);//hit em objetos
             foreach (Collider2D objeto in objetosAcertados)

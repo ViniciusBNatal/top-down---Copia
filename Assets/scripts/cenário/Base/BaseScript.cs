@@ -11,6 +11,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     [SerializeField] private GameObject areaDeInteracao;
     [SerializeField] private float intervaloDuranteADefesa;
     [SerializeField] private int QntdDeDefesasNecessarias;
+    [SerializeField] private GameObject BossPrefab;
     private bool duranteMelhoria = false;
     [SerializeField] private bool tutorial;
     private List<SlotModulo> listaModulos = new List<SlotModulo>();
@@ -125,7 +126,11 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
                 duranteMelhoria = false;
                 DefesasFeitas = 0;
                 if (UIinventario.Instance.VerificarSeLiberouBossFinal())
+                {
+                    //pode ter um dialogo aqui
+                    Instantiate(BossPrefab, transform.position + new Vector3(0f, 14f, 0f), Quaternion.identity);
                     return;
+                }
                 desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre());
                 DesastresList.Instance.LiberarNovosDesastres(UIinventario.Instance.GetTempoAtual());//ativa a possibilidade do evento desse tempo acontecer
             }

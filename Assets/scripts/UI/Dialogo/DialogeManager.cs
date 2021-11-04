@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
+using TMPro;
 
 public class DialogeManager : MonoBehaviour
 {
     public static DialogeManager Instance { get; private set; }
     public delegate void DialogeManagerEventHandler(object origem, System.EventArgs args);
     public event DialogeManagerEventHandler DialogoFinalizado;
-    [SerializeField] private Text NomeNPCText;
-    [SerializeField] private Text DialogoText;
+    //[SerializeField] private Text NomeNPCText;
+    //[SerializeField] private Text DialogoText;
+    [SerializeField] private TMP_Text NomeNPCText;
+    [SerializeField] private TMP_Text DialogoText;
     [SerializeField] private float velocidadeDasLetras;
     [SerializeField] private Animator animatorImage;
     private Animator animator;

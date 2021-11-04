@@ -9,11 +9,9 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
     public static List<bool> JaFoiUsado = new List<bool>();
     private static int VidaDaBase = -1;
     static Dictionary<string, SlotModulo> modulos = new Dictionary<string, SlotModulo>();
-    //static Dictionary<string, int> tipoDosModulos = new Dictionary<string, int>();
-    //static Dictionary<string, int> forcaDosModulos = new Dictionary<string, int>();
-    //static Dictionary<string, string> desastreDosModulos = new Dictionary<string, string>();
     static Dictionary<string, bool> estadoPortas = new Dictionary<string, bool>();
     static Dictionary<string, CentroDeRecursoInfinito> dadosCentroRecursos = new Dictionary<string, CentroDeRecursoInfinito>();
+    static Dictionary<string, NPCscript> dadosNPCs = new Dictionary<string, NPCscript>();
     // Start is called before the first frame update
     void Start()
     {
@@ -90,27 +88,6 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                     temp.SetValorResistencia(moduloScript.GetvalorResistencia());
                     modulos.Add(moduloScript.gameObject.name, temp);
                 }
-                //salva a resistencia
-                //if (forcaDosModulos.ContainsKey(moduloScript.gameObject.name))
-                //{
-                //    forcaDosModulos[moduloScript.gameObject.name] = moduloScript.GetvalorResistencia();
-                //}
-                //else
-                //    forcaDosModulos.Add(moduloScript.gameObject.name, moduloScript.GetvalorResistencia());
-                ////salva o desastre
-                //if (desastreDosModulos.ContainsKey(moduloScript.gameObject.name))
-                //{
-                //    desastreDosModulos[moduloScript.gameObject.name] = moduloScript.GetNomeDesastre();
-                //}
-                //else
-                //    desastreDosModulos.Add(moduloScript.gameObject.name, moduloScript.GetNomeDesastre());
-                ////salva o tipo de modulo
-                //if (tipoDosModulos.ContainsKey(moduloScript.gameObject.name))
-                //{
-                //    tipoDosModulos[moduloScript.gameObject.name] = moduloScript.GetModulo();
-                //}
-                //else
-                //    tipoDosModulos.Add(moduloScript.gameObject.name, moduloScript.GetModulo());
                 break;
             case 1:
                 //carrega
@@ -119,16 +96,8 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                     moduloScript.SetModulo(modulos[moduloScript.gameObject.name].GetModulo());
                     moduloScript.SetNomeDesastre(modulos[moduloScript.gameObject.name].GetNomeDesastre());
                     moduloScript.SetValorResistencia(modulos[moduloScript.gameObject.name].GetvalorResistencia());
-                    //moduloScript.ConstruirModulo(moduloScript.GetvalorResistencia(), moduloScript.GetNomeDesastre(), moduloScript.GetModulo());
+                    moduloScript.ConstruirModulo(moduloScript.GetvalorResistencia(), moduloScript.GetNomeDesastre(), moduloScript.GetModulo());
                 }
-                //if (forcaDosModulos.ContainsKey(moduloScript.gameObject.name) && desastreDosModulos.ContainsKey(moduloScript.gameObject.name) && tipoDosModulos.ContainsKey(moduloScript.gameObject.name))
-                //{
-                //    moduloScript.SetValorResistencia(forcaDosModulos[moduloScript.gameObject.name]);//carrega a forca
-                //    moduloScript.SetNomeDesastre(desastreDosModulos[moduloScript.gameObject.name]);//carrega desastre
-                //    moduloScript.SetModulo(tipoDosModulos[moduloScript.gameObject.name]);//carrega modulo
-                //    if (forcaDosModulos[moduloScript.gameObject.name] != 0 && desastreDosModulos[moduloScript.gameObject.name] != "" && tipoDosModulos[moduloScript.gameObject.name] != 0)
-                //        moduloScript.ConstruirModulo(moduloScript.GetvalorResistencia(), moduloScript.GetNomeDesastre(), moduloScript.GetModulo());
-                //}
                 break;
         }
     }
@@ -188,6 +157,35 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                     centroScript.SetCentroDeInimigos(dadosCentroRecursos[centroScript.gameObject.name].GetCentroDeInimigos());
                     centroScript.SetVezesExtraida(dadosCentroRecursos[centroScript.gameObject.name].GetVezesExtraida());
                     centroScript.SetVidaAtual(dadosCentroRecursos[centroScript.gameObject.name].GetVidaAtual());
+                }
+                break;
+        }
+    }
+    public void Salvar_CarregarDadosDosNPCs(NPCscript npcScript, int acao)
+    {
+        switch (acao)
+        {
+            case 0:
+                //salva
+                if (dadosNPCs.ContainsKey(npcScript.gameObject.name))
+                {
+                    dadosNPCs[npcScript.gameObject.name].SetObjDaMissao(npcScript.GetObjDaMissao());
+                    dadosNPCs[npcScript.gameObject.name].SetMissaoCumprida(npcScript.GetMissaoCumprida());
+                }
+                else
+                {
+                    NPCscript temp = new NPCscript();
+                    temp.SetObjDaMissao(npcScript.GetObjDaMissao());
+                    temp.SetMissaoCumprida(npcScript.GetMissaoCumprida());
+                    dadosNPCs.Add(npcScript.gameObject.name, temp);
+                }
+                break;
+            case 1:
+                //carrega
+                if (dadosNPCs.ContainsKey(npcScript.gameObject.name))
+                {
+                    npcScript.SetObjDaMissao(dadosNPCs[npcScript.gameObject.name].GetObjDaMissao());
+                    npcScript.SetMissaoCumprida(dadosNPCs[npcScript.gameObject.name].GetMissaoCumprida());
                 }
                 break;
         }
