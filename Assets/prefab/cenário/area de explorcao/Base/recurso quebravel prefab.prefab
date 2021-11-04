@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8991288580678989614}
   - component: {fileID: 4767925194459054367}
   - component: {fileID: 6895422993060629283}
+  - component: {fileID: 3587871810044104300}
   m_Layer: 9
   m_Name: recurso quebravel prefab
   m_TagString: obstaculo
@@ -131,6 +132,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2.7768989, y: 1.4481094}
   m_Direction: 1
+--- !u!114 &3587871810044104300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3029989175299500926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3880f6b4fe996aa4582153937a4cea88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 8db36b365320a2f4bb1d7d21e6a7ef56, type: 2}
+  duration: 0.125
 --- !u!1 &5925576417519381513
 GameObject:
   m_ObjectHideFlags: 0

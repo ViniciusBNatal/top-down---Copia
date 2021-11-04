@@ -7,6 +7,7 @@ public class balaHit : MonoBehaviour
     public float DuracaoDaBala;
     private Animator animator;
     private float dano;
+    private float duracaoStun;
     [SerializeField] private bool balaJogador = false;
     [SerializeField] private bool balaInimigo = false;
 
@@ -25,7 +26,7 @@ public class balaHit : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player")
             {
-                collision.gameObject.GetComponent<jogadorScript>().mudancaRelogio(dano);
+                collision.gameObject.GetComponent<jogadorScript>().mudancaRelogio(dano, duracaoStun);
                 Destroy(this.gameObject);
             }
             destruirAoTocar(collision);
@@ -55,5 +56,9 @@ public class balaHit : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         return animator;
+    }
+    public void SetDuracaoStun(float f)
+    {
+        duracaoStun = f;
     }
 }

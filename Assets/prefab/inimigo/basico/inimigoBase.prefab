@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 566375125526406927}
   - component: {fileID: 566375125526406926}
   - component: {fileID: 566375125526406925}
-  - component: {fileID: 566375125526406915}
   - component: {fileID: 6736636612218344493}
   - component: {fileID: 4662088269654304648}
+  - component: {fileID: 566375125526406915}
   - component: {fileID: 3239065451192483997}
+  - component: {fileID: 8885434374726299371}
   m_Layer: 0
   m_Name: inimigoBase
   m_TagString: Untagged
@@ -104,36 +105,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
---- !u!114 &566375125526406915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566375125526406914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7e673c8e2950084a84253a83f2ff9ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  imortal: 0
-  tiposDeMovimentacao: 0
-  disparo: 0
-  projetil: {fileID: 1029496171083325692, guid: 0612f2afecd8da940b203880a2641b0c,
-    type: 3}
-  pontoDisparo: {fileID: 5766492688547367779}
-  pontosDeFuga: []
-  vidaMaxima: 100
-  velocidade: 3
-  taxaDisparo: 2
-  distanciaMinimaParaFugir: {x: 0, y: 0}
-  velocidadeProjetil: 10
-  danoMelee: 10
-  danoRanged: 0.1
-  forcaRepulsao: 20
-  tempoDeStunNoJogador: 0.5
-  direcaoDeMovimentacao: {x: 0, y: 0}
-  inimigoAnimScript: {fileID: 3239065451192483997}
 --- !u!50 &6736636612218344493
 Rigidbody2D:
   serializedVersion: 4
@@ -174,6 +145,35 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &566375125526406915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566375125526406914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e673c8e2950084a84253a83f2ff9ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imortal: 0
+  tiposDeMovimentacao: 0
+  disparo: 0
+  projetil: {fileID: 1029496171083325692, guid: 0612f2afecd8da940b203880a2641b0c,
+    type: 3}
+  pontoDisparo: {fileID: 5766492688547367779}
+  pontosDeFuga: []
+  vidaMaxima: 100
+  velocidade: 3
+  taxaDisparo: 2
+  velocidadeProjetil: 10
+  danoMelee: 10
+  danoRanged: 0.1
+  forcaRepulsao: 20
+  tempoDeStunNoJogador: 0.5
+  distanciaMinimaParaFugir: {x: 0, y: 0}
+  direcaoDeMovimentacao: {x: 0, y: 0}
 --- !u!114 &3239065451192483997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +186,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff927407a0bac54ab0631443ab5515b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8885434374726299371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566375125526406914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3880f6b4fe996aa4582153937a4cea88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 8db36b365320a2f4bb1d7d21e6a7ef56, type: 2}
+  duration: 0.125
 --- !u!1 &8395206356854495248
 GameObject:
   m_ObjectHideFlags: 0

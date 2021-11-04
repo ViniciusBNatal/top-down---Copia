@@ -41,4 +41,14 @@ public class JogadorAnimScript : MonoBehaviour
     {
         animator.SetBool("CAIDO", b);
     }
+    public void Hit(float multiplicador)
+    {
+        float f = Mathf.Pow(multiplicador, -1f);//se a duração do stun é de ,5 a anim deve tocar 2 vezes mais rápida
+        animator.SetFloat("HITMULTI", f);
+        animator.SetTrigger("HIT");
+    }
+    public void FimHit()
+    {
+        animator.SetFloat("HITMULTI", 1f);
+    }
 }

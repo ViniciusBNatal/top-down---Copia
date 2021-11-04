@@ -28,6 +28,7 @@ public class inimigoScript : MonoBehaviour
     public Vector2 direcaoDeMovimentacao;
     //variaveis privadas
     [Header("Não Mexer")]
+    private EfeitoFlash flash;
     private inimigoAnimScript inimigoAnimScript;
     private Vector2 direcaoProjetil;
     private Transform alvo;
@@ -47,6 +48,7 @@ public class inimigoScript : MonoBehaviour
     void Start()
     {
         //areaDetecao.radius = raioVisao;
+        flash = GetComponent<EfeitoFlash>();
         rb = GetComponent<Rigidbody2D>();
         inimigoAnimScript = GetComponent<inimigoAnimScript>();
         vidaAtual = vidaMaxima;
@@ -140,6 +142,7 @@ public class inimigoScript : MonoBehaviour
             balains.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));
             balains.GetComponent<Rigidbody2D>().velocity = velocidadeProjetil * direcaoProjetil;
             balains.GetComponent<balaHit>().SetDano(danoRanged);
+            balains.GetComponent<balaHit>().SetDuracaoStun(tempoDeStunNoJogador);
             yield return new WaitForSeconds(taxaDisparo);
             atirando = false;
         }
@@ -155,6 +158,7 @@ public class inimigoScript : MonoBehaviour
     {
         if (!imortal)
         {
+            flash.Flash(Color.red);
             vidaAtual += valor;
             if (vidaAtual > vidaMaxima)
             {

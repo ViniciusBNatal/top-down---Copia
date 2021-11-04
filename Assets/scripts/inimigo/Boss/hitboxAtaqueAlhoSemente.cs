@@ -9,7 +9,7 @@ public class hitboxAtaqueAlhoSemente : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            jogadorScript.Instance.mudancaRelogio(ataqueRef.GetDano());
+            jogadorScript.Instance.mudancaRelogio(ataqueRef.GetDano(), ataqueRef.GetDuracaoStun());
             jogadorScript.Instance.Knockback(ataqueRef.GetDuracaoStun(), ataqueRef.GetForcaDeRepulsao(), this.transform);
         }
     }

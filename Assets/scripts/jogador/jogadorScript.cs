@@ -254,8 +254,9 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
             atacando = false;
         }
     }
-    public void mudancaRelogio(float valor)
+    public void mudancaRelogio(float valor, float duracaoStn)
     {
+        JogadorAnimScript.Instance.Hit(duracaoStn);
         if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
         {
             desastreManager.Instance.MudarTempoAcumuladoParaDesastre(desastreManager.Instance.GetTempoAcumuladoParaDesastre() + Mathf.Clamp(valor, 0, desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres()));

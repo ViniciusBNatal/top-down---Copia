@@ -52,7 +52,7 @@ public class EnxameDeInsetos : MonoBehaviour
     {
         while (jogadorNoEnxame)
         {
-            jogadorScript.Instance.mudancaRelogio(dano);
+            jogadorScript.Instance.mudancaRelogio(dano, .15f);
             yield return new WaitForSeconds(intervaloEntreAtaques);
         }
     }

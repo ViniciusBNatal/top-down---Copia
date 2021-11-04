@@ -25,7 +25,7 @@ public class GasSementeAlho : MonoBehaviour
     {
         while (gasIniciado)
         {
-            jogadorScript.Instance.mudancaRelogio(atqRef.GetDanoAreaToxica());
+            jogadorScript.Instance.mudancaRelogio(atqRef.GetDanoAreaToxica(), .25f);
             yield return new WaitForSeconds(atqRef.GetIntervaloHitsAraToxica());
         }
     }

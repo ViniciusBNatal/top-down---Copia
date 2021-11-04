@@ -32,6 +32,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     private SpriteRenderer SpriteDoObj;
     private int minutos = 0;
     private int segundos = 0;
+    private EfeitoFlash flash;
     private void Start()
     {
         SpriteDoObj = GetComponent<SpriteRenderer>();
@@ -40,6 +41,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     }
     public void RecebeuHit()
     {
+        flash.Flash(Color.white);
         if (centroDeInimigos)
         {
             AplicarDano();

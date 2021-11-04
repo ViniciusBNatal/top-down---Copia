@@ -69,8 +69,10 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     }
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.R))
+       // if (Input.GetKeyDown(KeyCode.R))
         //{
+            //desastreAcontecendo = true;
+            //ChuvaAcida();
         //    StopAllCoroutines();
         //    ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
         //    SetUpParaNovoSorteioDeDesastres();
@@ -378,7 +380,7 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     {
         while (desastreAcontecendo)
         {
-            jogadorScript.Instance.mudancaRelogio(danoDoAcido);
+            jogadorScript.Instance.mudancaRelogio(danoDoAcido, .15f);
             yield return new WaitForSeconds(intervaloEntreHitsChuvaAcida);
         }
     }
