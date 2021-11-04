@@ -11,9 +11,9 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     // Start is called before the first frame update
     void Start()
     {
-        icone = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        icone.sprite = item.icone;
+        icone = GetComponent<SpriteRenderer>();
+        //icone.sprite = item.icone;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,6 +27,8 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     public void DefineItem(Item it)
     {
         item = it;
+        icone = GetComponent<SpriteRenderer>();
+        icone.sprite = item.icone;
     }
     public Item ReferenciaItem()
     {

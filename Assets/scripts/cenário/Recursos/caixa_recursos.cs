@@ -26,10 +26,10 @@ public class caixa_recursos : MonoBehaviour, CentroDeRecurso, SalvamentoEntreCen
     public void CriaRecurso(int i)
     {
         GameObject recurso = Instantiate(recursoColetavelPreFab, transform);
-        recurso.transform.SetParent(null);//desasosia recursos da caixa
         recurso.GetComponent<recurso_coletavel>().DefineItem(itens[i]);
         recurso.GetComponent<recurso_coletavel>().DefineQuantidadeItem(qntdDoRecursoDropado[i]);
         recurso.GetComponent<recurso_coletavel>().LancaRecurso(forca);
+        recurso.transform.SetParent(null);//desasosia recursos da caixa
     }
     public void SalvarEstado()
     {
