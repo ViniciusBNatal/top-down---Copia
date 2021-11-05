@@ -1,21 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
+
 
 public class PostProcessScript : MonoBehaviour
 {
-    private PostProcessVolume volume;
+    private Volume volume;
     private ChromaticAberration CA;
     private Vignette vignette;
-    private Grain grain;
+    private FilmGrain grain;
     // Start is called before the first frame update
     void Start()
     {
-        volume = GetComponent<PostProcessVolume>();
-        volume.profile.TryGetSettings(out CA);
-        volume.profile.TryGetSettings(out vignette);
-        volume.profile.TryGetSettings(out grain);
+        volume = GetComponent<Volume>();
+        volume.profile.TryGet(out grain);
+        volume.profile.TryGet(out vignette);
+        volume.profile.TryGet(out CA);
     }
     public void visualVirus(bool liga_desliga)
     {
