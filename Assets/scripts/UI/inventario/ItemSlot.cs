@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ItemSlot : MonoBehaviour
 {
     public Item item;
-    [SerializeField] private Text qntdItemText;
+    [SerializeField] private TMP_Text qntdItemText;
+    //[SerializeField] private Text qntdItemText;
     public int qntdRecurso;
 
     private void Start()

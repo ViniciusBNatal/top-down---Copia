@@ -4265,8 +4265,8 @@ Tilemap:
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -31, y: -18, z: 0}
-  m_Size: {x: 71, y: 64, z: 1}
+  m_Origin: {x: -32, y: -18, z: 0}
+  m_Size: {x: 72, y: 64, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -4584,7 +4584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5084,7 +5084,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942151169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.75, y: -5.35, z: -7.2799997}
+  m_LocalPosition: {x: -8.74, y: -1.24, z: -7.2799997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 657060517}
@@ -6943,7 +6943,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441363024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.75, y: -5.35, z: -7.2799997}
+  m_LocalPosition: {x: -8.74, y: -1.24, z: -7.2799997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7062,7 +7062,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 338.66345, y: -194.96088}
+  m_SizeDelta: {x: 146.66345, y: -171.7844}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1475340046
 MonoBehaviour:
@@ -7442,12 +7442,12 @@ PrefabInstance:
     - target: {fileID: 525454675051048018, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.33
+      value: 2.31
       objectReference: {fileID: 0}
     - target: {fileID: 525454675051048018, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.6200027
+      value: -7.49
       objectReference: {fileID: 0}
     - target: {fileID: 525454675051048018, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
@@ -7558,8 +7558,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: e50f2c5b976b8a447bb620d8ae25c724, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -15842,7 +15842,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.4355609, y: 1}
+  m_AnchorMax: {x: 0.75556093, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -16445,8 +16445,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1733967262}
   m_HandleRect: {fileID: 1733967261}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.4355609
+  m_Value: -0.00000020807896
+  m_Size: 0.75556093
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16523,7 +16523,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -216.6434}
+  m_SizeDelta: {x: 0, y: -303.46692}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1978307612
 MonoBehaviour:
@@ -16954,7 +16954,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056875264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.75, y: -5.35, z: 1.72}
+  m_LocalPosition: {x: -8.74, y: -1.24, z: 1.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 79053926}
@@ -17173,8 +17173,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 424b3e5e56d23a440b057fa54b2a70f0, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -17207,6 +17207,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919771660638717841, guid: 991ac25e0652cf546a370350e792c213,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5961388584270940554, guid: 991ac25e0652cf546a370350e792c213,
         type: 3}

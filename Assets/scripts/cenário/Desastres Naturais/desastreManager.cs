@@ -69,10 +69,10 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     }
     private void Update()
     {
-       // if (Input.GetKeyDown(KeyCode.R))
+        //if (Input.GetKeyDown(KeyCode.R))
         //{
             //desastreAcontecendo = true;
-            //ChuvaAcida();
+            //Virus();
         //    StopAllCoroutines();
         //    ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
         //    SetUpParaNovoSorteioDeDesastres();

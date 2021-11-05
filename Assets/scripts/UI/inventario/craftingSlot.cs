@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class craftingSlot : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class craftingSlot : MonoBehaviour
     [SerializeField] private GameObject recursosGrid;
     [SerializeField] private Image iconeDoModulo;
     [SerializeField] private Image iconeDoDesastre;
-    private List<Text> qntdNecessariaParaCadarecursoText = new List<Text>();
+    private List<TMP_Text> qntdNecessariaParaCadarecursoText = new List<TMP_Text>();
     private List<int> novosValores = new List<int>();
     private int divisor = 3;
     private int forca = 1;
@@ -27,9 +28,9 @@ public class craftingSlot : MonoBehaviour
             float largura = obj.GetComponent<RectTransform>().rect.width;
             float altura = obj.GetComponent<RectTransform>().rect.height;
             obj.transform.localPosition = new Vector3((i % divisor) * largura, -(i / divisor) * altura, 0);
-            obj.GetComponentInChildren<Text>().text = receita.quantidadeDosRecursos[i].ToString("000");
+            obj.GetComponentInChildren<TMP_Text>().text = receita.quantidadeDosRecursos[i].ToString("000");
             novosValores.Add(receita.quantidadeDosRecursos[i]);
-            qntdNecessariaParaCadarecursoText.Add(obj.GetComponentInChildren<Text>());
+            qntdNecessariaParaCadarecursoText.Add(obj.GetComponentInChildren<TMP_Text>());
             obj.GetComponentInChildren<Image>().sprite = receita.itensNecessarios[i].icone;
         }
     }

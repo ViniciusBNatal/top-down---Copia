@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UpgradeSlot : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class UpgradeSlot : MonoBehaviour
                 float largura = obj.GetComponent<RectTransform>().rect.width;
                 float altura = obj.GetComponent<RectTransform>().rect.height;
                 obj.transform.localPosition = new Vector3((i % divisor) * largura, -(i / divisor) * altura, 0);
-                obj.GetComponentInChildren<Text>().text = receita.quantidadeDosRecursos[i].ToString("000");
+                obj.GetComponentInChildren<TMP_Text>().text = receita.quantidadeDosRecursos[i].ToString("000");
                 obj.GetComponentInChildren<Image>().sprite = receita.itensNecessarios[i].icone;
             }
         }

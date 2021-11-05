@@ -40,10 +40,13 @@ public class inimigoScript : MonoBehaviour
         movimentacaoLivre,
         movimentacaoFixa,
         movimentacaoEntrePontosAleatorios,
-        movimentacaoEntrePontosFixa
+        movimentacaoEntrePontosFixa,
     }
     private int proximoPontoDeFuga = 0;
     private CentroDeRecursoInfinito CentroDeSpawn = null;
+    private List<Vector3> pontosDeNavegacaoDeRetorno = new List<Vector3>();
+    private Coroutine salvandoPontosDeNavegacao = null;
+    private bool PrecisaRetornarAoPontoInicial = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,8 +69,8 @@ public class inimigoScript : MonoBehaviour
         //orientacaoSprite();
         switch (tiposDeMovimentacao)
         {
-            case TiposDeMovimentacao.estatico:
-                break;
+            //case TiposDeMovimentacao.estatico:
+            //    break;
             case TiposDeMovimentacao.movimentacaoFixa:
                 rb.velocity = (direcaoDeMovimentacao * velocidade);
                 break;
@@ -76,10 +79,19 @@ public class inimigoScript : MonoBehaviour
                 {
                     direcaoDeMovimentacao = (alvo.position - transform.position).normalized;
                     rb.velocity = (direcaoDeMovimentacao * velocidade);
+                    if (salvandoPontosDeNavegacao == null)
+                        salvandoPontosDeNavegacao = StartCoroutine(this.salvaPontosParaNavegacao());
+                }
+                else if (PrecisaRetornarAoPontoInicial)
+                {
+                    direcaoDeMovimentacao = (ProximoPonto() - transform.position).normalized;
+                    rb.velocity = (direcaoDeMovimentacao * velocidade);
+                    VerificarSePontoFoiAlcancado();
                 }
                 break;
-            case TiposDeMovimentacao.movimentacaoEntrePontosFixa:
-
+            //case TiposDeMovimentacao.movimentacaoEntrePontosFixa:
+            //    break;
+            default:
                 break;
         }
     }
@@ -99,6 +111,7 @@ public class inimigoScript : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             alvo = collision.transform;
+            //retornando = false;
             if (disparo)
             {
                 if (!atirando)
@@ -112,6 +125,8 @@ public class inimigoScript : MonoBehaviour
         {
             alvo = null;
             rb.velocity = Vector2.zero;
+            salvandoPontosDeNavegacao = null;
+            PrecisaRetornarAoPontoInicial = true;
         }
     }
     public void Teleportar(TiposDeMovimentacao tipoDeMovimentacao)// 1 movimentação fixa, 2 movimentação aleatória
@@ -186,5 +201,38 @@ public class inimigoScript : MonoBehaviour
     public void SetCentroDeSpawn(CentroDeRecursoInfinito cDeSpawn)
     {
         CentroDeSpawn = cDeSpawn;
+    }
+    IEnumerator salvaPontosParaNavegacao()
+    {
+        while (alvo != null)
+        {
+            pontosDeNavegacaoDeRetorno.Add(transform.position);
+            yield return new WaitForSeconds(1f);
+        }
+    }
+    private Vector3 ProximoPonto()
+    {
+        if (pontosDeNavegacaoDeRetorno.Count > 0)
+        {
+            return pontosDeNavegacaoDeRetorno[pontosDeNavegacaoDeRetorno.Count - 1];
+        }
+        else
+            return transform.position;
+    }
+    private void VerificarSePontoFoiAlcancado()
+    {
+        if (Mathf.Abs(ProximoPonto().x) - Mathf.Abs(transform.position.x) <= .5f && Mathf.Abs(ProximoPonto().y) - Mathf.Abs(transform.position.y) <= .5f)
+        {
+            if (pontosDeNavegacaoDeRetorno.Count == 0)
+            {
+                PrecisaRetornarAoPontoInicial = false;
+                pontosDeNavegacaoDeRetorno.Clear();
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                pontosDeNavegacaoDeRetorno.RemoveAt(pontosDeNavegacaoDeRetorno.Count - 1);
+            }            
+        }   
     }
 }
