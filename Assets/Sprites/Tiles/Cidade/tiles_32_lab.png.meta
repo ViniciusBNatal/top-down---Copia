@@ -35,6 +35,9 @@ TextureImporter:
   - first:
       213: 7051459435041172250
     second: tiles_32_lab_10
+  - first:
+      213: 129717813163647105
+    second: tiles_32_lab_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -124,7 +127,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 161
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -144,8 +147,8 @@ TextureImporter:
       name: tiles_32_lab_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 161
+        x: 80
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -165,8 +168,8 @@ TextureImporter:
       name: tiles_32_lab_2
       rect:
         serializedVersion: 2
-        x: 112
-        y: 161
+        x: 144
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -187,7 +190,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 113
+        y: 112
         width: 32
         height: 32
       alignment: 0
@@ -207,8 +210,8 @@ TextureImporter:
       name: tiles_32_lab_4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 113
+        x: 80
+        y: 112
         width: 32
         height: 32
       alignment: 0
@@ -228,8 +231,8 @@ TextureImporter:
       name: tiles_32_lab_5
       rect:
         serializedVersion: 2
-        x: 112
-        y: 113
+        x: 144
+        y: 112
         width: 32
         height: 32
       alignment: 0
@@ -250,7 +253,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 65
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -270,8 +273,8 @@ TextureImporter:
       name: tiles_32_lab_7
       rect:
         serializedVersion: 2
-        x: 64
-        y: 65
+        x: 80
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -291,8 +294,8 @@ TextureImporter:
       name: tiles_32_lab_8
       rect:
         serializedVersion: 2
-        x: 112
-        y: 65
+        x: 144
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -313,7 +316,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 17
+        y: 16
         width: 32
         height: 32
       alignment: 0
@@ -333,8 +336,8 @@ TextureImporter:
       name: tiles_32_lab_10
       rect:
         serializedVersion: 2
-        x: 64
-        y: 17
+        x: 80
+        y: 16
         width: 32
         height: 32
       alignment: 0
@@ -346,6 +349,27 @@ TextureImporter:
       bones: []
       spriteID: a1ba4b5fef0dbd160800000000000000
       internalID: 7051459435041172250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles_32_lab_11
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 16
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 180e8aee9a9dcc100800000000000000
+      internalID: 129717813163647105
       vertices: []
       indices: 
       edges: []

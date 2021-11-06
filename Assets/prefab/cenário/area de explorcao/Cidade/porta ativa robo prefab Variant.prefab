@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &222516118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667575370239951036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ad58524d1506949b7db7e0d1031ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogo:
+    NomeNPC: Robo
+    Frases:
+    - Entrada Proibida Detectada
+    EstadoImagemNPC: []
+    FocarComCamera:
+    - {fileID: 0}
+--- !u!1001 &7852998038120614694
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1491287392820595610, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: m_Name
+      value: porta prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259157510893977715, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259157510893977715, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259157510893977715, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259157510893977715, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259157510893977715, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259157510893977715, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259157510893977715, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259157510893977715, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259157510893977715, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259157510893977715, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259157510893977715, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: inimigo
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: EventosAoAbrirPorta.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: EventosAoAbrirPorta.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: EventosAoAbrirPorta.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: EventosAoAbrirPorta.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2821894166403710375}
+    - target: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: EventosAoAbrirPorta.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2821894166403710375}
+    - target: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: EventosAoAbrirPorta.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: EventosAoAbrirPorta.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: EventosAoAbrirPorta.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AtivarRobo
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: EventosAoAbrirPorta.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: B
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: EventosAoAbrirPorta.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: EventosAoAbrirPorta.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759244435782328174, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: acao.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2821894166403710375}
+    - target: {fileID: 7759244435782328174, guid: c95af34be59c2324fa5b05a6506740a0,
+        type: 3}
+      propertyPath: acao.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PortaPorChave
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c95af34be59c2324fa5b05a6506740a0, type: 3}
+--- !u!1 &8667575370239951036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1491287392820595610, guid: c95af34be59c2324fa5b05a6506740a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7852998038120614694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2821894166403710375 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5463453284309776001, guid: c95af34be59c2324fa5b05a6506740a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7852998038120614694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667575370239951036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a11be02f78c294bbe76cd2e8e9de58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

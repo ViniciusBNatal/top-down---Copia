@@ -6908,7 +6908,7 @@ MonoBehaviour:
   - CANHAO
   ativar: 0101000000
   iconesModulos:
-  - {fileID: 21300000, guid: 3350ffb359168c640a44d92c0268a808, type: 3}
+  - {fileID: 21300000, guid: 434758122da944744a210148b3df4709, type: 3}
   - {fileID: 21300000, guid: 44f85314304aa7942a778ee72878fc95, type: 3}
   iconesMultiplicador:
   - {fileID: 21300000, guid: bc66f9cf2d22cb24da6f9acfdc69d067, type: 3}

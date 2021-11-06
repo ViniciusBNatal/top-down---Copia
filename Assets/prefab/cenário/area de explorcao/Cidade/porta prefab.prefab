@@ -30,8 +30,8 @@ Transform:
   m_LocalPosition: {x: -8.3, y: -2.05, z: 0}
   m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_Children:
-  - {fileID: 5672976089260095701}
   - {fileID: 4788718681239207797}
+  - {fileID: 6518179724645480017}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -101,6 +101,16 @@ MonoBehaviour:
   tempoParaAbrir: 0
   tempoParaFechar: 0
   chaveNecessaria: {fileID: 0}
+  nDeBotoesNecessarios: 0
+  EventosAoAbrirPorta:
+    m_PersistentCalls:
+      m_Calls: []
+  EventosAoFecharPorta:
+    m_PersistentCalls:
+      m_Calls: []
+  Criar: 0
+  inimigo: {fileID: 0}
+  pontoDeSpawnInimigo: {fileID: 6518179724645480017}
 --- !u!61 &253612970703550368
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,7 +137,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &7137256785325511677
+--- !u!1 &8715177386966818813
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,27 +145,27 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5672976089260095701}
+  - component: {fileID: 6518179724645480017}
   m_Layer: 0
-  m_Name: "ponto de rota\xE7\xE3o"
+  m_Name: ponto de spawn do inimigo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5672976089260095701
+--- !u!4 &6518179724645480017
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7137256785325511677}
+  m_GameObject: {fileID: 8715177386966818813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3259157510893977715}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7913487146032275018
 PrefabInstance:
@@ -172,12 +182,12 @@ PrefabInstance:
     - target: {fileID: 467254051271393572, guid: 59f09c031e293154ab34b2aec70998e2,
         type: 3}
       propertyPath: acao.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TentarAbrirPorta
+      value: PortaPorChave
       objectReference: {fileID: 0}
     - target: {fileID: 3433617467775492415, guid: 59f09c031e293154ab34b2aec70998e2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3433617467775492415, guid: 59f09c031e293154ab34b2aec70998e2,
         type: 3}
@@ -237,7 +247,7 @@ PrefabInstance:
     - target: {fileID: 8473697606045163635, guid: 59f09c031e293154ab34b2aec70998e2,
         type: 3}
       propertyPath: m_Size.y
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9026574210593306821, guid: 59f09c031e293154ab34b2aec70998e2,
         type: 3}

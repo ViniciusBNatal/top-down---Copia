@@ -1,18 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Porta : MonoBehaviour, SalvamentoEntreCenas
 {
-    private int botoesPrecionados = 0;
-    private BoxCollider2D colisao;
-    private bool iniciouCorrotina = false;
+    [Header("Configurações da Porta")]
     [SerializeField] private bool aberta;
     [SerializeField] private float tempoParaAbrir;
     [SerializeField] private float tempoParaFechar;
     [SerializeField] private GameObject chaveNecessaria;
-    private Item chave = null;
     [SerializeField] private int nDeBotoesNecessarios;
+    [SerializeField] private UnityEvent EventosAoAbrirPorta;
+    [SerializeField] private UnityEvent EventosAoFecharPorta;
+    [Header("Configurações Para Ações com Inimigos")]
+    [SerializeField] private bool Criar;
+    [SerializeField] private GameObject inimigo;
+    [SerializeField] private Transform pontoDeSpawnInimigo;
+    private int botoesPrecionados = 0;
+    private BoxCollider2D colisao;
+    private bool iniciouCorrotina = false;
+    private Item chave = null;
 
     private void Start()
     {
@@ -73,6 +81,8 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
         transform.Rotate(new Vector3(0f, 0f, 90f));
         chave = null;
         aberta = true;
+        if (EventosAoAbrirPorta != null)
+            EventosAoAbrirPorta.Invoke();
     }
     private void FechaPorta()
     {
@@ -80,6 +90,18 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
         if (transform.rotation.z != 0f)
             transform.Rotate(new Vector3(0f, 0f,-90f));
         aberta = false;
+        EventosAoFecharPorta.Invoke();
+    }
+    public void acaoComInimigos()
+    {
+        if (Criar)
+        {
+            GameObject obj = Instantiate(inimigo, pontoDeSpawnInimigo);
+        }
+        else
+        {
+            inimigo.GetComponent<inimigoScript>().enabled = true;
+        }
     }
     public void SalvarEstado()
     {
@@ -109,5 +131,20 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     public void SetAberto_Fechado(bool b)
     {
         aberta = b;
+    }
+    public void AtivarRobo()
+    {
+        if (GetComponent<DialogoTrigger>() != null)
+        {
+            DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+            GetComponent<DialogoTrigger>().AtivarDialogo();
+            //acaoComInimigos();
+        }
+    }
+    protected virtual void AoFinalizarDialogo(object origem, System.EventArgs args)
+    {
+        acaoComInimigos();
+        EventosAoAbrirPorta = null;
+        DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
     }
 }

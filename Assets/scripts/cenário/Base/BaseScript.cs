@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
 {
@@ -12,6 +13,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     [SerializeField] private float intervaloDuranteADefesa;
     [SerializeField] private int QntdDeDefesasNecessarias;
     [SerializeField] private GameObject BossPrefab;
+    [SerializeField] private TMP_Text vidaAtualText;
     private bool duranteMelhoria = false;
     [SerializeField] private bool tutorial;
     private List<SlotModulo> listaModulos = new List<SlotModulo>();
@@ -25,6 +27,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     private void Start()
     {
         vidaAtual = vidaMax;
+        vidaAtualText.text = vidaAtual.ToString();
         jogadorScript.Instance.transform.position = posicaoDeChegadaPorTeleporte.position;
         jogadorScript.Instance.Tutorial();
     }
@@ -53,7 +56,8 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
                 for (int i = 0; i < desastreManager.Instance.GetQntdDesastresParaOcorrer() - defendido; i++)
                 {
                     vidaAtual--;
-                    if (vidaAtual <= 0)
+                vidaAtualText.text = vidaAtual.ToString();
+                if (vidaAtual <= 0)
                     {
                         Debug.Log("Perdeu");
                     }

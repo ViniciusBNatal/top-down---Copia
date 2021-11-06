@@ -8,7 +8,6 @@ public class TutorialSetUp : MonoBehaviour
     [SerializeField] private float intervaloDuranteTutorial;
     [SerializeField] private List<Dialogo> dialogosDoTutorial = new List<Dialogo>();
     private int sequenciaDialogos = 0;
-
     private void Awake()
     {
         Instance = this;
