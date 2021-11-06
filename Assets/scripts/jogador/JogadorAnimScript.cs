@@ -23,6 +23,16 @@ public class JogadorAnimScript : MonoBehaviour
             animator.SetFloat("HORIZONTAL", movimento.x);
             animator.SetFloat("VERTICAL", movimento.y);
             animator.SetFloat("VELOCIDADE", movimento.sqrMagnitude);
+            if (movimento.x != 0f)
+            {
+                animator.SetFloat("IDLEHORZ", movimento.x);
+                animator.SetFloat("IDLEVERTC", 0f);
+            }
+            if (movimento.y != 0f)
+            {
+                animator.SetFloat("IDLEVERTC", movimento.y);
+                animator.SetFloat("IDLEHORZ", 0f);
+            }
         }
     }
     public void AnimarAtaqueMelee(float dirX, float dirY)

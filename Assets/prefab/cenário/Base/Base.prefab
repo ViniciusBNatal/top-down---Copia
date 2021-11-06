@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7888257675567363165}
   - component: {fileID: 8254519956537495540}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: vida
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,7 +315,7 @@ MonoBehaviour:
   QntdDeDefesasNecessarias: 2
   BossPrefab: {fileID: 3199460214712093557, guid: 113e7644540952345a2351fa022d79b5,
     type: 3}
-  vidaAtualText: {fileID: 0}
+  vidaAtualText: {fileID: 8254519956537495540}
   tutorial: 1
 --- !u!61 &8083962399815963917
 BoxCollider2D:
