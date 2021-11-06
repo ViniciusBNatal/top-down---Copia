@@ -1,40 +1,43 @@
 fileFormatVersion: 2
-guid: 24fc2fd67f5a6004681a887d4f71090a
+guid: ea50af62010217f438e1c49f31df915d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8481762101901289289
-    second: tiles_32_lab_0
+      213: 2977576598389083726
+    second: tiles_32_palco_0
   - first:
-      213: 2631196185629976899
-    second: tiles_32_lab_1
+      213: -3852702365153240762
+    second: tiles_32_palco_1
   - first:
-      213: 3526801353574877081
-    second: tiles_32_lab_2
+      213: 5797337826130240030
+    second: tiles_32_palco_2
   - first:
-      213: -8234873017803142653
-    second: tiles_32_lab_3
+      213: -4843078164963743163
+    second: tiles_32_palco_3
   - first:
-      213: 3967826831726654064
-    second: tiles_32_lab_4
+      213: -5089446769343643278
+    second: tiles_32_palco_4
   - first:
-      213: 7850779562916742725
-    second: tiles_32_lab_5
+      213: -915526576829601709
+    second: tiles_32_palco_5
   - first:
-      213: -4430022236628534730
-    second: tiles_32_lab_6
+      213: -7732934117965787755
+    second: tiles_32_palco_6
   - first:
-      213: 8793979291484717671
-    second: tiles_32_lab_7
+      213: -4576517640341822925
+    second: tiles_32_palco_7
   - first:
-      213: 8200475022022099402
-    second: tiles_32_lab_8
+      213: -8032683713866790142
+    second: tiles_32_palco_8
   - first:
-      213: -496730539367784435
-    second: tiles_32_lab_9
+      213: 6065450871989035614
+    second: tiles_32_palco_9
   - first:
-      213: 7051459435041172250
-    second: tiles_32_lab_10
+      213: 1617238247316388616
+    second: tiles_32_palco_10
+  - first:
+      213: -3209195283799349852
+    second: tiles_32_palco_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,11 +123,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tiles_32_lab_0
+      name: tiles_32_palco_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 161
+        x: 32
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -134,18 +137,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b89dce7e4aba4a80800000000000000
-      internalID: -8481762101901289289
+      spriteID: e4e4f7ee32a725920800000000000000
+      internalID: 2977576598389083726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_32_lab_1
+      name: tiles_32_palco_1
       rect:
         serializedVersion: 2
-        x: 64
-        y: 161
+        x: 96
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -155,18 +158,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34966da7df2e38420800000000000000
-      internalID: 2631196185629976899
+      spriteID: 649dbb38c93788ac0800000000000000
+      internalID: -3852702365153240762
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_32_lab_2
+      name: tiles_32_palco_2
       rect:
         serializedVersion: 2
-        x: 112
-        y: 161
+        x: 160
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -176,18 +179,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99782313527b1f030800000000000000
-      internalID: 3526801353574877081
+      spriteID: e12ad698908447050800000000000000
+      internalID: 5797337826130240030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_32_lab_3
+      name: tiles_32_palco_3
       rect:
         serializedVersion: 2
-        x: 16
-        y: 113
+        x: 32
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -197,18 +200,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30a056bde9ad7bd80800000000000000
-      internalID: -8234873017803142653
+      spriteID: 54aa2e5911ee9ccb0800000000000000
+      internalID: -4843078164963743163
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_32_lab_4
+      name: tiles_32_palco_4
       rect:
         serializedVersion: 2
-        x: 64
-        y: 113
+        x: 96
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -218,18 +221,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 072b4532b7d801730800000000000000
-      internalID: 3967826831726654064
+      spriteID: 271430ad027ae59b0800000000000000
+      internalID: -5089446769343643278
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_32_lab_5
+      name: tiles_32_palco_5
       rect:
         serializedVersion: 2
-        x: 112
-        y: 113
+        x: 160
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -239,18 +242,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5468c81da6293fc60800000000000000
-      internalID: 7850779562916742725
+      spriteID: 35864a5dd656b43f0800000000000000
+      internalID: -915526576829601709
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_32_lab_6
+      name: tiles_32_palco_6
       rect:
         serializedVersion: 2
-        x: 16
-        y: 65
+        x: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -260,18 +263,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63abcae3f366582c0800000000000000
-      internalID: -4430022236628534730
+      spriteID: 59d862bf3691fa490800000000000000
+      internalID: -7732934117965787755
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_32_lab_7
+      name: tiles_32_palco_7
       rect:
         serializedVersion: 2
-        x: 64
-        y: 65
+        x: 96
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -281,18 +284,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7628617b29d7a0a70800000000000000
-      internalID: 8793979291484717671
+      spriteID: 332ed1b1471fc70c0800000000000000
+      internalID: -4576517640341822925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_32_lab_8
+      name: tiles_32_palco_8
       rect:
         serializedVersion: 2
-        x: 112
-        y: 65
+        x: 160
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -302,18 +305,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac14715a590fdc170800000000000000
-      internalID: 8200475022022099402
+      spriteID: 20b87e1a8bc268090800000000000000
+      internalID: -8032683713866790142
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_32_lab_9
+      name: tiles_32_palco_9
       rect:
         serializedVersion: 2
-        x: 16
-        y: 17
+        x: 32
+        y: 0
         width: 32
         height: 32
       alignment: 0
@@ -323,18 +326,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0025ebc4324b19f0800000000000000
-      internalID: -496730539367784435
+      spriteID: e526d739e6fcc2450800000000000000
+      internalID: 6065450871989035614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_32_lab_10
+      name: tiles_32_palco_10
       rect:
         serializedVersion: 2
-        x: 64
-        y: 17
+        x: 96
+        y: 0
         width: 32
         height: 32
       alignment: 0
@@ -344,8 +347,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1ba4b5fef0dbd160800000000000000
-      internalID: 7051459435041172250
+      spriteID: 80bf7701e95917610800000000000000
+      internalID: 1617238247316388616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles_32_palco_11
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a5e74674e5a673d0800000000000000
+      internalID: -3209195283799349852
       vertices: []
       indices: 
       edges: []
