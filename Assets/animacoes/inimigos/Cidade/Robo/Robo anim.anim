@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: disparo cima
+  m_Name: Robo anim
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,19 +20,19 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -3833924809834410883, guid: eee20d4829f99f9439d33d8dd7779976,
+      value: {fileID: 1007030908369393426, guid: ff298f82dae67ae4db184235a60d2209,
+        type: 3}
+    - time: 0.083333336
+      value: {fileID: -5558314205550910399, guid: ff298f82dae67ae4db184235a60d2209,
         type: 3}
     - time: 0.16666667
-      value: {fileID: 8283461411109195891, guid: eee20d4829f99f9439d33d8dd7779976,
-        type: 3}
-    - time: 0.33333334
-      value: {fileID: -575627132094486411, guid: eee20d4829f99f9439d33d8dd7779976,
+      value: {fileID: -1120851497998859394, guid: ff298f82dae67ae4db184235a60d2209,
         type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 6
+  m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -47,15 +47,15 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -3833924809834410883, guid: eee20d4829f99f9439d33d8dd7779976, type: 3}
-    - {fileID: 8283461411109195891, guid: eee20d4829f99f9439d33d8dd7779976, type: 3}
-    - {fileID: -575627132094486411, guid: eee20d4829f99f9439d33d8dd7779976, type: 3}
+    - {fileID: 1007030908369393426, guid: ff298f82dae67ae4db184235a60d2209, type: 3}
+    - {fileID: -5558314205550910399, guid: ff298f82dae67ae4db184235a60d2209, type: 3}
+    - {fileID: -1120851497998859394, guid: ff298f82dae67ae4db184235a60d2209, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

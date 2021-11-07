@@ -87,7 +87,6 @@ public class DialogeManager : MonoBehaviour
         if (dialogoAtual.FocarComCamera.Length > 0)
             DialogoFinalizado -= jogadorScript.Instance.AoFinalizarDialogo;
     }
-
     public void LimparListaDeAoFinalizarDialogo()
     {
         DialogoFinalizado = delegate { };
@@ -96,5 +95,9 @@ public class DialogeManager : MonoBehaviour
     {
         if (DialogoFinalizado != jogadorScript.Instance.AoFinalizarDialogo)
             DialogoFinalizado += jogadorScript.Instance.AoFinalizarDialogo;
+    }
+    public void TrocarAnimator(Animator anim)//todos precisam trocar com a float ESTADO
+    {
+        animator = anim;
     }
 }

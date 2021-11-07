@@ -9,5 +9,6 @@ public class Dialogo
     [TextArea(1, 4)]
     public string[] Frases;
     public float[] EstadoImagemNPC;
+    public Animator animacoesDasImagens;
     public Transform[] FocarComCamera;
 }

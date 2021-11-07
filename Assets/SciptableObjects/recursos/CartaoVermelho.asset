@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8c219bd24b4e2548a90375a5bb1336e, type: 3}
-  m_Name: Chave2
+  m_Name: CartaoVermelho
   m_EditorClassIdentifier: 
-  icone: {fileID: 21300000, guid: 9991d5921f92f2348bf10d04ce1b4f95, type: 3}
-  ID: Chave2
+  icone: {fileID: 21300000, guid: 59b8d44abf5e7de439388e88bbf9d492, type: 3}
+  ID: CartaoVermelho

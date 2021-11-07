@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class inimigoScript : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class inimigoScript : MonoBehaviour
     public Vector2 direcaoDeMovimentacao;
     //variaveis privadas
     [Header("Não Mexer")]
+    [SerializeField] private GameObject primPontoDeNavPrefab;
     private EfeitoFlash flash;
     private inimigoAnimScript inimigoAnimScript;
     private Vector2 direcaoProjetil;
@@ -47,6 +49,8 @@ public class inimigoScript : MonoBehaviour
     private List<Vector3> pontosDeNavegacaoDeRetorno = new List<Vector3>();
     private Coroutine salvandoPontosDeNavegacao = null;
     private bool PrecisaRetornarAoPontoInicial = false;
+    private GameObject pontoInicial;
+    private UnityAction AoReceberDano;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +61,11 @@ public class inimigoScript : MonoBehaviour
         vidaAtual = vidaMaxima;
         if (tiposDeMovimentacao == TiposDeMovimentacao.movimentacaoFixa)
             movimentacaoFixa = true;
+        else if (tiposDeMovimentacao == TiposDeMovimentacao.movimentacaoLivre)
+        {
+            pontoInicial  = Instantiate(primPontoDeNavPrefab, transform.position, Quaternion.identity);
+            pontoInicial.transform.SetParent(null);
+        }     
         if (CentroDeSpawn != null && !CentroDeSpawn.GetCentroDeInimigos())
         {
             CentroDeSpawn.InimigoDerrotado();
@@ -173,7 +182,8 @@ public class inimigoScript : MonoBehaviour
     {
         if (!imortal)
         {
-            flash.Flash(Color.red);
+            if (flash != null)
+                flash.Flash(Color.red);
             vidaAtual += valor;
             if (vidaAtual > vidaMaxima)
             {
@@ -221,6 +231,18 @@ public class inimigoScript : MonoBehaviour
     }
     private void VerificarSePontoFoiAlcancado()
     {
+        //bool caminhoLivre = false;
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, pontoInicial.transform.position - transform.position, 100f, primPontoDeNavPrefab.layer);
+        //    if (obj.collider.gameObject.layer == 13)
+        //    {
+        //        caminhoLivre = true;
+        //        break;
+        //    }
+        //if (caminhoLivre)
+        //{
+        //    for (int i = pontosDeNavegacaoDeRetorno.Count - 1; i >= 1; i--)
+        //        pontosDeNavegacaoDeRetorno.RemoveAt(i);
+        //}
         if (Mathf.Abs(ProximoPonto().x) - Mathf.Abs(transform.position.x) <= .5f && Mathf.Abs(ProximoPonto().y) - Mathf.Abs(transform.position.y) <= .5f)
         {
             if (pontosDeNavegacaoDeRetorno.Count == 0)
@@ -232,7 +254,7 @@ public class inimigoScript : MonoBehaviour
             else
             {
                 pontosDeNavegacaoDeRetorno.RemoveAt(pontosDeNavegacaoDeRetorno.Count - 1);
-            }            
-        }   
+            }
+        }
     }
 }

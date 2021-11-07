@@ -359,7 +359,7 @@ PrefabInstance:
     - target: {fileID: 4260744640642154891, guid: fae41fbd46d64fb4b9860693da92c661,
         type: 3}
       propertyPath: acao.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: VerificarMissao
+      value: Interacao
       objectReference: {fileID: 0}
     - target: {fileID: 4618974491238299754, guid: fae41fbd46d64fb4b9860693da92c661,
         type: 3}

@@ -123,6 +123,8 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
         }
         else
             FechaPorta();
+        if (EventosAoAbrirPorta == null)
+            acaoComInimigos();
     }
     public bool GetAberto_Fechado()
     {
@@ -146,5 +148,21 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
         acaoComInimigos();
         EventosAoAbrirPorta = null;
         DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
+    }
+    public void SetEventosAbrirPorta(UnityEvent evento)
+    {
+        EventosAoAbrirPorta = evento;
+    }
+    public UnityEvent GetEventosAbrirPorta()
+    {
+        return EventosAoAbrirPorta;
+    }
+    public void SetEventosFecharPorta(UnityEvent evento)
+    {
+        EventosAoFecharPorta = evento;
+    }
+    public UnityEvent GetEventosFecharPorta()
+    {
+        return EventosAoFecharPorta;
     }
 }

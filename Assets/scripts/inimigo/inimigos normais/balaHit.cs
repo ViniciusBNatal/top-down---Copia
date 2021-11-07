@@ -26,7 +26,7 @@ public class balaHit : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player")
             {
-                collision.gameObject.GetComponent<jogadorScript>().mudancaRelogio(dano, duracaoStun);
+                collision.gameObject.GetComponent<jogadorScript>().mudancaRelogio(dano, 1f);
                 Destroy(this.gameObject);
             }
             destruirAoTocar(collision);

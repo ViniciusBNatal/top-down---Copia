@@ -9,7 +9,7 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
     public static List<bool> JaFoiUsado = new List<bool>();
     private static int VidaDaBase = -1;
     static Dictionary<string, SlotModulo> modulos = new Dictionary<string, SlotModulo>();
-    static Dictionary<string, bool> estadoPortas = new Dictionary<string, bool>();
+    static Dictionary<string, Porta> estadoPortas = new Dictionary<string, Porta>();
     static Dictionary<string, CentroDeRecursoInfinito> dadosCentroRecursos = new Dictionary<string, CentroDeRecursoInfinito>();
     static Dictionary<string, NPCscript> dadosNPCs = new Dictionary<string, NPCscript>();
     // Start is called before the first frame update
@@ -108,19 +108,23 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
             case 0:
                 //salva
                 if (estadoPortas.ContainsKey(portaScript.gameObject.name))
-                {                    
-                    estadoPortas[portaScript.gameObject.name] = portaScript.GetAberto_Fechado();
+                {
+                    estadoPortas[portaScript.gameObject.name].SetEventosAbrirPorta(portaScript.GetEventosAbrirPorta());
+                    estadoPortas[portaScript.gameObject.name].SetEventosFecharPorta(portaScript.GetEventosFecharPorta());
+                    estadoPortas[portaScript.gameObject.name].SetAberto_Fechado(portaScript.GetAberto_Fechado());
                 }
                 else
                 {
-                    estadoPortas.Add(portaScript.gameObject.name, portaScript.GetAberto_Fechado());
+                    estadoPortas.Add(portaScript.gameObject.name, portaScript);
                 }
                 break;
             case 1:
                 //carrega
                 if (estadoPortas.ContainsKey(portaScript.gameObject.name))
                 {
-                    portaScript.SetAberto_Fechado(estadoPortas[portaScript.gameObject.name]);
+                    portaScript.SetAberto_Fechado(estadoPortas[portaScript.gameObject.name].GetAberto_Fechado());
+                    portaScript.SetEventosAbrirPorta(estadoPortas[portaScript.gameObject.name].GetEventosAbrirPorta());
+                    portaScript.SetEventosFecharPorta(estadoPortas[portaScript.gameObject.name].GetEventosFecharPorta());
                 }
                 break;
         }

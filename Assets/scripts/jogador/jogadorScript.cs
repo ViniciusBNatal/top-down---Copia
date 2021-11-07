@@ -50,6 +50,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     private estados estadosJogador = estados.EmAcao;// 0 = em acao, 1 = em menus, 2 = em construcao 
     private ReceitaDeCrafting moduloCriado;
     private bool podeAnimar = true;
+    private Vector2 direcaoProjetil = Vector2.zero;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -127,6 +128,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 atirando = true;
                 MudarEstadoJogador(1);
                 Vector3 dirAnim = (PegaPosicoMouse() - transform.position).normalized;
+                direcaoProjetil = (PegaPosicoMouse() - pontoDeDisparo.position).normalized;
                 JogadorAnimScript.Instance.AnimarDisparo(dirAnim.x, dirAnim.y);
             }
         }
@@ -194,6 +196,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 break;
             case 4:
                 estadosJogador = estados.SendoEmpurrado;
+                atirando = false;
                 podeAnimar = false;
                 break;
         }
@@ -223,14 +226,13 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     IEnumerator atirar()
     {
-            GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
-            Vector3 direcao = (PegaPosicoMouse() - pontoDeDisparo.position).normalized;
-            bala.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg));//rotaciona a bala
-            bala.GetComponent<Rigidbody2D>().velocity = direcao * velocidadeProjetil;
-            bala.GetComponent<balaHit>().SetDano(danoProjetil);
-            MudarEstadoJogador(0);
-            yield return new WaitForSeconds(taxaDeDisparo);
-            atirando = false;
+        GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
+        bala.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));//rotaciona a bala
+        bala.GetComponent<Rigidbody2D>().velocity = direcaoProjetil * velocidadeProjetil;//new Vector3(direcaoProjetil.x / Mathf.Abs(direcaoProjetil.x), direcaoProjetil.y / Mathf.Abs(direcaoProjetil.y), 0f)
+        bala.GetComponent<balaHit>().SetDano(danoProjetil);
+        MudarEstadoJogador(0);
+        yield return new WaitForSeconds(taxaDeDisparo);
+        atirando = false;
     }
     IEnumerator atacarMelee()
     {

@@ -9,6 +9,8 @@ public class DialogoTrigger : MonoBehaviour
     public void AtivarDialogo()
     {
         //UIinventario.Instance.AtivaEDesativaCaixaDeDialogo(true);
+        if (dialogo.animacoesDasImagens != null)
+            DialogeManager.Instance.TrocarAnimator(dialogo.animacoesDasImagens);
         DialogeManager.Instance.IniciarDialogo(dialogo);
     }
 }

@@ -14,7 +14,18 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
         tempObj = objetoDeMissao;
         chave = objetoDeMissao.GetComponent<recurso_coletavel>().ReferenciaItem();
     }
-    public void VerificarMissao()
+    public void Interacao()
+    {
+        if (objetoDeMissao != null)
+        {
+            VerificarMissao();
+        }
+        else//se ele for apenas para conversar
+        {
+            dialogos[0].AtivarDialogo();
+        }
+    }
+    private void VerificarMissao()
     {
         if (missaoCumprida)
         {

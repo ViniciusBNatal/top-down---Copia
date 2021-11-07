@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3483,17 +3483,9 @@ CompositeCollider2D:
       - X: -30000000
         Y: 59999900
       - X: -30000000
-        Y: -180000000
-      - X: 219999900
-        Y: -180000000
-    - - X: 199999959
-        Y: -170000100
-      - X: 199999900
-        Y: -170000041
-      - X: 199999900
-        Y: -170000000
+        Y: -49999900
       - X: -20000000
-        Y: -170000000
+        Y: -49999900
       - X: -20000000
         Y: 49999900
       - X: 199999900
@@ -3510,16 +3502,36 @@ CompositeCollider2D:
         Y: -170000041
       - X: 210000041
         Y: -170000100
+      - X: 199999959
+        Y: -170000100
+      - X: 199999900
+        Y: -170000041
+      - X: 199999900
+        Y: -170000000
+      - X: -20000000
+        Y: -170000000
+      - X: -20000000
+        Y: -70000100
+      - X: -30000000
+        Y: -70000100
+      - X: -30000000
+        Y: -180000000
+      - X: 219999900
+        Y: -180000000
   m_CompositePaths:
     m_Paths:
     - - {x: 21.99996, y: -18}
       - {x: 21.999968, y: 6.00001}
       - {x: -3, y: 5.999961}
-      - {x: -2.999971, y: -18}
-    - - {x: 21.00001, y: -16.999975}
-      - {x: -2, y: -16.999971}
+      - {x: -2.999971, y: -4.99999}
+      - {x: -2, y: -4.999961}
       - {x: -1.9999707, y: 4.99999}
       - {x: 21.00001, y: 4.9999747}
+      - {x: 20.999975, y: -17.00001}
+      - {x: -2, y: -16.999971}
+      - {x: -2.0000293, y: -7.0000095}
+      - {x: -3, y: -7.000039}
+      - {x: -2.999971, y: -18}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &689318958
@@ -4065,27 +4077,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -3, y: -7, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 21, y: -7, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -3, y: -6, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -4557,13 +4549,13 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 94
+  - m_RefCount: 92
     m_Data: {fileID: 11400000, guid: 3bf9c23d2f324084e87cefa4dbf8ff6a, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 94
+  - m_RefCount: 92
     m_Data: {fileID: 21300000, guid: e3af2b978b2432b4c8541fb440b866ba, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 94
+  - m_RefCount: 92
     m_Data:
       e00: 1
       e01: 0
@@ -4582,7 +4574,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 94
+  - m_RefCount: 92
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -7010,7 +7002,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 146.66345, y: -192.52081}
+  m_SizeDelta: {x: 146.66345, y: -144.39334}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1475340046
 MonoBehaviour:
@@ -15984,6 +15976,7 @@ MonoBehaviour:
     EstadoImagemNPC:
     - 1
     - 2
+    animacoesDasImagens: {fileID: 0}
     FocarComCamera:
     - {fileID: 0}
     - {fileID: 873791263}
@@ -15994,6 +15987,7 @@ MonoBehaviour:
     EstadoImagemNPC:
     - 2
     - 1
+    animacoesDasImagens: {fileID: 0}
     FocarComCamera: []
   - NomeNPC: "Ap\xF3s Desastre"
     Frases:
@@ -16002,6 +15996,7 @@ MonoBehaviour:
     EstadoImagemNPC:
     - 1
     - 2
+    animacoesDasImagens: {fileID: 0}
     FocarComCamera:
     - {fileID: 0}
     - {fileID: 1808072268}
@@ -16013,6 +16008,7 @@ MonoBehaviour:
     EstadoImagemNPC:
     - 2
     - 1
+    animacoesDasImagens: {fileID: 0}
     FocarComCamera: []
 --- !u!1 &1847444099
 GameObject:
@@ -16477,7 +16473,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1733967262}
   m_HandleRect: {fileID: 1733967261}
   m_Direction: 0
-  m_Value: -0.00000020807896
+  m_Value: 0
   m_Size: 0.75556093
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -16842,7 +16838,7 @@ MonoBehaviour:
   velocidade: 5
   velocidadeProjetil: 20
   taxaDeDisparo: 2
-  taxaDeAtaqueMelee: 2
+  taxaDeAtaqueMelee: 1
   alcanceMelee: 0.8
   danoMelee: 50
   danoProjetil: 50
@@ -17164,6 +17160,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5919771660638717841, guid: 991ac25e0652cf546a370350e792c213,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5961388584270940554, guid: 991ac25e0652cf546a370350e792c213,
         type: 3}

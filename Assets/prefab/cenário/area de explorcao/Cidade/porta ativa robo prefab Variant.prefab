@@ -19,6 +19,18 @@ MonoBehaviour:
     EstadoImagemNPC: []
     FocarComCamera:
     - {fileID: 0}
+--- !u!114 &8087045913054935234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667575370239951036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd680629d296b64e915eabe40e6c8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7852998038120614694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29,7 +41,7 @@ PrefabInstance:
     - target: {fileID: 1491287392820595610, guid: c95af34be59c2324fa5b05a6506740a0,
         type: 3}
       propertyPath: m_Name
-      value: porta prefab
+      value: porta ativa robo prefab Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3259157510893977715, guid: c95af34be59c2324fa5b05a6506740a0,
         type: 3}

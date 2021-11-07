@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: disparo cima
+  m_Name: Rato direita
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,19 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -3833924809834410883, guid: eee20d4829f99f9439d33d8dd7779976,
+      value: {fileID: -5755519371657859650, guid: d65f95446473a424cbd1b044edc657ff,
         type: 3}
     - time: 0.16666667
-      value: {fileID: 8283461411109195891, guid: eee20d4829f99f9439d33d8dd7779976,
+      value: {fileID: 2517989410778238769, guid: d65f95446473a424cbd1b044edc657ff,
         type: 3}
     - time: 0.33333334
-      value: {fileID: -575627132094486411, guid: eee20d4829f99f9439d33d8dd7779976,
+      value: {fileID: -4283227884991480999, guid: d65f95446473a424cbd1b044edc657ff,
+        type: 3}
+    - time: 0.5
+      value: {fileID: 3690479541104941417, guid: d65f95446473a424cbd1b044edc657ff,
+        type: 3}
+    - time: 0.6666667
+      value: {fileID: 8801906981689340526, guid: d65f95446473a424cbd1b044edc657ff,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -47,15 +53,17 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -3833924809834410883, guid: eee20d4829f99f9439d33d8dd7779976, type: 3}
-    - {fileID: 8283461411109195891, guid: eee20d4829f99f9439d33d8dd7779976, type: 3}
-    - {fileID: -575627132094486411, guid: eee20d4829f99f9439d33d8dd7779976, type: 3}
+    - {fileID: -5755519371657859650, guid: d65f95446473a424cbd1b044edc657ff, type: 3}
+    - {fileID: 2517989410778238769, guid: d65f95446473a424cbd1b044edc657ff, type: 3}
+    - {fileID: -4283227884991480999, guid: d65f95446473a424cbd1b044edc657ff, type: 3}
+    - {fileID: 3690479541104941417, guid: d65f95446473a424cbd1b044edc657ff, type: 3}
+    - {fileID: 8801906981689340526, guid: d65f95446473a424cbd1b044edc657ff, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.8333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

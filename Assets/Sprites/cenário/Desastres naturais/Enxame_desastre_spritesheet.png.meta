@@ -1,19 +1,28 @@
 fileFormatVersion: 2
-guid: 1f2975ba6ac4be74db6aede90640a6b9
+guid: feec0c0505d8aad49a746228d86691fd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7856037652484059251
-    second: Enxame_Spritesheet_0
+      213: -7915396168179032434
+    second: Inseto_Spritesheet_0
   - first:
-      213: 6388818133200431692
-    second: Enxame_Spritesheet_1
+      213: -8330870082960510208
+    second: Inseto_Spritesheet_1
   - first:
-      213: 1628740777881670952
-    second: Enxame_Spritesheet_2
+      213: 1255489412243587927
+    second: Inseto_Spritesheet_3
   - first:
-      213: -1795462692971762985
-    second: Enxame_Spritesheet_3
+      213: 5064014061075559333
+    second: Inseto_Spritesheet_4
+  - first:
+      213: 3874293675052817615
+    second: Inseto_Spritesheet_5
+  - first:
+      213: -1719053662818042436
+    second: Inseto_Spritesheet_6
+  - first:
+      213: 5545226792440259224
+    second: Inseto_Spritesheet_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -57,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 2
+  spritePixelsToUnits: 8
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,13 +108,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enxame_Spritesheet_0
+      name: Inseto_Spritesheet_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 17
-        width: 12
-        height: 11
+        x: 4
+        y: 6
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,40 +122,82 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 370f7623f90460d60800000000000000
-      internalID: 7856037652484059251
+      spriteID: e8e53336f1dd62290800000000000000
+      internalID: -7915396168179032434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enxame_Spritesheet_1
+      name: Inseto_Spritesheet_1
       rect:
         serializedVersion: 2
-        x: 44
-        y: 14
-        width: 17
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4a6cf32e34a9a850800000000000000
-      internalID: 6388818133200431692
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enxame_Spritesheet_2
-      rect:
-        serializedVersion: 2
-        x: 84
+        x: 54
         y: 10
-        width: 24
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 003b5336ccdc26c80800000000000000
+      internalID: -8330870082960510208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inseto_Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 11
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7530b04f7f46c6110800000000000000
+      internalID: 1255489412243587927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inseto_Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 10
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a3fdff45fdf64640800000000000000
+      internalID: 5064014061075559333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Inseto_Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 9
+        width: 28
         height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -155,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82594d8ab137a9610800000000000000
-      internalID: 1628740777881670952
+      spriteID: fccd011129144c530800000000000000
+      internalID: 3874293675052817615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enxame_Spritesheet_3
+      name: Inseto_Spritesheet_2
       rect:
         serializedVersion: 2
-        x: 124
-        y: 8
-        width: 36
-        height: 30
+        x: 97
+        y: 11
+        width: 24
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,8 +227,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7daa3f9813c3517e0800000000000000
-      internalID: -1795462692971762985
+      spriteID: 892616a436a94fc40800000000000000
+      internalID: 5545226792440259224
       vertices: []
       indices: 
       edges: []
