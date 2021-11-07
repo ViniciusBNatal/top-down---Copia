@@ -38,6 +38,30 @@ TextureImporter:
   - first:
       213: -3209195283799349852
     second: tiles_32_palco_11
+  - first:
+      213: -797314841627311416
+    second: tiles_32_palco_12
+  - first:
+      213: -790083630083021565
+    second: tiles_32_palco_14
+  - first:
+      213: -3468362473660175034
+    second: tiles_32_palco_15
+  - first:
+      213: -2530594692045297986
+    second: tiles_32_palco_17
+  - first:
+      213: 4560436491107681366
+    second: tiles_32_palco_19
+  - first:
+      213: -2872282595024305791
+    second: tiles_32_palco_23
+  - first:
+      213: -8226357609794610612
+    second: tiles_32_palco_24
+  - first:
+      213: 8320141005876898975
+    second: tiles_32_palco_26
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -126,8 +150,8 @@ TextureImporter:
       name: tiles_32_palco_0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 192
+        x: 64
+        y: 256
         width: 32
         height: 32
       alignment: 0
@@ -147,8 +171,8 @@ TextureImporter:
       name: tiles_32_palco_1
       rect:
         serializedVersion: 2
-        x: 96
-        y: 192
+        x: 128
+        y: 256
         width: 32
         height: 32
       alignment: 0
@@ -168,8 +192,8 @@ TextureImporter:
       name: tiles_32_palco_2
       rect:
         serializedVersion: 2
-        x: 160
-        y: 192
+        x: 192
+        y: 256
         width: 32
         height: 32
       alignment: 0
@@ -189,8 +213,8 @@ TextureImporter:
       name: tiles_32_palco_3
       rect:
         serializedVersion: 2
-        x: 32
-        y: 128
+        x: 128
+        y: 208
         width: 32
         height: 32
       alignment: 0
@@ -210,8 +234,8 @@ TextureImporter:
       name: tiles_32_palco_4
       rect:
         serializedVersion: 2
-        x: 96
-        y: 128
+        x: 64
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -231,8 +255,8 @@ TextureImporter:
       name: tiles_32_palco_5
       rect:
         serializedVersion: 2
-        x: 160
-        y: 128
+        x: 128
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -252,8 +276,8 @@ TextureImporter:
       name: tiles_32_palco_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
+        x: 192
+        y: 192
         width: 32
         height: 32
       alignment: 0
@@ -273,8 +297,8 @@ TextureImporter:
       name: tiles_32_palco_7
       rect:
         serializedVersion: 2
-        x: 96
-        y: 64
+        x: 128
+        y: 160
         width: 32
         height: 32
       alignment: 0
@@ -294,8 +318,8 @@ TextureImporter:
       name: tiles_32_palco_8
       rect:
         serializedVersion: 2
-        x: 160
-        y: 64
+        x: 64
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -315,8 +339,8 @@ TextureImporter:
       name: tiles_32_palco_9
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 128
+        y: 112
         width: 32
         height: 32
       alignment: 0
@@ -336,8 +360,8 @@ TextureImporter:
       name: tiles_32_palco_10
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 192
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -354,11 +378,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_32_palco_11
+      name: tiles_32_palco_12
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
+        x: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -368,8 +392,155 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a5e74674e5a673d0800000000000000
-      internalID: -3209195283799349852
+      spriteID: 8c248aa306e5fe4f0800000000000000
+      internalID: -797314841627311416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles_32_palco_14
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 305ec0edf1f0905f0800000000000000
+      internalID: -790083630083021565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles_32_palco_15
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64da035d4b6eddfc0800000000000000
+      internalID: -3468362473660175034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles_32_palco_17
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb6a626098581ecd0800000000000000
+      internalID: -2530594692045297986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles_32_palco_19
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 654c33193dce94f30800000000000000
+      internalID: 4560436491107681366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles_32_palco_23
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1810a05a23a9328d0800000000000000
+      internalID: -2872282595024305791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles_32_palco_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4a5cd8c65b16dd80800000000000000
+      internalID: -8226357609794610612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles_32_palco_26
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c2470b924177370800000000000000
+      internalID: 8320141005876898975
       vertices: []
       indices: 
       edges: []
