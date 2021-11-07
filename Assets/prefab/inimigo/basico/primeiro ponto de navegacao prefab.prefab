@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9212886921877796179}
   - component: {fileID: 4963252309070675583}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: primeiro ponto de navegacao prefab
-  m_TagString: Untagged
+  m_TagString: pontoDeNavInicial
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

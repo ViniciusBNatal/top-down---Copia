@@ -13717,6 +13717,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1822304826521881048, guid: 7102d8d1797a0b343957ccaf5c97a336,
         type: 3}
+      propertyPath: layermascara.m_Bits
+      value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822304826521881048, guid: 7102d8d1797a0b343957ccaf5c97a336,
+        type: 3}
       propertyPath: tiposDeMovimentacao
       value: 1
       objectReference: {fileID: 0}

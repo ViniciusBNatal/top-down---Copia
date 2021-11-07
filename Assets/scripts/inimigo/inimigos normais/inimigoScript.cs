@@ -231,18 +231,21 @@ public class inimigoScript : MonoBehaviour
     }
     private void VerificarSePontoFoiAlcancado()
     {
-        //bool caminhoLivre = false;
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, pontoInicial.transform.position - transform.position, 100f, primPontoDeNavPrefab.layer);
-        //    if (obj.collider.gameObject.layer == 13)
-        //    {
-        //        caminhoLivre = true;
-        //        break;
-        //    }
-        //if (caminhoLivre)
-        //{
-        //    for (int i = pontosDeNavegacaoDeRetorno.Count - 1; i >= 1; i--)
-        //        pontosDeNavegacaoDeRetorno.RemoveAt(i);
-        //}
+        int paredePos = 0;
+        int pontoInicialPos = 0;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, pontoInicial.transform.position - transform.position);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].collider.gameObject.tag == "obstaculo")
+                paredePos = i;
+            if (hits[i].collider.gameObject.tag == "pontoDeNavInicial")
+                pontoInicialPos = i;
+        }
+        if (pontoInicialPos < paredePos)
+        {
+            for (int i = pontosDeNavegacaoDeRetorno.Count - 1; i >= 1; i--)
+                pontosDeNavegacaoDeRetorno.RemoveAt(i);
+        }
         if (Mathf.Abs(ProximoPonto().x) - Mathf.Abs(transform.position.x) <= .5f && Mathf.Abs(ProximoPonto().y) - Mathf.Abs(transform.position.y) <= .5f)
         {
             if (pontosDeNavegacaoDeRetorno.Count == 0)
