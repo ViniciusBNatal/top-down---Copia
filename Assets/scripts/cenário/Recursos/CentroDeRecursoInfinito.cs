@@ -62,6 +62,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
             recurso.GetComponent<recurso_coletavel>().DefineQuantidadeItem(qntdDoRecursoDropado);
             recurso.GetComponent<recurso_coletavel>().LancaRecurso(forca);
             vezesExtraida++;
+            Debug.Log(vezesExtraida);
             if (vezesExtraida == quantasVezesPodeSerExtraida)
             {
                 tempoRestante = tempoAteProximaColeta;

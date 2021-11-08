@@ -67,6 +67,7 @@ public class BossAlho : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform);
+        Application.Quit();
         Destroy(this.gameObject);
     }
     public float GetReducaoIntervaloDesastres()

@@ -64,7 +64,6 @@ public class AtaqueSementeAlho : MonoBehaviour
         {
             transform.localScale = transform.localScale + new Vector3(transform.localScale.x * aumentoDeTamanho, transform.localScale.y * aumentoDeTamanho, 1f);
             velocidade += aumentoDeVelocidade;
-            Debug.Log(velocidade);
             yield return new WaitForSeconds(.2f);
         }
         animator.SetTrigger("EXPLODIR");

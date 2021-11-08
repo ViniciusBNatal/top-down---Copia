@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8952a940ca52c04c93836bb4831858a, type: 3}
   m_Name: Canhao
   m_EditorClassIdentifier: 
-  iconeDeAprimoramentoDabase: {fileID: 0}
+  iconeDeAprimoramentoDabase: {fileID: 21300000, guid: 44f85314304aa7942a778ee72878fc95,
+    type: 3}
   modulo: 2
   desastre: 
   incrementoEntreForcas: 0

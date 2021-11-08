@@ -6765,7 +6765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7925e10f5bb7246439a4b2f7a9e5ac2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intervaloEntreOsDesastres: 30
+  intervaloEntreOsDesastres: 180
   chanceDeDesastre: 75
   tutorial: 1
   intensidadeScreenShakeTerremoto: 3
@@ -7334,13 +7334,13 @@ PrefabInstance:
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: itens.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: itens.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: bf37def55dca4bf4aa6e606a6eedbbd6,
+      objectReference: {fileID: 11400000, guid: 2e55fca245e9bf84a8da5955dbcd6c40,
         type: 2}
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
@@ -7357,12 +7357,12 @@ PrefabInstance:
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: qntdDoRecursoDropado.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: qntdDoRecursoDropado.Array.data[0]
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
@@ -7372,7 +7372,7 @@ PrefabInstance:
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: qntdDoRecursoDropado.Array.data[2]
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 525454675051048018, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
@@ -16961,7 +16961,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -869401897
   m_SortingLayer: 1
-  m_SortingOrder: 4
+  m_SortingOrder: 6
   m_Sprite: {fileID: -7935756784417215701, guid: eee20d4829f99f9439d33d8dd7779976,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -17146,6 +17146,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2056661103}
     m_Modifications:
+    - target: {fileID: 2019367661785867171, guid: 991ac25e0652cf546a370350e792c213,
+        type: 3}
+      propertyPath: QntdDeDefesasNecessarias
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2019367661785867171, guid: 991ac25e0652cf546a370350e792c213,
         type: 3}
       propertyPath: posicaoDeChegadaPorTeleporte
@@ -17334,7 +17339,7 @@ PrefabInstance:
     - target: {fileID: 2467229751901996654, guid: ab13f81476680d340aa5c02f8d0b88b9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 16.2
+      value: 18.28
       objectReference: {fileID: 0}
     - target: {fileID: 2467229751901996654, guid: ab13f81476680d340aa5c02f8d0b88b9,
         type: 3}

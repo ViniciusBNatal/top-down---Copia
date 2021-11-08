@@ -9,14 +9,17 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     private GameObject tempObj;
     private Item chave = null;
     private bool missaoCumprida = false;
+    private bool possuiMissao = false;
     private void Start()
     {
+        if (objetoDeMissao != null)
+            possuiMissao = true;
         tempObj = objetoDeMissao;
         chave = objetoDeMissao.GetComponent<recurso_coletavel>().ReferenciaItem();
     }
     public void Interacao()
     {
-        if (objetoDeMissao != null)
+        if (possuiMissao)
         {
             VerificarMissao();
         }

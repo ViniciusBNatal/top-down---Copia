@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class desastreManager : MonoBehaviour, AcoesNoTutorial
@@ -412,17 +411,21 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     }
     public void Ativar_desativarInteracoesDaBase(bool trancar_DestrancarInteracoes)
     {
+        UIinventario.Instance.fechaInventario();
+        UIinventario.Instance.fechaMenuDeTempos();
         if (trancar_DestrancarInteracoes)
         {
-            UIinventario.Instance.fechaInventario();
-            UIinventario.Instance.fechaMenuDeTempos();
-            mesaCraftingScript.Instance.Desativar_AtivarInteracao(false);
-            BaseScript.Instance.Ativar_DesativarInteracao(false);
+            if (mesaCraftingScript.Instance != null)
+                mesaCraftingScript.Instance.Desativar_AtivarInteracao(false);
+            if (BaseScript.Instance != null)
+                BaseScript.Instance.Ativar_DesativarInteracao(false);
         }
         else
         {
-            mesaCraftingScript.Instance.Desativar_AtivarInteracao(true);
-            BaseScript.Instance.Ativar_DesativarInteracao(true);
+            if (mesaCraftingScript.Instance != null)
+                mesaCraftingScript.Instance.Desativar_AtivarInteracao(true);
+            if (BaseScript.Instance != null)
+                BaseScript.Instance.Ativar_DesativarInteracao(true);
         }
     }
     public int GetForcaSorteada(int i)
