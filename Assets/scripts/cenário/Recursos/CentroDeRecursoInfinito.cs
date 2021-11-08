@@ -35,6 +35,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     private EfeitoFlash flash;
     private void Start()
     {
+        flash = GetComponent<EfeitoFlash>();
         SpriteDoObj = GetComponent<SpriteRenderer>();
         VidaAtualDoCentroDeSpawn = VidaMaxDoCentroDeSpawn;
         DefineEstado();

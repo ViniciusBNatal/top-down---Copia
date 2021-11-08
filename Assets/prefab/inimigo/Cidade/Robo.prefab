@@ -225,6 +225,7 @@ MonoBehaviour:
   tempoDeStunNoJogador: 0.5
   distanciaMinimaParaFugir: {x: 0, y: 0}
   direcaoDeMovimentacao: {x: 1, y: 0}
+  primPontoDeNavPrefab: {fileID: 0}
 --- !u!50 &1811974605307928430
 Rigidbody2D:
   serializedVersion: 4
@@ -233,7 +234,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4865032390388247617}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
