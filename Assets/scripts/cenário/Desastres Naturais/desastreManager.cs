@@ -68,18 +68,18 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            desastreAcontecendo = true;
-            Virus();
-            ErrupcaoTerrena();
-            Terremoto();
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    desastreAcontecendo = true;
+        //    Virus();
+        //    ErrupcaoTerrena();
+        //    Terremoto();
         //    StopAllCoroutines();
         //    ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
         //    SetUpParaNovoSorteioDeDesastres();
         //    StartCoroutine(this.LogicaDesastres(true));
         //    //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
-        }
+        //}
         //if (Input.GetKeyDown(KeyCode.P))
         //{
         //    StopAllCoroutines();

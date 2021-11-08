@@ -73,7 +73,6 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
         switch (acao)
         {
             case 0:
-                PlayerPrefs.SetInt(moduloScript.gameObject.name, moduloScript.GetModulo());
                 if (modulos.ContainsKey(moduloScript.gameObject.name))
                 {
                     modulos[moduloScript.gameObject.name].SetModulo(moduloScript.GetModulo());
