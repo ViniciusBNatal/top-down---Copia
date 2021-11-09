@@ -6,20 +6,19 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
 {
     [SerializeField] private List<DialogoTrigger> dialogos = new List<DialogoTrigger>();
     [SerializeField] private GameObject objetoDeMissao;
-    private GameObject tempObj;
-    private Item chave = null;
+    private Item itemMissao = null;
     private bool missaoCumprida = false;
-    private bool possuiMissao = false;
     private void Start()
     {
-        if (objetoDeMissao != null)
-            possuiMissao = true;
-        tempObj = objetoDeMissao;
-        chave = objetoDeMissao.GetComponent<recurso_coletavel>().ReferenciaItem();
+        if (objetoDeMissao != null && itemMissao == null)
+        {
+            objetoDeMissao.GetComponent<recurso_coletavel>().SetNPC(this.gameObject);
+            itemMissao = objetoDeMissao.GetComponent<recurso_coletavel>().ReferenciaItem();
+        }
     }
     public void Interacao()
     {
-        if (possuiMissao)
+        if (itemMissao != null)
         {
             VerificarMissao();
         }
@@ -36,7 +35,7 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
         }
         else
         {
-            if (UIinventario.Instance.ProcurarChave(chave))
+            if (UIinventario.Instance.ProcurarChave(itemMissao))
             {
                 missaoCumprida = true;
                 DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
@@ -72,26 +71,23 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     public void AcaoSeEstadoJaModificado()
     {
         GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosNPCs(this, 1);
-        if (GetObjDaMissao() == null)
-        {
-            Destroy(objetoDeMissao.gameObject);
+        if (missaoCumprida)
             AoCompletarAMissao();
-        }
     }
     public bool GetMissaoCumprida()
     {
         return missaoCumprida;
     }
-    public GameObject GetObjDaMissao()
+    public Item GetItemDaMissao()
     {
-        return tempObj;
+        return itemMissao;
     }
     public void SetMissaoCumprida(bool b)
     {
         missaoCumprida = b;
     }
-    public void SetObjDaMissao(GameObject obj)
+    public void SetItemDaMissao(Item obj)
     {
-        tempObj = obj;
+        itemMissao = obj;
     }
 }

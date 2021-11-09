@@ -505,7 +505,7 @@ PrefabInstance:
     - target: {fileID: 222516118, guid: a144a9de5551fe7488827af0e52859b7, type: 3}
       propertyPath: dialogo.FocarComCamera.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1126705030291642338}
     - target: {fileID: 2821894166403710375, guid: a144a9de5551fe7488827af0e52859b7,
         type: 3}
       propertyPath: inimigo
@@ -1146,8 +1146,8 @@ Transform:
   - {fileID: 1660703131}
   - {fileID: 48057492}
   - {fileID: 2102812981}
-  - {fileID: 25385621}
   - {fileID: 1126705030291642338}
+  - {fileID: 25385621}
   m_Father: {fileID: 1961208624}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32018,6 +32018,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1261102977}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1261102980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261102979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd680629d296b64e915eabe40e6c8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1355462675
 PrefabInstance:
   m_ObjectHideFlags: 0

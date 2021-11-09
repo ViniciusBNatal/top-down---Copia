@@ -38,6 +38,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
         flash = GetComponent<EfeitoFlash>();
         SpriteDoObj = GetComponent<SpriteRenderer>();
         VidaAtualDoCentroDeSpawn = VidaMaxDoCentroDeSpawn;
+        SalvamentoDosCentrosDeRecursosManager.Instance.AdicionarCentroALista(this.gameObject);
         DefineEstado();
     }
     public void RecebeuHit()
@@ -51,7 +52,6 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
         {
             CriaRecurso();
         }
-        SalvarEstado();
     }
     private void CriaRecurso()
     {
@@ -62,7 +62,6 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
             recurso.GetComponent<recurso_coletavel>().DefineQuantidadeItem(qntdDoRecursoDropado);
             recurso.GetComponent<recurso_coletavel>().LancaRecurso(forca);
             vezesExtraida++;
-            Debug.Log(vezesExtraida);
             if (vezesExtraida == quantasVezesPodeSerExtraida)
             {
                 tempoRestante = tempoAteProximaColeta;
@@ -152,10 +151,14 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
         else
         {
             DefineSprite(iconeCentroDeRecursosPadrao);
-            if (tempoRestante != 0)
+            if (tempoRestante > 0)
             {
                 SetupCooldown();
                 StartCoroutine(this.RecursoCooldown());
+            }
+            else if (tempoRestante == 0)
+            {
+                vezesExtraida = 0;
             }
         }
     }
@@ -170,11 +173,11 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     public void AcaoSeEstadoJaModificado()
     {
         GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosCentrosDeRecursos(this, 1);
-        DefineEstado();
     }
     //funções de set e get
     private void DefineSprite(Sprite sprite)
     {
+        SpriteDoObj = GetComponent<SpriteRenderer>();
         SpriteDoObj.sprite = sprite;
     }
     public bool GetCentroDeInimigos()

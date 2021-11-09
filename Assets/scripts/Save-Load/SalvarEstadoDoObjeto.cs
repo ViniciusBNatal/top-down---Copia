@@ -6,8 +6,7 @@ using UnityEngine.Events;
 
 public class SalvarEstadoDoObjeto : MonoBehaviour
 {
-    public static List<string> objs;
-    public static List<bool> JaFoiUsado = new List<bool>();
+    static Dictionary<string, bool> objsSalvos = new Dictionary<string, bool>();
     private static int VidaDaBase = -1;
     //Dados dos modulos
     static Dictionary<string, string> desastreModulos = new Dictionary<string, string>();
@@ -18,51 +17,32 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
     static Dictionary<string, UnityEvent> eventoAbrirPortas = new Dictionary<string, UnityEvent>();
     static Dictionary<string, UnityEvent> eventoFecharPortas = new Dictionary<string, UnityEvent>();
     //dados dos centros de recurso
-    static Dictionary<string, CentroDeRecursoInfinito> dadosCentroRecursos = new Dictionary<string, CentroDeRecursoInfinito>();
+    static Dictionary<string, bool> estadoCentroDeRecursos = new Dictionary<string, bool>();
+    static Dictionary<string, int> tempoRestanteCentroDeRecursos = new Dictionary<string, int>();
+    static Dictionary<string, int> vidaRestanteCentroDeRecursos = new Dictionary<string, int>();
+    static Dictionary<string, int> extracoesRestanteCentroDeRecursos = new Dictionary<string, int>();
     //dados dos npcs
-    static Dictionary<string, NPCscript> dadosNPCs = new Dictionary<string, NPCscript>();
+    static Dictionary<string, bool> estadoMissaoNPC = new Dictionary<string, bool>();
+    static Dictionary<string, Item> itemMissaoNPC = new Dictionary<string, Item>();
     // Start is called before the first frame update
     void Start()
     {
-        if (objs == null)
-            objs = new List<string>();
-        AdicionarALista(this.gameObject);
-        if (objs.Count > 0)
+        AdicionarALista();
+        if (objsSalvos[this.gameObject.name])
         {
-            for (int i = 0; i < JaFoiUsado.Count; i++)
-            {
-                if (objs[i] == gameObject.name)
-                {
-                    if (JaFoiUsado[i])
-                        if (gameObject.GetComponent<SalvamentoEntreCenas>() != null)
-                            gameObject.GetComponent<SalvamentoEntreCenas>().AcaoSeEstadoJaModificado();
-                    break;
-                }
-            }
+            if (gameObject.GetComponent<SalvamentoEntreCenas>() != null)
+                 gameObject.GetComponent<SalvamentoEntreCenas>().AcaoSeEstadoJaModificado();
         }
     }
-    public void AdicionarALista(GameObject obj)
+    public void AdicionarALista()
     {
-        for (int i = 0; i < objs.Count; i++)
-        {
-            if (objs[i] == gameObject.name)
-            {
-                return;
-            }
-        }
-        objs.Add(obj.name);
-        JaFoiUsado.Add(false);
+        if (!objsSalvos.ContainsKey(this.gameObject.name))
+            objsSalvos.Add(this.gameObject.name, false);
     }
     public void SalvarSeJaFoiModificado()
     {
-        for (int i = 0; i < objs.Count; i++)
-        {
-            if (objs[i] == gameObject.name)
-            {
-                JaFoiUsado[i] = true;
-                break;
-            }
-        }
+        if (objsSalvos.ContainsKey(this.gameObject.name))
+            objsSalvos[this.gameObject.name] = true;
     }
     public void Salvar_CarregarDadosDaBase(BaseScript baseScript, int acao)
     {
@@ -133,21 +113,15 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                     eventoFecharPortas.Add(portaScript.gameObject.name, portaScript.GetEventosFecharPorta());
                 break;
             case 1://carregar
-                //salva estado porta
+                //carrega estado porta
                 if (estadoPortas.ContainsKey(portaScript.gameObject.name))
-                    estadoPortas[portaScript.gameObject.name] = portaScript.GetAberto_Fechado();
-                else
-                    estadoPortas.Add(portaScript.gameObject.name, portaScript.GetAberto_Fechado());
-                //salva eventos de abrir porta
+                    portaScript.SetAberto_Fechado(estadoPortas[portaScript.gameObject.name]);
+                //carrega eventos de abrir porta
                 if (eventoAbrirPortas.ContainsKey(portaScript.gameObject.name))
-                    eventoAbrirPortas[portaScript.gameObject.name] = portaScript.GetEventosAbrirPorta();
-                else
-                    eventoAbrirPortas.Add(portaScript.gameObject.name, portaScript.GetEventosAbrirPorta());
-                //salva eventos de fechar porta
+                    portaScript.SetEventosAbrirPorta(eventoAbrirPortas[portaScript.gameObject.name]);
+                //carrega eventos de fechar porta
                 if (eventoFecharPortas.ContainsKey(portaScript.gameObject.name))
-                    eventoFecharPortas[portaScript.gameObject.name] = portaScript.GetEventosFecharPorta();
-                else
-                    eventoFecharPortas.Add(portaScript.gameObject.name, portaScript.GetEventosFecharPorta());
+                    portaScript.SetEventosFecharPorta(eventoFecharPortas[portaScript.gameObject.name]);
                 break;
         }
     }
@@ -156,32 +130,40 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
         switch (acao)
         {
             case 0://salva
-                if (dadosCentroRecursos.ContainsKey(centroScript.gameObject.name))
-                {
-                    dadosCentroRecursos[centroScript.gameObject.name].SetTempoRestanteCooldown(centroScript.GetTempoRestanteCooldown());
-                    dadosCentroRecursos[centroScript.gameObject.name].SetCentroDeInimigos(centroScript.GetCentroDeInimigos());
-                    dadosCentroRecursos[centroScript.gameObject.name].SetVezesExtraida(centroScript.GetVezesExtraida());
-                    dadosCentroRecursos[centroScript.gameObject.name].SetVidaAtual(centroScript.GetVidaAtual());
-                }
+                //salva estado 
+                if (estadoCentroDeRecursos.ContainsKey(centroScript.gameObject.name))
+                    estadoCentroDeRecursos[centroScript.gameObject.name] = centroScript.GetCentroDeInimigos();
                 else
-                {
-                    CentroDeRecursoInfinito temp = new CentroDeRecursoInfinito();
-                    temp.SetTempoRestanteCooldown(centroScript.GetTempoRestanteCooldown());
-                    temp.SetCentroDeInimigos(centroScript.GetCentroDeInimigos());
-                    temp.SetVezesExtraida(centroScript.GetVezesExtraida());
-                    temp.SetVidaAtual(centroScript.GetVidaAtual());
-                    dadosCentroRecursos.Add(centroScript.gameObject.name, temp);
-                }
+                    estadoCentroDeRecursos.Add(centroScript.gameObject.name, centroScript.GetCentroDeInimigos());
+                //salva tempo restante
+                if (tempoRestanteCentroDeRecursos.ContainsKey(centroScript.gameObject.name))
+                    tempoRestanteCentroDeRecursos[centroScript.gameObject.name] = centroScript.GetTempoRestanteCooldown();
+                else
+                    tempoRestanteCentroDeRecursos.Add(centroScript.gameObject.name, centroScript.GetTempoRestanteCooldown());
+                //salva vida restante
+                if (vidaRestanteCentroDeRecursos.ContainsKey(centroScript.gameObject.name))
+                    vidaRestanteCentroDeRecursos[centroScript.gameObject.name] = centroScript.GetVidaAtual();
+                else
+                    vidaRestanteCentroDeRecursos.Add(centroScript.gameObject.name, centroScript.GetVidaAtual());
+                //salva extrações restantes
+                if (extracoesRestanteCentroDeRecursos.ContainsKey(centroScript.gameObject.name))
+                    extracoesRestanteCentroDeRecursos[centroScript.gameObject.name] = centroScript.GetVezesExtraida();
+                else
+                    extracoesRestanteCentroDeRecursos.Add(centroScript.gameObject.name, centroScript.GetVezesExtraida());
                 break;
-            case 1:
-                //carrega
-                if (dadosCentroRecursos.ContainsKey(centroScript.gameObject.name))
-                {
-                    centroScript.SetTempoRestanteCooldown(dadosCentroRecursos[centroScript.gameObject.name].GetTempoRestanteCooldown() - (Mathf.FloorToInt(Time.time - CooldownDosRecursosManager.Instance.TempoDeSaidaDaFase(SceneManager.GetActiveScene().buildIndex))));
-                    centroScript.SetCentroDeInimigos(dadosCentroRecursos[centroScript.gameObject.name].GetCentroDeInimigos());
-                    centroScript.SetVezesExtraida(dadosCentroRecursos[centroScript.gameObject.name].GetVezesExtraida());
-                    centroScript.SetVidaAtual(dadosCentroRecursos[centroScript.gameObject.name].GetVidaAtual());
-                }
+            case 1://carregar
+                //carrega estado 
+                if (estadoCentroDeRecursos.ContainsKey(centroScript.gameObject.name))
+                    centroScript.SetCentroDeInimigos(estadoCentroDeRecursos[centroScript.gameObject.name]);
+                //carrega tempo restante
+                if (tempoRestanteCentroDeRecursos.ContainsKey(centroScript.gameObject.name))
+                    centroScript.SetTempoRestanteCooldown(tempoRestanteCentroDeRecursos[centroScript.gameObject.name] -(Mathf.FloorToInt(Time.time - SalvamentoDosCentrosDeRecursosManager.Instance.TempoDeSaidaDaFase(SceneManager.GetActiveScene().buildIndex))));
+                //carrega vida restante
+                if (vidaRestanteCentroDeRecursos.ContainsKey(centroScript.gameObject.name))
+                    centroScript.SetVidaAtual(vidaRestanteCentroDeRecursos[centroScript.gameObject.name]);
+                //salva extrações restantes
+                if (extracoesRestanteCentroDeRecursos.ContainsKey(centroScript.gameObject.name))
+                    centroScript.SetVezesExtraida(extracoesRestanteCentroDeRecursos[centroScript.gameObject.name]);
                 break;
         }
     }
@@ -189,28 +171,25 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
     {
         switch (acao)
         {
-            case 0:
-                //salva
-                if (dadosNPCs.ContainsKey(npcScript.gameObject.name))
-                {
-                    dadosNPCs[npcScript.gameObject.name].SetObjDaMissao(npcScript.GetObjDaMissao());
-                    dadosNPCs[npcScript.gameObject.name].SetMissaoCumprida(npcScript.GetMissaoCumprida());
-                }
+            case 0://salvar
+                //salva estado de missao
+                if (estadoMissaoNPC.ContainsKey(npcScript.gameObject.name))
+                    estadoMissaoNPC[npcScript.gameObject.name] = npcScript.GetMissaoCumprida();
                 else
-                {
-                    NPCscript temp = new NPCscript();
-                    temp.SetObjDaMissao(npcScript.GetObjDaMissao());
-                    temp.SetMissaoCumprida(npcScript.GetMissaoCumprida());
-                    dadosNPCs.Add(npcScript.gameObject.name, temp);
-                }
+                    estadoMissaoNPC.Add(npcScript.gameObject.name, npcScript.GetMissaoCumprida());
+                //salva item da missao
+                if (itemMissaoNPC.ContainsKey(npcScript.gameObject.name))
+                    itemMissaoNPC[npcScript.gameObject.name] = npcScript.GetItemDaMissao();
+                else
+                    itemMissaoNPC.Add(npcScript.gameObject.name, npcScript.GetItemDaMissao());
                 break;
-            case 1:
-                //carrega
-                if (dadosNPCs.ContainsKey(npcScript.gameObject.name))
-                {
-                    npcScript.SetObjDaMissao(dadosNPCs[npcScript.gameObject.name].GetObjDaMissao());
-                    npcScript.SetMissaoCumprida(dadosNPCs[npcScript.gameObject.name].GetMissaoCumprida());
-                }
+            case 1://carregar
+                //carrega estado de missao
+                if (estadoMissaoNPC.ContainsKey(npcScript.gameObject.name))
+                    npcScript.SetMissaoCumprida(estadoMissaoNPC[npcScript.gameObject.name]);
+                //carrega item da missao
+                if (itemMissaoNPC.ContainsKey(npcScript.gameObject.name))
+                    npcScript.SetItemDaMissao(itemMissaoNPC[npcScript.gameObject.name]);
                 break;
         }
     }

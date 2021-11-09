@@ -6,6 +6,7 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
 {
     [SerializeField] private Item item;
     [SerializeField] private int qntd;
+    private GameObject NPCRelacionado = null;
     private Rigidbody2D rb;
     private SpriteRenderer icone;
     // Start is called before the first frame update
@@ -50,10 +51,18 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     public void SalvarEstado()
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
+        {
             GetComponent<SalvarEstadoDoObjeto>().SalvarSeJaFoiModificado();
+            if (NPCRelacionado != null)
+                NPCRelacionado.GetComponent<NPCscript>().SalvarEstado();//salvar item necessário para quest
+        }
     }
     public void AcaoSeEstadoJaModificado()
     {
         Destroy(this.gameObject);
+    }
+    public void SetNPC(GameObject npc)
+    {
+        NPCRelacionado = npc;
     }
 }

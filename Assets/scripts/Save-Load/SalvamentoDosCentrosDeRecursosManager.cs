@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CooldownDosRecursosManager : MonoBehaviour
+public class SalvamentoDosCentrosDeRecursosManager : MonoBehaviour
 {
-    public static CooldownDosRecursosManager Instance { get; private set; }
+    public static SalvamentoDosCentrosDeRecursosManager Instance { get; private set; }
     static Dictionary<string, float> TemposDeSaidaDasFases = new Dictionary<string, float>();
+    public List<GameObject> centrosDeRecursosEmCena = new List<GameObject>();
     // Start is called before the first frame update
     private void Awake()
     {
@@ -40,5 +41,15 @@ public class CooldownDosRecursosManager : MonoBehaviour
         {
             TemposDeSaidaDasFases[cenaAtual] = Time.time;
         }
+    }
+    public void AdicionarCentroALista(GameObject CDRI)
+    {
+        if(CDRI.GetComponent<SalvarEstadoDoObjeto>() != null)
+            centrosDeRecursosEmCena.Add(CDRI);
+    }
+    public void SalvarCentrosDeRecursoDaCenaAtual()
+    {
+        for (int i = 0; i < centrosDeRecursosEmCena.Count; i++)
+            centrosDeRecursosEmCena[i].GetComponent<CentroDeRecursoInfinito>().SalvarEstado();
     }
 }

@@ -13,7 +13,8 @@ public class Teleportador : MonoBehaviour
     }
     public void TeleportarPorInteracao()
     {
-        CooldownDosRecursosManager.Instance.SalvarTempoDeSaida();
+        SalvamentoDosCentrosDeRecursosManager.Instance.SalvarTempoDeSaida();
+        SalvamentoDosCentrosDeRecursosManager.Instance.SalvarCentrosDeRecursoDaCenaAtual();
         jogadorScript.Instance.IndicarInteracaoPossivel(null, false);
         string IndexFaseBase = SceneUtility.GetScenePathByBuildIndex(BuildIndexDaFaseBaseJogador);//pega o caminho da cena na pasta de arquivos
         string cenaPrincipal = IndexFaseBase.Substring(0, IndexFaseBase.Length - 6).Substring(IndexFaseBase.LastIndexOf('/') + 1);
