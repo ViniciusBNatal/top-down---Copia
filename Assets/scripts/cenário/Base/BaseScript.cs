@@ -146,7 +146,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
             desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre());
         }
         desastreManager.Instance.MudarTempoAcumuladoParaDesastre(0f);
-        StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
+        desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
     }
     public void Ativar_DesativarInteracao(bool b)
     {

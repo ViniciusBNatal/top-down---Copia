@@ -185,11 +185,11 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         Tutorial();
         fechaMenuDeTempos();
         jogadorScript.Instance.IndicarInteracaoPossivel(null, false);
-        if (NomeFasePorBuildIndex(SceneManager.GetActiveScene().buildIndex) == NomeFasePorBuildIndex(BuildIndexDaFaseBasejogador))//alvar apenas se tiver na fase BaseDoJogador
-        {
+        //if (NomeFasePorBuildIndex(SceneManager.GetActiveScene().buildIndex) == NomeFasePorBuildIndex(BuildIndexDaFaseBasejogador))//alvar apenas se tiver na fase BaseDoJogador
+        //{
             BaseScript.Instance.SalvarEstado();
             BaseScript.Instance.SalvarEstadosDosModulos();
-        }
+        //}
         SceneManager.LoadScene(slot.FaseParaAbrir());
     }
     public void LiberarNovBtnDeTrocaDeTempo(UpgradeSlot slot, bool ativarDefesa)
@@ -203,8 +203,8 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
             desastreManager.Instance.encerramentoDesastres();
             desastreManager.Instance.ConfigurarTimer(BaseScript.Instance.GetIntervaloDuranteOAprimoramentoDaBase(), 0f);
-            desastreManager.Instance.StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
-            desastreManager.Instance.StopAllCoroutines();
+            desastreManager.Instance.PararTodasCorptinas();
+            desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
         }
     }
     public UpgradeSlot GetBtnEspecifico(int i)
@@ -231,7 +231,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
                 //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
                 desastreManager.Instance.MudarTempoAcumuladoParaDesastre(0f);
                 desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre());
-                StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
+                desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
                 tutorial = false;
             }
         }

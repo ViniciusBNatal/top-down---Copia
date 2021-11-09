@@ -874,6 +874,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5477724339208793577, guid: 35083fcfe44c00d4d90b01215a261ea8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35083fcfe44c00d4d90b01215a261ea8, type: 3}
 --- !u!1 &169470434
@@ -5039,6 +5044,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5477724339208793577, guid: 35083fcfe44c00d4d90b01215a261ea8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35083fcfe44c00d4d90b01215a261ea8, type: 3}
 --- !u!1 &931611313
@@ -7366,7 +7376,7 @@ PrefabInstance:
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: itens.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
@@ -7384,12 +7394,12 @@ PrefabInstance:
         type: 3}
       propertyPath: itens.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 2e55fca245e9bf84a8da5955dbcd6c40,
+      objectReference: {fileID: 11400000, guid: bf37def55dca4bf4aa6e606a6eedbbd6,
         type: 2}
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: qntdDoRecursoDropado.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
@@ -7404,7 +7414,7 @@ PrefabInstance:
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: qntdDoRecursoDropado.Array.data[2]
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 525454675051048018, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
@@ -7988,6 +7998,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477724339208793577, guid: 35083fcfe44c00d4d90b01215a261ea8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35083fcfe44c00d4d90b01215a261ea8, type: 3}
@@ -16421,6 +16436,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477724339208793577, guid: 35083fcfe44c00d4d90b01215a261ea8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35083fcfe44c00d4d90b01215a261ea8, type: 3}

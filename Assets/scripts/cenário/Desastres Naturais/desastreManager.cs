@@ -58,7 +58,8 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     private List<GameObject> virusEmCena = new List<GameObject>();
     private void Awake()
     {
-        Instance = this;
+        if(Instance == null)
+            Instance = this;
     }
     private void Start()
     {
@@ -133,7 +134,15 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
             segundos = 0;
         timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
     }
-    public IEnumerator LogicaDesastres(bool sortearDesastres)
+    public void IniciarCorrotinaLogicaDesastres(bool sortearDesastres)
+    {
+        StartCoroutine(Instance.LogicaDesastres(sortearDesastres));
+    }
+    public void PararTodasCorptinas()
+    {
+        StopAllCoroutines();
+    }
+    private IEnumerator LogicaDesastres(bool sortearDesastres)
     {
         if (sortearDesastres)
         {
@@ -147,14 +156,13 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
         //desastresSorteados[2] = 3;
         //forcasSorteados[2] = 3;
         IndicadorDosDesastres.Instance.PreenchePlaca();
-        while (desastreAcontecendo == false)
+        while (!desastreAcontecendo)
         {
             timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
             yield return new WaitForSeconds(1f);
             if (segundos == 0 && minutos == 0)
             {
                 IniciarDesastres();
-                yield break;
             }
             else if (segundos == 0 && minutos > 0)
             {
@@ -169,22 +177,27 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
             }
         }
     }
-    private void SortearGeral(int chanceDEDesastre)
+    private void SortearGeral(int chanceDesastre)
     {
         int desastresParaocorrer = 0;
         int desastresPossiveis = 0;
-        for (int i = 0; i < DesastresList.Instance.ativar.Count; i++)
+        for (int i = 0; i < DesastresList.Instance.ativar.Count; i++)//verifica quais desastres podem acontecer
         {
             if (DesastresList.Instance.ativar[i] == true)
                 desastresPossiveis++;
         }
-        for (int i = 0; i < desastresPossiveis; i++)
+        if (BaseScript.Instance.GetDuranteDefesaParaMelhorarBase())//se estiver durante uma defesa sempre acontecerá todos os desastres possíveis
+            DefinirQntdDeDesastresParaOcorrer(desastresPossiveis);
+        else
         {
-            int r = Random.Range(1, 101);
-            if (r <= chanceDEDesastre)
-                desastresParaocorrer++;
+            for (int i = 0; i < desastresPossiveis; i++)
+            {
+                int r = Random.Range(1, 101);
+                if (r <= chanceDesastre)
+                    desastresParaocorrer++;
+            }
+            DefinirQntdDeDesastresParaOcorrer(desastresParaocorrer);
         }
-        DefinirQntdDeDesastresParaOcorrer(desastresParaocorrer);
         for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)
         {
             int forcaEscolhida = Random.Range(1, 4);
@@ -213,50 +226,6 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
             }
         }
     }
-    //visual
-    //public void LimpaPlaca()
-    //{
-    //    if (iconesDesenhados != null)
-    //    {
-    //        for (int i = iconesDesenhados.Count; i > 0; i--)
-    //        {
-    //            Destroy(iconesDesenhados[i - 1].gameObject);
-    //            iconesDesenhados.RemoveAt(i - 1);
-    //        }
-    //    }
-    //    if (multiplicadoresDesenhados != null)
-    //    {
-    //        for (int i = multiplicadoresDesenhados.Count; i > 0; i--)
-    //        {
-    //            Destroy(multiplicadoresDesenhados[i - 1].gameObject);
-    //            multiplicadoresDesenhados.RemoveAt(i - 1);
-    //        }
-    //    }
-    //}
-    //public void PreenchePlaca()
-    //{
-    //    //limpa os icones para os próximos desastres
-    //    LimpaPlaca();
-    //    for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)//preenche a tela de acordo com o que foi sorteado e a quantidade de desastres
-    //    {
-    //        //icone do multiplicador
-    //        Image iconeDeMultiplicador = Instantiate(iconesDesastrPrefab, PosicaoIconesMultiplicador.transform.position, Quaternion.identity, PosicaoIconesMultiplicador.transform);
-    //        Sprite iconeMult = DesastresList.Instance.SelecionaSpriteMultiplicador(forcasSorteados[i]);
-    //            //SelecionadorDeIconeDesastreEMultiplicador.Instance.SelecionarSpriteMultiplicador(forcasSorteados[i]);
-    //        float alturaiconeMultiplicador = iconeDeMultiplicador.rectTransform.rect.height;
-    //        iconeDeMultiplicador.transform.localPosition = new Vector3(0f, -(alturaiconeMultiplicador * i + .1f), 0f);
-    //        iconeDeMultiplicador.GetComponent<Image>().sprite = iconeMult;
-    //        multiplicadoresDesenhados.Add(iconeDeMultiplicador);
-    //        //icone do desastre
-    //        Image iconeDeDesastre = Instantiate(iconesDesastrPrefab, PosicaoIconesDesastre.transform.position, Quaternion.identity, PosicaoIconesDesastre.transform);
-    //        Sprite iconeDes = DesastresList.Instance.SelecionaSpriteDesastre(desastresSorteados[i]);
-    //            //SelecionadorDeIconeDesastreEMultiplicador.Instance.SelecionarSpriteDesastre(desastresSorteados[i]);
-    //        float alturaiconeDesastre = iconeDeDesastre.rectTransform.rect.height;
-    //        iconeDeDesastre.transform.localPosition = new Vector3(0f, -(alturaiconeDesastre * i + .1f), 0f);
-    //        iconeDeDesastre.GetComponent<Image>().sprite = iconeDes;
-    //        iconesDesenhados.Add(iconeDeDesastre);
-    //    }
-    //}
     //logica dos desastres
     private void IniciarDesastres()
     {

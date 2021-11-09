@@ -134,8 +134,11 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial, SalvamentoEn
     }
     public void AcaoSeEstadoJaModificado()
     {
-        GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosModulos(this, 1);
-        ConstruirModulo(resistenciaModulo, NomeDesastre, tipoModulo);
+        if (GetComponent<SalvarEstadoDoObjeto>() != null)
+        {
+            GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosModulos(this, 1);
+            ConstruirModulo(resistenciaModulo, NomeDesastre, tipoModulo);
+        }
     }
     private void RetornarCameraEMudarEstadoJogador()
     {

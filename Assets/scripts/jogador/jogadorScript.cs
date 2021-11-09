@@ -125,7 +125,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         {
             if (!atirando)
             {
-                atirando = true;
+                //atirando = true;
                 MudarEstadoJogador(1);
                 Vector3 dirAnim = (PegaPosicoMouse() - transform.position).normalized;
                 direcaoProjetil = (PegaPosicoMouse() - pontoDeDisparo.position).normalized;
@@ -135,7 +135,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     private void InputAtaqueMelee()// animação e inflinge dano caso encontre algo
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) //&& Time.time > podeAtacar)
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             StartCoroutine(this.atacarMelee());
         }
@@ -215,8 +215,11 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     public void Atira()
     {
-        Debug.Log("atirar");
-        StartCoroutine(this.atirar());
+        if (!atirando)
+        {
+            atirando = true;
+            StartCoroutine(this.atirar());
+        }
           //GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
           //Vector3 direcao = (PegaPosicoMouse() - pontoDeDisparo.position).normalized;
           //bala.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg));//rotaciona a bala

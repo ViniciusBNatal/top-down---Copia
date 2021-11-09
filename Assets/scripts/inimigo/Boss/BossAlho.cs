@@ -52,7 +52,7 @@ public class BossAlho : MonoBehaviour
     private void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
         desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres() - ReducaoIntervaloDesastres, 0f);
-        desastreManager.Instance.StartCoroutine(desastreManager.Instance.LogicaDesastres(true));
+        desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
         StartCoroutine(this.PadraoDeAtaque());
         DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
     }
