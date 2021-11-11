@@ -24,6 +24,8 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
     //dados dos npcs
     static Dictionary<string, bool> estadoMissaoNPC = new Dictionary<string, bool>();
     static Dictionary<string, Item> itemMissaoNPC = new Dictionary<string, Item>();
+    //dados dialogos unicos
+    static Dictionary<string, bool> dialogosFinalizados = new Dictionary<string, bool>();
     // Start is called before the first frame update
     void Start()
     {
@@ -190,6 +192,24 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                 //carrega item da missao
                 if (itemMissaoNPC.ContainsKey(npcScript.gameObject.name))
                     npcScript.SetItemDaMissao(itemMissaoNPC[npcScript.gameObject.name]);
+                break;
+        }
+    }
+    public void Salvar_CarregarDadosDosDialogosUnicos(DialogoUnico dialogoScript, int acao)
+    {
+        switch (acao)
+        {
+            case 0://salvar
+                //salva se ja falou
+                if (dialogosFinalizados.ContainsKey(dialogoScript.gameObject.name))
+                    dialogosFinalizados[dialogoScript.gameObject.name] = dialogoScript.GetDialogoORealizado();
+                else
+                    dialogosFinalizados.Add(dialogoScript.gameObject.name, dialogoScript.GetDialogoORealizado());
+                break;
+            case 1://carregar
+                //carrega se ja falou
+                if (dialogosFinalizados.ContainsKey(dialogoScript.gameObject.name))
+                    dialogoScript.SetDialogoORealizado(dialogosFinalizados[dialogoScript.gameObject.name]);
                 break;
         }
     }

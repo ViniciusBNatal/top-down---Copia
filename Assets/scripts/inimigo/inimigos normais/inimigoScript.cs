@@ -106,7 +106,7 @@ public class inimigoScript : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && distanciaMinimaParaFugir != Vector2.zero)
+        if (collision.gameObject.tag == "Player" && distanciaMinimaParaFugir != Vector2.zero && this.isActiveAndEnabled)
         {
             Vector2 distanciaDoAlvo = alvo.position - transform.position;
             if (Mathf.Abs(distanciaDoAlvo.x) <= distanciaMinimaParaFugir.x && Mathf.Abs(distanciaDoAlvo.y) <= distanciaMinimaParaFugir.y)
@@ -117,7 +117,7 @@ public class inimigoScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)//jogador entrou da área de detecção
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag == "Player" && this.isActiveAndEnabled)
         {
             alvo = collision.transform;
             //retornando = false;
@@ -130,7 +130,7 @@ public class inimigoScript : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)//jogador saiu da área de detecção
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && this.isActiveAndEnabled)
         {
             alvo = null;
             rb.velocity = Vector2.zero;

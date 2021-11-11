@@ -5,7 +5,7 @@ using UnityEngine;
 public class AtaqueMisselParaTempo : MonoBehaviour
 {
     [Header("Variáveis do Missel")]
-    [SerializeField] private GameObject parent;
+    [SerializeField] private GameObject gobjPai;
     [SerializeField] private float duracaoExplosao;
     [Header("Componentes do recurso dropado")]
     [SerializeField] private float forca;
@@ -44,8 +44,6 @@ public class AtaqueMisselParaTempo : MonoBehaviour
         if (collision.tag == "Player")
         {
             jogadorAcertado = true;
-            UIinventario.Instance.fechaInventario();
-            UIinventario.Instance.fechaMenuDeTempos();
             jogadorScript.Instance.MudarEstadoJogador(1);
             jogadorScript.Instance.GetComponent<Animator>().speed = 0f;
         }
@@ -63,7 +61,8 @@ public class AtaqueMisselParaTempo : MonoBehaviour
             if (recursosCriados[i] != null)
                 recursosCriados[i].GetComponent<recurso_coletavel>().LancaRecurso(forca);
         }
-        Destroy(parent);
+        BossAlho.Instance.RemoverAtqDaLista(gobjPai.gameObject);
+        Destroy(gobjPai);
     }
     public void FimAnimacao()
     {

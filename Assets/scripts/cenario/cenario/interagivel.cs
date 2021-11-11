@@ -14,7 +14,7 @@ public class interagivel : MonoBehaviour
     {
         if (emAlcance)
         {
-            if (Input.GetKeyDown(btnInteragir) && (jogadorScript.Instance.EstadoAtualJogador() == jogadorScript.Instance.CompararComEstado(0) || jogadorScript.Instance.EstadoAtualJogador() == jogadorScript.Instance.CompararComEstado(1)))
+            if (Input.GetKeyDown(btnInteragir) && ((int)jogadorScript.Instance.GetEstadoAtualJogador() == 0 || (int)jogadorScript.Instance.GetEstadoAtualJogador() == 5))
             {
                 acao.Invoke();
             }
@@ -34,8 +34,8 @@ public class interagivel : MonoBehaviour
         {
             emAlcance = false;
             collision.GetComponent<jogadorScript>().IndicarInteracaoPossivel(SelecionadorDeIconeDeInteracao.Instance.SelecionaIconeDeInteracao(btnInteragir), emAlcance);
-            UIinventario.Instance.fechaMenuDeTempos();
-            UIinventario.Instance.fechaInventario();
+            //UIinventario.Instance.fechaMenuDeTempos();
+            //UIinventario.Instance.fechaInventario();
         }
     }
 }

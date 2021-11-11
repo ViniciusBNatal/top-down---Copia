@@ -10,9 +10,11 @@ public class BossAlho : MonoBehaviour
     [SerializeField] private GameObject misselPrefab;
     [SerializeField] private GameObject sementeDeAlhoPrefab;
     [SerializeField] private Transform pontoDeSpawnDaSemente;
-    [SerializeField] private DialogoTrigger dialogos;
+    //[SerializeField] private DialogoUnico dialogos;
+    [SerializeField] private List<Dialogo> dialogos = new List<Dialogo>();
     private bool atacar = true;
     private Animator animator;
+    private List<GameObject> ataquesEmCena = new List<GameObject>(); 
     // Start is called before the first frame update
     private void Awake()
     {
@@ -22,7 +24,8 @@ public class BossAlho : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-        dialogos.AtivarDialogo();
+        DialogeManager.Instance.IniciarDialogo(dialogos[0]);
+        //dialogos.AtivarDialogo();
     }
     IEnumerator PadraoDeAtaque()
     {
@@ -43,35 +46,49 @@ public class BossAlho : MonoBehaviour
     }
     public void AtaqueDeMissel()
     {
-        Instantiate(misselPrefab, jogadorScript.Instance.transform.position, Quaternion.identity);
+        ataquesEmCena.Add(Instantiate(misselPrefab, jogadorScript.Instance.transform.position, Quaternion.identity));
     }
     public void AtaqueDeSementeDeAlho()
     {
-        Instantiate(sementeDeAlhoPrefab, pontoDeSpawnDaSemente.transform.position, Quaternion.identity);
+        ataquesEmCena.Add(Instantiate(sementeDeAlhoPrefab, pontoDeSpawnDaSemente.transform.position, Quaternion.identity));
     }
     private void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
         desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres() - ReducaoIntervaloDesastres, 0f);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
         StartCoroutine(this.PadraoDeAtaque());
-        DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
     }
     public void BossDerotado()
     {
         atacar = false;
+        desastreManager.Instance.PararTodasCorotinas();
         jogadorScript.Instance.MudarEstadoJogador(1);
-        jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(transform);
+        LimpaAtqsDaCena();
+        jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(this.transform);
         StartCoroutine(this.tempo());
     }
     IEnumerator tempo()
     {
         yield return new WaitForSeconds(3f);
         jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform);
-        Application.Quit();
+        UIinventario.Instance.AbrirVitoria();
+        //Application.Quit();
         Destroy(this.gameObject);
     }
     public float GetReducaoIntervaloDesastres()
     {
         return ReducaoIntervaloDesastres;
+    }
+    public void RemoverAtqDaLista(GameObject gobj)
+    {
+        ataquesEmCena.Remove(gobj);
+    }
+    private void LimpaAtqsDaCena()
+    {
+        for (int i = ataquesEmCena.Count - 1; i >= 0; i--)
+        {
+            Destroy(ataquesEmCena[i]);
+        }
+        ataquesEmCena.Clear();
     }
 }

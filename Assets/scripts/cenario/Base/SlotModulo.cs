@@ -11,35 +11,31 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial, SalvamentoEn
     [SerializeField] private SpriteRenderer iconeDoDesastre;
     [SerializeField] private SpriteRenderer iconeDeMultiplicador;
     [SerializeField] private bool tutorial = true;
+    [SerializeField] private List<Material> materiais = new List<Material>();
+    [SerializeField] private GameObject animacaoConstrucao;
+    private SpriteRenderer iconeSlotDeModulo;
     private int resistenciaModulo = 0;
     private string NomeDesastre = "";
     private int tipoModulo = 0;
 
     private void Start()
     {
+        iconeSlotDeModulo = GetComponent<SpriteRenderer>();
         BaseScript.Instance.AdicionarModulo(this);
     }
     public void Click(jogadorScript jogador)
     {
-        if (iconeDoModulo.sprite != null)
-        {
-            ConstruirModulo(jogador.GetModuloConstruido().GetForca(), jogador.GetModuloConstruido().desastre, jogador.GetModuloConstruido().modulo);
-            RetornarCameraEMudarEstadoJogador();
-        }
-        else
-        {
-            RemoverModulo();
-            ConstruirModulo(jogador.GetModuloConstruido().GetForca(), jogador.GetModuloConstruido().desastre, jogador.GetModuloConstruido().modulo);
-            RetornarCameraEMudarEstadoJogador();
-        }
+        ConstruirModulo(jogador.GetModuloConstruido().GetForca(), jogador.GetModuloConstruido().desastre, jogador.GetModuloConstruido().modulo);
     }
     public void ConstruirModulo(int forca, string desastre, int modulo)
     {
-        if (modulo == 2 && BossAlho.Instance != null)
+        BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(false);
+        if (modulo == 2)
         {
             SetModulo(modulo);
             SetSpriteDoModulo(DesastresList.Instance.SelecionaSpriteModulo(modulo));
-            BossAlho.Instance.BossDerotado();
+            if (BossAlho.Instance != null)
+                BossAlho.Instance.BossDerotado();
             return;
         }
         else
@@ -55,6 +51,7 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial, SalvamentoEn
                 SetSpriteDoDesastre(DesastresList.Instance.SelecionaSpriteDesastre(NomeDesastre));
                 //cria o icone de multiplicador dependedo do nivel do crafting
                 SetSpriteDoMultiplicador(DesastresList.Instance.SelecionaSpriteMultiplicador(resistenciaModulo));
+                RetornarCameraEMudarEstadoJogador();
             }
         }
     }
@@ -145,5 +142,28 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial, SalvamentoEn
         jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform);
         jogadorScript.Instance.MudarEstadoJogador(0);
         Tutorial();
+    }
+    public void VisualConstrucao(bool emConstrucao)
+    {
+        if (emConstrucao)
+        {
+            animacaoConstrucao.SetActive(true);
+            if (iconeDoModulo.sprite == null)//visal de costrução
+            {
+                iconeSlotDeModulo.material = materiais[1];
+                animacaoConstrucao.GetComponent<Animator>().SetInteger("ESTADO", 0);
+            }
+            else//visual demolição
+            {
+                iconeDoModulo.material = materiais[2];
+                animacaoConstrucao.GetComponent<Animator>().SetInteger("ESTADO", 1);
+            }
+        }
+        else
+        {
+            iconeSlotDeModulo.material = materiais[0];
+            iconeDoModulo.material = materiais[0];
+            animacaoConstrucao.SetActive(false);
+        }
     }
 }

@@ -1,0 +1,184 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1994457619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8450876083181799882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd680629d296b64e915eabe40e6c8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &381750182311127885
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6555396283836806, guid: 8647048ece137f643a2fdf9ea5f1e64d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.625
+      objectReference: {fileID: 0}
+    - target: {fileID: 6555396283836806, guid: 8647048ece137f643a2fdf9ea5f1e64d, type: 3}
+      propertyPath: m_Size.y
+      value: 1.46875
+      objectReference: {fileID: 0}
+    - target: {fileID: 6555396283836806, guid: 8647048ece137f643a2fdf9ea5f1e64d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6016671135979278976, guid: 34e1519d6625d6a4e8d582968c134aad,
+        type: 3}
+    - target: {fileID: 1189917926951549827, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: velocidade
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189917926951549827, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: objetoDeMissao
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189917926951549827, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: direcaoParaMoverX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189917926951549827, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: direcaoParaMoverY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189917926951549827, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: direcaoParaMover.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189917926951549827, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: distanciaMaxParaPerocrer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189917926951549827, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].IDdoNPC
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189917926951549827, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: dialogos.Array.data[1].IDdoNPC
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189917926951549827, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: dialogos.Array.data[2].IDdoNPC
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490898134585285708, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: dialogo.Frases.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490898134585285708, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: dialogo.Frases.Array.data[0]
+      value: "Essa area ja deveria estar evacuada, o que voc\xEA esta fazendo aqui?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490898134585285708, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: dialogo.Frases.Array.data[1]
+      value: "Bom n\xE3o importa desde que voc\xEA n\xE3o seja um daqueles manifestantes"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490898134585285708, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: dialogo.Frases.Array.data[2]
+      value: "Falando neles ja que eu n\xE3o vou te prender talvez voc\xEA possa
+        procurar por algum dispositivo que aqueles baderneiros estava montando "
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490898134585285708, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: dialogo.Frases.Array.data[3]
+      value: "E se voc\xEA me der algo de ut\xEDl talvez eu te deixe acessar o parque
+        que eu estou guardando"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3673411486788668162, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433838711980863688, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a0803435e3e5148469fd43bf32088ed1, type: 2}
+    - target: {fileID: 8073745499279925895, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_Name
+      value: policial Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159923025426734790, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159923025426734790, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 48.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159923025426734790, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159923025426734790, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159923025426734790, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159923025426734790, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159923025426734790, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159923025426734790, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159923025426734790, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159923025426734790, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159923025426734790, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8647048ece137f643a2fdf9ea5f1e64d, type: 3}
+--- !u!1 &8450876083181799882 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8073745499279925895, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+    type: 3}
+  m_PrefabInstance: {fileID: 381750182311127885}
+  m_PrefabAsset: {fileID: 0}

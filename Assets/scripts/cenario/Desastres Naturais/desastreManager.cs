@@ -41,12 +41,9 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private GameObject errupcaoPrefab;
     [SerializeField] private float intervaloEntreSpawnsErrupcao;
     [SerializeField] private float distanciaXdoJogador_errupcaoMin;
-    //private float distanciaXdoJogador_errupcaoMax = jogadorScript.Instance.mainCamera.orthographicSize * Screen.width / Screen.height - .5f;
     [SerializeField] private float distanciaYdoJogador_errupcaoMin;
-    //private float distanciaYdoJogador_errupcaoMax = jogadorScript.Instance.mainCamera.orthographicSize - .5f;
     [Header("NÃO MEXER")]
-    [SerializeField] private PostProcessScript CMefeitos;
-    //[SerializeField] private Text timer;
+    //[SerializeField] private PostProcessScript CMefeitos;
     [SerializeField] private TMP_Text timer;
     private bool desastreAcontecendo = false;
     private float tempoAcumulado = 0f;
@@ -104,7 +101,8 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     }
     private void Virus()
     {
-        CMefeitos.visualVirus(true);
+        //CMefeitos.visualVirus(true);
+        PostProcessScript.Instance.visualVirus(true);
         float distanciaXdoJogador_virusMax = jogadorScript.Instance.mainCamera.orthographicSize * Screen.width / Screen.height - .5f;
         float distanciaYdoJogador_virusMax = jogadorScript.Instance.mainCamera.orthographicSize - .5f;
         StartCoroutine(this.criaObjetosDoDesastre(distanciaXdoJogador_virusMin, distanciaXdoJogador_virusMax, distanciaYdoJogador_virusMin, distanciaYdoJogador_virusMax, intervaloEntreSpawnsVirus, paredeVirusPrefab));
@@ -117,7 +115,8 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     }
     private void ErrupcaoTerrena()
     {
-        CMefeitos.visualErrupcaoTerrena(true);
+        //CMefeitos.visualErrupcaoTerrena(true);
+        PostProcessScript.Instance.visualErrupcaoTerrena(true);
         float distanciaXdoJogador_errupcaoMax = jogadorScript.Instance.mainCamera.orthographicSize * Screen.width / Screen.height - .5f;
         float distanciaYdoJogador_errupcaoMax = jogadorScript.Instance.mainCamera.orthographicSize - .5f;
         StartCoroutine(this.criaObjetosDoDesastre(distanciaXdoJogador_errupcaoMin, distanciaXdoJogador_errupcaoMax, distanciaYdoJogador_errupcaoMin, distanciaYdoJogador_errupcaoMax, intervaloEntreSpawnsErrupcao, errupcaoPrefab));
@@ -138,7 +137,7 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     {
         StartCoroutine(Instance.LogicaDesastres(sortearDesastres));
     }
-    public void PararTodasCorptinas()
+    public void PararTodasCorotinas()
     {
         StopAllCoroutines();
     }
@@ -278,7 +277,8 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
         if (enxamePrefab != null)
             Destroy(enxameInst);
         //virus
-        CMefeitos.visualVirus(false);
+        //CMefeitos.visualVirus(false);
+        PostProcessScript.Instance.visualVirus(false);
         UIinventario.Instance.GetComponent<Canvas>().enabled = true;
         if (virusEmCena.Count > 0)
         {
@@ -292,7 +292,8 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
         //Chuva Acida
         Destroy(chuvaInstance);
         //Errupcao Terrena
-        CMefeitos.visualErrupcaoTerrena(false);
+        //CMefeitos.visualErrupcaoTerrena(false);
+        PostProcessScript.Instance.visualErrupcaoTerrena(false);
         if (errupcoesEmCena.Count > 0)
         {
             for (int i = errupcoesEmCena.Count; i > 0; i--)

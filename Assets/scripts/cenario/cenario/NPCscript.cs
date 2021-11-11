@@ -4,17 +4,34 @@ using UnityEngine;
 
 public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
 {
-    [SerializeField] private List<DialogoTrigger> dialogos = new List<DialogoTrigger>();
+    private const int nDeDialogos = 3;
     [SerializeField] private GameObject objetoDeMissao;
+    [Range(-1,1)]
+    [SerializeField] private int direcaoParaMoverX;
+    [Range(-1, 1)]
+    [SerializeField] private int direcaoParaMoverY;
+    [SerializeField] private float velocidade;
+    [SerializeField] private float distanciaMaxParaPerocrer;
+    [SerializeField] private Dialogo[] dialogos = new Dialogo[nDeDialogos];
     private Item itemMissao = null;
     private bool missaoCumprida = false;
+    private Rigidbody2D rb;
+    private Animator animator;
+    private Vector2 posInicial;
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        posInicial = transform.position;
         if (objetoDeMissao != null && itemMissao == null)
         {
             objetoDeMissao.GetComponent<recurso_coletavel>().SetNPC(this.gameObject);
             itemMissao = objetoDeMissao.GetComponent<recurso_coletavel>().ReferenciaItem();
         }
+    }
+    private void FixedUpdate()
+    {
+        MovimentarNPC();
     }
     public void Interacao()
     {
@@ -24,39 +41,37 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
         }
         else//se ele for apenas para conversar
         {
-            dialogos[0].AtivarDialogo();
+            DialogeManager.Instance.IniciarDialogo(dialogos[0]);
         }
     }
     private void VerificarMissao()
     {
         if (missaoCumprida)
         {
-            dialogos[2].AtivarDialogo();//dialogo de missao ja foi cumprida
+            DialogeManager.Instance.IniciarDialogo(dialogos[2]);//dialogo de missao ja foi cumprida
         }
         else
         {
             if (UIinventario.Instance.ProcurarChave(itemMissao))
             {
-                missaoCumprida = true;
                 DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-                dialogos[1].AtivarDialogo();//dialogo de missao cumprida
+                DialogeManager.Instance.IniciarDialogo(dialogos[1]);//dialogo de missao cumprida
             }
             else
             {
-                dialogos[0].AtivarDialogo();//dialogo de falar qual a missao
+                DialogeManager.Instance.IniciarDialogo(dialogos[0]);//dialogo de falar qual a missao
             }
         }
     }
     private void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
         AoCompletarAMissao();
-        DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
-        SalvarEstado();
+        DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();       
     }
     private void AoCompletarAMissao()
     {
-        Debug.Log("missao Cumprida");
-        transform.position += new Vector3(10f, 10f, 0f);
+        missaoCumprida = true;
+        SalvarEstado();
     }
 
     public void SalvarEstado()
@@ -89,5 +104,17 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     public void SetItemDaMissao(Item obj)
     {
         itemMissao = obj;
+    }
+    public void MovimentarNPC()
+    {
+        if (missaoCumprida)
+        {
+            animator.SetFloat("HORZ", direcaoParaMoverX);
+            animator.SetFloat("VERTC", direcaoParaMoverY);
+            if (Mathf.Abs(transform.position.x - posInicial.x) * direcaoParaMoverX < distanciaMaxParaPerocrer && Mathf.Abs(transform.position.y - posInicial.y) * direcaoParaMoverY < distanciaMaxParaPerocrer)
+                rb.velocity = new Vector2(direcaoParaMoverX, direcaoParaMoverY) * velocidade;
+            else
+                rb.velocity = Vector2.zero;
+        }
     }
 }

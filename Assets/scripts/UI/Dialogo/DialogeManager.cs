@@ -22,6 +22,7 @@ public class DialogeManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        animator = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -31,6 +32,7 @@ public class DialogeManager : MonoBehaviour
     {
         Frases.Clear();
         jogadorScript.Instance.MudarEstadoJogador(3);
+        animatorImage.SetInteger("NPC", dialogo.IDdoNPC);
         animator.SetBool("aberto", true);
         NomeNPCText.text = dialogo.NomeNPC;
         dialogoAtual = dialogo;
@@ -62,12 +64,13 @@ public class DialogeManager : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(this.EscreveDialogo(textoDialogo));
     }
-    private void FimDialogo()
+    public void FimDialogo()
     {
         animator.SetBool("aberto", false);
         index = 0;
         jogadorScript.Instance.MudarEstadoJogador(0);
         AoFinalizarDialogo();
+        LimparListaDeAoFinalizarDialogo();
     }
     IEnumerator EscreveDialogo(string frase)
     {

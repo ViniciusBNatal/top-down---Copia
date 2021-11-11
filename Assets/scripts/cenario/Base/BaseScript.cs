@@ -167,6 +167,13 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
             listaModulos[i].SetTutorial(false);
         }
     }
+    public void Ativar_DesativarVisualConstrucaoModulos(bool b)
+    {
+        for (int i = 0; i < listaModulos.Count; i++)
+        {
+            listaModulos[i].VisualConstrucao(b);
+        }
+    }
     public void Ativar_DesativarDuranteDefesaParaMelhorarBase(bool b)
     {
         duranteMelhoria = b;

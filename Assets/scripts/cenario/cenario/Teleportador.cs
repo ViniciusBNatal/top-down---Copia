@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class Teleportador : MonoBehaviour
 {
     [SerializeField] private Transform pontoDeChegada;
+    [SerializeField] private DialogoUnico dialogoInicial;
     const int BuildIndexDaFaseBaseJogador = 2;
     private void Start()
     {
         jogadorScript.Instance.transform.position = pontoDeChegada.position;
+        DialogoInicial();
     }
     public void TeleportarPorInteracao()
     {
@@ -19,5 +21,12 @@ public class Teleportador : MonoBehaviour
         string IndexFaseBase = SceneUtility.GetScenePathByBuildIndex(BuildIndexDaFaseBaseJogador);//pega o caminho da cena na pasta de arquivos
         string cenaPrincipal = IndexFaseBase.Substring(0, IndexFaseBase.Length - 6).Substring(IndexFaseBase.LastIndexOf('/') + 1);
         SceneManager.LoadScene(cenaPrincipal);
+    }
+    private void DialogoInicial()
+    {
+        if (dialogoInicial != null)
+        {
+            dialogoInicial.AtivarDialogo();
+        }
     }
 }

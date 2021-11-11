@@ -136,10 +136,10 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     }
     public void AtivarRobo()
     {
-        if (GetComponent<DialogoTrigger>() != null)
+        if (GetComponent<DialogoUnico>() != null)
         {
             DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-            GetComponent<DialogoTrigger>().AtivarDialogo();
+            GetComponent<DialogoUnico>().AtivarDialogo();
             //acaoComInimigos();
         }
     }

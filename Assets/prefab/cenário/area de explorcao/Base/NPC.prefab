@@ -1,153 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1762777233343999499
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4013932632459116978}
-  - component: {fileID: 5434880691067240801}
-  m_Layer: 0
-  m_Name: dialogo Missao ja foi Cumprida
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4013932632459116978
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762777233343999499}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8159923025426734790}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5434880691067240801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762777233343999499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ad58524d1506949b7db7e0d1031ee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogo:
-    NomeNPC: missao ja completa
-    Frases:
-    - "vc j\xE1 fez a minha missao"
-    EstadoImagemNPC: []
-    FocarComCamera: []
---- !u!1 &3450478082828599884
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8884774513440849745}
-  - component: {fileID: 1490898134585285708}
-  m_Layer: 0
-  m_Name: dialogo Receber missao
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8884774513440849745
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3450478082828599884}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8159923025426734790}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1490898134585285708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3450478082828599884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ad58524d1506949b7db7e0d1031ee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogo:
-    NomeNPC: receber missao
-    Frases:
-    - pega o item logo
-    EstadoImagemNPC: []
-    FocarComCamera:
-    - {fileID: 0}
---- !u!1 &6889220300646706825
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5623449507961747961}
-  - component: {fileID: 8832344899877233561}
-  m_Layer: 0
-  m_Name: dialogo Ao Completar Missao
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5623449507961747961
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6889220300646706825}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8159923025426734790}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8832344899877233561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6889220300646706825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ad58524d1506949b7db7e0d1031ee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogo:
-    NomeNPC: missao completa
-    Frases:
-    - obrigado
-    EstadoImagemNPC: []
-    FocarComCamera: []
 --- !u!1 &8073745499279925895
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +13,7 @@ GameObject:
   - component: {fileID: 4433838711980863688}
   - component: {fileID: 1189917926951549827}
   - component: {fileID: 3673411486788668162}
+  - component: {fileID: 3226039140208650368}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -180,9 +33,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1566196007067271499}
-  - {fileID: 8884774513440849745}
-  - {fileID: 5623449507961747961}
-  - {fileID: 4013932632459116978}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -268,11 +118,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5062532382c2a1439554f0b2d76ebb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogos:
-  - {fileID: 1490898134585285708}
-  - {fileID: 8832344899877233561}
-  - {fileID: 5434880691067240801}
   objetoDeMissao: {fileID: 0}
+  direcaoParaMoverX: 0
+  direcaoParaMoverY: 0
+  velocidade: 0
+  distanciaMaxParaPerocrer: 0
+  dialogos:
+  - NomeNPC: recebe missao
+    animacoesDasImagens: {fileID: 0}
+    Frases:
+    - pega o item logo
+    EstadoImagemNPC: []
+    FocarComCamera: []
+  - NomeNPC: missao completa
+    animacoesDasImagens: {fileID: 0}
+    Frases:
+    - obrigado
+    EstadoImagemNPC: []
+    FocarComCamera: []
+  - NomeNPC: missao ja completa
+    animacoesDasImagens: {fileID: 0}
+    Frases:
+    - vc ja fez a minha missao
+    EstadoImagemNPC: []
+    FocarComCamera: []
 --- !u!70 &3673411486788668162
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -289,6 +158,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.390625}
   m_Size: {x: 0.6875, y: 0.78125}
   m_Direction: 0
+--- !u!50 &3226039140208650368
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8073745499279925895}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1001 &524572212438507739
 PrefabInstance:
   m_ObjectHideFlags: 0

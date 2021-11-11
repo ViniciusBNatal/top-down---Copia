@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 3199460214712093553}
   - component: {fileID: 3199460214712093554}
   - component: {fileID: 3199460214712093556}
-  - component: {fileID: 3276896488795383151}
   m_Layer: 0
   m_Name: Boss prefab
   m_TagString: Untagged
@@ -154,24 +153,11 @@ MonoBehaviour:
   sementeDeAlhoPrefab: {fileID: 6681289161254987899, guid: ab4554795a0271b4895f3d8a8d9470fb,
     type: 3}
   pontoDeSpawnDaSemente: {fileID: 3199460214441609073}
-  dialogos: {fileID: 3276896488795383151}
---- !u!114 &3276896488795383151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3199460214712093557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78ad58524d1506949b7db7e0d1031ee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogo:
-    NomeNPC: Dr. Alho
+  dialogos:
+  - NomeNPC: Dr Alho
+    IDdoNPC: 1
     Frases:
     - ME DA O PORTAL
-    EstadoImagemNPC:
-    - 0
+    EstadoImagemNPC: []
     FocarComCamera:
     - {fileID: 3199460214712093555}

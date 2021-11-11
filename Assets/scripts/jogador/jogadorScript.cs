@@ -45,7 +45,8 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         Paralisado,
         EmContrucao,
         EmDialogo,
-        SendoEmpurrado
+        SendoEmpurrado,
+        EmUI
     };
     private estados estadosJogador = estados.EmAcao;// 0 = em acao, 1 = em menus, 2 = em construcao 
     private ReceitaDeCrafting moduloCriado;
@@ -79,14 +80,13 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 InputAtirar();
                 InputAtaqueMelee();
                 break;
-            case estados.Paralisado://interface aberta
-
-                break;
             case estados.EmContrucao://construindo
                 mousePrecionado();
                 break;
             case estados.EmDialogo:
                 InputProsseguirDialogo();
+                break;
+            default:
                 break;
         }
     }
@@ -183,6 +183,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 podeAnimar = true;
                 break;
             case 1:
+                ControleManager();
                 estadosJogador = estados.Paralisado;
                 podeAnimar = false;
                 break;
@@ -195,9 +196,33 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 podeAnimar = false;
                 break;
             case 4:
+                ControleManager();
                 estadosJogador = estados.SendoEmpurrado;
-                atirando = false;
+                //atirando = false;
                 podeAnimar = false;
+                break;
+            case 5:
+                estadosJogador = estados.EmUI;
+                podeAnimar = false;
+                break;
+        }
+    }
+    private void ControleManager()
+    {
+        switch ((int)estadosJogador)
+        {
+            case 2://em construção
+                comportamentoCamera.MudaFocoCamera(transform);
+                break;
+            case 3://em dialogo
+                if (DialogeManager.Instance.gameObject.activeSelf)
+                    DialogeManager.Instance.FimDialogo();
+                break;
+            case 5:
+                UIinventario.Instance.fechaInventario();
+                UIinventario.Instance.fechaMenuDeTempos();
+                break;
+            default:
                 break;
         }
     }
@@ -347,7 +372,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         moduloCriado = ScriptableObject.CreateInstance<ReceitaDeCrafting>();
         moduloCriado = modulo;
     }
-    public estados EstadoAtualJogador()
+    public estados GetEstadoAtualJogador()
     {
         return estadosJogador;
     }

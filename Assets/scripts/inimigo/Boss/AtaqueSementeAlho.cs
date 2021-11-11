@@ -72,6 +72,7 @@ public class AtaqueSementeAlho : MonoBehaviour
     IEnumerator DuracaoGas()
     {
         yield return new WaitForSeconds(duracaoAreaToxica);
+        BossAlho.Instance.RemoverAtqDaLista(this.gameObject);
         Destroy(this.gameObject);
     }
     public float GetDuracaoStun()

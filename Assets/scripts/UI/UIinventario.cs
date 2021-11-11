@@ -19,6 +19,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private GameObject slotItemPrefab;
     [SerializeField] private Transform posicaoDosIconesDeItens;
     [SerializeField] private GameObject abaSelecionarTempo;
+    [SerializeField] private GameObject abaVitoriaDoJogo;
     private int TempoAtual = 0;
     const int BuildIndexDaFaseBasejogador = 2;
     public bool InventarioAberto => inventarioAberto;
@@ -46,7 +47,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     }
     public void abreInventario()
     {
-        jogadorScript.Instance.MudarEstadoJogador(1);
+        jogadorScript.Instance.MudarEstadoJogador(5);
         inventarioAberto = true;
         inventarioParent.SetActive(true);
         AoClicarBtnInventario();
@@ -61,7 +62,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
 
     public void abreMenuDeTempos()
     {
-        jogadorScript.Instance.MudarEstadoJogador(1);
+        jogadorScript.Instance.MudarEstadoJogador(5);
         inventarioAberto = true;
         abaSelecionarTempo.SetActive(true);
     }
@@ -143,6 +144,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
                 listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.construcaoConfirmada().quantidadeDosRecursos[tipoRecursoCrafting]);//-slot.GetNovaListaDeQntdRecursosNecessarios()[tipoRecursoCrafting]               
             }
             jogadorScript.Instance.SetModuloConstruido(slot.construcaoConfirmada());
+            BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(true);
             jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(BaseScript.Instance.transform);
             fechaInventario();
             jogadorScript.Instance.MudarEstadoJogador(2);
@@ -203,7 +205,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
             desastreManager.Instance.encerramentoDesastres();
             desastreManager.Instance.ConfigurarTimer(BaseScript.Instance.GetIntervaloDuranteOAprimoramentoDaBase(), 0f);
-            desastreManager.Instance.PararTodasCorptinas();
+            desastreManager.Instance.PararTodasCorotinas();
             desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
         }
     }
@@ -274,5 +276,16 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(index);//pega o caminho da cena na pasta de arquivos
         string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
         return cenaParaAbrir;
+    }
+    public void AbrirVitoria()
+    {
+        jogadorScript.Instance.MudarEstadoJogador(5);
+        inventarioAberto = true;
+        inventarioParent.SetActive(true);
+        abaVitoriaDoJogo.SetActive(true);
+    }
+    public void FecharJogo()
+    {
+        Application.Quit();
     }
 }

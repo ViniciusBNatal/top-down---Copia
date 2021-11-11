@@ -15,7 +15,7 @@ public class hitbox_inimigo : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && inimigo.isActiveAndEnabled)
         {
             inimigo.GetAnimScript().AtaqueMelee();
             jogadorScript.Instance.mudancaRelogio(inimigo.danoMelee, duracaoStun);
