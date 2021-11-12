@@ -57,8 +57,8 @@ public class IndicadorDosDesastres : MonoBehaviour
         for (int i = 0; i < desastreManager.Instance.GetQntdDesastresParaOcorrer(); i++)//preenche a tela de acordo com o que foi sorteado e a quantidade de desastres
         {
             GameObject icone = Instantiate(iconesDesastrPrefab, PosIcones.transform);
-            icone.GetComponent<Image>().sprite = DesastresList.Instance.SelecionaSpriteDesastre(desastreManager.Instance.GetDesastreSorteado(i));
-            icone.GetComponentInChildren<TMP_Text>().text = desastreManager.Instance.forcasSorteados[i].ToString();
+            icone.GetComponent<iconeDesastre>().imagem.sprite = DesastresList.Instance.SelecionaSpriteDesastre(desastreManager.Instance.GetDesastreSorteado(i));
+            icone.GetComponent<iconeDesastre>().texto.text = desastreManager.Instance.forcasSorteados[i].ToString();
             iconesDesenhados.Add(icone);
             ////icone do multiplicador
             //Image iconeDeMultiplicador = Instantiate(iconesDesastrPrefab, PosicaoIconesMultiplicador.transform.position, Quaternion.identity, PosicaoIconesMultiplicador.transform);
