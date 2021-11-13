@@ -26,6 +26,90 @@ TextureImporter:
   - first:
       213: -7345919258367298962
     second: Catador_spritesheet_7
+  - first:
+      213: -6982921872919909292
+    second: Catador_spritesheet_8
+  - first:
+      213: 2603771784843682736
+    second: Catador_spritesheet_9
+  - first:
+      213: -1331706476050129919
+    second: Catador_spritesheet_10
+  - first:
+      213: 3357345060808812391
+    second: Catador_spritesheet_11
+  - first:
+      213: 3192949944301765397
+    second: Catador_spritesheet_12
+  - first:
+      213: -8816441928018541185
+    second: Catador_spritesheet_13
+  - first:
+      213: -1816767699904476925
+    second: Catador_spritesheet_14
+  - first:
+      213: 4790265932223028457
+    second: Catador_spritesheet_15
+  - first:
+      213: -7659499086875786591
+    second: Catador_spritesheet_16
+  - first:
+      213: 4282399640315070638
+    second: Catador_spritesheet_17
+  - first:
+      213: 4619059258580321181
+    second: Catador_spritesheet_18
+  - first:
+      213: -727600265738432589
+    second: Catador_spritesheet_19
+  - first:
+      213: -1803940657618337253
+    second: Catador_spritesheet_20
+  - first:
+      213: 7509636138136308466
+    second: Catador_spritesheet_21
+  - first:
+      213: -4617048292566944203
+    second: Catador_spritesheet_22
+  - first:
+      213: -686627934117258772
+    second: Catador_spritesheet_23
+  - first:
+      213: 4981406923305153089
+    second: Catador_spritesheet_24
+  - first:
+      213: 891490240828723377
+    second: Catador_spritesheet_25
+  - first:
+      213: 9138921177341261391
+    second: Catador_spritesheet_26
+  - first:
+      213: 6143151182692195578
+    second: Catador_spritesheet_27
+  - first:
+      213: 5067672083572294407
+    second: Catador_spritesheet_28
+  - first:
+      213: 2974206654313300242
+    second: Catador_spritesheet_29
+  - first:
+      213: 489204905409680412
+    second: Catador_spritesheet_30
+  - first:
+      213: 2785949962986028242
+    second: Catador_spritesheet_31
+  - first:
+      213: 3767276428918123619
+    second: Catador_spritesheet_32
+  - first:
+      213: 1442772714716848461
+    second: Catador_spritesheet_33
+  - first:
+      213: -4797414495543671977
+    second: Catador_spritesheet_34
+  - first:
+      213: -3674632144440283514
+    second: Catador_spritesheet_35
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,12 +198,12 @@ TextureImporter:
       name: Catador_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 48
-        width: 20
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 21
+        y: 320
+        width: 32
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -135,12 +219,12 @@ TextureImporter:
       name: Catador_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 42
-        y: 48
-        width: 20
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 86
+        y: 320
+        width: 32
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -156,12 +240,12 @@ TextureImporter:
       name: Catador_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 77
-        y: 48
-        width: 20
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 152
+        y: 320
+        width: 32
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +261,12 @@ TextureImporter:
       name: Catador_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 113
-        y: 48
-        width: 20
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 217
+        y: 320
+        width: 32
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,12 +282,12 @@ TextureImporter:
       name: Catador_spritesheet_4
       rect:
         serializedVersion: 2
-        x: 6
-        y: 3
-        width: 20
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 296
+        y: 297
+        width: 38
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,12 +303,12 @@ TextureImporter:
       name: Catador_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 42
-        y: 3
-        width: 20
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 367
+        y: 297
+        width: 38
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,12 +324,12 @@ TextureImporter:
       name: Catador_spritesheet_6
       rect:
         serializedVersion: 2
-        x: 77
-        y: 3
-        width: 20
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 438
+        y: 297
+        width: 38
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,12 +345,12 @@ TextureImporter:
       name: Catador_spritesheet_7
       rect:
         serializedVersion: 2
-        x: 113
-        y: 3
-        width: 20
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 509
+        y: 297
+        width: 38
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -274,6 +358,594 @@ TextureImporter:
       bones: []
       spriteID: e62f058da5d0e0a90800000000000000
       internalID: -7345919258367298962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 252
+        width: 32
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45cad4ebd8da71f90800000000000000
+      internalID: -6982921872919909292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 253
+        width: 32
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b3eac794a4722420800000000000000
+      internalID: 2603771784843682736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 252
+        width: 32
+        height: 48
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10cd1f50404d48de0800000000000000
+      internalID: -1331706476050129919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 252
+        width: 32
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 767ebe97b8fa79e20800000000000000
+      internalID: 3357345060808812391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 224
+        width: 38
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 513c5bfae03af4c20800000000000000
+      internalID: 3192949944301765397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 224
+        width: 38
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f75489927c4b5a580800000000000000
+      internalID: -8816441928018541185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 223
+        width: 38
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3094acf076b89c6e0800000000000000
+      internalID: -1816767699904476925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 223
+        width: 38
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ec1fc54c717a7240800000000000000
+      internalID: 4790265932223028457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 188
+        width: 32
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a20759892ef3b590800000000000000
+      internalID: -7659499086875786591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 174
+        width: 32
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea88d33a8c32e6b30800000000000000
+      internalID: 4282399640315070638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 173
+        width: 30
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d93c8204ce13a1040800000000000000
+      internalID: 4619059258580321181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 186
+        width: 31
+        height: 49
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bf4e2ec96b07e5f0800000000000000
+      internalID: -727600265738432589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 98
+        width: 32
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1246c2978d17f6e0800000000000000
+      internalID: -1803940657618337253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 98
+        width: 32
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fa0d06a746973860800000000000000
+      internalID: 7509636138136308466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 97
+        width: 32
+        height: 47
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53639b24a03fcefb0800000000000000
+      internalID: -4617048292566944203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 97
+        width: 32
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce99416288b9876f0800000000000000
+      internalID: -686627934117258772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 139
+        width: 38
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14276414433812540800000000000000
+      internalID: 4981406923305153089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 139
+        width: 56
+        height: 45
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b0d25596a53f5c00800000000000000
+      internalID: 891490240828723377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 139
+        width: 45
+        height: 46
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4678b50468f3de70800000000000000
+      internalID: 9138921177341261391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 138
+        width: 38
+        height: 45
+      alignment: 9
+      pivot: {x: 0.3, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afc93ede37bd04550800000000000000
+      internalID: 6143151182692195578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 10
+        width: 31
+        height: 45
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7038d7b09ecf35640800000000000000
+      internalID: 5067672083572294407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 10
+        width: 32
+        height: 62
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21182fea131864920800000000000000
+      internalID: 2974206654313300242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 10
+        width: 32
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c14925105410ac600800000000000000
+      internalID: 489204905409680412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 11
+        width: 32
+        height: 56
+      alignment: 9
+      pivot: {x: 0.5, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dc7bc11bbea9a620800000000000000
+      internalID: 2785949962986028242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 54
+        width: 38
+        height: 46
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36ced54c3fd084430800000000000000
+      internalID: 3767276428918123619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 54
+        width: 56
+        height: 45
+      alignment: 9
+      pivot: {x: 0.7, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d41e250d322c50410800000000000000
+      internalID: 1442772714716848461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 54
+        width: 45
+        height: 46
+      alignment: 9
+      pivot: {x: 0.7, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7534fc02fe82c6db0800000000000000
+      internalID: -4797414495543671977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Catador_spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 54
+        width: 38
+        height: 45
+      alignment: 9
+      pivot: {x: 0.7, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ea76e9885110dc0800000000000000
+      internalID: -3674632144440283514
       vertices: []
       indices: 
       edges: []

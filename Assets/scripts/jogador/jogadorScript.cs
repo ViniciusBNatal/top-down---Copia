@@ -55,7 +55,8 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     // Start is called before the first frame update
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
     }
     void Start()
     {
@@ -130,6 +131,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 Vector3 dirAnim = (PegaPosicoMouse() - transform.position).normalized;
                 direcaoProjetil = (PegaPosicoMouse() - pontoDeDisparo.position).normalized;
                 JogadorAnimScript.Instance.AnimarDisparo(dirAnim.x, dirAnim.y);
+                //SoundManager.Instance.TocarSom(SoundManager.TipoSom.JogadorAtirando);
             }
         }
     }

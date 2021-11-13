@@ -203,7 +203,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 106302792}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.24143714
+  m_Size: 0.28577688
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -646,7 +646,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 475.28867, y: 872.3473}
+  m_SizeDelta: {x: 475.28867, y: 821.35657}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &68372014
 MonoBehaviour:
@@ -873,7 +873,7 @@ RectTransform:
   m_Father: {fileID: 1379755139}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.75856286}
+  m_AnchorMin: {x: 0, y: 0.71422315}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -951,8 +951,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000034289416, y: -56.601}
-  m_SizeDelta: {x: 420, y: 110.79701}
+  m_AnchoredPosition: {x: -0.000034289416, y: -40.6}
+  m_SizeDelta: {x: 420, y: 78.77626}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &124961393
 MonoBehaviour:
@@ -7713,8 +7713,6 @@ GameObject:
   - component: {fileID: 1441363031}
   - component: {fileID: 1441363030}
   - component: {fileID: 1441363025}
-  - component: {fileID: 1441363028}
-  - component: {fileID: 1441363027}
   - component: {fileID: 1441363026}
   - component: {fileID: 1441363029}
   m_Layer: 11
@@ -7779,87 +7777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 647588968796a99449844d492115a844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1441363027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441363024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab452d6adb9fab94f9b8d4ae554362a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  desastreNome:
-  - TERREMOTO
-  - ERRUPCAO TERRENA
-  - NUVEM DE INSETOS
-  - VIRUS
-  - CHUVA ACIDA
-  - CANHAO
-  ativar: 0101000000
-  iconesModulos:
-  - {fileID: 21300000, guid: 434758122da944744a210148b3df4709, type: 3}
-  - {fileID: 21300000, guid: 44f85314304aa7942a778ee72878fc95, type: 3}
-  iconesMultiplicador:
-  - {fileID: 21300000, guid: bc66f9cf2d22cb24da6f9acfdc69d067, type: 3}
-  - {fileID: 21300000, guid: 05bd5779e27d66548b024d8c671d8bd2, type: 3}
-  - {fileID: 21300000, guid: 61edaed37600bb14c85aa30b847eea92, type: 3}
-  iconesDesastre:
-  - {fileID: 21300000, guid: b156cf50e718d3d43a790431c07bc7a4, type: 3}
-  - {fileID: 21300000, guid: 14d3a65f16d87794b994137b683b7b86, type: 3}
-  - {fileID: 21300000, guid: cec87da207db9714da4dcc0bd415c067, type: 3}
-  - {fileID: 21300000, guid: 6fceeabbd7355464d9567918e66605af, type: 3}
-  - {fileID: 21300000, guid: 67f5e11fb65cc2e4f850713e9995db8d, type: 3}
---- !u!114 &1441363028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441363024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7925e10f5bb7246439a4b2f7a9e5ac2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  intervaloEntreOsDesastres: 180
-  chanceDeDesastre: 100
-  tutorial: 1
-  intensidadeScreenShakeTerremoto: 3
-  taxaDeMudancaDosControles: 0.5
-  unidadesX: 1
-  unidadesY: 1
-  forcaTerremoto: 5
-  enxamePrefab: {fileID: 4469575966397712580, guid: 365505ebc0523a54eae4c63922d371e4,
-    type: 3}
-  velocidadeEnxame: 3
-  danoEnxame: 0.1
-  intervaloEntreAtaques: 1
-  intervaloEntreSpawnsVirus: 4
-  tempParaSumirUI: 2
-  paredeVirusPrefab: {fileID: 5412659093879239038, guid: 2d7f9d67aea68e743a70694a659e361c,
-    type: 3}
-  distanciaXdoJogador_virusMin: 1
-  distanciaYdoJogador_virusMin: 1
-  chuvaParticulaPrefab: {fileID: 4346469235372037461, guid: 852ab737df9886942b65552fe40e0bea,
-    type: 3}
-  danoDoAcido: 1
-  intervaloEntreHitsChuvaAcida: 1
-  errupcaoPrefab: {fileID: 9143283159188315436, guid: 229f1bd0ea6d8cf4493ecdb4a4333136,
-    type: 3}
-  intervaloEntreSpawnsErrupcao: 3
-  distanciaXdoJogador_errupcaoMin: 3
-  distanciaYdoJogador_errupcaoMin: 3
-  timer: {fileID: 931611315}
-  desastresSorteados:
-  - 
-  - 
-  - 
-  - 
-  - 
-  forcasSorteados: 0000000000000000000000000000000000000000
 --- !u!114 &1441363029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7943,7 +7860,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.74, y: -1.24, z: -7.2799997}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1460187690}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8021,6 +7939,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444110325}
   m_CullTransparentMesh: 0
+--- !u!1 &1460187689
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1460187690}
+  - component: {fileID: 1460187693}
+  - component: {fileID: 1460187692}
+  - component: {fileID: 1460187691}
+  m_Layer: 11
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1460187690
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460187689}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1441363032}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1460187691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460187689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14fb0fdb299db334c83c845109136630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sons: []
+--- !u!114 &1460187692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460187689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab452d6adb9fab94f9b8d4ae554362a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desastreNome:
+  - TERREMOTO
+  - ERRUPCAO TERRENA
+  - NUVEM DE INSETOS
+  - VIRUS
+  - CHUVA ACIDA
+  - CANHAO
+  ativar: 0101000000
+  iconesModulos:
+  - {fileID: 21300000, guid: 434758122da944744a210148b3df4709, type: 3}
+  - {fileID: 21300000, guid: 44f85314304aa7942a778ee72878fc95, type: 3}
+  iconesMultiplicador:
+  - {fileID: 21300000, guid: bc66f9cf2d22cb24da6f9acfdc69d067, type: 3}
+  - {fileID: 21300000, guid: 05bd5779e27d66548b024d8c671d8bd2, type: 3}
+  - {fileID: 21300000, guid: 61edaed37600bb14c85aa30b847eea92, type: 3}
+  iconesDesastre:
+  - {fileID: 21300000, guid: b156cf50e718d3d43a790431c07bc7a4, type: 3}
+  - {fileID: 21300000, guid: 14d3a65f16d87794b994137b683b7b86, type: 3}
+  - {fileID: 21300000, guid: cec87da207db9714da4dcc0bd415c067, type: 3}
+  - {fileID: 21300000, guid: 6fceeabbd7355464d9567918e66605af, type: 3}
+  - {fileID: 21300000, guid: 67f5e11fb65cc2e4f850713e9995db8d, type: 3}
+--- !u!114 &1460187693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460187689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7925e10f5bb7246439a4b2f7a9e5ac2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intervaloEntreOsDesastres: 30
+  chanceDeDesastre: 75
+  tutorial: 1
+  intensidadeScreenShakeTerremoto: 3
+  taxaDeMudancaDosControles: 0.5
+  unidadesX: 1
+  unidadesY: 1
+  forcaTerremoto: 5
+  enxamePrefab: {fileID: 4469575966397712580, guid: 365505ebc0523a54eae4c63922d371e4,
+    type: 3}
+  velocidadeEnxame: 3
+  danoEnxame: 0.1
+  intervaloEntreAtaques: 1
+  intervaloEntreSpawnsVirus: 4
+  tempParaSumirUI: 2
+  paredeVirusPrefab: {fileID: 5412659093879239038, guid: 2d7f9d67aea68e743a70694a659e361c,
+    type: 3}
+  distanciaXdoJogador_virusMin: 1
+  distanciaYdoJogador_virusMin: 1
+  chuvaParticulaPrefab: {fileID: 4346469235372037461, guid: 852ab737df9886942b65552fe40e0bea,
+    type: 3}
+  danoDoAcido: 1
+  intervaloEntreHitsChuvaAcida: 1
+  errupcaoPrefab: {fileID: 9143283159188315436, guid: 229f1bd0ea6d8cf4493ecdb4a4333136,
+    type: 3}
+  intervaloEntreSpawnsErrupcao: 3
+  distanciaXdoJogador_errupcaoMin: 3
+  distanciaYdoJogador_errupcaoMin: 3
+  timer: {fileID: 931611315}
+  desastresSorteados:
+  - 
+  - 
+  - 
+  - 
+  - 
+  forcasSorteados: 0000000000000000000000000000000000000000
 --- !u!1 &1475340044
 GameObject:
   m_ObjectHideFlags: 0
@@ -8060,7 +8105,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 146.66345, y: -144.39334}
+  m_SizeDelta: {x: 146.66345, y: -186.69128}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1475340046
 MonoBehaviour:
@@ -9008,7 +9053,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 701822983}
   m_HandleRect: {fileID: 701822982}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -16460,7 +16505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 1475340045}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -17858,7 +17903,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1733967261}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.75556093
+  m_Size: 0.7555608
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

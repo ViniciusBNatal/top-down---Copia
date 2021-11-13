@@ -21,7 +21,6 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private GameObject abaSelecionarTempo;
     [SerializeField] private GameObject abaVitoriaDoJogo;
     private int TempoAtual = 0;
-    const int BuildIndexDaFaseBasejogador = 2;
     public bool InventarioAberto => inventarioAberto;
 
     private void Awake()
@@ -187,11 +186,11 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         Tutorial();
         fechaMenuDeTempos();
         jogadorScript.Instance.IndicarInteracaoPossivel(null, false);
-        //if (NomeFasePorBuildIndex(SceneManager.GetActiveScene().buildIndex) == NomeFasePorBuildIndex(BuildIndexDaFaseBasejogador))//alvar apenas se tiver na fase BaseDoJogador
-        //{
+        if (BaseScript.Instance != null)
+        {
             BaseScript.Instance.SalvarEstado();
             BaseScript.Instance.SalvarEstadosDosModulos();
-        //}
+        }
         SceneManager.LoadScene(slot.FaseParaAbrir());
     }
     public void LiberarNovBtnDeTrocaDeTempo(UpgradeSlot slot, bool ativarDefesa)

@@ -21,7 +21,8 @@ public class DialogeManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
         animator = GetComponent<Animator>();
     }
     private void Start()

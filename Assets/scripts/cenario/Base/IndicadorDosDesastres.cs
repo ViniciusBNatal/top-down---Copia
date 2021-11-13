@@ -17,7 +17,8 @@ public class IndicadorDosDesastres : MonoBehaviour
     //[SerializeField] private GameObject PosicaoIconesMultiplicador;
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
     }
     private void Start()
     {

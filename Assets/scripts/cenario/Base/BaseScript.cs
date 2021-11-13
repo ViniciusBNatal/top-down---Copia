@@ -22,7 +22,8 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
     }
     private void Start()
     {

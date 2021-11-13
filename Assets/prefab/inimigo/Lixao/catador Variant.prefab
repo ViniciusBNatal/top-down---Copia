@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 566375125526406914, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}
       propertyPath: m_Name
-      value: catador
+      value: catador Variant
       objectReference: {fileID: 0}
     - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}
@@ -32,6 +32,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayerID
       value: -869401897
+      objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406926, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: m_SpriteSortPoint
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 566375125526406927, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}
