@@ -18,5 +18,5 @@ MonoBehaviour:
   desastre: 
   incrementoEntreForcas: 0
   itensNecessarios:
-  - {fileID: 11400000, guid: 2e55fca245e9bf84a8da5955dbcd6c40, type: 2}
+  - {fileID: 11400000, guid: d3314404e6d00f14b98370cad55d8e28, type: 2}
   quantidadeDosRecursos: 01000000

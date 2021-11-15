@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 268061695878940807}
   - component: {fileID: 5463453284309776001}
   - component: {fileID: 253612970703550368}
+  - component: {fileID: 33511350557699934}
   m_Layer: 0
   m_Name: porta prefab
   m_TagString: Untagged
@@ -140,6 +141,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &33511350557699934
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491287392820595610}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2822543919169131463
 GameObject:
   m_ObjectHideFlags: 0

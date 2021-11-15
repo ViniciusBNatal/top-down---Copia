@@ -11,9 +11,9 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     [SerializeField] private float tempoParaFechar;
     [SerializeField] private GameObject chaveNecessaria;
     [SerializeField] private int nDeBotoesNecessarios;
-    [Range(-1, 1)]
-    [SerializeField] private int direcaoDeRotacao;
-    [SerializeField] private Transform pontoDeRotacao;
+    //[Range(-1, 1)]
+    //[SerializeField] private int direcaoDeRotacao;
+    //[SerializeField] private Transform pontoDeRotacao;
     [SerializeField] private UnityEvent EventosAoAbrirPorta;
     [SerializeField] private UnityEvent EventosAoFecharPorta;
     [Header("Configurações Para Ações com Inimigos")]
@@ -24,12 +24,14 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     private BoxCollider2D colisao;
     private bool iniciouCorrotina = false;
     private Item chave = null;
+    private Animator animator;
 
     private void Start()
     {
         colisao = GetComponent<BoxCollider2D>();
-        if (direcaoDeRotacao == 0)
-            direcaoDeRotacao = 1;
+        animator = GetComponent<Animator>();
+        //if (direcaoDeRotacao == 0)
+        //    direcaoDeRotacao = 1;
         if (chaveNecessaria != null)
             chave = chaveNecessaria.GetComponent<recurso_coletavel>().ReferenciaItem();
         //if (aberta)
@@ -83,18 +85,19 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     private void AbrePorta()
     {
         colisao.enabled = false;
-        transform.RotateAround(pontoDeRotacao.position, new Vector3(0f,0f,1f), direcaoDeRotacao * 90f);
-        chave = null;
         aberta = true;
-        if (EventosAoAbrirPorta != null)
-            EventosAoAbrirPorta.Invoke();
+        animator.SetBool("ABERTO", aberta);
+        //transform.RotateAround(pontoDeRotacao.position, new Vector3(0f,0f,1f), direcaoDeRotacao * 90f);
+        chave = null;
+        EventosAoAbrirPorta.Invoke();
     }
     private void FechaPorta()
     {
         colisao.enabled = true;
-        if (transform.rotation.z != 0f)
-            transform.RotateAround(pontoDeRotacao.position, new Vector3(0f, 0f, 1f), -direcaoDeRotacao * 90f);
         aberta = false;
+        animator.SetBool("ABERTO", aberta);
+        //if (transform.rotation.z != 0f)
+        //    transform.RotateAround(pontoDeRotacao.position, new Vector3(0f, 0f, 1f), -direcaoDeRotacao * 90f);
         EventosAoFecharPorta.Invoke();
     }
     public void acaoComInimigos()
@@ -120,6 +123,7 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     {
         GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDasPortas(this, 1);
         colisao = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
         if (aberta)
         {
             chaveNecessaria = null;

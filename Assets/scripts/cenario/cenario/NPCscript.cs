@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
 {
@@ -12,6 +13,7 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     [SerializeField] private int direcaoParaMoverY;
     [SerializeField] private float velocidade;
     [SerializeField] private float distanciaMaxParaPerocrer;
+    [SerializeField] private UnityEvent EventosAoCompletarMissao;
     [SerializeField] private Dialogo[] dialogos = new Dialogo[nDeDialogos];
     private Item itemMissao = null;
     private bool missaoCumprida = false;
@@ -71,9 +73,9 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     private void AoCompletarAMissao()
     {
         missaoCumprida = true;
+        EventosAoCompletarMissao.Invoke();
         SalvarEstado();
     }
-
     public void SalvarEstado()
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)

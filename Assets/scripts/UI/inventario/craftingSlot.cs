@@ -21,7 +21,7 @@ public class craftingSlot : MonoBehaviour
             iconeDoDesastre.enabled = false;
         else
             iconeDoDesastre.sprite = DesastresList.Instance.SelecionaSpriteDesastre(receita.desastre);
-        iconeDoModulo.sprite = DesastresList.Instance.SelecionaSpriteModulo(receita.modulo);
+        //iconeDoModulo.sprite = DesastresList.Instance.SelecionaSpriteModulo(receita.modulo);
         for(int i = 0;i < receita.itensNecessarios.Count; i++)//adiciona a quantidade e a imagem para cada recurso na receita
         {
             GameObject obj = Instantiate(recursoNecessarioUIPrefab, recursosGrid.transform);

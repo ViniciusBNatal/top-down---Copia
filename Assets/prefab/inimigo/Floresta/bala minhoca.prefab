@@ -73,7 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 990574438645341189, guid: 038e2f34291d72c48ab2c29e28159d73, type: 3}
+  m_Sprite: {fileID: -8699071127561946796, guid: 038e2f34291d72c48ab2c29e28159d73,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,6 +135,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DuracaoDaBala: 2
-  dano: 0
   balaJogador: 0
   balaInimigo: 1

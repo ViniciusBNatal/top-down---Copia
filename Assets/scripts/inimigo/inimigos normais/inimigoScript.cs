@@ -9,7 +9,6 @@ public class inimigoScript : MonoBehaviour
     [SerializeField] private bool imortal;
     public TiposDeMovimentacao tiposDeMovimentacao;
     [SerializeField] private bool disparo;
-    //[SerializeField] private CircleCollider2D areaDetecao;
     [SerializeField] private GameObject projetil;
     [SerializeField] private Transform pontoDisparo;
     [SerializeField] private List<Transform> pontosDeFuga = new List<Transform>();
@@ -30,12 +29,14 @@ public class inimigoScript : MonoBehaviour
     //variaveis privadas
     [Header("Não Mexer")]
     [SerializeField] private GameObject primPontoDeNavPrefab;
+    private CircleCollider2D areaDetecao;
     private EfeitoFlash flash;
     private inimigoAnimScript inimigoAnimScript;
     private Vector2 direcaoProjetil;
     private Transform alvo;
     private float vidaAtual;
     private bool atirando = false;
+    private bool trocarOrdemPontosDeFuga = false;
     public enum TiposDeMovimentacao
     {
         estatico,
@@ -54,7 +55,7 @@ public class inimigoScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //areaDetecao.radius = raioVisao;
+        areaDetecao = GetComponent<CircleCollider2D>();
         flash = GetComponent<EfeitoFlash>();
         rb = GetComponent<Rigidbody2D>();
         inimigoAnimScript = GetComponent<inimigoAnimScript>();
@@ -111,7 +112,9 @@ public class inimigoScript : MonoBehaviour
             Vector2 distanciaDoAlvo = alvo.position - transform.position;
             if (Mathf.Abs(distanciaDoAlvo.x) <= distanciaMinimaParaFugir.x && Mathf.Abs(distanciaDoAlvo.y) <= distanciaMinimaParaFugir.y)
             {
-                Teleportar(tiposDeMovimentacao);
+                areaDetecao.enabled = false;
+                inimigoAnimScript.Fuga();
+                //Teleportar(tiposDeMovimentacao);
             }
         }
     }
@@ -124,7 +127,7 @@ public class inimigoScript : MonoBehaviour
             if (disparo)
             {
                 if (!atirando)
-                    StartCoroutine("Disparar");
+                    StartCoroutine(this.Disparar());
             }
         }
     }
@@ -143,11 +146,21 @@ public class inimigoScript : MonoBehaviour
         switch (tipoDeMovimentacao)
         {
             case TiposDeMovimentacao.movimentacaoEntrePontosFixa:
-                if (proximoPontoDeFuga <= pontosDeFuga.Count - 1)
+                switch (trocarOrdemPontosDeFuga)
                 {
-                    transform.position = pontosDeFuga[proximoPontoDeFuga].position;
-                    proximoPontoDeFuga++;
+                    case true:
+                        proximoPontoDeFuga--;
+                        transform.position = pontosDeFuga[proximoPontoDeFuga].position;
+                        break;
+                    case false:
+                        proximoPontoDeFuga++;
+                        transform.position = pontosDeFuga[proximoPontoDeFuga].position;
+                        break;
                 }
+                if (proximoPontoDeFuga == pontosDeFuga.Count - 1)
+                    trocarOrdemPontosDeFuga = true;
+                else if (proximoPontoDeFuga == 0)
+                    trocarOrdemPontosDeFuga = false;
                 break;
             case TiposDeMovimentacao.movimentacaoEntrePontosAleatorios:
                 int r = Random.Range(0, pontosDeFuga.Count);
@@ -259,5 +272,9 @@ public class inimigoScript : MonoBehaviour
                 pontosDeNavegacaoDeRetorno.RemoveAt(pontosDeNavegacaoDeRetorno.Count - 1);
             }
         }
+    }
+    public void LigaDetecao()
+    {
+        areaDetecao.enabled = true;
     }
 }

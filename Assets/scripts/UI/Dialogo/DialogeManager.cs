@@ -34,7 +34,7 @@ public class DialogeManager : MonoBehaviour
         Frases.Clear();
         jogadorScript.Instance.MudarEstadoJogador(3);
         dialogoAtual = dialogo;
-        TrocaImagemDoNPC();
+        TrocaNPC();
         animator.SetBool("aberto", true);
         TrocarNomeNPC();
         foreach(string frase in dialogo.Frases)
@@ -52,7 +52,7 @@ public class DialogeManager : MonoBehaviour
         }
         string textoDialogo = Frases.Dequeue();
         TrocarNomeNPC();
-        TrocaImagemDoNPC();
+        TrocaNPC();
         TrocaEstadoImagemDoNPC();
         TrocarFocoDaCamera();
         AcionarEventosDuranteDialogo();
@@ -95,15 +95,11 @@ public class DialogeManager : MonoBehaviour
         if (DialogoFinalizado != jogadorScript.Instance.AoFinalizarDialogo)
             DialogoFinalizado += jogadorScript.Instance.AoFinalizarDialogo;
     }
-    public void TrocarAnimator(Animator anim)//todos precisam trocar com a float ESTADO
-    {
-        animator = anim;
-    }
-    private void TrocaImagemDoNPC()
+    private void TrocaNPC()
     {
         if (dialogoAtual.IDdoNPC.Length != 0)
         {
-            if (dialogoAtual.IDdoNPC.Length == dialogoAtual.Frases.Length)
+            if (index <= dialogoAtual.IDdoNPC.Length - 1)
                 animatorImage.SetInteger("NPC", dialogoAtual.IDdoNPC[index]);
             else
                 animatorImage.SetInteger("NPC", dialogoAtual.IDdoNPC[0]);
@@ -113,8 +109,11 @@ public class DialogeManager : MonoBehaviour
     }
     private void TrocaEstadoImagemDoNPC()
     {
-        if (dialogoAtual.EstadoImagemNPC.Length == dialogoAtual.Frases.Length)
-            animatorImage.SetFloat("ESTADO", dialogoAtual.EstadoImagemNPC[index]);
+        if (dialogoAtual.EstadoImagemNPC.Length != 0)
+        {
+            if (index <= dialogoAtual.EstadoImagemNPC.Length - 1)
+                animatorImage.SetFloat("ESTADO", dialogoAtual.EstadoImagemNPC[index]);
+        }
         else
             animatorImage.SetFloat("ESTADO", 1f);
     }
@@ -122,7 +121,7 @@ public class DialogeManager : MonoBehaviour
     {
         if (dialogoAtual.NomeNPC.Length != 0)
         {
-            if (dialogoAtual.NomeNPC.Length == dialogoAtual.Frases.Length)
+            if (index <= dialogoAtual.NomeNPC.Length - 1)
                 NomeNPCText.text = dialogoAtual.NomeNPC[index];
         }
         else
@@ -130,12 +129,12 @@ public class DialogeManager : MonoBehaviour
     }
     private void AcionarEventosDuranteDialogo()
     {
-        if (dialogoAtual.EventosDuranteDialogo.Length == dialogoAtual.Frases.Length && dialogoAtual.EventosDuranteDialogo[index] != null)
+        if (index <= dialogoAtual.EventosDuranteDialogo.Length - 1)
             dialogoAtual.EventosDuranteDialogo[index].Invoke();
     }
     private void TrocarFocoDaCamera()
     {
-        if (dialogoAtual.FocarComCamera.Length == dialogoAtual.Frases.Length)
+        if (index <= dialogoAtual.FocarComCamera.Length - 1)
         {
             RetornarCameraAoJogadorNoFinalDoDialogo();
             if (dialogoAtual.FocarComCamera[index] != null)
