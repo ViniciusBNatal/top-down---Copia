@@ -7,18 +7,29 @@ using UnityEngine.SceneManagement;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
-    private static Dictionary<TipoSom, float> intervalosDosSons = new Dictionary<TipoSom, float>();
-    private static Dictionary<TipoSom, float> ultimaVezTocado = new Dictionary<TipoSom, float>();
+    private static Dictionary<Som, float> intervalosDosSons = new Dictionary<Som, float>();
+    private static Dictionary<Som, float> ultimaVezTocado = new Dictionary<Som, float>();
     private static GameObject SomGobj;
-    private static AudioSource SomSource;
+    private static AudioSource SomEfeitosSource;
+    private static GameObject SomMusicaGobj;
+    private static AudioSource SomMusicaSource;
     public SomConfig[] Sons;
-    public enum TipoSom
+    public enum Som
     {
-        MusicaFase1,
-        MusicaFase2,
+        Menu,
+        Tutorial,
+        BaseJogador,
+        Floresta,
+        Cidade,
+        Lixao,
         JogadorAndando,
         JogadorAtirando,
         JogadorAtqMelee
+    };
+    public enum TipoSom
+    {
+        Global,
+        Local
     };
     private void Awake()
     {
@@ -27,6 +38,10 @@ public class SoundManager : MonoBehaviour
             Instance = this;
             SetupAudios();
         }
+    }
+    private void Start()
+    {
+        Musica();
     }
     public void SetupAudios()
     {
@@ -41,25 +56,34 @@ public class SoundManager : MonoBehaviour
             //}
             if (somcnf.intervaloEntreSons > 0)
             {
-                intervalosDosSons.Add(somcnf.tipoSom, somcnf.intervaloEntreSons);
-                ultimaVezTocado.Add(somcnf.tipoSom, 0f);
+                intervalosDosSons.Add(somcnf.som, somcnf.intervaloEntreSons);
+                ultimaVezTocado.Add(somcnf.som, 0f);
             }
         }
     }
-    public void TocarSom(TipoSom tipoDoSom)
+    public void TocarSom(Som tipoDoSom)
     {
         if (PodeTocarSom(tipoDoSom))
         {
             if (SomGobj == null)
             {
                 SomGobj = new GameObject("Somgobj");
-                SomSource = SomGobj.AddComponent<AudioSource>();
+                SomEfeitosSource = SomGobj.AddComponent<AudioSource>();
             }
             SomConfig somEscolhido = PegarSom(tipoDoSom);
-            SomSource.volume = somEscolhido.Volume;
-            SomSource.pitch = somEscolhido.Pitch;
-            SomSource.loop = somEscolhido.Loop;
-            SomSource.PlayOneShot(somEscolhido.ArquivosDESom[(int)Random.Range(0, somEscolhido.ArquivosDESom.Length)]);
+            SomEfeitosSource.volume = somEscolhido.Volume;
+            SomEfeitosSource.pitch = somEscolhido.Pitch;
+            SomEfeitosSource.loop = somEscolhido.Loop;
+            switch (somEscolhido.tipoSom)
+            {
+                case TipoSom.Global:
+                    SomEfeitosSource.clip = somEscolhido.ArquivosDESom[(int)Random.Range(0, somEscolhido.ArquivosDESom.Length)]; 
+                    SomEfeitosSource.Play();
+                    break;
+                case TipoSom.Local:
+                    SomEfeitosSource.PlayOneShot(somEscolhido.ArquivosDESom[(int)Random.Range(0, somEscolhido.ArquivosDESom.Length)]);
+                    break;
+            }
         }
         //switch (tipoDoSom)
         //{
@@ -69,27 +93,27 @@ public class SoundManager : MonoBehaviour
         //        break;
         //}
     }
-    public SomConfig PegarSom(TipoSom tipoSom)
+    public SomConfig PegarSom(Som tipoSom)
     {
         foreach (SomConfig somcnf in Sons)
         {
-            if (somcnf.tipoSom == tipoSom)
+            if (somcnf.som == tipoSom)
                 return somcnf;
         }
         Debug.LogError("Som" + tipoSom + "Não encontrado!");
         return null;
     }
-    public bool PodeTocarSom(TipoSom tipoSom)
+    public bool PodeTocarSom(Som tipoSom)
     {
         foreach (SomConfig somcnf in Sons)
         {
-            if (somcnf.tipoSom == tipoSom && intervalosDosSons.ContainsKey(somcnf.tipoSom))
+            if (somcnf.som == tipoSom && intervalosDosSons.ContainsKey(somcnf.som))
             {
-                float intervalo = intervalosDosSons[somcnf.tipoSom];
-                float ultimaVez = ultimaVezTocado[somcnf.tipoSom];
+                float intervalo = intervalosDosSons[somcnf.som];
+                float ultimaVez = ultimaVezTocado[somcnf.som];
                 if (ultimaVez + intervalo < Time.time)
                 {
-                    ultimaVezTocado[somcnf.tipoSom] = Time.time;
+                    ultimaVezTocado[somcnf.som] = Time.time;
                     return true;
                 }
                 else
@@ -101,13 +125,40 @@ public class SoundManager : MonoBehaviour
         Debug.LogError("Som" + tipoSom + "Não encontrado!");
         return false;
     }
-
+    private void Musica()
+    {
+        if (SomMusicaGobj == null)
+        {
+            SomMusicaGobj = new GameObject("Musicagobj");
+            SomMusicaSource = SomMusicaGobj.AddComponent<AudioSource>();
+        }
+        string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex);//pega o caminho da cena na pasta de arquivos
+        string cenaAtualNome = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
+        foreach(SomConfig som in Sons)
+        {
+            if (som.tipoSom.ToString().ToUpper() == cenaAtualNome.ToUpper())
+            {
+                SomMusicaSource.clip = som.ArquivosDESom[0];
+                if (!SomMusicaSource.isPlaying)
+                    SomMusicaSource.Play();
+            }
+        }
+    }
+    private string NomeFasePorBuildIndex(int index)
+    {
+        string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(index);//pega o caminho da cena na pasta de arquivos
+        string cena = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
+        return cena;
+    }
     [System.Serializable]
     public class SomConfig
     {
+        public Som som;
         public TipoSom tipoSom;
         public AudioClip[] ArquivosDESom;
+        [Range(0f, 1f)]
         public float Volume;
+        [Range(0.01f, 3f)]
         public float Pitch;
         public bool Loop;
         public float intervaloEntreSons;
