@@ -33,10 +33,10 @@ public class DialogeManager : MonoBehaviour
     {
         Frases.Clear();
         jogadorScript.Instance.MudarEstadoJogador(3);
-        animatorImage.SetInteger("NPC", dialogo.IDdoNPC);
-        animator.SetBool("aberto", true);
-        NomeNPCText.text = dialogo.NomeNPC;
         dialogoAtual = dialogo;
+        TrocaImagemDoNPC();
+        animator.SetBool("aberto", true);
+        TrocarNomeNPC();
         foreach(string frase in dialogo.Frases)
         {
             Frases.Enqueue(frase);
@@ -51,16 +51,11 @@ public class DialogeManager : MonoBehaviour
             return;
         }
         string textoDialogo = Frases.Dequeue();
-        if (dialogoAtual.EstadoImagemNPC.Length == dialogoAtual.Frases.Length)
-            animatorImage.SetFloat("ESTADO", dialogoAtual.EstadoImagemNPC[index]);
-        else
-            animatorImage.SetFloat("ESTADO", 1f);
-        if (dialogoAtual.FocarComCamera.Length == dialogoAtual.Frases.Length)
-        {
-            RetornarCameraAoJogadorNoFinalDoDialogo();
-            if (dialogoAtual.FocarComCamera[index] != null)
-                jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(dialogoAtual.FocarComCamera[index]);
-        }
+        TrocarNomeNPC();
+        TrocaImagemDoNPC();
+        TrocaEstadoImagemDoNPC();
+        TrocarFocoDaCamera();
+        AcionarEventosDuranteDialogo();
         index++;
         StopAllCoroutines();
         StartCoroutine(this.EscreveDialogo(textoDialogo));
@@ -103,5 +98,48 @@ public class DialogeManager : MonoBehaviour
     public void TrocarAnimator(Animator anim)//todos precisam trocar com a float ESTADO
     {
         animator = anim;
+    }
+    private void TrocaImagemDoNPC()
+    {
+        if (dialogoAtual.IDdoNPC.Length != 0)
+        {
+            if (dialogoAtual.IDdoNPC.Length == dialogoAtual.Frases.Length)
+                animatorImage.SetInteger("NPC", dialogoAtual.IDdoNPC[index]);
+            else
+                animatorImage.SetInteger("NPC", dialogoAtual.IDdoNPC[0]);
+        }
+        else
+            Debug.LogError("Dialogo está sem um NPC NA IMAGEM");
+    }
+    private void TrocaEstadoImagemDoNPC()
+    {
+        if (dialogoAtual.EstadoImagemNPC.Length == dialogoAtual.Frases.Length)
+            animatorImage.SetFloat("ESTADO", dialogoAtual.EstadoImagemNPC[index]);
+        else
+            animatorImage.SetFloat("ESTADO", 1f);
+    }
+    private void TrocarNomeNPC()
+    {
+        if (dialogoAtual.NomeNPC.Length != 0)
+        {
+            if (dialogoAtual.NomeNPC.Length == dialogoAtual.Frases.Length)
+                NomeNPCText.text = dialogoAtual.NomeNPC[index];
+        }
+        else
+            Debug.LogError("Dialogo está sem um NOME para o NPC");
+    }
+    private void AcionarEventosDuranteDialogo()
+    {
+        if (dialogoAtual.EventosDuranteDialogo.Length == dialogoAtual.Frases.Length && dialogoAtual.EventosDuranteDialogo[index] != null)
+            dialogoAtual.EventosDuranteDialogo[index].Invoke();
+    }
+    private void TrocarFocoDaCamera()
+    {
+        if (dialogoAtual.FocarComCamera.Length == dialogoAtual.Frases.Length)
+        {
+            RetornarCameraAoJogadorNoFinalDoDialogo();
+            if (dialogoAtual.FocarComCamera[index] != null)
+                jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(dialogoAtual.FocarComCamera[index]);
+        }
     }
 }
