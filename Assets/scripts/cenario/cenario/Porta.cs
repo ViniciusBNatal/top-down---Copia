@@ -11,6 +11,9 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     [SerializeField] private float tempoParaFechar;
     [SerializeField] private GameObject chaveNecessaria;
     [SerializeField] private int nDeBotoesNecessarios;
+    [Range(-1, 1)]
+    [SerializeField] private int direcaoDeRotacao;
+    [SerializeField] private Transform pontoDeRotacao;
     [SerializeField] private UnityEvent EventosAoAbrirPorta;
     [SerializeField] private UnityEvent EventosAoFecharPorta;
     [Header("Configurações Para Ações com Inimigos")]
@@ -25,6 +28,8 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     private void Start()
     {
         colisao = GetComponent<BoxCollider2D>();
+        if (direcaoDeRotacao == 0)
+            direcaoDeRotacao = 1;
         if (chaveNecessaria != null)
             chave = chaveNecessaria.GetComponent<recurso_coletavel>().ReferenciaItem();
         //if (aberta)
@@ -78,7 +83,7 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     private void AbrePorta()
     {
         colisao.enabled = false;
-        transform.Rotate(new Vector3(0f, 0f, 90f));
+        transform.RotateAround(pontoDeRotacao.position, new Vector3(0f,0f,1f), direcaoDeRotacao * 90f);
         chave = null;
         aberta = true;
         if (EventosAoAbrirPorta != null)
@@ -88,7 +93,7 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     {
         colisao.enabled = true;
         if (transform.rotation.z != 0f)
-            transform.Rotate(new Vector3(0f, 0f,-90f));
+            transform.RotateAround(pontoDeRotacao.position, new Vector3(0f, 0f, 1f), -direcaoDeRotacao * 90f);
         aberta = false;
         EventosAoFecharPorta.Invoke();
     }

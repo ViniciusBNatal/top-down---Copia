@@ -6,6 +6,8 @@ public class TutorialSetUp : MonoBehaviour
 {
     public static TutorialSetUp Instance { get; private set; }
     [SerializeField] private float intervaloDuranteTutorial;
+    [SerializeField] private GameObject caixaDeRecurso;
+    [SerializeField] private Transform pontoDeSpawnObjetos;
     [SerializeField] private List<Dialogo> dialogosDoTutorial = new List<Dialogo>();
     private int sequenciaDialogos = 0;
     private void Awake()
@@ -41,5 +43,9 @@ public class TutorialSetUp : MonoBehaviour
     {
         desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
+    }
+    public void CriarObjeto()
+    {
+        Instantiate(caixaDeRecurso, pontoDeSpawnObjetos.position, Quaternion.identity);
     }
 }
