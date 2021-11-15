@@ -931,6 +931,26 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 4, y: 6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 92
+      m_TileSpriteIndex: 92
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 5, y: 6, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 93
+      m_TileSpriteIndex: 93
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -8, y: 7, z: 0}
     second:
       serializedVersion: 2
@@ -1147,6 +1167,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: b1da895f341b6fb42a2a857cebc7d0d4, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 203390abe2bb3fc42807188d6e505383, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 1b32cbfc9a9d55e4ebb150528ceeb886, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 9ead14d3d0f4e0a478a31550d3005c3c, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: -1058909318190870526, guid: bb06ae432563b6b4b8e93179d35d7cef,
@@ -1408,8 +1432,12 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: b0288681281e47448b78127ad19ad750, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 1f531cf87c90008498a2b883617e0d40, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 1ba416dd8dba85442bbe3cd750d86daf, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: f4f5c5e52f7d9be4a997d28cb2c16935, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 92
+  - m_RefCount: 94
     m_Data:
       e00: 1
       e01: 0
@@ -1428,7 +1456,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 91
+  - m_RefCount: 93
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   - m_RefCount: 1
     m_Data: {r: 0.7849318, g: 0.33981934, b: 0.44506606, a: 1}
