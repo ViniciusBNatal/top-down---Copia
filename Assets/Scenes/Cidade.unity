@@ -106602,7 +106602,8 @@ PrefabInstance:
     - target: {fileID: 8443647571529721456, guid: 9b5d22d67d1141c4f83d8b4d83126217,
         type: 3}
       propertyPath: dialogo.Frases.Array.data[0]
-      value: Cidade
+      value: "Meu sensores indicam que a pe\xE7a est\xE1 em um parque a leste da
+        sua posi\xE7\xE3o"
       objectReference: {fileID: 0}
     - target: {fileID: 8947810304769247954, guid: 9b5d22d67d1141c4f83d8b4d83126217,
         type: 3}

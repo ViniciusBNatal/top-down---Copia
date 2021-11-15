@@ -951,8 +951,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000034289416, y: -40.6}
-  m_SizeDelta: {x: 420, y: 78.77626}
+  m_AnchoredPosition: {x: 127.71, y: -65.3}
+  m_SizeDelta: {x: 371.26306, y: 78.77626}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &124961393
 MonoBehaviour:
@@ -982,7 +982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5274,7 +5274,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1398494227}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7633,8 +7633,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4287620349
+  m_fontColor: {r: 0.99215686, g: 0.89411765, b: 0.56078434, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7651,8 +7651,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7687,7 +7687,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0.9495392, y: 1.036911, z: 0, w: 3.4564362}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -8465,7 +8465,7 @@ PrefabInstance:
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: qntdDoRecursoDropado.Array.data[0]
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
@@ -17202,7 +17202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.000002861023, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1794723135
@@ -17218,15 +17218,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 10
-    m_Right: 0
+    m_Left: 4
+    m_Right: 4
     m_Top: 10
     m_Bottom: 10
-  m_ChildAlignment: 0
-  m_StartCorner: 0
+  m_ChildAlignment: 2
+  m_StartCorner: 1
   m_StartAxis: 0
-  m_CellSize: {x: 70, y: 60}
-  m_Spacing: {x: 10, y: 0}
+  m_CellSize: {x: 65, y: 50}
+  m_Spacing: {x: 4, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &1794723136
@@ -17298,44 +17298,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intervaloDuranteTutorial: 3
   dialogosDoTutorial:
-  - NomeNPC: Ao Levantar
+  - NomeNPC: Dr. Alho
     IDdoNPC: 1
     Frases:
-    - Ola
-    - "Quebre a caixa com o Bot\xE3o Esquerdo do Mouse, colete os recursos e crie
-      o m\xF3dulo que possui as caracterisicas demonstradas em sua interface"
+    - "Aika!!! O que voc\xEA fez???"
+    - "O que, voc\xEA n\xE3o se lembra de nada? Bom do jeito que voc\xEA se teletransportou
+      \xE9 surpreendente que ainda esteja viva"
+    - "Parece que o portal est\xE1 danificado e as pe\xE7as foram parar em diferentes
+      eras. Como este era o nosso \xFAnico portal eu s\xF3 vou conseguir te enviar
+      uma caixa de suprimentos intertemporal"
+    - "Espere! Ao que parece meus sensores detectaram que voc\xEA causou uma perturba\xE7\xE3o
+      no espa\xE7o tempo, fazendo com que desastres de diferentes eras ocorram de
+      tempo em tempo"
+    - "Vou te enviar a caixa com uma Pe\xE7a de reparo da nave, um cron\xF4metro
+      para voc\xEA conseguir saber quando o pr\xF3ximo desastre te atingir e uns
+      recursos para construir um modulo de defesa"
+    - Destrua a caixa e construa o modulo que vai aparecer no seu dispositivo
     EstadoImagemNPC:
     - 1
     - 2
     FocarComCamera:
     - {fileID: 0}
     - {fileID: 1195308730}
-  - NomeNPC: "Ap\xF3s contruir m\xF3dulo"
+  - NomeNPC: Dr. Alho
     IDdoNPC: 1
     Frases:
-    - Muito bem
-    - Agora corra para o portal para se proteger do desastre
+    - "Muito bem agora espere o desastre, ele j\xE1 est\xE1 se aproximando"
     EstadoImagemNPC:
     - 2
     - 1
     FocarComCamera: []
-  - NomeNPC: "Ap\xF3s Desastre"
+  - NomeNPC: Dr. Alho
     IDdoNPC: 1
     Frases:
-    - Muito bem
-    - Agora com os seus recursos restantes concerte a maquina do tempo
+    - "Parab\xE9ns voc\xEA conseguiu sobreviver a esse desastre, mas lembre-se eles
+      n\xE3o v\xE3o parar de acontecer nunca, portanto fique atento aos seus recursos,
+      qual ser\xE1 o pr\xF3ximo desastre e o tempo"
+    - "E n\xE3o esque\xE7a de ficar de olho na intensidade dos desastres, pois se
+      construir um modulo mais fraco do que o necess\xE1rio o portal ir\xE1 sofrer
+      um dano, se ele sofrer dano 3 vezes temo que ir\xE1 explodir"
+    - "Agora v\xE1 at\xE9 o portal e o conserte"
     EstadoImagemNPC:
     - 1
     - 2
     FocarComCamera:
     - {fileID: 0}
     - {fileID: 1808072268}
-  - NomeNPC: "Ap\xF3s concertar Portal"
+  - NomeNPC: Dr. Alho
     IDdoNPC: 1
     Frases:
-    - Muito bem
-    - "Agora voc\xEA deve explorar os tempos para continuar o reparo da m\xE1quina,
-      quando estiver pronto, v\xE1 a m\xE1quina do tempo e viaje para o tempo desejado"
+    - "Muito bem, agora voc\xEA deve explorar as eras para procurar as pe\xE7as de
+      reparo da m\xE1quina do tempo"
+    - "E n\xE3o se esque\xE7a de construir os m\xF3dulos de defesa para proteger
+      o portal e se um desastre ocorrer enquanto estiver fora volte o mais r\xE1pido
+      poss\xEDvel para o portal"
+    - Agora selecione a era liberada e boa sorte!
     EstadoImagemNPC:
     - 2
     - 1
