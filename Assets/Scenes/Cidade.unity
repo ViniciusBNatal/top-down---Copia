@@ -106788,6 +106788,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7404101956433063254, guid: bc66c4ad7c9df4b4fa2a1e0ba8348262,
         type: 3}
+      propertyPath: chaveNecessaria
+      value: 
+      objectReference: {fileID: 4077969218452597330, guid: 5dfa16fb70c2c514bb4e0cdb307e1528,
+        type: 3}
+    - target: {fileID: 7404101956433063254, guid: bc66c4ad7c9df4b4fa2a1e0ba8348262,
+        type: 3}
       propertyPath: EventosAoAbrirPorta.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -125310,6 +125316,12 @@ PrefabInstance:
       objectReference: {fileID: 1261102979}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
+      propertyPath: objetoParaCriar
+      value: 
+      objectReference: {fileID: 4077969218452597330, guid: 5dfa16fb70c2c514bb4e0cdb307e1528,
+        type: 3}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
       propertyPath: dialogos.Array.data[0].Frases.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -125380,7 +125392,7 @@ PrefabInstance:
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
       propertyPath: dialogos.Array.data[1].Frases.Array.data[0]
-      value: Muito obrigado essa boba vai servir direitinho para o meu plano, agora
+      value: Muito obrigado, essa bomba vai servir direitinho para o meu plano, agora
         pode passar
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
@@ -125417,6 +125429,51 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogos.Array.data[2].NomeNPC.Array.data[0]
       value: Policial
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].EventosDuranteDialogo.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].EventosDuranteDialogo.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].EventosDuranteDialogo.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].EventosDuranteDialogo.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 381750183215065438}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].EventosDuranteDialogo.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].EventosDuranteDialogo.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CriarObjeto
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].EventosDuranteDialogo.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407029323659917517, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407029323659917517, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 8390734998877975947, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
@@ -125480,6 +125537,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecd0b017df180f14db03137654cb88cf, type: 3}
+--- !u!114 &381750183215065438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 381750183215065437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5062532382c2a1439554f0b2d76ebb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1126705030291642336
 PrefabInstance:
   m_ObjectHideFlags: 0
