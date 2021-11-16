@@ -12,6 +12,7 @@ public class IndicadorDosDesastres : MonoBehaviour
     //private List<Image> multiplicadoresDesenhados = new List<Image>();
     [SerializeField] private GameObject iconesDesastrPrefab;
     [SerializeField] private Transform PosIcones;
+    private const int divisor = 5;
     //[SerializeField] private Image iconesDesastrPrefab;
     //[SerializeField] private GameObject PosicaoIconesDesastre;
     //[SerializeField] private GameObject PosicaoIconesMultiplicador;
@@ -60,6 +61,9 @@ public class IndicadorDosDesastres : MonoBehaviour
             GameObject icone = Instantiate(iconesDesastrPrefab, PosIcones.transform);
             icone.GetComponent<iconeDesastre>().imagem.sprite = DesastresList.Instance.SelecionaSpriteDesastre(desastreManager.Instance.GetDesastreSorteado(i));
             icone.GetComponent<iconeDesastre>().texto.text = desastreManager.Instance.forcasSorteados[i].ToString();
+            float largura = icone.GetComponent<RectTransform>().rect.width;
+            float altura = icone.GetComponent<RectTransform>().rect.height;
+            icone.transform.localPosition = new Vector3((i * -largura), -(i / divisor) * altura, 0);
             iconesDesenhados.Add(icone);
             ////icone do multiplicador
             //Image iconeDeMultiplicador = Instantiate(iconesDesastrPrefab, PosicaoIconesMultiplicador.transform.position, Quaternion.identity, PosicaoIconesMultiplicador.transform);

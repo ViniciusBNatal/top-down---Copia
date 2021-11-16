@@ -22,7 +22,6 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
     static Dictionary<string, int> vidaRestanteCentroDeRecursos = new Dictionary<string, int>();
     static Dictionary<string, int> extracoesRestanteCentroDeRecursos = new Dictionary<string, int>();
     //dados dos npcs
-    //static Dictionary<string, bool> estadoMissaoNPC = new Dictionary<string, bool>();
     static Dictionary<string, int> estadoMissaoNPC = new Dictionary<string, int>();
     static Dictionary<string, Item> itemMissaoNPC = new Dictionary<string, Item>();
     //dados dialogos unicos
@@ -46,6 +45,31 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
     {
         if (objsSalvos.ContainsKey(this.gameObject.name))
             objsSalvos[this.gameObject.name] = true;
+    }
+    public void LimparDados()
+    {
+        //todos os objs
+        objsSalvos.Clear();
+        //base
+        VidaDaBase = -1;
+        //modulos
+        desastreModulos.Clear();
+        forcaModulos.Clear();
+        tipoDosModulos.Clear();
+        //portas
+        estadoPortas.Clear();
+        eventoAbrirPortas.Clear();
+        eventoFecharPortas.Clear();
+        //centro de recursos
+        estadoCentroDeRecursos.Clear();
+        tempoRestanteCentroDeRecursos.Clear();
+        vidaRestanteCentroDeRecursos.Clear();
+        extracoesRestanteCentroDeRecursos.Clear();
+        //npcs
+        estadoMissaoNPC.Clear();
+        itemMissaoNPC.Clear();
+        //dialogos unicos
+        dialogosFinalizados.Clear();
     }
     public void Salvar_CarregarDadosDaBase(BaseScript baseScript, int acao)
     {

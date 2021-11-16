@@ -8,9 +8,10 @@ public class InterfaceMenu : MonoBehaviour
 {
     const int fase = 1;
     [SerializeField] private List<GameObject> menus = new List<GameObject>();
-    private void Update()
+    private void Start()
     {
-        
+        GetComponent<SalvarEstadoDoObjeto>().LimparDados();
+        GetComponent<SalvamentoDosCentrosDeRecursosManager>().LimparDados();
     }
     public void AbrirCena()
     {

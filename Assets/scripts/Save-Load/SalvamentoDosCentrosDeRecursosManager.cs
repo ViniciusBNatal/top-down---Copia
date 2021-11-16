@@ -7,7 +7,7 @@ public class SalvamentoDosCentrosDeRecursosManager : MonoBehaviour
 {
     public static SalvamentoDosCentrosDeRecursosManager Instance { get; private set; }
     static Dictionary<string, float> TemposDeSaidaDasFases = new Dictionary<string, float>();
-    public List<GameObject> centrosDeRecursosEmCena = new List<GameObject>();
+    private List<GameObject> centrosDeRecursosEmCena = new List<GameObject>();
     // Start is called before the first frame update
     private void Awake()
     {
@@ -51,5 +51,10 @@ public class SalvamentoDosCentrosDeRecursosManager : MonoBehaviour
     {
         for (int i = 0; i < centrosDeRecursosEmCena.Count; i++)
             centrosDeRecursosEmCena[i].GetComponent<CentroDeRecursoInfinito>().SalvarEstado();
+    }
+    public void LimparDados()
+    {
+        TemposDeSaidaDasFases.Clear();
+        centrosDeRecursosEmCena.Clear();
     }
 }

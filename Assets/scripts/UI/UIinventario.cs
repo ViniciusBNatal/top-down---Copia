@@ -20,6 +20,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private Transform posicaoDosIconesDeItens;
     [SerializeField] private GameObject abaSelecionarTempo;
     [SerializeField] private GameObject abaVitoriaDoJogo;
+    [SerializeField] private GameObject abaDerrotaDoJogo;
     private int TempoAtual = 0;
     public bool InventarioAberto => inventarioAberto;
 
@@ -70,6 +71,12 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         jogadorScript.Instance.MudarEstadoJogador(0);
         inventarioAberto = false;
         abaSelecionarTempo.SetActive(false);
+    }
+    public void abrirAbaDeGameOver()
+    {
+        jogadorScript.Instance.MudarEstadoJogador(0);
+        inventarioAberto = true;
+        abaDerrotaDoJogo.SetActive(true);
     }
 
     public void AoClicarBtnInventario()
@@ -225,6 +232,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
                 //DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
                 BaseScript.Instance.CancelarInscricaoEmDialogoFinalizado();
                 BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(false);//pois sempre q aperto para melhorar, é uma defesa da base
+                BaseScript.Instance.animator.enabled = true;
                 TutorialSetUp.Instance.IniciarDialogo();
             }
             else
@@ -282,6 +290,12 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         inventarioAberto = true;
         inventarioParent.SetActive(true);
         abaVitoriaDoJogo.SetActive(true);
+    }
+    public void AbrirMenu()
+    {
+        //script.LimparDados();
+        //SalvamentoDosCentrosDeRecursosManager.Instance.LimparDados();
+        SceneManager.LoadScene(NomeFasePorBuildIndex(0));
     }
     public void FecharJogo()
     {

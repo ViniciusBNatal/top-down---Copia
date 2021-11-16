@@ -19,6 +19,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     private List<SlotModulo> listaModulos = new List<SlotModulo>();
     private int vidaAtual;
     private int DefesasFeitas = 0;
+    [HideInInspector] public Animator animator;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     }
     private void Start()
     {
+        animator = GetComponent<Animator>();
         vidaAtual = vidaMax;
         vidaAtualText.text = vidaAtual.ToString();
         jogadorScript.Instance.transform.position = posicaoDeChegadaPorTeleporte.position;
@@ -54,16 +56,17 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
         {
             //if (!tutorial)
             //{
-                for (int i = 0; i < desastreManager.Instance.GetQntdDesastresParaOcorrer() - defendido; i++)
-                {
-                    vidaAtual--;
+            for (int i = 0; i < desastreManager.Instance.GetQntdDesastresParaOcorrer() - defendido; i++)
+            {
+                vidaAtual--;
                 vidaAtualText.text = vidaAtual.ToString();
                 if (vidaAtual <= 0)
-                    {
-                        Debug.Log("Perdeu");
-                    }
+                {
+                    StartCoroutine(this.GameOver());
+                    Debug.Log("Perdeu");
                 }
-                Debug.Log(vidaAtual);
+            }
+            Debug.Log(vidaAtual);
             //}
         }
     }
@@ -217,5 +220,12 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     public int GetVidaAtual()
     {
         return vidaAtual;
+    }
+    private IEnumerator GameOver()
+    {
+        jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(transform);
+        //tocar animação
+        yield return new WaitForSeconds(2f);
+        UIinventario.Instance.abrirAbaDeGameOver();
     }
 }
