@@ -16,6 +16,7 @@ public class UpgradeSlot : MonoBehaviour
     [SerializeField] private GameObject recursosGrid;
     [SerializeField] private GameObject BtnConstruirUpgrade;
     [SerializeField] private GameObject BtnTrocartempo;
+    private List<Animator> iconesDeRecursosNecessarios = new List<Animator>();
     private int divisor = 3;
     private void Start()
     {
@@ -29,6 +30,7 @@ public class UpgradeSlot : MonoBehaviour
                 obj.transform.localPosition = new Vector3((i % divisor) * largura, -(i / divisor) * altura, 0);
                 obj.GetComponentInChildren<TMP_Text>().text = receita.quantidadeDosRecursos[i].ToString("000");
                 obj.GetComponentInChildren<Image>().sprite = receita.itensNecessarios[i].icone;
+                iconesDeRecursosNecessarios.Add(obj.GetComponent<Animator>());
             }
         }
     }
@@ -44,6 +46,18 @@ public class UpgradeSlot : MonoBehaviour
         string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(IndexFaseNaBuild);//pega o caminho da cena na pasta de arquivos
         string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
         return cenaParaAbrir;
+    }
+    public void FalhaNoCrafting(bool Insuficiente, int recurso)
+    {
+        switch (Insuficiente)
+        {
+            case true:
+                iconesDeRecursosNecessarios[recurso].SetTrigger("INSUFICIENTE");
+                break;
+            case false:
+                iconesDeRecursosNecessarios[recurso].SetTrigger("INEXISTENTE");
+                break;
+        }
     }
     public ReceitaDeCrafting GetReceita()
     {

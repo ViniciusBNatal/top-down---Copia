@@ -1810,7 +1810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2661,7 +2661,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
@@ -3533,7 +3533,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2086176861}
   m_HandleRect: {fileID: 2086176860}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -7942,7 +7942,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 146.66345, y: -186.69128}
+  m_SizeDelta: {x: 146.66345, y: -247.28186}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1475340046
 MonoBehaviour:
@@ -17523,7 +17523,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1733967262}
   m_HandleRect: {fileID: 1733967261}
   m_Direction: 0
-  m_Value: 0
+  m_Value: -0.00000020807887
   m_Size: 0.7555608
   m_NumberOfSteps: 0
   m_OnValueChanged:

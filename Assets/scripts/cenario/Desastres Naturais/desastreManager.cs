@@ -64,32 +64,28 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
         //ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
         //StartCoroutine(this.LogicaDesastres());
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            qntdDeDesastresParaOcorrer = 3;
-            desastresSorteados[0] = "TERREMOTO";
-            desastresSorteados[1] = "ERRUPCAO TERRENA";
-            desastresSorteados[2] = "NUVEM DE INSETOS";
-            forcasSorteados[0] = 1;
-            forcasSorteados[1] = 1;
-            forcasSorteados[2] = 1;
-            IndicadorDosDesastres.Instance.PreenchePlaca();
-            //    Virus();
-            //    ErrupcaoTerrena();
-            //    Terremoto();
-            //    StopAllCoroutines();
-            //    ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
-            //    SetUpParaNovoSorteioDeDesastres();
-            //    StartCoroutine(this.LogicaDesastres(true));
-            //    //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
-        }
-        //if (Input.GetKeyDown(KeyCode.P))
-        //{
-        //    StopAllCoroutines();
-        //}
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.R))
+    //    {
+    //        qntdDeDesastresParaOcorrer = 3;
+    //        desastresSorteados[0] = "TERREMOTO";
+    //        desastresSorteados[1] = "ERRUPCAO TERRENA";
+    //        desastresSorteados[2] = "NUVEM DE INSETOS";
+    //        forcasSorteados[0] = 1;
+    //        forcasSorteados[1] = 1;
+    //        forcasSorteados[2] = 1;
+    //        IndicadorDosDesastres.Instance.PreenchePlaca();
+    //        Virus();
+    //        ErrupcaoTerrena();
+    //        Terremoto();
+    //        StopAllCoroutines();
+    //        ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
+    //        SetUpParaNovoSorteioDeDesastres();
+    //        StartCoroutine(this.LogicaDesastres(true));
+    //        Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
+    //    }
+    //}
     //desastres
     private void Terremoto()
     {

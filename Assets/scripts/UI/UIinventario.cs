@@ -10,6 +10,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private bool tutorial;
     [SerializeField] private List<UpgradeSlot> listaSlotUpgradesBase = new List<UpgradeSlot>();
     private List<ItemSlot> listaSlotItem = new List<ItemSlot>();
+    private Dictionary<string, ItemSlot> itens = new Dictionary<string, ItemSlot>();
     [Header("Nao Mexer")]
     [SerializeField] private GameObject CaixaDeDialogos;
     [SerializeField] private GameObject inventarioParent;
@@ -98,66 +99,71 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         script.item = item;
         script.atualizaQuantidade(quantidade);
         listaSlotItem.Add(script);
+        itens.Add(item.ID, obj.GetComponent<ItemSlot>());
     }
     public void AtualizaInventarioUI(Item item, int quantidade)
     {
-        bool JaNaLista = false;
-        int posNaLista = 0;
-        if (listaSlotItem.Count == 0) //lista vazia
+        if (itens.ContainsKey(item.ID))
         {
-            CriaNovoSlotDeItem(item, quantidade);
-            return;
-        }
-        for (int i = 0; i < listaSlotItem.Count; i++)//se já existe no inventário, muda a quantidade
-        {
-            if (listaSlotItem[i].item.ID.ToUpper() == item.ID.ToUpper())
-            {
-                JaNaLista = true;
-                posNaLista = i;
-                break;
-            }
-        }
-        if (JaNaLista)
-        {
-            listaSlotItem[posNaLista].atualizaQuantidade(quantidade);
+            itens[item.ID].atualizaQuantidade(quantidade);
         }
         else
         {
             CriaNovoSlotDeItem(item, quantidade);
         }
+        //bool JaNaLista = false;
+        //int posNaLista = 0;
+        //if (listaSlotItem.Count == 0) //lista vazia
+        //{
+        //    CriaNovoSlotDeItem(item, quantidade);
+        //    return;
+        //}
+        //for (int i = 0; i < listaSlotItem.Count; i++)//se já existe no inventário, muda a quantidade
+        //{
+        //    if (listaSlotItem[i].item.ID.ToUpper() == item.ID.ToUpper())
+        //    {
+        //        JaNaLista = true;
+        //        posNaLista = i;
+        //        break;
+        //    }
+        //}
+        //if (JaNaLista)
+        //{
+        //    listaSlotItem[posNaLista].atualizaQuantidade(quantidade);
+        //}
+        //else
+        //{
+        //    CriaNovoSlotDeItem(item, quantidade);
+        //}
     }
     public void AoClicarParaConstruirItem(craftingSlot slot)
     {
-        List<int> recursosEncontrados = new List<int>();
         int possuiTodosOsRecursos = 0;
         for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.receita.itensNecessarios.Count; tiposRecursosParaCrafting++)//passa para o próximo recurso na lista de crafting do objeto
         {
-            for (int tipoRecursosInventario = 0; tipoRecursosInventario < listaSlotItem.Count; tipoRecursosInventario++)//procura se existe o recurso X na lista de crafting do objeto
+            if (itens.ContainsKey(slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID))
             {
-                if (listaSlotItem[tipoRecursosInventario].item.ID.ToUpper() == slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID.ToUpper() && listaSlotItem[tipoRecursosInventario].qntdRecurso >= slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting])//slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]
-                {
-                    int i = tipoRecursosInventario;
-                    recursosEncontrados.Add(i);// guarda a posição do recurso na lista de itens
+                if (itens[slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID].qntdRecurso >= slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting])
                     possuiTodosOsRecursos++;
-                    break;
-                }
+                else
+                    slot.FalhaNoCrafting(true, tiposRecursosParaCrafting);
+            }
+            else
+            {
+                slot.FalhaNoCrafting(false, tiposRecursosParaCrafting);
             }
         }
         if (possuiTodosOsRecursos == slot.receita.itensNecessarios.Count)// caso tenha todos os itens e a quantidade necessária, consome eles para criar a receita
         {
-            for (int tipoRecursoCrafting = 0; tipoRecursoCrafting < slot.receita.itensNecessarios.Count; tipoRecursoCrafting++)
+            for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.receita.itensNecessarios.Count; tiposRecursosParaCrafting++)
             {
-                listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.construcaoConfirmada().quantidadeDosRecursos[tipoRecursoCrafting]);//-slot.GetNovaListaDeQntdRecursosNecessarios()[tipoRecursoCrafting]               
+                itens[slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]);
             }
             jogadorScript.Instance.SetModuloConstruido(slot.construcaoConfirmada());
             BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(true);
             jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(BaseScript.Instance.transform);
             fechaInventario();
             jogadorScript.Instance.MudarEstadoJogador(2);
-        }
-        else
-        {
-            Debug.Log("recursos insuficientes");
         }
     }
     public void AoClicarparaMelhorar(UpgradeSlot slot)
@@ -166,22 +172,23 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         int possuiTodosOsRecursos = 0;
         for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.GetReceita().itensNecessarios.Count; tiposRecursosParaCrafting++)//passa para o próximo recurso na lista de crafting do objeto
         {
-            for (int tipoRecursosInventario = 0; tipoRecursosInventario < listaSlotItem.Count; tipoRecursosInventario++)//procura se existe o recurso X na lista de crafting do objeto
+            if (itens.ContainsKey(slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting].ID))
             {
-                if (listaSlotItem[tipoRecursosInventario].item.ID.ToUpper() == slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting].ID.ToUpper() && listaSlotItem[tipoRecursosInventario].qntdRecurso >= slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting])
-                {
-                    int i = tipoRecursosInventario;
-                    recursosEncontrados.Add(i);// guarda a posição do recurso na lista de itens
+                if (itens[slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting].ID].qntdRecurso >= slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting])
                     possuiTodosOsRecursos++;
-                    break;
-                }
+                else
+                    slot.FalhaNoCrafting(true, tiposRecursosParaCrafting);
+            }
+            else
+            {
+                slot.FalhaNoCrafting(false, tiposRecursosParaCrafting);
             }
         }
         if (possuiTodosOsRecursos == slot.GetReceita().itensNecessarios.Count)// caso tenha todos os itens e a quantidade necessária, consome eles para criar a receita
         {
-            for (int tipoRecursoCrafting = 0; tipoRecursoCrafting < slot.GetReceita().itensNecessarios.Count; tipoRecursoCrafting++)
+            for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.GetReceita().itensNecessarios.Count; tiposRecursosParaCrafting++)
             {
-                listaSlotItem[recursosEncontrados[tipoRecursoCrafting]].atualizaQuantidade(-slot.GetReceita().quantidadeDosRecursos[tipoRecursoCrafting]);
+                itens[slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting]);
             }
             fechaMenuDeTempos();
             Tutorial();
@@ -293,8 +300,6 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     }
     public void AbrirMenu()
     {
-        //script.LimparDados();
-        //SalvamentoDosCentrosDeRecursosManager.Instance.LimparDados();
         SceneManager.LoadScene(NomeFasePorBuildIndex(0));
     }
     public void FecharJogo()

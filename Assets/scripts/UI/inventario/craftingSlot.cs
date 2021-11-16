@@ -13,6 +13,7 @@ public class craftingSlot : MonoBehaviour
     [SerializeField] private Image iconeDoDesastre;
     private List<TMP_Text> qntdNecessariaParaCadarecursoText = new List<TMP_Text>();
     private List<int> novosValores = new List<int>();
+    private List<Animator> iconesDeRecursosNecessarios = new List<Animator>();
     private int divisor = 3;
     private int forca = 1;
     private void Start()
@@ -32,6 +33,7 @@ public class craftingSlot : MonoBehaviour
             novosValores.Add(receita.quantidadeDosRecursos[i]);
             qntdNecessariaParaCadarecursoText.Add(obj.GetComponentInChildren<TMP_Text>());
             obj.GetComponentInChildren<Image>().sprite = receita.itensNecessarios[i].icone;
+            iconesDeRecursosNecessarios.Add(obj.GetComponent<Animator>());
         }
     }
     public void TrocaForcamodulo(int f)
@@ -59,6 +61,18 @@ public class craftingSlot : MonoBehaviour
                     qntdNecessariaParaCadarecursoText[i].text = (receita.quantidadeDosRecursos[i] + 2 * receita.incrementoEntreForcas).ToString("000");
                     novosValores[i] = receita.quantidadeDosRecursos[i] + 2 * receita.incrementoEntreForcas;
                 }
+                break;
+        }
+    }
+    public void FalhaNoCrafting(bool Insuficiente, int recurso)
+    {
+        switch (Insuficiente)
+        {
+            case true:
+                iconesDeRecursosNecessarios[recurso].SetTrigger("INSUFICIENTE");
+                break;
+            case false:
+                iconesDeRecursosNecessarios[recurso].SetTrigger("INEXISTENTE");
                 break;
         }
     }
