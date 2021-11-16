@@ -1846,7 +1846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &234433509
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3348,6 +3348,7 @@ MonoBehaviour:
   DialogoText: {fileID: 1429167285}
   velocidadeDasLetras: 0.02
   animatorImage: {fileID: 909585228}
+  setaContinuarDialogo: {fileID: 234433508}
 --- !u!114 &582580337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5274,7 +5275,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1398494227}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8912,7 +8913,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 701822983}
   m_HandleRect: {fileID: 701822982}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

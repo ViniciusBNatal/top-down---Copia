@@ -22,7 +22,8 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
     static Dictionary<string, int> vidaRestanteCentroDeRecursos = new Dictionary<string, int>();
     static Dictionary<string, int> extracoesRestanteCentroDeRecursos = new Dictionary<string, int>();
     //dados dos npcs
-    static Dictionary<string, bool> estadoMissaoNPC = new Dictionary<string, bool>();
+    //static Dictionary<string, bool> estadoMissaoNPC = new Dictionary<string, bool>();
+    static Dictionary<string, int> estadoMissaoNPC = new Dictionary<string, int>();
     static Dictionary<string, Item> itemMissaoNPC = new Dictionary<string, Item>();
     //dados dialogos unicos
     static Dictionary<string, bool> dialogosFinalizados = new Dictionary<string, bool>();
@@ -176,9 +177,11 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
             case 0://salvar
                 //salva estado de missao
                 if (estadoMissaoNPC.ContainsKey(npcScript.gameObject.name))
-                    estadoMissaoNPC[npcScript.gameObject.name] = npcScript.GetMissaoCumprida();
+                    //estadoMissaoNPC[npcScript.gameObject.name] = npcScript.GetMissaoCumprida();
+                    estadoMissaoNPC[npcScript.gameObject.name] = npcScript.GetNDeDialogos();
                 else
-                    estadoMissaoNPC.Add(npcScript.gameObject.name, npcScript.GetMissaoCumprida());
+                    //estadoMissaoNPC.Add(npcScript.gameObject.name, npcScript.GetMissaoCumprida());
+                    estadoMissaoNPC.Add(npcScript.gameObject.name, npcScript.GetNDeDialogos());
                 //salva item da missao
                 if (itemMissaoNPC.ContainsKey(npcScript.gameObject.name))
                     itemMissaoNPC[npcScript.gameObject.name] = npcScript.GetItemDaMissao();
@@ -188,7 +191,8 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
             case 1://carregar
                 //carrega estado de missao
                 if (estadoMissaoNPC.ContainsKey(npcScript.gameObject.name))
-                    npcScript.SetMissaoCumprida(estadoMissaoNPC[npcScript.gameObject.name]);
+                    //npcScript.SetMissaoCumprida(estadoMissaoNPC[npcScript.gameObject.name]);
+                    npcScript.SetNDeDialogo(estadoMissaoNPC[npcScript.gameObject.name]);
                 //carrega item da missao
                 if (itemMissaoNPC.ContainsKey(npcScript.gameObject.name))
                     npcScript.SetItemDaMissao(itemMissaoNPC[npcScript.gameObject.name]);

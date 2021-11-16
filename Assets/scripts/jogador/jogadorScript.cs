@@ -74,6 +74,8 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     // Update is called once per frame
     void Update()
     {
+        //if (Input.GetKeyDown(KeyCode.L))
+        //    SceneManager.LoadScene("testes");
         switch (estadosJogador)
         {
             case estados.EmAcao: //movimentando

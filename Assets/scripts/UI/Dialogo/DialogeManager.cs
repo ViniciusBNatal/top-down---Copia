@@ -14,6 +14,7 @@ public class DialogeManager : MonoBehaviour
     [SerializeField] private TMP_Text DialogoText;
     [SerializeField] private float velocidadeDasLetras;
     [SerializeField] private Animator animatorImage;
+    [SerializeField] private GameObject setaContinuarDialogo;
     private Animator animator;
     private Queue<string> Frases = new Queue<string>();
     private int index = 0;
@@ -50,6 +51,7 @@ public class DialogeManager : MonoBehaviour
             FimDialogo();
             return;
         }
+        setaContinuarDialogo.SetActive(false);
         string textoDialogo = Frases.Dequeue();
         TrocarNomeNPC();
         TrocaNPC();
@@ -76,6 +78,7 @@ public class DialogeManager : MonoBehaviour
             DialogoText.text += letra;
             yield return new WaitForSeconds(velocidadeDasLetras);
         }
+        setaContinuarDialogo.SetActive(true);
     }
     protected virtual void AoFinalizarDialogo()
     {

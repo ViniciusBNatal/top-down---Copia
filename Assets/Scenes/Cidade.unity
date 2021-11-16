@@ -125315,12 +125315,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
+      propertyPath: dialogos.Array.data[0].IDdoNPC.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
       propertyPath: dialogos.Array.data[0].NomeNPC.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
+      propertyPath: dialogos.Array.data[1].IDdoNPC.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
       propertyPath: dialogos.Array.data[1].NomeNPC.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[2].IDdoNPC.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
@@ -125375,13 +125390,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
+      propertyPath: dialogos.Array.data[0].IDdoNPC.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
       propertyPath: dialogos.Array.data[0].NomeNPC.Array.data[0]
       value: Policial
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
+      propertyPath: dialogos.Array.data[1].IDdoNPC.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
       propertyPath: dialogos.Array.data[1].NomeNPC.Array.data[0]
       value: Policial
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[2].IDdoNPC.Array.data[0]
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
