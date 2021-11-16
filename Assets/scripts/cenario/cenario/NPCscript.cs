@@ -5,7 +5,8 @@ using UnityEngine.Events;
 
 public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
 {
-    private const int nDeDialogos = 3;
+    //private const int nDeDialogos = 3;
+    private int nDeDialogos = 0;
     [SerializeField] private GameObject objetoDeMissao;
     [Range(-1,1)]
     [SerializeField] private int direcaoParaMoverX;
@@ -14,7 +15,7 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     [SerializeField] private float velocidade;
     [SerializeField] private float distanciaMaxParaPerocrer;
     [SerializeField] private UnityEvent EventosAoCompletarMissao;
-    [SerializeField] private Dialogo[] dialogos = new Dialogo[nDeDialogos];
+    [SerializeField] private Dialogo[] dialogos; //= new Dialogo[nDeDialogos];
     private Item itemMissao = null;
     private bool missaoCumprida = false;
     private Rigidbody2D rb;
@@ -37,42 +38,83 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     }
     public void Interacao()
     {
-        if (itemMissao != null)
+        switch (nDeDialogos)
         {
-            VerificarMissao();
+            case 0:
+                DialogeManager.Instance.IniciarDialogo(dialogos[nDeDialogos]);
+                break;
+            case 1:
+                //VerificarMissao();
+                if (nDeDialogos == 1)
+                    DialogeManager.Instance.IniciarDialogo(dialogos[nDeDialogos]);
+                break;
         }
-        else//se ele for apenas para conversar
-        {
-            DialogeManager.Instance.IniciarDialogo(dialogos[0]);
-        }
+        //if (itemMissao != null)
+        //{
+        //    VerificarMissao();
+        //}
+        //else//se ele for apenas para conversar
+        //{
+        //    DialogeManager.Instance.IniciarDialogo(dialogos[0]);
+        //}
     }
-    private void VerificarMissao()
+    private void VerificarMissao(bool encadearDialogos)
     {
-        if (missaoCumprida)
+        if (nDeDialogos == 3)
         {
-            DialogeManager.Instance.IniciarDialogo(dialogos[2]);//dialogo de missao ja foi cumprida
+            DialogeManager.Instance.IniciarDialogo(dialogos[nDeDialogos]);//dialogo de missao já cumprida
         }
         else
         {
             if (UIinventario.Instance.ProcurarChave(itemMissao))
             {
+                nDeDialogos = 2;
                 DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-                DialogeManager.Instance.IniciarDialogo(dialogos[1]);//dialogo de missao cumprida
+                DialogeManager.Instance.IniciarDialogo(dialogos[nDeDialogos]);//dialogo de missao cumprida
             }
-            else
-            {
-                DialogeManager.Instance.IniciarDialogo(dialogos[0]);//dialogo de falar qual a missao
-            }
+            //else
+            //{
+            //    nDeDialogos = 1;
+            //    DialogeManager.Instance.IniciarDialogo(dialogos[nDeDialogos]);//dialogo entre missao recebida e missao não cumprida
+            //}
         }
+        //if (missaoCumprida)
+        //{
+        //    DialogeManager.Instance.IniciarDialogo(dialogos[2]);//dialogo de missao ja foi cumprida
+        //}
+        //else
+        //{
+        //    if (UIinventario.Instance.ProcurarChave(itemMissao))
+        //    {
+        //        DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+        //        DialogeManager.Instance.IniciarDialogo(dialogos[1]);//dialogo de missao cumprida
+        //    }
+        //    else
+        //    {
+        //        DialogeManager.Instance.IniciarDialogo(dialogos[0]);//dialogo de falar qual a missao
+        //    }
+        //}
     }
     private void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
-        AoCompletarAMissao();
-        DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();       
+        switch (nDeDialogos)
+        {
+            case 0:
+                nDeDialogos = 1;
+                //VerificarMissao();
+                break;
+            case 2:
+                AoCompletarAMissao();
+                DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
+                break;
+        }
+        //AoCompletarAMissao();
+        //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();       
     }
     private void AoCompletarAMissao()
     {
-        missaoCumprida = true;
+        nDeDialogos = 3;
+        //missaoCumprida = true;
         EventosAoCompletarMissao.Invoke();
         SalvarEstado();
     }
@@ -106,6 +148,14 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     public void SetItemDaMissao(Item obj)
     {
         itemMissao = obj;
+    }
+    public int GetNDeDialogos()
+    {
+        return nDeDialogos;
+    }
+    public void SetNDeDialogo(int i)
+    {
+        nDeDialogos = i;
     }
     public void MovimentarNPC()
     {
