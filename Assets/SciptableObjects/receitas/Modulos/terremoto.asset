@@ -18,4 +18,4 @@ MonoBehaviour:
   incrementoEntreForcas: 3
   itensNecessarios:
   - {fileID: 11400000, guid: bf37def55dca4bf4aa6e606a6eedbbd6, type: 2}
-  quantidadeDosRecursos: 03000000
+  quantidadeDosRecursos: 07000000

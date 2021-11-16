@@ -15,6 +15,9 @@ MonoBehaviour:
   iconeDeAprimoramentoDabase: {fileID: 0}
   modulo: 1
   desastre: CHUVA ACIDA
-  incrementoEntreForcas: 0
-  itensNecessarios: []
-  quantidadeDosRecursos: 
+  incrementoEntreForcas: 3
+  itensNecessarios:
+  - {fileID: 11400000, guid: 9f861b795b8aa3d4aa92ca1078c7c87d, type: 2}
+  - {fileID: 11400000, guid: 0e0cbdf6ffddaf741977cba61f39bf4f, type: 2}
+  - {fileID: 11400000, guid: bf37def55dca4bf4aa6e606a6eedbbd6, type: 2}
+  quantidadeDosRecursos: 030000000200000004000000

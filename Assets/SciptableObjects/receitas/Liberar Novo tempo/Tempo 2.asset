@@ -19,4 +19,6 @@ MonoBehaviour:
   incrementoEntreForcas: 0
   itensNecessarios:
   - {fileID: 11400000, guid: 04b17ffd2010bcf4a996b0a988d6942d, type: 2}
-  quantidadeDosRecursos: 01000000
+  - {fileID: 11400000, guid: bf37def55dca4bf4aa6e606a6eedbbd6, type: 2}
+  - {fileID: 11400000, guid: 3c3693480a42c664091250d2df3f1290, type: 2}
+  quantidadeDosRecursos: 01000000140000000f000000

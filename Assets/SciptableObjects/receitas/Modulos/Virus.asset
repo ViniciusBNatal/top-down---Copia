@@ -16,5 +16,8 @@ MonoBehaviour:
   modulo: 1
   desastre: VIRUS
   incrementoEntreForcas: 0
-  itensNecessarios: []
-  quantidadeDosRecursos: 
+  itensNecessarios:
+  - {fileID: 11400000, guid: c46d4db61ed04784fb525b41adac2f46, type: 2}
+  - {fileID: 11400000, guid: 8c1df2e01c921d84898d0f9a381c59cb, type: 2}
+  - {fileID: 11400000, guid: 0e0cbdf6ffddaf741977cba61f39bf4f, type: 2}
+  quantidadeDosRecursos: 070000000500000002000000

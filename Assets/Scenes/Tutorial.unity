@@ -203,7 +203,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 106302792}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.28577688
+  m_Size: 0.27176484
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -645,8 +645,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 475.28867, y: 821.35657}
+  m_AnchoredPosition: {x: 0, y: -0}
+  m_SizeDelta: {x: 462.91837, y: 837.47046}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &68372014
 MonoBehaviour:
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 1
-  m_CellSize: {x: 120, y: 50}
+  m_CellSize: {x: 100, y: 50}
   m_Spacing: {x: 0, y: 100}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -873,7 +873,7 @@ RectTransform:
   m_Father: {fileID: 1379755139}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.71422315}
+  m_AnchorMin: {x: 0, y: 0.7282351}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -1238,7 +1238,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1444110326}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.41322386
+  m_Size: 0.41402742
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1407,7 +1407,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -1452,7 +1452,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -1628,7 +1628,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -1673,7 +1673,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -2418,7 +2418,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -2463,7 +2463,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -2993,7 +2993,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -3038,7 +3038,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -5274,7 +5274,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1398494227}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6180,8 +6180,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2113789651}
   m_HandleRect: {fileID: 2113789650}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9999999
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7021,7 +7021,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -7066,7 +7066,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -7898,7 +7898,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.41322386, y: 1}
+  m_AnchorMax: {x: 0.41402742, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8037,7 +8037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7925e10f5bb7246439a4b2f7a9e5ac2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intervaloEntreOsDesastres: 30
+  intervaloEntreOsDesastres: 150
   chanceDeDesastre: 75
   tutorial: 1
   intensidadeScreenShakeTerremoto: 3
@@ -8173,7 +8173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1515927593
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16456,8 +16456,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.7999878, y: -16.300003}
-  m_SizeDelta: {x: 233.84195, y: 267.64224}
+  m_AnchoredPosition: {x: -1.0099983, y: -19.69}
+  m_SizeDelta: {x: 226.21225, y: 251.52841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1617037350
 MonoBehaviour:
@@ -17161,22 +17161,29 @@ MonoBehaviour:
   pontoDeSpawnObjetos: {fileID: 2024005635}
   dialogosDoTutorial:
   - NomeNPC:
+    - ???
     - Dr Alho
     IDdoNPC: 01000000
     Frases:
     - "Aika!!! O que voc\xEA fez???"
+    - Como assim quem esta falando! Sou eu o grande cientista e seu chefe Dr.Alho
     - "O que, voc\xEA n\xE3o se lembra de nada? Bom do jeito que voc\xEA se teletransportou
-      \xE9 surpreendente que ainda esteja viva"
-    - "Parece que o portal est\xE1 danificado e as pe\xE7as foram parar em diferentes
-      eras. Como este era o nosso \xFAnico portal eu s\xF3 vou conseguir te enviar
-      uma caixa de suprimentos intertemporal"
-    - "Espere! Ao que parece meus sensores detectaram que voc\xEA causou uma perturba\xE7\xE3o
+      \xE9 surpreendente que ainda esteja viva, mas isso n\xE3o importa olha o que
+      voc\xEA fez com a minha m\xE1quina"
+    - "Ela esta muito danificada e as pe\xE7as foram parar em diferentes eras. Voc\xEA
+      precisa consertar a bagun\xE7a que fez e trazer minha preciosa maquina de volta
+      \xE9 o trabalho da minha vida"
+    - "Sorte a sua que eu desenvolvi um dispositivo capaz de mandar caixas de socorro
+      para qualquer que seja a localiza\xE7\xE3o do portal como medida de seguran\xE7a"
+    - "Espere! Meus sensores detectaram que voc\xEA causou uma perturba\xE7\xE3o
       no espa\xE7o tempo, fazendo com que desastres de diferentes eras ocorram de
-      tempo em tempo"
-    - "Vou te enviar a caixa com uma Pe\xE7a de reparo da nave, um cron\xF4metro
-      para voc\xEA conseguir saber quando o pr\xF3ximo desastre te atingir e uns
-      recursos para construir um modulo de defesa"
-    - Destrua a caixa e construa o modulo que vai aparecer no seu dispositivo
+      tempos em tempos"
+    - "Vou te enviar a caixa com uma pe\xE7a de reparo do portal, um cron\xF4metro
+      para voc\xEA conseguir saber quando e qual o pr\xF3ximo desastre vai te atingir
+      e uns recursos para construir um modulo de defesa"
+    - "Destrua a caixa e construa o modulo de defesa para o desastre que vai aparecer
+      no seu dispositivo, ele servir\xE1 para proteger o portal, caso sofra 3 danos
+      ele ir\xE1 ser destruido"
     EstadoImagemNPC:
     - 1
     - 2
@@ -17236,7 +17243,10 @@ MonoBehaviour:
     - "E n\xE3o se esque\xE7a de construir os m\xF3dulos de defesa para proteger
       o portal e se um desastre ocorrer enquanto estiver fora volte o mais r\xE1pido
       poss\xEDvel para o portal"
-    - Agora selecione a era liberada e boa sorte!
+    - "Agora selecione a era liberada e tente buscar as pe\xE7as para consertar o
+      portal por completo e voltar para o meu laborat\xF3rio para consertarmos a
+      bagun\xE7a que voc\xEA criou no espa\xE7o tempo"
+    - Boa sorte!
     EstadoImagemNPC:
     - 2
     - 1
@@ -17463,7 +17473,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -17508,7 +17518,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -18459,7 +18469,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.9999998, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}

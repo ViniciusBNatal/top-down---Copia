@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconeDeAprimoramentoDabase: {fileID: 4178862383683176622, guid: 6afdc37001a71af438f3f20917bccede,
     type: 3}
+  modulo: 0
   desastre: 
   incrementoEntreForcas: 0
   itensNecessarios:
-  - {fileID: 11400000, guid: 2e55fca245e9bf84a8da5955dbcd6c40, type: 2}
-  quantidadeDosRecursos: 01000000
+  - {fileID: 11400000, guid: 16af786ddbc019843a12dab207078aaa, type: 2}
+  - {fileID: 11400000, guid: 9f861b795b8aa3d4aa92ca1078c7c87d, type: 2}
+  - {fileID: 11400000, guid: 0e0cbdf6ffddaf741977cba61f39bf4f, type: 2}
+  quantidadeDosRecursos: 01000000230000001e000000
