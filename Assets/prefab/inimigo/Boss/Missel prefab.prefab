@@ -229,13 +229,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6628aec52ee84a9439fe64d917fbb866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 1324030936459174767}
+  gobjPai: {fileID: 0}
   duracaoExplosao: 2
   forca: 100
   itens:
   - {fileID: 11400000, guid: 3c3693480a42c664091250d2df3f1290, type: 2}
   - {fileID: 11400000, guid: c46d4db61ed04784fb525b41adac2f46, type: 2}
-  qntdDoRecursoDropado: 0500000005000000
+  - {fileID: 11400000, guid: 0e0cbdf6ffddaf741977cba61f39bf4f, type: 2}
+  qntdDoRecursoDropado: 020000000300000002000000
   areaDaExplosaoIndicador: {fileID: 1620966432087706803}
   recursoColetavelPreFab: {fileID: 769133423071464344, guid: 501ac6922bc98ff4a90c352f139fbe97,
     type: 3}

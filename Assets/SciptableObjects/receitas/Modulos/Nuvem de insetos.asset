@@ -19,4 +19,5 @@ MonoBehaviour:
   itensNecessarios:
   - {fileID: 11400000, guid: c46d4db61ed04784fb525b41adac2f46, type: 2}
   - {fileID: 11400000, guid: 8c1df2e01c921d84898d0f9a381c59cb, type: 2}
-  quantidadeDosRecursos: 0300000003000000
+  - {fileID: 11400000, guid: 3c3693480a42c664091250d2df3f1290, type: 2}
+  quantidadeDosRecursos: 060000000300000003000000

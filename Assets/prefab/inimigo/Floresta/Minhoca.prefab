@@ -227,7 +227,7 @@ MonoBehaviour:
   taxaDisparo: 1
   velocidadeProjetil: 10
   danoMelee: 10
-  danoRanged: 1
+  danoRanged: 10
   forcaRepulsao: 20
   tempoDeStunNoJogador: 0.5
   distanciaMinimaParaFugir: {x: 1, y: 1}

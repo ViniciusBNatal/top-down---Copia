@@ -474,8 +474,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1459724899}
     m_Modifications:
     - target: {fileID: 222516118, guid: a144a9de5551fe7488827af0e52859b7, type: 3}
+      propertyPath: dialogo.NomeNPC.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 222516118, guid: a144a9de5551fe7488827af0e52859b7, type: 3}
       propertyPath: dialogo.Frases.Array.data[0]
-      value: "Invas\xE3o detectada, Iniciando Protocolo de Busca ziiii..."
+      value: "Invas\xE3o detectada, Iniciando Protocolo de Busca, qualquer civ\xEDl
+        n\xE3o identificado ser\xE1 pass\xEDvel de repress\xE3o ZzZiIIii..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 222516118, guid: a144a9de5551fe7488827af0e52859b7, type: 3}
+      propertyPath: dialogo.NomeNPC.Array.data[0]
+      value: "Rob\xF4 Seguran\xE7a"
       objectReference: {fileID: 0}
     - target: {fileID: 222516118, guid: a144a9de5551fe7488827af0e52859b7, type: 3}
       propertyPath: dialogo.FocarComCamera.Array.data[0]
@@ -38053,7 +38062,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f49e5460b372c7a418890cecb9cda18a,
+      objectReference: {fileID: 21300000, guid: 18d52db59c420304f96245838f5467e9,
         type: 3}
     - target: {fileID: 6632141193722940736, guid: 501ac6922bc98ff4a90c352f139fbe97,
         type: 3}
@@ -38114,7 +38123,7 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 04b17ffd2010bcf4a996b0a988d6942d,
+      objectReference: {fileID: 11400000, guid: d3314404e6d00f14b98370cad55d8e28,
         type: 2}
     - target: {fileID: 6897099166718318095, guid: 501ac6922bc98ff4a90c352f139fbe97,
         type: 3}
@@ -125299,6 +125308,86 @@ PrefabInstance:
       propertyPath: objetoDeMissao
       value: 
       objectReference: {fileID: 1261102979}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].Frases.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].NomeNPC.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[1].NomeNPC.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[2].NomeNPC.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].Frases.Array.data[0]
+      value: "Ei era pra esta area estar evacuada, porque voc\xEA ainda esta aqui?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].Frases.Array.data[1]
+      value: "Bom n\xE3o importa esta ocorrendo um protesto por conta daquelas \xE1rvores
+        e as ruas est\xE3o bloqueadas bem como o parque"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].Frases.Array.data[2]
+      value: Que esta sediando um evento da Happy Store
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].Frases.Array.data[3]
+      value: "A ent\xE3o voc\xEA quer acessar o parque, bom se voc\xEA conseguir
+        alguma coisa que eu possa usar, mesmo que seja falso para parastrar"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].Frases.Array.data[4]
+      value: "Mostrar que esses manifestantes s\xE3o uma amea\xE7a eu te deixareia
+        passar, provavelmete voc\xEA vai encontrar algo no"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].Frases.Array.data[5]
+      value: "Laborat\xF3rio, mas ele esta trancado, pegue esse cart\xE3o ele abre
+        o escrit\xF3rio talvez l\xE1 voc\xEA encontre algo para te ajudar"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[1].Frases.Array.data[0]
+      value: Muito obrigado essa boba vai servir direitinho para o meu plano, agora
+        pode passar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[2].Frases.Array.data[0]
+      value: "O que voc\xEA quer ja liberei sua passagem anda, pode ir sem medo"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[0].NomeNPC.Array.data[0]
+      value: Policial
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[1].NomeNPC.Array.data[0]
+      value: Policial
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
+        type: 3}
+      propertyPath: dialogos.Array.data[2].NomeNPC.Array.data[0]
+      value: Policial
+      objectReference: {fileID: 0}
     - target: {fileID: 8390734998877975947, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
       propertyPath: m_RootOrder

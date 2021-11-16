@@ -147,17 +147,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intervaloEntreAtaques: 5
-  ReducaoIntervaloDesastres: 60
+  ReducaoIntervaloDesastres: 90
   misselPrefab: {fileID: 1324030936459174767, guid: 11e3063f0b1839d4dafe4e17d1885505,
     type: 3}
   sementeDeAlhoPrefab: {fileID: 6681289161254987899, guid: ab4554795a0271b4895f3d8a8d9470fb,
     type: 3}
   pontoDeSpawnDaSemente: {fileID: 3199460214441609073}
   dialogos:
-  - NomeNPC: Dr Alho
-    IDdoNPC: 1
+  - NomeNPC:
+    - Dr. Alho MECHA
+    IDdoNPC: 
     Frases:
-    - ME DA O PORTAL
+    - "HA Ha ha voc\xEA caiu direitinho no meu plano, a coisa mais conveniente foi
+      voc\xEA ter perdido a mem\xF3ria ap\xF3s ter descoberto meu plano "
+    - "Agora que voc\xEA consertou o portal pude me teletransportar at\xE9 aqui para
+      reav\xEA-lo e por o meu plano maligno em pratica..."
+    - "Finalmente irei criar uma planta\xE7\xE3o de alho por todo o espa\xE7o tempo"
+    - Prepare-se para morrer
     EstadoImagemNPC: []
     FocarComCamera:
     - {fileID: 3199460214712093555}
+    EventosDuranteDialogo: []

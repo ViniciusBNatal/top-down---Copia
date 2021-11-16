@@ -40,7 +40,7 @@ PrefabInstance:
         type: 3}
       propertyPath: itens.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 2e55fca245e9bf84a8da5955dbcd6c40,
+      objectReference: {fileID: 11400000, guid: ae8d2c0f196533743a96ae407efa33c6,
         type: 2}
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
@@ -62,17 +62,17 @@ PrefabInstance:
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: qntdDoRecursoDropado.Array.data[0]
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: qntdDoRecursoDropado.Array.data[1]
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: qntdDoRecursoDropado.Array.data[2]
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 525454675051048018, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
