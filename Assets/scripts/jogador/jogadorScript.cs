@@ -244,7 +244,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     public void Atira()
     {
-        if (!atirando && estadosJogador == estados.EmAcao)
+        if (!atirando)
         {
             atirando = true;
             StartCoroutine(this.atirar());
@@ -259,13 +259,16 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     IEnumerator atirar()
     {               
-        GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
-        bala.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));//rotaciona a bala
-        bala.GetComponent<Rigidbody2D>().velocity = direcaoProjetil * velocidadeProjetil;//new Vector3(direcaoProjetil.x / Mathf.Abs(direcaoProjetil.x), direcaoProjetil.y / Mathf.Abs(direcaoProjetil.y), 0f)
-        bala.GetComponent<balaHit>().SetDano(danoProjetil);
-        MudarEstadoJogador(0);
-        yield return new WaitForSeconds(taxaDeDisparo);
-        atirando = false;        
+        if (estadosJogador == estados.Paralisado)
+        {
+            GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
+            bala.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));//rotaciona a bala
+            bala.GetComponent<Rigidbody2D>().velocity = direcaoProjetil * velocidadeProjetil;//new Vector3(direcaoProjetil.x / Mathf.Abs(direcaoProjetil.x), direcaoProjetil.y / Mathf.Abs(direcaoProjetil.y), 0f)
+            bala.GetComponent<balaHit>().SetDano(danoProjetil);
+            MudarEstadoJogador(0);
+            yield return new WaitForSeconds(taxaDeDisparo);
+            atirando = false;
+        }
     }
     IEnumerator atacarMelee()
     {
