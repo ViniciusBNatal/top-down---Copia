@@ -174,7 +174,7 @@ PrefabInstance:
     - target: {fileID: 152177754774987903, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}
       propertyPath: qntdDoRecursoDropado.Array.data[2]
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 525454675051048018, guid: 18ddc9d3d2b65b440ba453c526285d13,
         type: 3}

@@ -114,9 +114,9 @@ TextureImporter:
       name: Portal_Spritesheet_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 93
-        width: 44
+        x: 20
+        y: 89
+        width: 48
         height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -135,10 +135,10 @@ TextureImporter:
       name: Portal_Spritesheet_1
       rect:
         serializedVersion: 2
-        x: 113
-        y: 93
-        width: 44
-        height: 45
+        x: 102
+        y: 89
+        width: 48
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,9 +156,9 @@ TextureImporter:
       name: Portal_Spritesheet_2
       rect:
         serializedVersion: 2
-        x: 208
-        y: 93
-        width: 44
+        x: 185
+        y: 89
+        width: 48
         height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -177,10 +177,10 @@ TextureImporter:
       name: Portal_Spritesheet_3
       rect:
         serializedVersion: 2
-        x: 303
-        y: 93
-        width: 44
-        height: 45
+        x: 267
+        y: 89
+        width: 48
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,10 +198,10 @@ TextureImporter:
       name: Portal_Spritesheet_4
       rect:
         serializedVersion: 2
-        x: 18
-        y: 17
-        width: 44
-        height: 46
+        x: 21
+        y: 13
+        width: 48
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,10 +219,10 @@ TextureImporter:
       name: Portal_Spritesheet_5
       rect:
         serializedVersion: 2
-        x: 113
-        y: 17
-        width: 44
-        height: 46
+        x: 103
+        y: 13
+        width: 48
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,10 +240,10 @@ TextureImporter:
       name: Portal_Spritesheet_6
       rect:
         serializedVersion: 2
-        x: 208
-        y: 17
-        width: 44
-        height: 45
+        x: 184
+        y: 13
+        width: 48
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,10 +261,10 @@ TextureImporter:
       name: Portal_Spritesheet_7
       rect:
         serializedVersion: 2
-        x: 303
-        y: 17
-        width: 44
-        height: 46
+        x: 266
+        y: 13
+        width: 48
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
