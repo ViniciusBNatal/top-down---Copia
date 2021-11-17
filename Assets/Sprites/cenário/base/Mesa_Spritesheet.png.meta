@@ -102,12 +102,12 @@ TextureImporter:
       name: Mesa_Spritesheet_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 30
-        width: 36
-        height: 19
+        x: 7
+        y: 36
+        width: 32
+        height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -123,12 +123,12 @@ TextureImporter:
       name: Mesa_Spritesheet_1
       rect:
         serializedVersion: 2
-        x: 51
-        y: 30
-        width: 36
-        height: 19
+        x: 52
+        y: 36
+        width: 32
+        height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,12 +144,12 @@ TextureImporter:
       name: Mesa_Spritesheet_2
       rect:
         serializedVersion: 2
-        x: 4
+        x: 7
         y: 3
-        width: 36
-        height: 20
+        width: 32
+        height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: Mesa_Spritesheet_3
       rect:
         serializedVersion: 2
-        x: 51
+        x: 52
         y: 3
-        width: 36
-        height: 20
+        width: 32
+        height: 22
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
