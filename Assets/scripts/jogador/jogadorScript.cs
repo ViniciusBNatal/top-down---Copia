@@ -244,7 +244,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     public void Atira()
     {
-        if (!atirando)
+        if (!atirando && estadosJogador == estados.EmAcao)
         {
             atirando = true;
             StartCoroutine(this.atirar());
