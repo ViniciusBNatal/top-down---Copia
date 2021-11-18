@@ -10,10 +10,13 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     private Rigidbody2D rb;
     private SpriteRenderer icone;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         icone = GetComponent<SpriteRenderer>();
+    }
+    void Start()
+    {
         icone.sprite = item.icone;
     }
     private void OnTriggerEnter2D(Collider2D collision)

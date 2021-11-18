@@ -43,7 +43,7 @@ public class EfeitoFlash : MonoBehaviour
 
         // Get the material that the SpriteRenderer uses, 
         // so we can switch back to it after the flash ended.
-        originalMaterial = spriteRenderer.material;
+        //originalMaterial = spriteRenderer.material;
 
         // Copy the flashMaterial material, this is needed, 
         // so it can be modified without any side effects.
@@ -55,6 +55,7 @@ public class EfeitoFlash : MonoBehaviour
     public void Flash(Color color)
     {
         // If the flashRoutine is not null, then it is currently running.
+        originalMaterial = spriteRenderer.material;
         if (flashRoutine != null)
         {
             // In this case, we should stop it first.

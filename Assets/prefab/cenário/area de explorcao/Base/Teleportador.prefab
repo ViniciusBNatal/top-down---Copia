@@ -136,7 +136,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.75, y: 2.75}
+    oldSize: {x: 3, y: 2.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -155,7 +155,7 @@ Animator:
   m_GameObject: {fileID: 7456227160000876243}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e291be3c382f80948b2126d0a54264bf, type: 2}
+  m_Controller: {fileID: 9100000, guid: f88b0680101c4d7419e80aa585056e40, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -190,7 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2ef34d9e9f3e74586bac9434320ec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  centrosDeRecursosEmCena: []
 --- !u!1 &8146388090907375371
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,11 +235,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogo:
-    NomeNPC: Dr Alho
-    IDdoNPC: 1
+    NomeNPC: []
+    IDdoNPC: 
     Frases: []
     EstadoImagemNPC: []
     FocarComCamera: []
+    EventosDuranteDialogo: []
 --- !u!114 &7763916444940626229
 MonoBehaviour:
   m_ObjectHideFlags: 0

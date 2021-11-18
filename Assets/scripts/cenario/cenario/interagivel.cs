@@ -25,7 +25,7 @@ public class interagivel : MonoBehaviour
         if (collision.tag == "Player")
         {
             emAlcance = true;
-            collision.GetComponent<jogadorScript>().IndicarInteracaoPossivel(SelecionadorDeIconeDeInteracao.Instance.SelecionaIconeDeInteracao(btnInteragir), emAlcance);
+            collision.GetComponent<jogadorScript>().IndicarInteracaoPossivel(GetComponent<SelecionadorDeIconeDeInteracao>().SelecionaIconeDeInteracao(btnInteragir), emAlcance);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -33,7 +33,7 @@ public class interagivel : MonoBehaviour
         if (collision.tag == "Player")
         {
             emAlcance = false;
-            collision.GetComponent<jogadorScript>().IndicarInteracaoPossivel(SelecionadorDeIconeDeInteracao.Instance.SelecionaIconeDeInteracao(btnInteragir), emAlcance);
+            collision.GetComponent<jogadorScript>().IndicarInteracaoPossivel(GetComponent<SelecionadorDeIconeDeInteracao>().SelecionaIconeDeInteracao(btnInteragir), emAlcance);
             //UIinventario.Instance.fechaMenuDeTempos();
             //UIinventario.Instance.fechaInventario();
         }

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -986,6 +986,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Modulo
       objectReference: {fileID: 0}
+    - target: {fileID: 792723552344176776, guid: 35083fcfe44c00d4d90b01215a261ea8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 792723552344176777, guid: 35083fcfe44c00d4d90b01215a261ea8,
         type: 3}
       propertyPath: m_RootOrder
@@ -1183,7 +1188,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: 972842f7b2393a248b85880cfc5399af,
+      objectReference: {fileID: 11400000, guid: 89ba01a15858b2742a8f70f613514971,
         type: 2}
     - target: {fileID: 6613528273911097988, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -1730,7 +1735,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234433508}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a52291a56e4e3eb498e2aecd7b8ba1a7, type: 2}
   m_CullingMode: 0
@@ -1875,7 +1880,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: f312480de2c06e743afb3535c78fae1d,
+      objectReference: {fileID: 11400000, guid: c86461d6adb1ae442930c6574059040f,
         type: 2}
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
@@ -2194,7 +2199,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: 67d08983bf783f54688f15647360202d,
+      objectReference: {fileID: 11400000, guid: 1f9b5e6d1e5eeb4459b2291f057009e5,
         type: 2}
     - target: {fileID: 6613528273911097988, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -2526,7 +2531,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: 62aea050b88ce8243a71b666c398e6f4,
+      objectReference: {fileID: 11400000, guid: c86461d6adb1ae442930c6574059040f,
         type: 2}
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
@@ -2769,7 +2774,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: e85fe4424d8d1c845b1cc2c155079535,
+      objectReference: {fileID: 11400000, guid: 89b5c5d8f1447f3479ba7393c1722121,
         type: 2}
     - target: {fileID: 6613528273911097988, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -3339,6 +3344,7 @@ MonoBehaviour:
   velocidadeDasLetras: 0.02
   animatorImage: {fileID: 909585228}
   setaContinuarDialogo: {fileID: 234433508}
+  limparDelegate: 1
 --- !u!114 &582580337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5854,6 +5860,7 @@ GameObject:
   - component: {fileID: 931611314}
   - component: {fileID: 931611316}
   - component: {fileID: 931611315}
+  - component: {fileID: 931611317}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -5977,6 +5984,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 931611313}
   m_CullTransparentMesh: 0
+--- !u!95 &931611317
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931611313}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d47183ea08a97c3429893d033d5de79c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &942151169
 GameObject:
   m_ObjectHideFlags: 0
@@ -6926,7 +6952,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: b1c0fcb05ebb6eb42aa5209f3fa58558,
+      objectReference: {fileID: 11400000, guid: 864c61a0836db8743899f7390fcb76f0,
         type: 2}
     - target: {fileID: 6613528273911097988, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -7951,6 +7977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intervaloEntreOsDesastres: 180
   chanceDeDesastre: 75
+  TempoMinimoRestante: 30
   tutorial: 1
   intensidadeScreenShakeTerremoto: 3
   taxaDeMudancaDosControles: 0.5
@@ -8136,7 +8163,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: 3f4d3b0356eacb64bb06e38b19499707,
+      objectReference: {fileID: 11400000, guid: c86461d6adb1ae442930c6574059040f,
         type: 2}
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
@@ -8449,7 +8476,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: f4f2842b6cc596f42bd529ed8be47dc6,
+      objectReference: {fileID: 11400000, guid: c86461d6adb1ae442930c6574059040f,
         type: 2}
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
@@ -17280,7 +17307,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: 8318b60bed8f792419d75884e4a7f7b4,
+      objectReference: {fileID: 11400000, guid: cb9c60491afdf6441b99da158ca193ab,
         type: 2}
     - target: {fileID: 6613528273911097988, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -18007,6 +18034,7 @@ GameObject:
   - component: {fileID: 2056875267}
   - component: {fileID: 2056875266}
   - component: {fileID: 2056875265}
+  - component: {fileID: 2056875273}
   m_Layer: 0
   m_Name: jogador
   m_TagString: Player
@@ -18195,6 +18223,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2056875273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056875264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc3564fee4c7d948ad9884f51c961bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialOutline: {fileID: 2100000, guid: c1114d0b1d68e3042804cc396f0b1147, type: 2}
 --- !u!1 &2086176859
 GameObject:
   m_ObjectHideFlags: 0

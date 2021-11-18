@@ -25,12 +25,12 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     {
         if (Instance == null)
             Instance = this;
-    }
-    private void Start()
-    {
         animator = GetComponent<Animator>();
         vidaAtual = vidaMax;
         vidaAtualText.text = vidaAtual.ToString();
+    }
+    private void Start()
+    {
         jogadorScript.Instance.transform.position = posicaoDeChegadaPorTeleporte.position;
         jogadorScript.Instance.Tutorial();
     }
@@ -39,12 +39,81 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
         int defendido = 0;
         for (int a = 0; a < desastreManager.Instance.GetQntdDesastresParaOcorrer(); a++)
         {
+            int forcaTotal = 0;
+            bool encontrouDefesaDeMesmoValor = false;
+            List<SlotModulo> ModulosDeMesmoDesastre = new List<SlotModulo>();
+            List<SlotModulo> modulosParaContaDeForca = new List<SlotModulo>();
             for (int i = 0; i < listaModulos.Count; i++)
             {
-                if (desastreManager.Instance.GetDesastreSorteado(a) == listaModulos[i].GetNomeDesastre() && desastreManager.Instance.GetForcaSorteada(a) == listaModulos[i].GetvalorResistencia())
+                if (desastreManager.Instance.GetDesastreSorteado(a) == listaModulos[i].GetNomeDesastre())
                 {
-                    listaModulos[i].RemoverModulo();
+                    ModulosDeMesmoDesastre.Add(listaModulos[i]);
+                }
+            }
+            foreach (SlotModulo mod in ModulosDeMesmoDesastre)
+            {
+                if (mod.GetvalorResistencia() >= desastreManager.Instance.GetForcaSorteada(a))
+                {
+                    mod.RemoverModulo();
                     defendido++;
+                    encontrouDefesaDeMesmoValor = true;
+                    break;
+                }
+                /*if(mod.GetvalorResistencia() == desastreManager.Instance.GetForcaSorteada(a)) // se quiser q subtraia das forças
+                {
+                    mod.RemoverModulo();
+                    defendido++;
+                    encontrouDefesaDeMesmoValor = true;
+                    break;
+                }
+                else if (mod.GetvalorResistencia() > desastreManager.Instance.GetForcaSorteada(a))
+                {
+                    mod.SetValorResistencia(mod.GetvalorResistencia() - desastreManager.Instance.GetForcaSorteada(a));
+                    mod.ConstruirModulo(mod.GetvalorResistencia(), mod.GetNomeDesastre(), mod.GetModulo());
+                    break;
+                }*/
+                else
+                {
+                    modulosParaContaDeForca.Add(mod);
+                }
+            }
+            if (!encontrouDefesaDeMesmoValor)
+            {
+                List<SlotModulo> modulosNaConta = new List<SlotModulo>();
+                foreach (SlotModulo mod in modulosParaContaDeForca)
+                {
+                    modulosNaConta.Add(mod);
+                    forcaTotal += mod.GetvalorResistencia();
+                    if (forcaTotal >= desastreManager.Instance.GetForcaSorteada(a))
+                    {
+                        foreach (SlotModulo m in modulosNaConta)
+                        {
+                            m.RemoverModulo();
+                        }
+                        defendido++;
+                        break;
+                    }
+                    /*if (forcaTotal == desastreManager.Instance.GetForcaSorteada(a)) // se quiser q subtraia das forças
+                    {
+                        foreach (SlotModulo m in modulosNaConta)
+                        {
+                            m.RemoverModulo();
+                        }
+                        defendido++;
+                        break;
+                    }
+                    else if (forcaTotal > desastreManager.Instance.GetForcaSorteada(a))
+                    {
+                        for (int i = 0; i < modulosNaConta.Count - 1; i++)
+                        {
+                            modulosNaConta[i].RemoverModulo();
+                        }
+                        int ultimoIndex = modulosNaConta.Count - 1;
+                        modulosNaConta[ultimoIndex].SetValorResistencia(modulosNaConta[ultimoIndex].GetvalorResistencia() - desastreManager.Instance.GetForcaSorteada(a));
+                        modulosNaConta[ultimoIndex].ConstruirModulo(modulosNaConta[ultimoIndex].GetvalorResistencia(), modulosNaConta[ultimoIndex].GetNomeDesastre(), modulosNaConta[ultimoIndex].GetModulo());
+                        defendido++;
+                        break;
+                    }*/
                 }
             }
         }
@@ -62,7 +131,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
                 vidaAtualText.text = vidaAtual.ToString();
                 if (vidaAtual <= 0)
                 {
-                    StartCoroutine(this.GameOver());
+                    //StartCoroutine(this.GameOver());
                     Debug.Log("Perdeu");
                 }
             }
@@ -139,15 +208,15 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
                     Instantiate(BossPrefab, transform.position + new Vector3(0f, 14f, 0f), Quaternion.identity);
                     return;
                 }
-                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre());
-                DesastresList.Instance.LiberarNovosDesastres(UIinventario.Instance.GetTempoAtual());//ativa a possibilidade do evento desse tempo acontecer
+                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre(), true);
+                //DesastresList.Instance.LiberarNovosDesastres(UIinventario.Instance.GetTempoAtual());//ativa a possibilidade do evento desse tempo acontecer
             }
             else
-                desastreManager.Instance.ConfigurarTimer(intervaloDuranteADefesa, desastreManager.Instance.GetTempoAcumuladoParaDesastre());
+                desastreManager.Instance.ConfigurarTimer(intervaloDuranteADefesa, desastreManager.Instance.GetTempoAcumuladoParaDesastre(), true);
         }
         else
         {
-            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre());
+            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre(), true);
         }
         desastreManager.Instance.MudarTempoAcumuladoParaDesastre(0f);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
@@ -216,6 +285,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     public void SetVidaAtual(int i)
     {
         vidaAtual = i;
+        vidaAtualText.text = vidaAtual.ToString();
     }
     public int GetVidaAtual()
     {

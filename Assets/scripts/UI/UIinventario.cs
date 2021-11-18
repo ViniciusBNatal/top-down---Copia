@@ -217,7 +217,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         {
             BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
             desastreManager.Instance.encerramentoDesastres();
-            desastreManager.Instance.ConfigurarTimer(BaseScript.Instance.GetIntervaloDuranteOAprimoramentoDaBase(), 0f);
+            desastreManager.Instance.ConfigurarTimer(BaseScript.Instance.GetIntervaloDuranteOAprimoramentoDaBase(), 0f, true);
             desastreManager.Instance.PararTodasCorotinas();
             desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
         }
@@ -246,7 +246,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             {
                 //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
                 desastreManager.Instance.MudarTempoAcumuladoParaDesastre(0f);
-                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre());
+                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre(), true);
                 desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
                 tutorial = false;
             }
@@ -267,20 +267,32 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     {
         if (chave != null)
         {
-            for (int i = 0; i < listaSlotItem.Count; i++)
+            if (itens.ContainsKey(chave.ID))
             {
-                if (listaSlotItem[i].item.ID == chave.ID)
+                itens[chave.ID].atualizaQuantidade(-1);
+                if (itens[chave.ID].qntdRecurso <= 0)
                 {
-                    listaSlotItem[i].atualizaQuantidade(-1);
-                    if (listaSlotItem[i].qntdRecurso <= 0)
-                    {
-                        Destroy(listaSlotItem[i].gameObject);
-                        listaSlotItem.Remove(listaSlotItem[i]);
-                    }
-                    return true;
+                    Destroy(itens[chave.ID].gameObject);
+                    itens.Remove(chave.ID);
                 }
+                return true;
             }
-            return false;
+            else
+                return false;
+            //for (int i = 0; i < listaSlotItem.Count; i++)
+            //{
+            //    if (listaSlotItem[i].item.ID == chave.ID)
+            //    {
+            //        listaSlotItem[i].atualizaQuantidade(-1);
+            //        if (listaSlotItem[i].qntdRecurso <= 0)
+            //        {
+            //            Destroy(listaSlotItem[i].gameObject);
+            //            listaSlotItem.Remove(listaSlotItem[i]);
+            //        }
+            //        return true;
+            //    }
+            //}
+            //return false;
         }
         else
             return true;

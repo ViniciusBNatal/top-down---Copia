@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1367855539577512336}
   - component: {fileID: 4260744640642154891}
   - component: {fileID: 7953152034717119513}
+  - component: {fileID: -7826370996744011848}
   m_Layer: 0
   m_Name: area interagivel circular
   m_TagString: Untagged
@@ -44,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b26e65269c1bd4498340b116bdfebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emAlcance: 0
   btnInteragir: 101
   acao:
     m_PersistentCalls:
@@ -60,7 +60,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  imagemDoBotao: 1
 --- !u!58 &7953152034717119513
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -77,3 +76,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-7826370996744011848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4618974491238299754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f036b6c4ca954204c8318c06d7809a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listaDosIconesDeInteracao:
+  - {fileID: 21300000, guid: b2c04d40229866b4f99fec099f7effb7, type: 3}
+  - {fileID: 0}

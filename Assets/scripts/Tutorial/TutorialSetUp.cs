@@ -26,7 +26,7 @@ public class TutorialSetUp : MonoBehaviour
     public void AoTerminoDoDialogoInstaladoOModuloDeDefesa()
     {
         //Debug.Log("devo aparecer 1 vez");
-        desastreManager.Instance.ConfigurarTimer(intervaloDuranteTutorial, 0f);
+        desastreManager.Instance.ConfigurarTimer(intervaloDuranteTutorial, 0f, true);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(false);
     }
     public void IniciarDialogo()
@@ -41,7 +41,7 @@ public class TutorialSetUp : MonoBehaviour
     }
     public void AoTerminoDoDialogoReparadaAMaquinaDoTempo()
     {
-        desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f);
+        desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f, true);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
     }
     public void CriarObjeto()

@@ -24,9 +24,10 @@ public class Teleportador : MonoBehaviour
     }
     private void DialogoInicial()
     {
-        if (dialogoInicial != null)
+        if (dialogoInicial != null && !dialogoInicial.GetDialogoORealizado())
         {
             dialogoInicial.AtivarDialogo();
+            DesastresList.Instance.LiberarNovosDesastres(UIinventario.Instance.GetTempoAtual());
         }
     }
 }

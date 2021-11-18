@@ -1,31 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial, SalvamentoEntreCenas
+public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, SalvamentoEntreCenas, ClickInter
 {
     [SerializeField] private SpriteRenderer iconeDoModulo;
     [SerializeField] private SpriteRenderer iconeDoDesastre;
     [SerializeField] private SpriteRenderer iconeDeMultiplicador;
     [SerializeField] private bool tutorial = true;
-    [SerializeField] private List<Material> materiais = new List<Material>();
+    [HideInInspector] public List<Material> materiais = new List<Material>();
     [SerializeField] private GameObject animacaoConstrucao;
     private SpriteRenderer iconeSlotDeModulo;
     private int resistenciaModulo = 0;
     private string NomeDesastre = "";
     private int tipoModulo = 0;
-
-    private void Start()
+    private void Awake()
     {
         iconeSlotDeModulo = GetComponent<SpriteRenderer>();
+    }
+    private void Start()
+    {
         BaseScript.Instance.AdicionarModulo(this);
     }
-    public void Click(jogadorScript jogador)
+    //public void Click(jogadorScript jogador)
+    //{
+    //    ConstruirModulo(jogador.GetModuloConstruido().GetForca(), jogador.GetModuloConstruido().desastre, jogador.GetModuloConstruido().modulo);
+    //    RetornarCameraEMudarEstadoJogador();
+    //}
+    public void Acao(jogadorScript jogador)
     {
         ConstruirModulo(jogador.GetModuloConstruido().GetForca(), jogador.GetModuloConstruido().desastre, jogador.GetModuloConstruido().modulo);
+        RetornarCameraEMudarEstadoJogador();
     }
     public void ConstruirModulo(int forca, string desastre, int modulo)
     {
@@ -51,7 +56,6 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial, SalvamentoEn
                 SetSpriteDoDesastre(DesastresList.Instance.SelecionaSpriteDesastre(NomeDesastre));
                 //cria o icone de multiplicador dependedo do nivel do crafting
                 SetSpriteDoMultiplicador(DesastresList.Instance.SelecionaSpriteMultiplicador(resistenciaModulo));
-                RetornarCameraEMudarEstadoJogador();
             }
         }
     }
@@ -103,7 +107,7 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial, SalvamentoEn
     {
         if (tutorial)
         {
-            DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
+            //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
             DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
             BaseScript.Instance.DesligarTutorialDosModulos();
             TutorialSetUp.Instance.IniciarDialogo();
@@ -150,19 +154,19 @@ public class SlotModulo : MonoBehaviour, Clicavel, AcoesNoTutorial, SalvamentoEn
             animacaoConstrucao.SetActive(true);
             if (iconeDoModulo.sprite == null)//visal de costrução
             {
-                iconeSlotDeModulo.material = materiais[1];
+                //iconeSlotDeModulo.material = materiais[1];
                 animacaoConstrucao.GetComponent<Animator>().SetInteger("ESTADO", 0);
             }
             else//visual demolição
             {
-                iconeDoModulo.material = materiais[2];
+                //iconeDoModulo.material = materiais[2];
                 animacaoConstrucao.GetComponent<Animator>().SetInteger("ESTADO", 1);
             }
         }
         else
         {
-            iconeSlotDeModulo.material = materiais[0];
-            iconeDoModulo.material = materiais[0];
+            //iconeSlotDeModulo.material = materiais[0];
+            //iconeDoModulo.material = materiais[0];
             animacaoConstrucao.SetActive(false);
         }
     }

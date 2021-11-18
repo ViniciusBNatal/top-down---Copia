@@ -19,6 +19,8 @@ public class DialogeManager : MonoBehaviour
     private Queue<string> Frases = new Queue<string>();
     private int index = 0;
     private Dialogo dialogoAtual;
+    [HideInInspector]
+    public bool limparDelegate = true;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -91,7 +93,8 @@ public class DialogeManager : MonoBehaviour
     }
     public void LimparListaDeAoFinalizarDialogo()
     {
-        DialogoFinalizado = delegate { };
+        if (limparDelegate)
+            DialogoFinalizado = delegate { };
     }
     private void RetornarCameraAoJogadorNoFinalDoDialogo()
     {

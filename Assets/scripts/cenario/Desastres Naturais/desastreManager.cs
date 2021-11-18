@@ -9,6 +9,7 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     [Header("CONFIGURAÇÃO DO MANAGER")]
     [SerializeField] private float intervaloEntreOsDesastres;
     [SerializeField] private int chanceDeDesastre;
+    [SerializeField] private float TempoMinimoRestante;
     [SerializeField] private bool tutorial;
     private int minutos;
     private int segundos;
@@ -64,28 +65,29 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
         //ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
         //StartCoroutine(this.LogicaDesastres());
     }
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.R))
-    //    {
-    //        qntdDeDesastresParaOcorrer = 3;
-    //        desastresSorteados[0] = "TERREMOTO";
-    //        desastresSorteados[1] = "ERRUPCAO TERRENA";
-    //        desastresSorteados[2] = "NUVEM DE INSETOS";
-    //        forcasSorteados[0] = 1;
-    //        forcasSorteados[1] = 1;
-    //        forcasSorteados[2] = 1;
-    //        IndicadorDosDesastres.Instance.PreenchePlaca();
-    //        Virus();
-    //        ErrupcaoTerrena();
-    //        Terremoto();
-    //        StopAllCoroutines();
-    //        ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            PararTodasCorotinas();
+            qntdDeDesastresParaOcorrer = 2;
+            desastresSorteados[0] = "TERREMOTO";
+            desastresSorteados[1] = "ERRUPCAO TERRENA";
+    //        //desastresSorteados[2] = "NUVEM DE INSETOS";
+            forcasSorteados[0] = 2;
+            forcasSorteados[1] = 2;
+    //        //forcasSorteados[2] = 1;
+            IndicadorDosDesastres.Instance.PreenchePlaca();
+    //        //Virus();
+    //        //ErrupcaoTerrena();
+    //        //Terremoto();
+    //        //StopAllCoroutines();
+            ConfigurarTimer(3f, tempoAcumulado, true);
     //        SetUpParaNovoSorteioDeDesastres();
-    //        StartCoroutine(this.LogicaDesastres(true));
-    //        Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
-    //    }
-    //}
+            StartCoroutine(this.LogicaDesastres(false));
+    //        //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
+        }
+    }
     //desastres
     private void Terremoto()
     {
@@ -125,7 +127,7 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
         StartCoroutine(this.criaObjetosDoDesastre(distanciaXdoJogador_errupcaoMin, distanciaXdoJogador_errupcaoMax, distanciaYdoJogador_errupcaoMin, distanciaYdoJogador_errupcaoMax, intervaloEntreSpawnsErrupcao, errupcaoPrefab));
     }
     //
-    public void ConfigurarTimer(float tempRestante, float tempoAcumuladoduranteDesastres)
+    public void ConfigurarTimer(float tempRestante, float tempoAcumuladoduranteDesastres, bool animar)
     {
         tempoRestante = tempRestante;
         minutos = Mathf.FloorToInt((tempRestante - tempoAcumuladoduranteDesastres) / 60);
@@ -135,6 +137,8 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
         if (segundos < 0)
             segundos = 0;
         timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
+        if (animar)
+            timer.GetComponent<Animator>().SetTrigger("AVISO");
     }
     public void IniciarCorrotinaLogicaDesastres(bool sortearDesastres)
     {
@@ -160,24 +164,37 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
         IndicadorDosDesastres.Instance.PreenchePlaca();
         while (!desastreAcontecendo)
         {
-            timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
             yield return new WaitForSeconds(1f);
-            if (segundos == 0 && minutos == 0)
+            if (jogadorScript.Instance.GetEstadoAtualJogador() != jogadorScript.estados.EmDialogo)
             {
-                IniciarDesastres();
-            }
-            else if (segundos == 0 && minutos > 0)
-            {
-                minutos--;
-                segundos = 59;
-                tempoRestante--;
-            }
-            else
-            {
-                segundos--;
-                tempoRestante--;
+                timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
+                if (segundos == 0 && minutos == 0)
+                {
+                    IniciarDesastres();
+                }
+                else if (segundos == 0 && minutos > 0)
+                {
+                    minutos--;
+                    segundos = 59;
+                    tempoRestante--;
+                }
+                else
+                {
+                    segundos--;
+                    tempoRestante--;
+                }
+                TempoCurto();
             }
         }
+    }
+    private void TempoCurto()
+    {
+        if (tempoRestante <= 10f)
+            AvisoDePerigoTimer();
+    }
+    public void AvisoDePerigoTimer()
+    {
+        timer.GetComponent<Animator>().SetTrigger("PERIGO");
     }
     private void SortearGeral(int chanceDesastre)
     {
@@ -197,6 +214,12 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
                 int r = Random.Range(1, 101);
                 if (r <= chanceDesastre)
                     desastresParaocorrer++;
+            }
+            if (desastresParaocorrer == 0)
+            {
+                SetUpParaNovoSorteioDeDesastres();
+                SortearGeral(chanceDesastre);
+                return;
             }
             DefinirQntdDeDesastresParaOcorrer(desastresParaocorrer);
         }
@@ -232,43 +255,29 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     private void IniciarDesastres()
     {
         desastreAcontecendo = true;
-        if (qntdDeDesastresParaOcorrer == 0)
+        Ativar_desativarInteracoesDaBase(true);
+        for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)
         {
-            if (BaseScript.Instance.GetDuranteDefesaParaMelhorarBase())
-                ConfigurarTimer(BaseScript.Instance.GetIntervaloDuranteOAprimoramentoDaBase(), tempoAcumulado);
-            else
-                ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
-            tempoAcumulado = 0f;
-            desastreAcontecendo = false;
-            StartCoroutine(this.LogicaDesastres(true));
-        }
-        //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
-        else
-        {
-            Ativar_desativarInteracoesDaBase(true);
-            for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)
+            switch (desastresSorteados[i].ToUpper())
             {
-                switch (desastresSorteados[i].ToUpper())
-                {
-                    case "TERREMOTO":
-                        Terremoto();
-                        break;
-                    case "ERRUPCAO TERRENA":
-                        ErrupcaoTerrena();
-                        break;
-                    case "NUVEM DE INSETOS":
-                        NuvemDeInsetos();
-                        break;
-                    case "VIRUS":
-                        Virus();
-                        break;
-                    case "CHUVA ACIDA":
-                        ChuvaAcida();
-                        break;
-                }
+                case "TERREMOTO":
+                    Terremoto();
+                    break;
+                case "ERRUPCAO TERRENA":
+                    ErrupcaoTerrena();
+                    break;
+                case "NUVEM DE INSETOS":
+                    NuvemDeInsetos();
+                    break;
+                case "VIRUS":
+                    Virus();
+                    break;
+                case "CHUVA ACIDA":
+                    ChuvaAcida();
+                    break;
             }
-            jogadorScript.Instance.GetComponent<Rigidbody2D>().AddForce(Vector2.one);//garante que se o jogador estiver parado dentro da maquina, irá verificar a defesa
         }
+        jogadorScript.Instance.GetComponent<Rigidbody2D>().AddForce(Vector2.one);//garante que se o jogador estiver parado dentro da maquina, irá verificar a defesa
     }
     public void encerramentoDesastres()
     {
@@ -362,7 +371,7 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     {
         if (tutorial)
         {
-            DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
+            //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
             tutorial = false;
         }
     }
@@ -428,7 +437,14 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     public void DiminuirTempoRestanteParaDesastre(float temp)
     {
         temp = Mathf.Clamp(temp, 0, tempoRestante);
-        tempoRestante -= temp;
+        if (tempoRestante > TempoMinimoRestante)
+        {
+            if (tempoRestante - temp < TempoMinimoRestante)
+            {
+                tempoRestante = TempoMinimoRestante;
+            }
+            tempoRestante -= temp;
+        }
     }
     public float GetTempoRestanteParaDesastre()
     {

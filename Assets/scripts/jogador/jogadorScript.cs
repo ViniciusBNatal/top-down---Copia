@@ -57,18 +57,21 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         if (Instance == null)
             Instance = this;
+        rb = GetComponent<Rigidbody2D>();
+        distanciaAtaqueMelee.x = posicaoMelee.localPosition.x;
+        distanciaAtaqueMelee.y = posicaoMelee.localPosition.y;
     }
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        //vidaAtual = vidaMaxima;
-        //inventario.BarraDeVida.GetComponent<barraDeVida>().AtualizaBarraDeVida(vidaAtual);
-        distanciaAtaqueMelee.x = posicaoMelee.localPosition.x;
-        distanciaAtaqueMelee.y = posicaoMelee.localPosition.y;
-        //string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(2);//pega o caminho da cena na pasta de arquivos
-        //string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
-        //if (SceneManager.GetActiveScene().name == cenaParaAbrir)
-            //Tutorial();
+        //rb = GetComponent<Rigidbody2D>();
+        ////vidaAtual = vidaMaxima;
+        ////inventario.BarraDeVida.GetComponent<barraDeVida>().AtualizaBarraDeVida(vidaAtual);
+        //distanciaAtaqueMelee.x = posicaoMelee.localPosition.x;
+        //distanciaAtaqueMelee.y = posicaoMelee.localPosition.y;
+        ////string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(2);//pega o caminho da cena na pasta de arquivos
+        ////string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
+        ////if (SceneManager.GetActiveScene().name == cenaParaAbrir)
+        //    //Tutorial();
     }
 
     // Update is called once per frame
@@ -83,9 +86,9 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 InputAtirar();
                 InputAtaqueMelee();
                 break;
-            case estados.EmContrucao://construindo
-                mousePrecionado();
-                break;
+            //case estados.EmContrucao://construindo
+            //    //executando click em objetos
+            //    break;
             case estados.EmDialogo:
                 InputProsseguirDialogo();
                 break;
@@ -115,7 +118,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         MudaAreaAtaque(movX, movY);
         movimento = new Vector2(movX, movY).normalized;//normalized faz com q o movimento seja igual para todas as direções, não passando de um limite de 1
     }
-    private Vector3 PegaPosicoMouse()
+    public Vector3 PegaPosicoMouse()
     {
         Vector3 posicaoMouse = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         posicaoMouse.z = -1f;
@@ -164,8 +167,9 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
             pontoDeDisparo.localPosition = new Vector3(pontoDeDisparo.localPosition.x, movY * Mathf.Abs(pontoDeDisparo.localPosition.y), 0f);
         }
     }
-    private void mousePrecionado()
+    /*private void mousePrecionado()
     {
+        Mydebug.mydebug.MyPrint("click do mouse");
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             //Mydebug.mydebug.MyPrint("click do mouse");
@@ -177,7 +181,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 clicavel?.Click(this);
             }
         }
-    }
+    }*/
     public void MudarEstadoJogador(int i)
     {
         switch (i)
@@ -295,15 +299,19 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     public void mudancaRelogio(float valor, float duracaoStn)
     {
         JogadorAnimScript.Instance.Hit(duracaoStn);
-        if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
-        {
-            desastreManager.Instance.MudarTempoAcumuladoParaDesastre(desastreManager.Instance.GetTempoAcumuladoParaDesastre() + Mathf.Clamp(valor, 0, desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres()));
-        }
-        else
+        desastreManager.Instance.AvisoDePerigoTimer();
+        //if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
+        //{
+        //    desastreManager.Instance.MudarTempoAcumuladoParaDesastre(desastreManager.Instance.GetTempoAcumuladoParaDesastre() + Mathf.Clamp(valor, 0, desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres()));
+        //}
+        //else
+        //{
+        if (!desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
         {
             desastreManager.Instance.DiminuirTempoRestanteParaDesastre(valor);
-            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetTempoRestanteParaDesastre(), 0f);
+            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetTempoRestanteParaDesastre(), 0f, false);
         }
+        //}
         //vidaAtual += valor;
         //inventario.BarraDeVida.GetComponent<barraDeVida>().AtualizaBarraDeVida(vidaAtual);
         //if (vidaAtual > vidaMaxima)
@@ -322,10 +330,8 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
             iconeInteracao.sprite = imagem;
             iconeInteracao.enabled = true;
         }
-        else if(!visivel)
-        {
+        else
             iconeInteracao.enabled = false;
-        }
     }
     public void BaguncaControles(float unidadesX, float unidadesY, float forcaGeral)
     {

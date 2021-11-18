@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Clicavel
+public interface ClickInter
 {
-    void Click(jogadorScript jogador);
+    void Acao(jogadorScript jogador);
 }

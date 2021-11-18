@@ -23,6 +23,24 @@ TextureImporter:
   - first:
       213: 5545226792440259224
     second: Inseto_Spritesheet_2
+  - first:
+      213: 2673263842630789624
+    second: Enxame_desastre_spritesheet_0
+  - first:
+      213: 6503806025364762269
+    second: Enxame_desastre_spritesheet_1
+  - first:
+      213: 8225038548020774009
+    second: Enxame_desastre_spritesheet_2
+  - first:
+      213: 2282814774472011797
+    second: Enxame_desastre_spritesheet_3
+  - first:
+      213: 8442936370307461155
+    second: Enxame_desastre_spritesheet_4
+  - first:
+      213: -2688161069160000654
+    second: Enxame_desastre_spritesheet_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -108,10 +126,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Inseto_Spritesheet_0
+      name: Enxame_desastre_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 4
+        x: 13
         y: 6
         width: 32
         height: 32
@@ -122,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8e53336f1dd62290800000000000000
-      internalID: -7915396168179032434
+      spriteID: 8f967e22d47591520800000000000000
+      internalID: 2673263842630789624
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Inseto_Spritesheet_1
+      name: Enxame_desastre_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 54
-        y: 10
+        x: 67
+        y: 9
         width: 25
-        height: 24
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +161,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 003b5336ccdc26c80800000000000000
-      internalID: -8330870082960510208
+      spriteID: d9e69e51f19224a50800000000000000
+      internalID: 6503806025364762269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Inseto_Spritesheet_3
+      name: Enxame_desastre_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 138
+        x: 115
+        y: 11
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9744ca63bf4352270800000000000000
+      internalID: 8225038548020774009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enxame_desastre_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 161
         y: 11
         width: 22
-        height: 21
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,17 +203,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7530b04f7f46c6110800000000000000
-      internalID: 1255489412243587927
+      spriteID: 510fa6841ff2eaf10800000000000000
+      internalID: 2282814774472011797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Inseto_Spritesheet_4
+      name: Enxame_desastre_spritesheet_4
       rect:
         serializedVersion: 2
-        x: 178
+        x: 206
         y: 10
         width: 23
         height: 24
@@ -185,17 +224,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a3fdff45fdf64640800000000000000
-      internalID: 5064014061075559333
+      spriteID: 320f66d65e55b2570800000000000000
+      internalID: 8442936370307461155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Inseto_Spritesheet_5
+      name: Enxame_desastre_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 219
+        x: 251
         y: 9
         width: 28
         height: 26
@@ -206,29 +245,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fccd011129144c530800000000000000
-      internalID: 3874293675052817615
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Inseto_Spritesheet_2
-      rect:
-        serializedVersion: 2
-        x: 97
-        y: 11
-        width: 24
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 892616a436a94fc40800000000000000
-      internalID: 5545226792440259224
+      spriteID: 2731fa500cbb1bad0800000000000000
+      internalID: -2688161069160000654
       vertices: []
       indices: 
       edges: []

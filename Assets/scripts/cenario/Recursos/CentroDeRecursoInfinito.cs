@@ -33,13 +33,30 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     private int minutos = 0;
     private int segundos = 0;
     private EfeitoFlash flash;
-    private void Start()
+    private void Awake()
     {
         flash = GetComponent<EfeitoFlash>();
         SpriteDoObj = GetComponent<SpriteRenderer>();
         VidaAtualDoCentroDeSpawn = VidaMaxDoCentroDeSpawn;
+    }
+    private void Start()
+    {
         SalvamentoDosCentrosDeRecursosManager.Instance.AdicionarCentroALista(this.gameObject);
         DefineEstado();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            SpriteDoObj.material = materiais[1];
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            SpriteDoObj.material = materiais[0];
+        }
     }
     public void RecebeuHit()
     {
@@ -83,7 +100,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     private void SetupCooldown()
     {
         Timer.gameObject.SetActive(true);
-        SpriteDoObj.material = materiais[1];//aplica o material de escurecer
+        //SpriteDoObj.material = materiais[1];//aplica o material de escurecer
         ConfiguraTimer();
         if (iconeCentroDeRecursosGasto != null)
             DefineSprite(iconeCentroDeRecursosGasto);
@@ -117,7 +134,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
         }
           vezesExtraida = 0;
           Timer.gameObject.SetActive(false);
-          SpriteDoObj.material = materiais[0];//aplica o material padrão
+          //SpriteDoObj.material = materiais[0];//aplica o material padrão
           DefineSprite(iconeCentroDeRecursosPadrao);
     }
     IEnumerator SpawnInimigos()

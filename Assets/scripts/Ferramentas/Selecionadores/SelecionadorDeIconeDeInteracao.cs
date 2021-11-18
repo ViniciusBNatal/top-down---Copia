@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SelecionadorDeIconeDeInteracao : MonoBehaviour
 {
-    public static SelecionadorDeIconeDeInteracao Instance { get; private set; }
+    //public static SelecionadorDeIconeDeInteracao Instance { get; private set; }
     [SerializeField] private List<Sprite> listaDosIconesDeInteracao = new List<Sprite>();
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+    //private void Awake()
+    //{
+    //    Instance = this;
+    //}
     public Sprite SelecionaIconeDeInteracao(KeyCode tecla)
     {
         Sprite sprite = null;

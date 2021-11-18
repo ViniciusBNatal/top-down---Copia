@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: porta fechada cidade
+  m_Name: porta escritorio abrir
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: ae5e0d2cdd410a0448510b7e3ab572a9, type: 3}
+      value: {fileID: 21300000, guid: d52f85f7ef9be6741a5f9c96cb53eed3, type: 3}
+    - time: 0.16666667
+      value: {fileID: 21300000, guid: 58bb96a585a885549addac879396e030, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: cd2f4b837a604094e887693eb853fad0, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -40,18 +44,20 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: ae5e0d2cdd410a0448510b7e3ab572a9, type: 3}
+    - {fileID: 21300000, guid: d52f85f7ef9be6741a5f9c96cb53eed3, type: 3}
+    - {fileID: 21300000, guid: 58bb96a585a885549addac879396e030, type: 3}
+    - {fileID: 21300000, guid: cd2f4b837a604094e887693eb853fad0, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.16666667
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0

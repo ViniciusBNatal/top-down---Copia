@@ -21,11 +21,14 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     private Rigidbody2D rb;
     private Animator animator;
     private Vector2 posInicial;
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         posInicial = transform.position;
+    }
+    private void Start()
+    {
         if (objetoDeMissao != null && itemMissao == null)
         {
             objetoDeMissao.GetComponent<recurso_coletavel>().SetNPC(this.gameObject);
@@ -75,7 +78,7 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     private void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
         AoCompletarAMissao();
-        DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();       
+        //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();       
     }
     private void AoCompletarAMissao()
     {
@@ -83,11 +86,13 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
         {
             case 0:
                 nDeDialogos = 1;
+                DialogeManager.Instance.limparDelegate = false;
                 VerificarMissao(false);
                 break;
             case 2:
                 nDeDialogos = 3;
                 EventosAoCompletarMissao.Invoke();
+                DialogeManager.Instance.limparDelegate = true;
                 SalvarEstado();
                 break;
             default:

@@ -11,11 +11,8 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     [SerializeField] private float tempoParaFechar;
     [SerializeField] private GameObject chaveNecessaria;
     [SerializeField] private int nDeBotoesNecessarios;
-    //[Range(-1, 1)]
-    //[SerializeField] private int direcaoDeRotacao;
-    //[SerializeField] private Transform pontoDeRotacao;
-    [SerializeField] private UnityEvent EventosAoAbrirPorta;
-    [SerializeField] private UnityEvent EventosAoFecharPorta;
+    [SerializeField] private Dialogo dialogo;
+    [SerializeField] private UnityEvent EventosAoMudarEstadoPorta;
     [Header("Configurações Para Ações com Inimigos")]
     [SerializeField] private bool Criar;
     [SerializeField] private GameObject inimigo;
@@ -25,27 +22,26 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     private bool iniciouCorrotina = false;
     private Item chave = null;
     private Animator animator;
-
-    private void Start()
+    private bool eventoOcorreu = false;
+    private void Awake()
     {
         colisao = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
-        //if (direcaoDeRotacao == 0)
-        //    direcaoDeRotacao = 1;
+    }
+    private void Start()
+    {
+        //colisao = GetComponent<BoxCollider2D>();
+        //animator = GetComponent<Animator>();
         if (chaveNecessaria != null)
             chave = chaveNecessaria.GetComponent<recurso_coletavel>().ReferenciaItem();
-        //if (aberta)
-        //    AbrePorta();
-        //else
-        //    FechaPorta();
     }
     public void PortaPorBotao(int valorBotao)
     {
         botoesPrecionados += valorBotao;
         if (botoesPrecionados >= nDeBotoesNecessarios)
         {
-            AbrePorta();
-            //StartCoroutine(this.TempoPorta());
+            //AbrePorta();
+            StartCoroutine(this.TempoPorta());
         }
     }
     public void PortaPorChave()
@@ -89,7 +85,11 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
         animator.SetBool("ABERTO", aberta);
         //transform.RotateAround(pontoDeRotacao.position, new Vector3(0f,0f,1f), direcaoDeRotacao * 90f);
         chave = null;
-        EventosAoAbrirPorta.Invoke();
+        if (EventosAoMudarEstadoPorta != null)
+        {
+            EventosAoMudarEstadoPorta.Invoke();
+            EventosAoMudarEstadoPorta = null;
+        }
     }
     private void FechaPorta()
     {
@@ -98,7 +98,11 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
         animator.SetBool("ABERTO", aberta);
         //if (transform.rotation.z != 0f)
         //    transform.RotateAround(pontoDeRotacao.position, new Vector3(0f, 0f, 1f), -direcaoDeRotacao * 90f);
-        EventosAoFecharPorta.Invoke();
+        if (EventosAoMudarEstadoPorta != null)
+        {
+            EventosAoMudarEstadoPorta.Invoke();
+            EventosAoMudarEstadoPorta = null;
+        }
     }
     public void acaoComInimigos()
     {
@@ -132,8 +136,11 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
         }
         else
             FechaPorta();
-        if (EventosAoAbrirPorta == null)
-            acaoComInimigos();
+        //if (EventosAoAbrirPorta != null)
+        //{
+        //    EventosAoAbrirPorta.Invoke();
+        //    EventosAoAbrirPorta = null;
+        //}
     }
     public bool GetAberto_Fechado()
     {
@@ -143,35 +150,32 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     {
         aberta = b;
     }
+    public bool GetEventoOcorrido()
+    {
+        return eventoOcorreu;
+    }
+    public void SetEventoOcorrido(bool b)
+    {
+        eventoOcorreu = b;
+    }
     public void AtivarRobo()
     {
-        if (GetComponent<DialogoUnico>() != null)
+        if (dialogo.Frases.Length != 0)
         {
-            DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-            GetComponent<DialogoUnico>().AtivarDialogo();
+            if (!eventoOcorreu)
+            {
+                eventoOcorreu = true;
+                DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+                DialogeManager.Instance.IniciarDialogo(dialogo);
+            }
+            else
+                acaoComInimigos();
             //acaoComInimigos();
         }
     }
     protected virtual void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
         acaoComInimigos();
-        EventosAoAbrirPorta = null;
-        DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
-    }
-    public void SetEventosAbrirPorta(UnityEvent evento)
-    {
-        EventosAoAbrirPorta = evento;
-    }
-    public UnityEvent GetEventosAbrirPorta()
-    {
-        return EventosAoAbrirPorta;
-    }
-    public void SetEventosFecharPorta(UnityEvent evento)
-    {
-        EventosAoFecharPorta = evento;
-    }
-    public UnityEvent GetEventosFecharPorta()
-    {
-        return EventosAoFecharPorta;
+        //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
     }
 }
