@@ -124,13 +124,13 @@ MonoBehaviour:
     type: 3}
   pontoDisparo: {fileID: 8142450329282733210}
   pontosDeFuga: []
-  vidaMaxima: 100
-  velocidade: 3
+  vidaMaxima: 50
+  velocidade: 2
   taxaDisparo: 2
   velocidadeProjetil: 10
   danoMelee: 10
   danoRanged: 0.1
-  forcaRepulsao: 8
+  forcaRepulsao: 6
   tempoDeStunNoJogador: 0.5
   distanciaMinimaParaFugir: {x: 0, y: 0}
   direcaoDeMovimentacao: {x: 0, y: 0}
