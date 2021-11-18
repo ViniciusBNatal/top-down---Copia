@@ -104,12 +104,22 @@ MonoBehaviour:
   tempoParaFechar: 0
   chaveNecessaria: {fileID: 0}
   nDeBotoesNecessarios: 0
-  direcaoDeRotacao: 0
-  pontoDeRotacao: {fileID: 27340280855733766}
-  EventosAoAbrirPorta:
-    m_PersistentCalls:
-      m_Calls: []
-  EventosAoFecharPorta:
+  dialogo:
+  - NomeNPC:
+    - Aika
+    IDdoNPC: 01000000
+    Frases:
+    - Porta trancada
+    EstadoImagemNPC: []
+    FocarComCamera: []
+    EventosDuranteDialogo: []
+  - NomeNPC: []
+    IDdoNPC: 
+    Frases: []
+    EstadoImagemNPC: []
+    FocarComCamera: []
+    EventosDuranteDialogo: []
+  EventosAoMudarEstadoPorta:
     m_PersistentCalls:
       m_Calls: []
   Criar: 0

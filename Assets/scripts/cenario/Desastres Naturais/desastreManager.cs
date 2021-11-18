@@ -10,6 +10,7 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private float intervaloEntreOsDesastres;
     [SerializeField] private int chanceDeDesastre;
     [SerializeField] private float TempoMinimoRestante;
+    [SerializeField] private float ReducaoDeTempAoLiberarNovaFase;
     [SerializeField] private bool tutorial;
     private int minutos;
     private int segundos;
@@ -467,6 +468,6 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
         if (BossAlho.Instance != null)
             return intervaloEntreOsDesastres - BossAlho.Instance.GetReducaoIntervaloDesastres();
         else
-            return intervaloEntreOsDesastres;
+            return intervaloEntreOsDesastres - (UIinventario.Instance.GetTempoAtual() - 1) * ReducaoDeTempAoLiberarNovaFase;
     }
 }

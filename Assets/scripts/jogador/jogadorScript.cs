@@ -289,7 +289,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 }
                 else if (objeto.gameObject.layer == 9)
                 {
-                    objeto.gameObject.GetComponent<CentroDeRecurso>().RecebeuHit();
+                    objeto.gameObject.GetComponentInParent<CentroDeRecurso>().RecebeuHit();
                 }
             }
             yield return new WaitForSeconds(taxaDeAtaqueMelee);

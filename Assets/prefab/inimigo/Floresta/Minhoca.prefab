@@ -214,17 +214,9 @@ MonoBehaviour:
   projetil: {fileID: 1029496171083325692, guid: 7b24102ee21fd1545becceaa48fd5edd,
     type: 3}
   pontoDisparo: {fileID: 2918682089030421512}
-  pontosDeFuga:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   vidaMaxima: 100
   velocidade: 3
-  taxaDisparo: 2
+  taxaDisparo: 1
   velocidadeProjetil: 5
   danoMelee: 10
   danoRanged: 10

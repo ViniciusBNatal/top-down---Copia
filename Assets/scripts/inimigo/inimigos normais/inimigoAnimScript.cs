@@ -23,14 +23,19 @@ public class inimigoAnimScript : MonoBehaviour
     {
         animator.SetTrigger("ATQMELEE");
     }
-    public void AtaqueRanged(Vector2 direcaoDisparo)
+    public void AtaqueRanged(Vector2 direcaoDisparo, float multiplicador)
     {
-        animator.SetTrigger("ATQRANGE");
+        animator.SetFloat("TXDISP", multiplicador);
+        animator.SetBool("ATQRANGE", true);
         animator.SetFloat("RANGEHORZ", direcaoDisparo.x);
         animator.SetFloat("RANGEVERT", direcaoDisparo.y);
     }
     public void Fuga()
     {
         animator.SetTrigger("FUGA");
+    }
+    public void PararDisparos()
+    {
+        animator.SetBool("ATQRANGE", false);
     }
 }

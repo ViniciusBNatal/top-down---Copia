@@ -155,5 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidade: 1
-  dano: 0.1
-  intervaloEntreAtaques: 0
+  dano: 10
+  forcaEmpurrao: 10
+  duracaoStun: 0.5

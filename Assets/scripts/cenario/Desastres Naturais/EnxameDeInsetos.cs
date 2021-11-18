@@ -7,7 +7,9 @@ public class EnxameDeInsetos : MonoBehaviour
     [Header("Valores numéricos")]
     [SerializeField] private float velocidade;
     [SerializeField] private float dano;
-    [SerializeField] private float intervaloEntreAtaques;
+    /*[SerializeField]*/ private float intervaloEntreAtaques;
+    [SerializeField] private float forcaEmpurrao;
+    [SerializeField] private float duracaoStun;
     private Transform alvo;
     private Vector2 direcao;
     private Rigidbody2D rb;
@@ -24,6 +26,13 @@ public class EnxameDeInsetos : MonoBehaviour
         alvo = jogadorScript.Instance.transform;
         StartCoroutine("movimentacao");
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            jogadorScript.Instance.Knockback(duracaoStun, forcaEmpurrao, this.transform);
+        }
+    }
     IEnumerator movimentacao()
     {
         while (true)
@@ -33,21 +42,21 @@ public class EnxameDeInsetos : MonoBehaviour
             yield return new WaitForSeconds(.2f);
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            jogadorNoEnxame = true;
-            StartCoroutine("ferreJogador");
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            jogadorNoEnxame = false;
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "Player")
+    //    {
+    //        jogadorNoEnxame = true;
+    //        StartCoroutine("ferreJogador");
+    //    }
+    //}
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "Player")
+    //    {
+    //        jogadorNoEnxame = false;
+    //    }
+    //}
     IEnumerator ferreJogador()
     {
         while (jogadorNoEnxame)

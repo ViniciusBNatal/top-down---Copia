@@ -11,7 +11,7 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     [SerializeField] private float tempoParaFechar;
     [SerializeField] private GameObject chaveNecessaria;
     [SerializeField] private int nDeBotoesNecessarios;
-    [SerializeField] private Dialogo dialogo;
+    [SerializeField] private Dialogo[] dialogo = new Dialogo[2];
     [SerializeField] private UnityEvent EventosAoMudarEstadoPorta;
     [Header("Configurações Para Ações com Inimigos")]
     [SerializeField] private bool Criar;
@@ -51,7 +51,9 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
             if (UIinventario.Instance.ProcurarChave(chave))
             {
                 StartCoroutine(this.TempoPorta());
-            }            
+            }
+            else
+                DialogeManager.Instance.IniciarDialogo(dialogo[0]);
         }
         else
         {
@@ -160,13 +162,13 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     }
     public void AtivarRobo()
     {
-        if (dialogo.Frases.Length != 0)
+        if (dialogo[1].Frases.Length != 0)
         {
             if (!eventoOcorreu)
             {
                 eventoOcorreu = true;
                 DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-                DialogeManager.Instance.IniciarDialogo(dialogo);
+                DialogeManager.Instance.IniciarDialogo(dialogo[1]);
             }
             else
                 acaoComInimigos();
