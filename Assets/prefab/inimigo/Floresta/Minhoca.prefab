@@ -224,11 +224,11 @@ MonoBehaviour:
   - {fileID: 0}
   vidaMaxima: 100
   velocidade: 3
-  taxaDisparo: 1
-  velocidadeProjetil: 10
+  taxaDisparo: 2
+  velocidadeProjetil: 5
   danoMelee: 10
   danoRanged: 10
-  forcaRepulsao: 20
+  forcaRepulsao: 6
   tempoDeStunNoJogador: 0.5
   distanciaMinimaParaFugir: {x: 1, y: 1}
   direcaoDeMovimentacao: {x: 0, y: 0}
