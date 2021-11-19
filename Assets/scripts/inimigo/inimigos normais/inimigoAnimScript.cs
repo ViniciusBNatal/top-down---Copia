@@ -30,9 +30,13 @@ public class inimigoAnimScript : MonoBehaviour
         animator.SetFloat("RANGEHORZ", direcaoDisparo.x);
         animator.SetFloat("RANGEVERT", direcaoDisparo.y);
     }
-    public void Fuga()
+    public void Esconder()
     {
-        animator.SetTrigger("FUGA");
+        animator.SetTrigger("ESCONDER");
+    }
+    public void Surgir(bool b)
+    {
+        animator.SetBool("SURGIR", b);
     }
     public void PararDisparos()
     {

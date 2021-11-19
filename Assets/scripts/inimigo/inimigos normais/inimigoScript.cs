@@ -54,6 +54,7 @@ public class inimigoScript : MonoBehaviour
     private GameObject pontoInicial;
     private UnityAction AoReceberDano;
     private string pontoDefugaParaTeleportar;
+    private bool escondido = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -107,19 +108,28 @@ public class inimigoScript : MonoBehaviour
                 break;
         }
     }
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Player" && distanciaMinimaParaFugir != Vector2.zero && this.isActiveAndEnabled)
-    //    {
-    //        Vector2 distanciaDoAlvo = alvo.position - transform.position;
-    //        if (Mathf.Abs(distanciaDoAlvo.x) <= distanciaMinimaParaFugir.x && Mathf.Abs(distanciaDoAlvo.y) <= distanciaMinimaParaFugir.y)
-    //        {
-    //            areaDetecao.enabled = false;
-    //            inimigoAnimScript.Fuga();
-    //            //Teleportar(tiposDeMovimentacao);
-    //        }
-    //    }
-    //}
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && distanciaMinimaParaFugir != Vector2.zero && this.isActiveAndEnabled)
+        {
+            Vector2 distanciaDoAlvo = alvo.position - transform.position;
+            if (Mathf.Abs(distanciaDoAlvo.x) <= distanciaMinimaParaFugir.x && Mathf.Abs(distanciaDoAlvo.y) <= distanciaMinimaParaFugir.y)
+            {
+                if (!escondido)
+                {
+                    escondido = true;
+                    pontoDefugaParaTeleportar = null;
+                    inimigoAnimScript.Surgir(false);
+                    inimigoAnimScript.Esconder();
+                }
+                //Teleportar(tiposDeMovimentacao);
+            }
+            else
+            {
+                inimigoAnimScript.Surgir(true);
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)//jogador entrou da área de detecção
     {
         if(collision.gameObject.tag == "Player" && this.isActiveAndEnabled)
@@ -149,30 +159,33 @@ public class inimigoScript : MonoBehaviour
     }
     public void Teleportar(TiposDeMovimentacao tipoDeMovimentacao)// 1 movimentação fixa, 2 movimentação aleatória
     {
-        switch (tipoDeMovimentacao)
+        if (pontoDefugaParaTeleportar != null)
         {
-            case TiposDeMovimentacao.movimentacaoEntrePontosFixa:
-                transform.position = pontosDefuga[pontoDefugaParaTeleportar];
-                //switch (trocarOrdemPontosDeFuga)
-                //{
-                //    case true:
-                //        proximoPontoDeFuga--;
-                //        transform.position = pontosDeFuga[proximoPontoDeFuga].position;
-                //        break;
-                //    case false:
-                //        proximoPontoDeFuga++;
-                //        transform.position = pontosDeFuga[proximoPontoDeFuga].position;
-                //        break;
-                //}
-                //if (proximoPontoDeFuga == pontosDeFuga.Count - 1)
-                //    trocarOrdemPontosDeFuga = true;
-                //else if (proximoPontoDeFuga == 0)
-                //    trocarOrdemPontosDeFuga = false;
-                break;
-            case TiposDeMovimentacao.movimentacaoEntrePontosAleatorios:
-                //int r = Random.Range(0, pontosDeFuga.Count);
-                //transform.position = pontosDeFuga[r].position;
-                break;
+            switch (tipoDeMovimentacao)
+            {
+                case TiposDeMovimentacao.movimentacaoEntrePontosFixa:
+                    transform.position = pontosDefuga[pontoDefugaParaTeleportar];
+                    //switch (trocarOrdemPontosDeFuga)
+                    //{
+                    //    case true:
+                    //        proximoPontoDeFuga--;
+                    //        transform.position = pontosDeFuga[proximoPontoDeFuga].position;
+                    //        break;
+                    //    case false:
+                    //        proximoPontoDeFuga++;
+                    //        transform.position = pontosDeFuga[proximoPontoDeFuga].position;
+                    //        break;
+                    //}
+                    //if (proximoPontoDeFuga == pontosDeFuga.Count - 1)
+                    //    trocarOrdemPontosDeFuga = true;
+                    //else if (proximoPontoDeFuga == 0)
+                    //    trocarOrdemPontosDeFuga = false;
+                    break;
+                case TiposDeMovimentacao.movimentacaoEntrePontosAleatorios:
+                    //int r = Random.Range(0, pontosDeFuga.Count);
+                    //transform.position = pontosDeFuga[r].position;
+                    break;
+            }
         }
     }
     public void Atirar()
@@ -215,7 +228,9 @@ public class inimigoScript : MonoBehaviour
     {
         areaDetecao.enabled = false;
         pontoDefugaParaTeleportar = gobj.name;
-        inimigoAnimScript.Fuga();
+        inimigoAnimScript.Surgir(true);
+        inimigoAnimScript.Esconder();
+
     }
     public void mudancaVida(float valor)
     {
@@ -261,7 +276,8 @@ public class inimigoScript : MonoBehaviour
     }
     public void AdicionarPontoDeFuga(GameObject gobj)
     {
-        pontosDefuga.Add(gobj.name, gobj.transform.position);
+        Vector3 vec = new Vector3(gobj.GetComponent<pontoDeFugaScript>().pontoDeTeleporte.position.x, gobj.GetComponent<pontoDeFugaScript>().pontoDeTeleporte.position.y, 0f);
+        pontosDefuga.Add(gobj.name, vec);
     }
     private Vector3 ProximoPonto()
     {
@@ -306,5 +322,6 @@ public class inimigoScript : MonoBehaviour
     public void LigaDetecao()
     {
         areaDetecao.enabled = true;
+        escondido = false;
     }
 }

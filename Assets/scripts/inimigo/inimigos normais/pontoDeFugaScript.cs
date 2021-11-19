@@ -5,7 +5,7 @@ using UnityEngine;
 public class pontoDeFugaScript : MonoBehaviour
 {
     [SerializeField] private inimigoScript inimigoRelacionado;
-
+    public Transform pontoDeTeleporte;
     // Start is called before the first frame update
     void Start()
     {
