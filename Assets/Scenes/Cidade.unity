@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -109733,8 +109733,8 @@ PrefabInstance:
     - target: {fileID: 8443647571529721456, guid: 9b5d22d67d1141c4f83d8b4d83126217,
         type: 3}
       propertyPath: dialogo.Frases.Array.data[0]
-      value: "Meu sensores indicam que a pe\xE7a est\xE1 em um parque a leste da
-        sua posi\xE7\xE3o"
+      value: "Meu sensores indicam que a pe\xE7a est\xE1 em um parque a LESTE da
+        sua posi\xE7\xE3o."
       objectReference: {fileID: 0}
     - target: {fileID: 8443647571529721456, guid: 9b5d22d67d1141c4f83d8b4d83126217,
         type: 3}
@@ -128356,42 +128356,45 @@ PrefabInstance:
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
       propertyPath: dialogos.Array.data[0].Frases.Array.data[0]
-      value: "Ei era pra esta area estar evacuada, porque voc\xEA ainda esta aqui?"
+      value: "Ei! era para essa \xE1rea estar evacuada, porque voc\xEA ainda est\xE1
+        aqui?"
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
       propertyPath: dialogos.Array.data[0].Frases.Array.data[1]
-      value: "Bom n\xE3o importa esta ocorrendo um protesto por conta daquelas \xE1rvores
-        e as ruas est\xE3o bloqueadas bem como o parque"
+      value: "Bom, n\xE3o importa. Est\xE1 ocorrendo um protesto por conta daquelas
+        \"\xE1rvores anci\xE3s\" e as ruas est\xE3o bloqueadas assim como o parque
+        que est\xE1 sediando um evento da Happy Store."
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
       propertyPath: dialogos.Array.data[0].Frases.Array.data[2]
-      value: Que esta sediando um evento da Happy Store
+      value: "Ah! Ent\xE3o voc\xEA quer acessar o parque... "
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
       propertyPath: dialogos.Array.data[0].Frases.Array.data[3]
-      value: "A ent\xE3o voc\xEA quer acessar o parque, bom se voc\xEA conseguir
-        alguma coisa que eu possa usar, mesmo que seja falso para parastrar"
+      value: "Bem... Se voc\xEA conseguir alguma coisa que eu possa usar, mesmo que
+        seja falso, para mostrar que esses manifestantes s\xE3o uma amea\xE7a, da\xED
+        eu te deixarei passar."
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
       propertyPath: dialogos.Array.data[0].Frases.Array.data[4]
-      value: "Mostrar que esses manifestantes s\xE3o uma amea\xE7a eu te deixareia
-        passar, provavelmete voc\xEA vai encontrar algo no"
+      value: "Voc\xEA provavelmente vai encontrar algo no LABORAT\xD3RIO, mas ele
+        est\xE1 trancado."
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
       propertyPath: dialogos.Array.data[0].Frases.Array.data[5]
-      value: "Laborat\xF3rio, mas ele esta trancado, pegue esse cart\xE3o ele abre
-        o escrit\xF3rio talvez l\xE1 voc\xEA encontre algo para te ajudar"
+      value: " Pegue esse CART\xC3O, ele abre o ESCRIT\xD3RIO. Talvez voc\xEA encontre
+        algo l\xE1 para te ajudar."
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
       propertyPath: dialogos.Array.data[1].Frases.Array.data[0]
       value: "Eu j\xE1 te disse, s\xF3 vou te deixar passar se me trouxer algo para
-        incriminar os manifestantes portanto trate de explorar essa \xE1rea"
+        incriminar os manifestantes. Ent\xE3o trate de explorar essa \xE1rea."
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
@@ -128425,13 +128428,13 @@ PrefabInstance:
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
       propertyPath: dialogos.Array.data[2].Frases.Array.data[0]
-      value: Muito obrigado, essa bomba vai servir direitinho para o meu plano, agora
-        pode passar
+      value: Muito obrigado, essa bomba vai servir direitinho para o meu plano. Agora
+        pode passar.
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}
       propertyPath: dialogos.Array.data[3].Frases.Array.data[0]
-      value: "O que voc\xEA quer ja liberei sua passagem anda, pode ir sem medo"
+      value: "O que voc\xEA quer? J\xE1 liberei sua passagem. Anda, pode passar."
       objectReference: {fileID: 0}
     - target: {fileID: 1571562517439221966, guid: ecd0b017df180f14db03137654cb88cf,
         type: 3}

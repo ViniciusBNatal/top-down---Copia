@@ -111,7 +111,7 @@ MonoBehaviour:
   quantasVezesPodeSerExtraida: 3
   qntdDoRecursoDropado: 1
   forca: 100
-  tempoAteProximaColeta: 3
+  tempoAteProximaColeta: 20
   centroDeInimigos: 0
   iconeCentroDeInimigos: {fileID: 0}
   inimigoPrefab: {fileID: 0}

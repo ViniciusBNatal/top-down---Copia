@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7978,6 +7978,7 @@ MonoBehaviour:
   intervaloEntreOsDesastres: 240
   chanceDeDesastre: 75
   TempoMinimoRestante: 30
+  AumentoDeTempAoLiberarNovaFase: 60
   tutorial: 1
   intensidadeScreenShakeTerremoto: 3
   taxaDeMudancaDosControles: 0.5
@@ -17070,24 +17071,23 @@ MonoBehaviour:
     IDdoNPC: 01000000
     Frases:
     - "Aika!!! O que voc\xEA fez???"
-    - Como assim quem esta falando! Sou eu o grande cientista e seu chefe Dr.Alho
-    - "O que, voc\xEA n\xE3o se lembra de nada? Bom do jeito que voc\xEA se teletransportou
-      \xE9 surpreendente que ainda esteja viva, mas isso n\xE3o importa olha o que
-      voc\xEA fez com a minha m\xE1quina"
-    - "Ela esta muito danificada e as pe\xE7as foram parar em diferentes eras. Voc\xEA
-      precisa consertar a bagun\xE7a que fez e trazer minha preciosa maquina de volta
-      \xE9 o trabalho da minha vida"
+    - Como assim quem sou eu?! Eu sou o seu chefe, o ilustre Dr.Alho!
+    - "O qu\xEA? Voc\xEA n\xE3o se lembra de nada?"
+    - "Bom do jeito que voc\xEA se teletransportou \xE9 surpreendente que ainda esteja
+      viva! Mas isso n\xE3o importa, olha o que voc\xEA fez com a minha m\xE1quina!!!"
+    - "Ela est\xE1 muito danificada e as pe\xE7as foram parar em diferentes eras.
+      Voc\xEA precisa consertar a bagun\xE7a que fez e trazer minha preciosa m\xE1quina
+      de volta. Ela \xE9 o trabalho da minha vida."
     - "Sorte a sua que eu desenvolvi um dispositivo capaz de mandar caixas de socorro
-      para qualquer que seja a localiza\xE7\xE3o do portal como medida de seguran\xE7a"
+      para o portal, onde quer que esteja, como medida de seguran\xE7a."
     - "Espere! Meus sensores detectaram que voc\xEA causou uma perturba\xE7\xE3o
-      no espa\xE7o tempo, fazendo com que desastres de diferentes eras ocorram de
-      tempos em tempos"
+      no espa\xE7o tempo, fazendo com que desastres de diferentes eras ocorram periodicamente. "
     - "Vou te enviar a caixa com uma pe\xE7a de reparo do portal, um cron\xF4metro
       para voc\xEA conseguir saber quando e qual o pr\xF3ximo desastre vai te atingir
-      e uns recursos para construir um modulo de defesa"
-    - "Destrua a caixa e construa o modulo de defesa para o desastre que vai aparecer
+      e uns recursos para construir um m\xF3dulo de defesa."
+    - "Destrua a caixa e construa o m\xF3dulo de defesa para o desastre que vai aparecer
       no seu dispositivo, ele servir\xE1 para proteger o portal, caso sofra 3 danos
-      ele ir\xE1 ser destruido"
+      ele ir\xE1 ser destru\xEDdo."
     EstadoImagemNPC:
     - 1
     - 2
@@ -17124,7 +17124,7 @@ MonoBehaviour:
     - Dr Alho
     IDdoNPC: 01000000
     Frases:
-    - "Muito bem agora espere o desastre, ele j\xE1 est\xE1 se aproximando"
+    - "Muito bem agora espere o desastre, ele j\xE1 est\xE1 se aproximando."
     EstadoImagemNPC:
     - 2
     - 1
@@ -17134,13 +17134,13 @@ MonoBehaviour:
     - Dr Alho
     IDdoNPC: 01000000
     Frases:
-    - "Parab\xE9ns voc\xEA conseguiu sobreviver a esse desastre, mas lembre-se eles
-      n\xE3o v\xE3o parar de acontecer nunca, portanto fique atento aos seus recursos,
-      qual ser\xE1 o pr\xF3ximo desastre e o tempo"
+    - "Parab\xE9ns voc\xEA conseguiu sobreviver esse desastre, mas lembre-se que
+      eles nunca v\xE3o parar de acontecer, ent\xE3o fique atento aos seus recursos,
+      qual ser\xE1 o pr\xF3ximo desastre e ao tempo."
     - "E n\xE3o esque\xE7a de ficar de olho na intensidade dos desastres, pois se
-      construir um modulo mais fraco do que o necess\xE1rio o portal ir\xE1 sofrer
-      um dano, se ele sofrer dano 3 vezes temo que ir\xE1 explodir"
-    - "Agora v\xE1 at\xE9 o portal e o conserte"
+      construir um modulo mais fraco do que o necess\xE1rio o portal ser\xE1 danificado,
+      se ele for danificado 3 vezes temo que ir\xE1 explodir."
+    - "Agora v\xE1 at\xE9 o portal e o conserte!"
     EstadoImagemNPC:
     - 1
     - 2
@@ -17153,13 +17153,16 @@ MonoBehaviour:
     IDdoNPC: 01000000
     Frases:
     - "Muito bem, agora voc\xEA deve explorar as eras para procurar as pe\xE7as de
-      reparo da m\xE1quina do tempo"
+      reparo da m\xE1quina do tempo."
     - "E n\xE3o se esque\xE7a de construir os m\xF3dulos de defesa para proteger
       o portal e se um desastre ocorrer enquanto estiver fora volte o mais r\xE1pido
-      poss\xEDvel para o portal"
+      poss\xEDvel para o portal."
     - "Agora selecione a era liberada e tente buscar as pe\xE7as para consertar o
       portal por completo e voltar para o meu laborat\xF3rio para consertarmos a
-      bagun\xE7a que voc\xEA criou no espa\xE7o tempo"
+      bagun\xE7a que voc\xEA criou no espa\xE7o tempo."
+    - "Ah! e tome muito CUIDADO quando voc\xEA for consertar o portal das pr\xF3ximas
+      vezes. Ele vai ficar inutiliz\xE1vel por um tempo e como uma nova era estar\xE1
+      abrindo v\xE1rios desastres ir\xE3o iniciar rapidamente."
     - Boa sorte!
     EstadoImagemNPC:
     - 2
