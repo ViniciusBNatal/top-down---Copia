@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1188,7 +1188,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: 89ba01a15858b2742a8f70f613514971,
+      objectReference: {fileID: 11400000, guid: 972842f7b2393a248b85880cfc5399af,
         type: 2}
     - target: {fileID: 6613528273911097988, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -1880,7 +1880,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: c86461d6adb1ae442930c6574059040f,
+      objectReference: {fileID: 11400000, guid: f312480de2c06e743afb3535c78fae1d,
         type: 2}
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
@@ -2199,7 +2199,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: 1f9b5e6d1e5eeb4459b2291f057009e5,
+      objectReference: {fileID: 11400000, guid: 67d08983bf783f54688f15647360202d,
         type: 2}
     - target: {fileID: 6613528273911097988, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -2531,7 +2531,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: c86461d6adb1ae442930c6574059040f,
+      objectReference: {fileID: 11400000, guid: 62aea050b88ce8243a71b666c398e6f4,
         type: 2}
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
@@ -2774,7 +2774,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: 89b5c5d8f1447f3479ba7393c1722121,
+      objectReference: {fileID: 11400000, guid: e85fe4424d8d1c845b1cc2c155079535,
         type: 2}
     - target: {fileID: 6613528273911097988, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -6952,7 +6952,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: 864c61a0836db8743899f7390fcb76f0,
+      objectReference: {fileID: 11400000, guid: b1c0fcb05ebb6eb42aa5209f3fa58558,
         type: 2}
     - target: {fileID: 6613528273911097988, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -8164,7 +8164,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: c86461d6adb1ae442930c6574059040f,
+      objectReference: {fileID: 11400000, guid: 3f4d3b0356eacb64bb06e38b19499707,
         type: 2}
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
@@ -8477,7 +8477,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: c86461d6adb1ae442930c6574059040f,
+      objectReference: {fileID: 11400000, guid: f4f2842b6cc596f42bd529ed8be47dc6,
         type: 2}
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
@@ -17066,10 +17066,14 @@ MonoBehaviour:
   pontoDeSpawnObjetos: {fileID: 2024005635}
   dialogosDoTutorial:
   - NomeNPC:
+    - Desculpa
     - ???
     - Dr Alho
     IDdoNPC: 01000000
     Frases:
+    - "Use: W,A,S,D para se mover    \"i\" para abrir o inventarios   Segure bot\xE3o
+      direito para atirar    No menu de cria\xE7\xE3o clique o numero para escolherr
+      a for\xE7a do modulo e depois clique na engrenagem para cria-lo"
     - "Aika!!! O que voc\xEA fez???"
     - Como assim quem sou eu?! Eu sou o seu chefe, o ilustre Dr.Alho!
     - "O qu\xEA? Voc\xEA n\xE3o se lembra de nada?"
@@ -17310,7 +17314,7 @@ PrefabInstance:
         type: 3}
       propertyPath: receita
       value: 
-      objectReference: {fileID: 11400000, guid: cb9c60491afdf6441b99da158ca193ab,
+      objectReference: {fileID: 11400000, guid: 8318b60bed8f792419d75884e4a7f7b4,
         type: 2}
     - target: {fileID: 6613528273911097988, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
