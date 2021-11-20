@@ -19,6 +19,8 @@ public class DialogeManager : MonoBehaviour
     private Queue<string> Frases = new Queue<string>();
     private int index = 0;
     private Dialogo dialogoAtual;
+    private Coroutine escrevendo = null;
+    private string textoDialogo;
     [HideInInspector]
     public bool limparDelegate = true;
     // Start is called before the first frame update
@@ -48,21 +50,31 @@ public class DialogeManager : MonoBehaviour
     } 
     public void MostraProximoDialogo()
     {
-        if (Frases.Count == 0)
+        if (escrevendo == null)
         {
-            FimDialogo();
-            return;
+            if (Frases.Count == 0)
+            {
+                FimDialogo();
+                return;
+            }
+            setaContinuarDialogo.SetActive(false);
+            textoDialogo = Frases.Dequeue();
+            TrocarNomeNPC();
+            TrocaNPC();
+            TrocaEstadoImagemDoNPC();
+            TrocarFocoDaCamera();
+            AcionarEventosDuranteDialogo();
+            index++;
+            escrevendo = StartCoroutine(this.EscreveDialogo(textoDialogo));
         }
-        setaContinuarDialogo.SetActive(false);
-        string textoDialogo = Frases.Dequeue();
-        TrocarNomeNPC();
-        TrocaNPC();
-        TrocaEstadoImagemDoNPC();
-        TrocarFocoDaCamera();
-        AcionarEventosDuranteDialogo();
-        index++;
-        StopAllCoroutines();
-        StartCoroutine(this.EscreveDialogo(textoDialogo));
+        else
+        {
+            StopCoroutine(escrevendo);
+            DialogoText.text = "";
+            DialogoText.text = textoDialogo;
+            setaContinuarDialogo.SetActive(true);
+            escrevendo = null;
+        }
     }
     public void FimDialogo()
     {
@@ -81,6 +93,7 @@ public class DialogeManager : MonoBehaviour
             yield return new WaitForSeconds(velocidadeDasLetras);
         }
         setaContinuarDialogo.SetActive(true);
+        escrevendo = null;
     }
     protected virtual void AoFinalizarDialogo()
     {

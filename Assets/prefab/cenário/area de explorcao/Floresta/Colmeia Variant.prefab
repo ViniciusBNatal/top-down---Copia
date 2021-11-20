@@ -104,7 +104,7 @@ PrefabInstance:
     - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
         type: 3}
       propertyPath: qntdMaximaDeInimigos
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
         type: 3}
@@ -119,10 +119,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
         type: 3}
+      propertyPath: qntdMaximaDeInimigosEmCena
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
+        type: 3}
       propertyPath: iconeCentroDeRecursosPadrao
       value: 
       objectReference: {fileID: 21300000, guid: b48579e46c21bd149a91e21313a9d40a,
         type: 3}
+    - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
+        type: 3}
+      propertyPath: distanciaXDeSpawnDosInimigos
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
+        type: 3}
+      propertyPath: distanciaYDeSpawnDosInimigos
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8991288580678989614, guid: 6ec9799e588423a4592f0f3e551ba1db,
         type: 3}
       propertyPath: m_Sprite

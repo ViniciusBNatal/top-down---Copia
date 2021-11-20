@@ -5,14 +5,14 @@ using TMPro;
 
 public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, SalvamentoEntreCenas
 {
-    [Header("Componentes do recurso dropado")]
+    [Header("Recurso dropado")]
     [SerializeField] private Item item;
     [SerializeField] private GameObject recursoColetavelPreFab;
     [Range(-1,1)]
     [SerializeField] private int direcaoLancamentoX;
     [Range(-1, 1)]
     [SerializeField] private int direcaoLancamentoY;
-    [Header("Valores numéricos de centro de recursos")]
+    [Header("Centro de recursos")]
     [SerializeField] private Sprite iconeCentroDeRecursosPadrao;
     [SerializeField] private Sprite iconeCentroDeRecursosGasto;
     [SerializeField] private TMP_Text Timer;
@@ -23,16 +23,20 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     [SerializeField] private int tempoAteProximaColeta;
     private int tempoRestante = 0;
     private int vezesExtraida;
-    [Header("Componentes de centro de spawn")]
+    [Header("Centro de spawn")]
     [SerializeField] private bool centroDeInimigos;
     [SerializeField] private Sprite iconeCentroDeInimigos;
     [SerializeField] private GameObject inimigoPrefab;
     [SerializeField] private int qntdMaximaDeInimigos;
+    [SerializeField] private int qntdMaximaDeInimigosEmCena;
     [SerializeField] private float intervaloEntreSpawns;
     [SerializeField] private int VidaMaxDoCentroDeSpawn;
+    [SerializeField] private float distanciaXDeSpawnDosInimigos;
+    [SerializeField] private float distanciaYDeSpawnDosInimigos;
     private int VidaAtualDoCentroDeSpawn;
     private int qntdInimigosAtuais = 0;
-    private bool spawnandoInimigos = false;
+    private int qntdInimigosJaCriados = 0;
+    private Coroutine spawnandoInimigos = null;
     private SpriteRenderer SpriteDoObj;
     private int minutos = 0;
     private int segundos = 0;
@@ -143,31 +147,36 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     }
     IEnumerator SpawnInimigos()
     {
-        if (spawnandoInimigos == false)
+        if (qntdInimigosJaCriados < qntdMaximaDeInimigos)
         {
-            spawnandoInimigos = true;
-            while(qntdInimigosAtuais < qntdMaximaDeInimigos)
+            while(qntdInimigosAtuais < qntdMaximaDeInimigosEmCena)
             {
-                GameObject inimigo = Instantiate(inimigoPrefab, transform.position, Quaternion.identity);
-                inimigo.GetComponent<inimigoScript>().SetCentroDeSpawn(this.gameObject.GetComponent<CentroDeRecursoInfinito>());
-                qntdInimigosAtuais++;
-                yield return new WaitForSeconds(intervaloEntreSpawns);
+                if (qntdInimigosJaCriados < qntdMaximaDeInimigos)
+                {
+                    yield return new WaitForSeconds(intervaloEntreSpawns);
+                    GameObject inimigo = Instantiate(inimigoPrefab, transform.position + new Vector3(Random.Range(-distanciaXDeSpawnDosInimigos, distanciaXDeSpawnDosInimigos), Random.Range(-distanciaYDeSpawnDosInimigos, distanciaYDeSpawnDosInimigos), 0f), Quaternion.identity);
+                    inimigo.GetComponent<inimigoScript>().SetCentroDeSpawn(this.gameObject.GetComponent<CentroDeRecursoInfinito>());
+                    qntdInimigosAtuais++;
+                    qntdInimigosJaCriados++;
+                }
+                else
+                    break;
             }
-            spawnandoInimigos = false;
+            spawnandoInimigos = null;
         }
     }
     public void InimigoDerrotado()
     {
         qntdInimigosAtuais--;
-        if (centroDeInimigos)
-            StartCoroutine(this.SpawnInimigos());
+        if (centroDeInimigos && spawnandoInimigos == null)
+            spawnandoInimigos =  StartCoroutine(this.SpawnInimigos());
     }
     private void DefineEstado()
     {
-        if (centroDeInimigos)
+        if (centroDeInimigos && spawnandoInimigos == null)
         {
             DefineSprite(iconeCentroDeInimigos);
-            StartCoroutine(this.SpawnInimigos());
+            spawnandoInimigos = StartCoroutine(this.SpawnInimigos());
         }
         else
         {
