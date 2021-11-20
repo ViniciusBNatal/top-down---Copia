@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8952a940ca52c04c93836bb4831858a, type: 3}
-  m_Name: Tempo 2
+  m_Name: Para a cidade
   m_EditorClassIdentifier: 
   iconeDeAprimoramentoDabase: {fileID: 21300000, guid: 23f7ede88b5ff454dbedb24bb37c4ec4,
     type: 3}
@@ -21,4 +21,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 04b17ffd2010bcf4a996b0a988d6942d, type: 2}
   - {fileID: 11400000, guid: bf37def55dca4bf4aa6e606a6eedbbd6, type: 2}
   - {fileID: 11400000, guid: 3c3693480a42c664091250d2df3f1290, type: 2}
-  quantidadeDosRecursos: 010000000500000003000000
+  quantidadeDosRecursos: 010000000700000006000000
