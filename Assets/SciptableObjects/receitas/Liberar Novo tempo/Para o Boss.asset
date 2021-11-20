@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8952a940ca52c04c93836bb4831858a, type: 3}
-  m_Name: Tempo 3
+  m_Name: Para o Boss
   m_EditorClassIdentifier: 
-  iconeDeAprimoramentoDabase: {fileID: 21300000, guid: 5ea7913474bb70845be718a5563fb8cb,
+  iconeDeAprimoramentoDabase: {fileID: 4178862383683176622, guid: 6afdc37001a71af438f3f20917bccede,
     type: 3}
   modulo: 0
   desastre: 
   incrementoEntreForcas: 0
   itensNecessarios:
-  - {fileID: 11400000, guid: d3314404e6d00f14b98370cad55d8e28, type: 2}
-  - {fileID: 11400000, guid: c46d4db61ed04784fb525b41adac2f46, type: 2}
-  - {fileID: 11400000, guid: 8c1df2e01c921d84898d0f9a381c59cb, type: 2}
-  quantidadeDosRecursos: 010000000a0000000c000000
+  - {fileID: 11400000, guid: 16af786ddbc019843a12dab207078aaa, type: 2}
+  - {fileID: 11400000, guid: 9f861b795b8aa3d4aa92ca1078c7c87d, type: 2}
+  - {fileID: 11400000, guid: 0e0cbdf6ffddaf741977cba61f39bf4f, type: 2}
+  quantidadeDosRecursos: 010000000c00000009000000

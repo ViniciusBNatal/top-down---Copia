@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8952a940ca52c04c93836bb4831858a, type: 3}
-  m_Name: Tempo 4
+  m_Name: Para a floresta
   m_EditorClassIdentifier: 
-  iconeDeAprimoramentoDabase: {fileID: 4178862383683176622, guid: 6afdc37001a71af438f3f20917bccede,
+  iconeDeAprimoramentoDabase: {fileID: 21300000, guid: 2cb6af3ac042ca1498418d950337221e,
     type: 3}
   modulo: 0
   desastre: 
   incrementoEntreForcas: 0
   itensNecessarios:
-  - {fileID: 11400000, guid: 16af786ddbc019843a12dab207078aaa, type: 2}
-  - {fileID: 11400000, guid: 9f861b795b8aa3d4aa92ca1078c7c87d, type: 2}
-  - {fileID: 11400000, guid: 0e0cbdf6ffddaf741977cba61f39bf4f, type: 2}
-  quantidadeDosRecursos: 010000000c00000009000000
+  - {fileID: 11400000, guid: ae8d2c0f196533743a96ae407efa33c6, type: 2}
+  quantidadeDosRecursos: 01000000
