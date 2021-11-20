@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9644923587cb5a4eb4fe7e9727f8448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intervaloEntreAtaques: 5
-  ReducaoIntervaloDesastres: 90
+  intervaloEntreAtaques: 6
+  ReducaoIntervaloDesastres: 120
   misselPrefab: {fileID: 1324030936459174767, guid: 11e3063f0b1839d4dafe4e17d1885505,
     type: 3}
   sementeDeAlhoPrefab: {fileID: 6681289161254987899, guid: ab4554795a0271b4895f3d8a8d9470fb,
@@ -156,7 +156,7 @@ MonoBehaviour:
   dialogos:
   - NomeNPC:
     - Dr. Alho MECHA
-    IDdoNPC: 
+    IDdoNPC: 01000000
     Frases:
     - "HA Ha ha voc\xEA caiu direitinho no meu plano, a coisa mais conveniente foi
       voc\xEA ter perdido a mem\xF3ria ap\xF3s ter descoberto meu plano "

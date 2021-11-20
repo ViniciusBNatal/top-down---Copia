@@ -111,7 +111,7 @@ public class inimigoScript : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && distanciaMinimaParaFugir != Vector2.zero && this.isActiveAndEnabled)
+        if (collision.gameObject.tag == "Player" && distanciaMinimaParaFugir != Vector2.zero && this.isActiveAndEnabled && alvo != null)
         {
             Vector2 distanciaDoAlvo = alvo.position - transform.position;
             if (Mathf.Abs(distanciaDoAlvo.x) <= distanciaMinimaParaFugir.x && Mathf.Abs(distanciaDoAlvo.y) <= distanciaMinimaParaFugir.y)
@@ -151,7 +151,6 @@ public class inimigoScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && this.isActiveAndEnabled)
         {
-            Debug.Log("saiu da area");
             alvo = null;
             rb.velocity = Vector2.zero;
             salvandoPontosDeNavegacao = null;
@@ -194,12 +193,15 @@ public class inimigoScript : MonoBehaviour
     {
         //if (atirando)
         //{
+        if (alvo != null)
+        {
             direcaoProjetil = (alvo.position - pontoDisparo.position).normalized;
             GameObject balains = Instantiate(projetil, pontoDisparo.position, Quaternion.identity);
             balains.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));
             balains.GetComponent<Rigidbody2D>().velocity = velocidadeProjetil * direcaoProjetil;
             balains.GetComponent<balaHit>().SetDano(danoRanged);
             balains.GetComponent<balaHit>().SetDuracaoStun(tempoDeStunNoJogador);
+        }
             //atirando = false;
         //}
     }

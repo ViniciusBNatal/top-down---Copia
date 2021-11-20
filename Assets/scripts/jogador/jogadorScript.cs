@@ -61,19 +61,6 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         distanciaAtaqueMelee.x = posicaoMelee.localPosition.x;
         distanciaAtaqueMelee.y = posicaoMelee.localPosition.y;
     }
-    void Start()
-    {
-        //rb = GetComponent<Rigidbody2D>();
-        ////vidaAtual = vidaMaxima;
-        ////inventario.BarraDeVida.GetComponent<barraDeVida>().AtualizaBarraDeVida(vidaAtual);
-        //distanciaAtaqueMelee.x = posicaoMelee.localPosition.x;
-        //distanciaAtaqueMelee.y = posicaoMelee.localPosition.y;
-        ////string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(2);//pega o caminho da cena na pasta de arquivos
-        ////string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
-        ////if (SceneManager.GetActiveScene().name == cenaParaAbrir)
-        //    //Tutorial();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -187,6 +174,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         switch (i)
         {
             case 0:
+                ControleManager();
                 estadosJogador = estados.EmAcao;
                 podeAnimar = true;
                 break;
@@ -196,10 +184,12 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 podeAnimar = false;
                 break;
             case 2:
+                ControleManager();
                 estadosJogador = estados.EmContrucao;
                 podeAnimar = false;
                 break;
             case 3:
+                ControleManager();
                 estadosJogador = estados.EmDialogo;
                 podeAnimar = false;
                 break;
@@ -210,6 +200,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 podeAnimar = false;
                 break;
             case 5:
+                ControleManager();
                 estadosJogador = estados.EmUI;
                 podeAnimar = false;
                 break;
@@ -220,15 +211,26 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         switch ((int)estadosJogador)
         {
             case 2://em construção
-                comportamentoCamera.MudaFocoCamera(transform);
+                if (comportamentoCamera.GetFocoDaCamera() != this.transform && BossAlho.Instance == null)
+                    comportamentoCamera.MudaFocoCamera(transform);
+                if (BaseScript.Instance != null)
+                {
+                    BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(false);
+                    ClickEmObjetos.Instance.RetornarMaterialOriginal(); 
+                }
                 break;
             case 3://em dialogo
-                if (DialogeManager.Instance.gameObject.activeSelf)
+                if (DialogeManager.Instance.GetEstadoDialogo())
+                {
+                    Debug.Log("remover dialogo");
                     DialogeManager.Instance.FimDialogo();
+                }
                 break;
-            case 5:
-                UIinventario.Instance.fechaInventario();
-                UIinventario.Instance.fechaMenuDeTempos();
+            case 5://em UI
+                if (UIinventario.Instance.InventarioAberto)
+                {
+                    UIinventario.Instance.fecharTodoInventario();
+                }
                 break;
             default:
                 break;

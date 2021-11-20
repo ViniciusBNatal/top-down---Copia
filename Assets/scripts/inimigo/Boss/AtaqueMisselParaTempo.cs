@@ -18,7 +18,7 @@ public class AtaqueMisselParaTempo : MonoBehaviour
     private List<GameObject> recursosCriados = new List<GameObject>();
     private Animator animator;
     private bool jogadorAcertado = false;
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         areaDaExplosao = GetComponent<CircleCollider2D>();
@@ -66,7 +66,6 @@ public class AtaqueMisselParaTempo : MonoBehaviour
     }
     public void FimAnimacao()
     {
-        animator.enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
     }
 }

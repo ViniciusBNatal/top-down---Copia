@@ -17,4 +17,8 @@ public class CinemachineBehaviour : MonoBehaviour
         CM.LookAt = obj;
         CM.Follow = obj;
     }
+    public Transform GetFocoDaCamera()
+    {
+        return CM.LookAt;
+    }
 }

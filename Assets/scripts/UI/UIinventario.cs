@@ -21,6 +21,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private GameObject abaSelecionarTempo;
     [SerializeField] private GameObject abaVitoriaDoJogo;
     [SerializeField] private GameObject abaDerrotaDoJogo;
+    public GameObject craftingBossFinal;
     private int TempoAtual = 0;
     public bool InventarioAberto => inventarioAberto;
 
@@ -45,6 +46,12 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             }
         }
     }
+    public void fecharTodoInventario()
+    {
+        inventarioAberto = false;
+        inventarioParent.SetActive(false);
+        abaSelecionarTempo.SetActive(false);
+    }
     public void abreInventario()
     {
         jogadorScript.Instance.MudarEstadoJogador(5);
@@ -52,14 +59,12 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         inventarioParent.SetActive(true);
         AoClicarBtnInventario();
     }
-
     public void fechaInventario()
     {
         jogadorScript.Instance.MudarEstadoJogador(0);
         inventarioAberto = false;
         inventarioParent.SetActive(false);
     }
-
     public void abreMenuDeTempos()
     {
         jogadorScript.Instance.MudarEstadoJogador(5);
@@ -213,6 +218,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         jogadorScript.Instance.IndicarInteracaoPossivel(null, false);
         if (BaseScript.Instance != null)
         {
+            Debug.Log("salvar modulos e base");
             BaseScript.Instance.SalvarEstado();
             BaseScript.Instance.SalvarEstadosDosModulos();
         }
@@ -226,8 +232,10 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             listaSlotUpgradesBase[TempoAtual].gameObject.SetActive(true); // liga o próximo botão da lista
         if (ativarDefesa)
         {
-            BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
             desastreManager.Instance.encerramentoDesastres();
+            BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
+            BaseScript.Instance.Ativar_DesativarInteracao(false);
+            jogadorScript.Instance.IndicarInteracaoPossivel(null, false);
             desastreManager.Instance.ConfigurarTimer(BaseScript.Instance.GetIntervaloDuranteOAprimoramentoDaBase(), 0f, true);
             desastreManager.Instance.PararTodasCorotinas();
             desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
@@ -317,6 +325,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     public void AbrirVitoria()
     {
         jogadorScript.Instance.MudarEstadoJogador(5);
+        craftingBossFinal.SetActive(false);
         inventarioAberto = true;
         inventarioParent.SetActive(true);
         abaVitoriaDoJogo.SetActive(true);

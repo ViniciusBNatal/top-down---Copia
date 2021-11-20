@@ -131,8 +131,8 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
                 vidaAtualText.text = vidaAtual.ToString();
                 if (vidaAtual <= 0)
                 {
-                    //StartCoroutine(this.GameOver());
-                    Debug.Log("Perdeu");
+                    StartCoroutine(this.GameOver());
+                    //Debug.Log("Perdeu");
                 }
             }
             Debug.Log(vidaAtual);
@@ -191,6 +191,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     private void EncerrarDesastresEVerificarDefesa()
     {
         VerificarModulos();
+        Ativar_DesativarInteracao(true);
         desastreManager.Instance.encerramentoDesastres();
     }
     private void RecomecarDesastres()
@@ -202,7 +203,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
             {
                 duranteMelhoria = false;
                 DefesasFeitas = 0;
-                if (UIinventario.Instance.VerificarSeLiberouBossFinal())
+                if (UIinventario.Instance.VerificarSeLiberouBossFinal())//verificação para o boss
                 {
                     //pode ter um dialogo aqui
                     Instantiate(BossPrefab, transform.position + new Vector3(0f, 14f, 0f), Quaternion.identity);
@@ -295,6 +296,9 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     {
         jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(transform);
         //tocar animação
+        if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
+            desastreManager.Instance.encerramentoDesastres();
+        desastreManager.Instance.PararTodasCorotinas();
         yield return new WaitForSeconds(2f);
         UIinventario.Instance.abrirAbaDeGameOver();
     }

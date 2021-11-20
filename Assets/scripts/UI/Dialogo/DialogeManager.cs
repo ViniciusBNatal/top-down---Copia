@@ -30,10 +30,6 @@ public class DialogeManager : MonoBehaviour
             Instance = this;
         animator = GetComponent<Animator>();
     }
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
     public void IniciarDialogo(Dialogo dialogo)
     {
         Frases.Clear();
@@ -159,5 +155,9 @@ public class DialogeManager : MonoBehaviour
             if (dialogoAtual.FocarComCamera[index] != null)
                 jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(dialogoAtual.FocarComCamera[index]);
         }
+    }
+    public bool GetEstadoDialogo()
+    {
+        return animator.GetBool("aberto");
     }
 }

@@ -18,4 +18,13 @@ public class manterEntreCenas : MonoBehaviour
         else
             Destroy(gameObject);
     }
+    //private void Awake()
+    //{
+    //    string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex);//pega o caminho da cena na pasta de arquivos
+    //    string cena = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);
+    //    if (cena != "Menu")
+    //        DontDestroyOnLoad(gameObject);
+    //    else
+    //        Destroy(gameObject);
+    //}
 }

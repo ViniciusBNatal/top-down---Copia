@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9044405272881298388}
   - component: {fileID: 6938474139005651057}
   - component: {fileID: 867507246378626916}
+  - component: {fileID: 542556833999484962}
   m_Layer: 0
   m_Name: Enxame
   m_TagString: Untagged
@@ -187,6 +188,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff927407a0bac54ab0631443ab5515b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &542556833999484962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2820751787885480187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3880f6b4fe996aa4582153937a4cea88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 8db36b365320a2f4bb1d7d21e6a7ef56, type: 2}
+  duration: 0.125
 --- !u!1 &6086819753287088105
 GameObject:
   m_ObjectHideFlags: 0

@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   posicaoDeChegadaPorTeleporte: {fileID: 0}
-  vidaMax: 3
+  vidaMax: 5
   areaDeInteracao: {fileID: 7549156829451131496}
   intervaloDuranteADefesa: 30
   QntdDeDefesasNecessarias: 1

@@ -99,9 +99,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -869401897
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: ab075967f0c1dc64dbac53f754ba68aa, type: 3}
   m_Color: {r: 1, g: 0, b: 0.004989147, a: 0.23529412}
   m_FlipX: 0
@@ -202,9 +202,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -869401897
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: -7594271441656113301, guid: 379223587f35b5d43b1027b72d0fdb20,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -229,14 +229,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6628aec52ee84a9439fe64d917fbb866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gobjPai: {fileID: 0}
+  gobjPai: {fileID: 1324030936459174767}
   duracaoExplosao: 2
   forca: 100
   itens:
   - {fileID: 11400000, guid: 3c3693480a42c664091250d2df3f1290, type: 2}
   - {fileID: 11400000, guid: c46d4db61ed04784fb525b41adac2f46, type: 2}
   - {fileID: 11400000, guid: 0e0cbdf6ffddaf741977cba61f39bf4f, type: 2}
-  qntdDoRecursoDropado: 020000000300000002000000
+  qntdDoRecursoDropado: 020000000400000003000000
   areaDaExplosaoIndicador: {fileID: 1620966432087706803}
   recursoColetavelPreFab: {fileID: 769133423071464344, guid: 501ac6922bc98ff4a90c352f139fbe97,
     type: 3}

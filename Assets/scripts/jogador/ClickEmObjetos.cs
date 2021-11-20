@@ -4,11 +4,17 @@ using UnityEngine;
 using UnityEngine.Events;
 public class ClickEmObjetos : MonoBehaviour
 {
+    public static ClickEmObjetos Instance { get; private set; }
     [SerializeField] private Material materialOutline;
     private Material materialOriginal = null;
     private SpriteRenderer objAcertado;
     //void Click(jogadorScript jogador);
     //Todos Precisam ter uma lista com os materiais default e outline
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
     private void Update()
     {
         if (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmContrucao)
@@ -59,6 +65,10 @@ public class ClickEmObjetos : MonoBehaviour
                 }
             }
         }
+    }
+    public void RetornarMaterialOriginal()
+    {
+        objAcertado.material = materialOriginal;
     }
 
 }

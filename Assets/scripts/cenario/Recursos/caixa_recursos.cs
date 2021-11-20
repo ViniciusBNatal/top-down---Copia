@@ -29,7 +29,9 @@ public class caixa_recursos : MonoBehaviour, CentroDeRecurso, SalvamentoEntreCen
     }
     public void CriaRecurso(int i)
     {
-        GameObject recurso = Instantiate(recursoColetavelPreFab, transform);
+        GameObject recurso = Instantiate(recursoColetavelPreFab, transform.position, Quaternion.identity);
+        //recurso.transform.localScale = Vector3.one;
+        //recurso.transform.SetParent(null);
         recurso.GetComponent<recurso_coletavel>().DefineItem(itens[i]);
         recurso.GetComponent<recurso_coletavel>().DefineQuantidadeItem(qntdDoRecursoDropado[i]);
         recurso.GetComponent<recurso_coletavel>().LancaRecurso(forca, direcaoLancamentoX, direcaoLancamentoY);

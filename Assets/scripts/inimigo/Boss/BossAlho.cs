@@ -55,6 +55,7 @@ public class BossAlho : MonoBehaviour
     }
     private void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
+        UIinventario.Instance.craftingBossFinal.SetActive(true);
         desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres() - ReducaoIntervaloDesastres, 0f, true);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
         StartCoroutine(this.PadraoDeAtaque());
