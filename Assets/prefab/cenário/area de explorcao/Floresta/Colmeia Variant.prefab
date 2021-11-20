@@ -99,12 +99,12 @@ PrefabInstance:
     - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
         type: 3}
       propertyPath: intervaloEntreSpawns
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
         type: 3}
       propertyPath: qntdMaximaDeInimigos
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
         type: 3}
