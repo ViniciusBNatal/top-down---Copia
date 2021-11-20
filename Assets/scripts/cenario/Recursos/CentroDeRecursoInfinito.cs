@@ -8,6 +8,10 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     [Header("Componentes do recurso dropado")]
     [SerializeField] private Item item;
     [SerializeField] private GameObject recursoColetavelPreFab;
+    [Range(-1,1)]
+    [SerializeField] private int direcaoLancamentoX;
+    [Range(-1, 1)]
+    [SerializeField] private int direcaoLancamentoY;
     [Header("Valores numéricos de centro de recursos")]
     [SerializeField] private Sprite iconeCentroDeRecursosPadrao;
     [SerializeField] private Sprite iconeCentroDeRecursosGasto;
@@ -77,7 +81,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
             GameObject recurso = Instantiate(recursoColetavelPreFab, transform.position, Quaternion.identity);
             recurso.GetComponent<recurso_coletavel>().DefineItem(item);
             recurso.GetComponent<recurso_coletavel>().DefineQuantidadeItem(qntdDoRecursoDropado);
-            recurso.GetComponent<recurso_coletavel>().LancaRecurso(forca);
+            recurso.GetComponent<recurso_coletavel>().LancaRecurso(forca, direcaoLancamentoX, direcaoLancamentoY);
             vezesExtraida++;
             if (vezesExtraida == quantasVezesPodeSerExtraida)
             {

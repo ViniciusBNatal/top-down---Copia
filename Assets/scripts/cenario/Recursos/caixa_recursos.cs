@@ -6,6 +6,10 @@ public class caixa_recursos : MonoBehaviour, CentroDeRecurso, SalvamentoEntreCen
 {
     [Header("Componentes do recurso dropado")]
     [SerializeField] private float forca;
+    [Range(-1, 1)]
+    [SerializeField] private int direcaoLancamentoX;
+    [Range(-1, 1)]
+    [SerializeField] private int direcaoLancamentoY;
     [SerializeField] private List<Item> itens = new List<Item>();
     [SerializeField] private List<int> qntdDoRecursoDropado = new List<int>();
     [Header ("Não Mexer")]
@@ -28,7 +32,7 @@ public class caixa_recursos : MonoBehaviour, CentroDeRecurso, SalvamentoEntreCen
         GameObject recurso = Instantiate(recursoColetavelPreFab, transform);
         recurso.GetComponent<recurso_coletavel>().DefineItem(itens[i]);
         recurso.GetComponent<recurso_coletavel>().DefineQuantidadeItem(qntdDoRecursoDropado[i]);
-        recurso.GetComponent<recurso_coletavel>().LancaRecurso(forca);
+        recurso.GetComponent<recurso_coletavel>().LancaRecurso(forca, direcaoLancamentoX, direcaoLancamentoY);
         recurso.transform.SetParent(null);//desasosia recursos da caixa
     }
     public void SalvarEstado()

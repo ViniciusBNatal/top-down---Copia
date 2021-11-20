@@ -6,6 +6,8 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
 {
     [SerializeField] private Item item;
     [SerializeField] private int qntd;
+    [SerializeField] private float tempoParaLiberarColeta;
+    [SerializeField] private BoxCollider2D areaColetavel;
     private GameObject NPCRelacionado = null;
     private Rigidbody2D rb;
     private SpriteRenderer icone;
@@ -18,6 +20,8 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     void Start()
     {
         icone.sprite = item.icone;
+        if (areaColetavel.enabled == false)
+            StartCoroutine(this.ligarColeta());
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -40,16 +44,33 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     {
         qntd = q;
     }
-    public void LancaRecurso(float forca)
+    public void LancaRecurso(float forca, float direcaoX, float direcaoY)
     {
-        float localDeDropX = Random.Range(-1, 1);
-        if (localDeDropX == 0)
-            localDeDropX = 1;
-        float localDeDropY = Random.Range(-1, 1);
-        if (localDeDropY == 0)
-            localDeDropY = 1;
+        float localDeDropX;
+        float localDeDropY;
+        if (direcaoX != 0)        
+            localDeDropX = direcaoX;        
+        else
+        {
+            localDeDropX = Random.Range(-1, 1);
+            if (localDeDropX == 0)
+                localDeDropX = 1;
+        }
+        if (direcaoY != 0)
+            localDeDropY = direcaoY;
+        else
+        {
+            localDeDropY = Random.Range(-1, 1);
+            if (localDeDropY == 0)
+                localDeDropY = 1;
+        }
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector2(localDeDropX, localDeDropY).normalized * forca);
+    }
+    IEnumerator ligarColeta()
+    {
+        yield return new WaitForSeconds(tempoParaLiberarColeta);
+        areaColetavel.enabled = true;
     }
     public void SalvarEstado()
     {

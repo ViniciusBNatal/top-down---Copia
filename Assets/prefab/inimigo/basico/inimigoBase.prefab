@@ -113,7 +113,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566375125526406914}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -163,7 +163,6 @@ MonoBehaviour:
   projetil: {fileID: 1029496171083325692, guid: 0612f2afecd8da940b203880a2641b0c,
     type: 3}
   pontoDisparo: {fileID: 5766492688547367779}
-  pontosDeFuga: []
   vidaMaxima: 100
   velocidade: 3
   taxaDisparo: 2

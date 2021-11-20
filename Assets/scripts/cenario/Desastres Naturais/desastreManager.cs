@@ -166,7 +166,7 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
         while (!desastreAcontecendo)
         {
             yield return new WaitForSeconds(1f);
-            if (jogadorScript.Instance.GetEstadoAtualJogador() != jogadorScript.estados.EmDialogo)
+            if (jogadorScript.Instance.estadosJogador != jogadorScript.estados.EmDialogo)
             {
                 timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
                 if (segundos == 0 && minutos == 0)

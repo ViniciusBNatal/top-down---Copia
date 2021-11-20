@@ -69,6 +69,7 @@ public class inimigoScript : MonoBehaviour
         {
             pontoInicial  = Instantiate(primPontoDeNavPrefab, transform.position, Quaternion.identity);
             pontoInicial.transform.SetParent(null);
+            pontosDeNavegacaoDeRetorno.Add(pontoInicial.transform.position);
         }     
         if (CentroDeSpawn != null && !CentroDeSpawn.GetCentroDeInimigos())
         {
@@ -150,6 +151,7 @@ public class inimigoScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && this.isActiveAndEnabled)
         {
+            Debug.Log("saiu da area");
             alvo = null;
             rb.velocity = Vector2.zero;
             salvandoPontosDeNavegacao = null;
@@ -270,8 +272,8 @@ public class inimigoScript : MonoBehaviour
     {
         while (alvo != null)
         {
-            pontosDeNavegacaoDeRetorno.Add(transform.position);
             yield return new WaitForSeconds(1f);
+            pontosDeNavegacaoDeRetorno.Add(transform.position);
         }
     }
     public void AdicionarPontoDeFuga(GameObject gobj)
@@ -281,12 +283,13 @@ public class inimigoScript : MonoBehaviour
     }
     private Vector3 ProximoPonto()
     {
-        if (pontosDeNavegacaoDeRetorno.Count > 0)
-        {
+        //if (pontosDeNavegacaoDeRetorno.Count > 0)
+        //{
             return pontosDeNavegacaoDeRetorno[pontosDeNavegacaoDeRetorno.Count - 1];
-        }
-        else
-            return transform.position;
+        //}
+        //else
+            //return pontosDeNavegacaoDeRetorno[0];
+            //return transform.position;
     }
     private void VerificarSePontoFoiAlcancado()
     {
@@ -305,12 +308,12 @@ public class inimigoScript : MonoBehaviour
             for (int i = pontosDeNavegacaoDeRetorno.Count - 1; i >= 1; i--)
                 pontosDeNavegacaoDeRetorno.RemoveAt(i);
         }
-        if (Mathf.Abs(ProximoPonto().x) - Mathf.Abs(transform.position.x) <= .5f && Mathf.Abs(ProximoPonto().y) - Mathf.Abs(transform.position.y) <= .5f)
+        if (Mathf.Abs(ProximoPonto().x - transform.position.x) <= .5f && Mathf.Abs(ProximoPonto().y - transform.position.y) <= .5f)
         {
-            if (pontosDeNavegacaoDeRetorno.Count == 0)
+            if (pontosDeNavegacaoDeRetorno.Count == 1)
             {
                 PrecisaRetornarAoPontoInicial = false;
-                pontosDeNavegacaoDeRetorno.Clear();
+                //pontosDeNavegacaoDeRetorno.Clear();
                 rb.velocity = Vector2.zero;
             }
             else

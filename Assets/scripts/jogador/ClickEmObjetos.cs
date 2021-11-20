@@ -11,7 +11,7 @@ public class ClickEmObjetos : MonoBehaviour
     //Todos Precisam ter uma lista com os materiais default e outline
     private void Update()
     {
-        if (jogadorScript.Instance.GetEstadoAtualJogador() == jogadorScript.estados.EmContrucao)
+        if (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmContrucao)
         {
             Vector2 mousePos = jogadorScript.Instance.PegaPosicoMouse();
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);

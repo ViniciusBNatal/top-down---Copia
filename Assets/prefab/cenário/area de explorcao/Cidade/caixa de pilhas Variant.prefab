@@ -113,6 +113,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
         type: 3}
+      propertyPath: iconeCentroDeRecursosGasto
+      value: 
+      objectReference: {fileID: 21300000, guid: 92c93fb2d43e9e245a66eb4208647862,
+        type: 3}
+    - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
+        type: 3}
       propertyPath: iconeCentroDeRecursosPadrao
       value: 
       objectReference: {fileID: 21300000, guid: 1be8a89ff4d1e9e44876b8be3145fc9d,

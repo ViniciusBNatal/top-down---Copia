@@ -25,6 +25,8 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
     static Dictionary<string, Item> itemMissaoNPC = new Dictionary<string, Item>();
     //dados dialogos unicos
     static Dictionary<string, bool> dialogosFinalizados = new Dictionary<string, bool>();
+    //dados botões
+    static Dictionary<string, bool> botaoUsoUnico = new Dictionary<string, bool>();
     // Start is called before the first frame update
     void Start()
     {
@@ -235,6 +237,26 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                 //carrega se ja falou
                 if (dialogosFinalizados.ContainsKey(dialogoScript.gameObject.name))
                     dialogoScript.SetDialogoORealizado(dialogosFinalizados[dialogoScript.gameObject.name]);
+                break;
+        }
+    }
+    public void Salvar_CarregarDadosDosBotoes(Botao botaoScript, int acao)
+    {
+        switch (acao)
+        {
+            case 0://salvar
+                //salva se ja foi precionado
+                if (!botaoUsoUnico.ContainsKey(botaoScript.gameObject.name))
+                    botaoUsoUnico.Add(botaoScript.gameObject.name, botaoScript.GetUsoUnico());
+                /*if (!botaoUsoUnico.ContainsKey(botaoScript.gameObject.name))
+                    botaoUsoUnico[botaoScript.gameObject.name] = botaoScript.GetUsoUnico();
+                else
+                    botaoUsoUnico.Add(botaoScript.gameObject.name, botaoScript.GetUsoUnico());*/
+                break;
+            case 1://carregar
+                //carrega se ja foi precionado
+                if (botaoUsoUnico.ContainsKey(botaoScript.gameObject.name))
+                    botaoScript.SetUsoUnico(botaoUsoUnico[botaoScript.gameObject.name]);
                 break;
         }
     }

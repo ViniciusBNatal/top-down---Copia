@@ -14,7 +14,7 @@ public class interagivel : MonoBehaviour
     {
         if (emAlcance)
         {
-            if (Input.GetKeyDown(btnInteragir) && ((int)jogadorScript.Instance.GetEstadoAtualJogador() == 0 || (int)jogadorScript.Instance.GetEstadoAtualJogador() == 5))
+            if (Input.GetKeyDown(btnInteragir) && (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmAcao || jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmUI))
             {
                 acao.Invoke();
             }

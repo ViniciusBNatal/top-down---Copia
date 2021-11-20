@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Botao : MonoBehaviour
+public class Botao : MonoBehaviour, SalvamentoEntreCenas
 {
     private Animator animator;
     [SerializeField] private UnityEvent evento;
@@ -17,16 +17,21 @@ public class Botao : MonoBehaviour
     [SerializeField] private GameObject inimigo;
     [SerializeField] private Transform pontoDeSpawnInimigo;
 
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         animator.SetBool("USOUNICO", usoUnico);
+    }
+    private void Start()
+    {
+        //animator = GetComponent<Animator>();
+        //animator.SetBool("USOUNICO", usoUnico);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            animator.SetBool("PRECIONADO", true);
+            EstadoBotao();
             evento.Invoke();
         }
     }
@@ -34,24 +39,30 @@ public class Botao : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            if (!usoUnico)
-                animator.SetBool("PRECIONADO", false);
+            EstadoBotao();
         }
     }
     public void TentarAbrirPorta()
+    {
+        if (EstadoBotao())
+            portaRelacionada.PortaPorBotao(valorBotao);
+    }
+    private bool EstadoBotao()
     {
         if (usoUnico)
         {
             if (!precionado)
             {
                 precionado = true;
-                portaRelacionada.PortaPorBotao(valorBotao);
+                SalvarEstado();
             }
         }
         else
         {
-            portaRelacionada.PortaPorBotao(valorBotao);
+            precionado = !precionado;
         }
+        animator.SetBool("PRECIONADO", precionado);
+        return precionado;
     }
     public void acaoComInimigos()
     {
@@ -63,5 +74,26 @@ public class Botao : MonoBehaviour
         {
             inimigo.GetComponent<inimigoScript>().enabled = true;
         }
+    }
+    public void SalvarEstado()
+    {
+        if (GetComponent<SalvarEstadoDoObjeto>() != null)
+        {
+            GetComponent<SalvarEstadoDoObjeto>().SalvarSeJaFoiModificado();
+            GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosBotoes(this, 0);
+        }
+    }
+    public void AcaoSeEstadoJaModificado()
+    {
+        GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosBotoes(this, 1);
+        EstadoBotao();
+    }
+    public bool GetUsoUnico()
+    {
+        return usoUnico;
+    }
+    public void SetUsoUnico(bool b)
+    {
+        usoUnico = b;
     }
 }

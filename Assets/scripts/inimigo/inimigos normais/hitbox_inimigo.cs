@@ -12,7 +12,6 @@ public class hitbox_inimigo : MonoBehaviour
         forcaRepulsao = inimigo.forcaRepulsao; // * inimigo.GetComponent<inimigo>().raioVisao;
         duracaoStun = inimigo.tempoDeStunNoJogador;
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player" && inimigo.isActiveAndEnabled)

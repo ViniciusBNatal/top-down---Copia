@@ -18093,6 +18093,7 @@ MonoBehaviour:
   InterfaceJogador: {fileID: 1663843870}
   iconeInteracao: {fileID: 1351623583}
   comportamentoCamera: {fileID: 942151170}
+  estadosJogador: 0
 --- !u!114 &2056875267
 MonoBehaviour:
   m_ObjectHideFlags: 0

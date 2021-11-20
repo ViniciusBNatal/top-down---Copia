@@ -48,7 +48,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         SendoEmpurrado,
         EmUI
     };
-    private estados estadosJogador = estados.EmAcao;// 0 = em acao, 1 = em menus, 2 = em construcao 
+    public estados estadosJogador = estados.EmAcao;// 0 = em acao, 1 = em menus, 2 = em construcao 
     private ReceitaDeCrafting moduloCriado;
     private bool podeAnimar = true;
     private Vector2 direcaoProjetil = Vector2.zero;
@@ -384,33 +384,5 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         moduloCriado = ScriptableObject.CreateInstance<ReceitaDeCrafting>();
         moduloCriado = modulo;
-    }
-    public estados GetEstadoAtualJogador()
-    {
-        return estadosJogador;
-    }
-    public estados CompararComEstado(int e)
-    {
-        estados estadoEscolhido = estados.EmAcao;
-        switch (e)
-        {
-            case 0:
-                estadoEscolhido = estados.EmAcao;
-                return estadoEscolhido;
-            case 1:
-                estadoEscolhido = estados.Paralisado;
-                return estadoEscolhido;
-            case 2:
-                estadoEscolhido = estados.EmContrucao;
-                return estadoEscolhido;
-            case 3:
-                estadoEscolhido = estados.EmDialogo;
-                return estadoEscolhido;
-            case 4:
-                estadoEscolhido = estados.SendoEmpurrado;
-                return estadoEscolhido;
-            default:
-                return estadoEscolhido;
-        }
     }
 }

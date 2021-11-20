@@ -9,7 +9,6 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     private bool inventarioAberto = false;
     [SerializeField] private bool tutorial;
     [SerializeField] private List<UpgradeSlot> listaSlotUpgradesBase = new List<UpgradeSlot>();
-    private List<ItemSlot> listaSlotItem = new List<ItemSlot>();
     private Dictionary<string, ItemSlot> itens = new Dictionary<string, ItemSlot>();
     [Header("Nao Mexer")]
     [SerializeField] private GameObject CaixaDeDialogos;
@@ -32,7 +31,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmAcao || jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmUI))
         {
             if (inventarioAberto)
             {
@@ -98,14 +97,24 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         ItemSlot script = obj.GetComponent<ItemSlot>();
         script.item = item;
         script.atualizaQuantidade(quantidade);
-        listaSlotItem.Add(script);
         itens.Add(item.ID, obj.GetComponent<ItemSlot>());
     }
     public void AtualizaInventarioUI(Item item, int quantidade)
     {
         if (itens.ContainsKey(item.ID))
         {
-            itens[item.ID].atualizaQuantidade(quantidade);
+            if (itens[item.ID].GetQntdRecurso() + quantidade == 0)
+            {
+                itens[item.ID].atualizaQuantidade(quantidade);
+                itens[item.ID].gameObject.SetActive(false);
+                //Destroy(itens[item.ID].gameObject);
+                //itens.Remove(item.ID);
+            }
+            else
+            {
+                itens[item.ID].atualizaQuantidade(quantidade);
+                itens[item.ID].gameObject.SetActive(true);
+            }
         }
         else
         {
@@ -157,7 +166,8 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         {
             for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.receita.itensNecessarios.Count; tiposRecursosParaCrafting++)
             {
-                itens[slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]);
+                AtualizaInventarioUI(slot.receita.itensNecessarios[tiposRecursosParaCrafting], -slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]);
+                //itens[slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]);
             }
             jogadorScript.Instance.SetModuloConstruido(slot.construcaoConfirmada());
             BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(true);
@@ -188,7 +198,8 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         {
             for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.GetReceita().itensNecessarios.Count; tiposRecursosParaCrafting++)
             {
-                itens[slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting]);
+                AtualizaInventarioUI(slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting], -slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting]);
+                //itens[slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting]);
             }
             fechaMenuDeTempos();
             Tutorial();

@@ -20,8 +20,8 @@ public class ItemSlot : MonoBehaviour
         qntdRecurso += quantidade;
         qntdItemText.text = qntdRecurso.ToString("000");
     }
-    public void destroiSlot()
+    public int GetQntdRecurso()
     {
-        Destroy(gameObject);
+        return qntdRecurso;
     }
 }
