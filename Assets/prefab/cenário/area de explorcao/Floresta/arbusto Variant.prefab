@@ -99,6 +99,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: arbusto Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4695458348697519486, guid: 6ec9799e588423a4592f0f3e551ba1db,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
         type: 3}
       propertyPath: item
@@ -109,7 +114,7 @@ PrefabInstance:
         type: 3}
       propertyPath: iconeCentroDeRecursosGasto
       value: 
-      objectReference: {fileID: 21300000, guid: 71dac468885ba944d824c0a6d6f39e7e,
+      objectReference: {fileID: 21300000, guid: e678da9470195e042ba24ac0c878e77f,
         type: 3}
     - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
         type: 3}

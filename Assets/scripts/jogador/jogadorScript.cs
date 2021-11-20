@@ -287,7 +287,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 {
                     objeto.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigoScript>().mudancaVida(-danoMelee);
                 }
-                else if (objeto.gameObject.layer == 9)
+                else if (objeto.gameObject.layer == 9 && !desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
                 {
                     objeto.gameObject.GetComponentInParent<CentroDeRecurso>().RecebeuHit();
                 }
