@@ -113,12 +113,6 @@ MonoBehaviour:
     EstadoImagemNPC: []
     FocarComCamera: []
     EventosDuranteDialogo: []
-  - NomeNPC: []
-    IDdoNPC: 
-    Frases: []
-    EstadoImagemNPC: []
-    FocarComCamera: []
-    EventosDuranteDialogo: []
   EventosAoMudarEstadoPorta:
     m_PersistentCalls:
       m_Calls: []

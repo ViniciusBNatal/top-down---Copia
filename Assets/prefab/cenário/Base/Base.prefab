@@ -311,12 +311,13 @@ MonoBehaviour:
   posicaoDeChegadaPorTeleporte: {fileID: 0}
   vidaMax: 3
   areaDeInteracao: {fileID: 7549156829451131496}
-  intervaloDuranteADefesa: 3
+  intervaloDuranteADefesa: 30
   QntdDeDefesasNecessarias: 1
   BossPrefab: {fileID: 3199460214712093557, guid: 113e7644540952345a2351fa022d79b5,
     type: 3}
   vidaAtualText: {fileID: 8254519956537495540}
   tutorial: 1
+  animator: {fileID: 0}
 --- !u!61 &8083962399815963917
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -334,7 +335,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.75, y: 2.75}
+    oldSize: {x: 3, y: 2.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -379,7 +380,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.75, y: 2.75}
+    oldSize: {x: 3, y: 2.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
