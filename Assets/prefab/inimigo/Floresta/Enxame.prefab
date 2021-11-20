@@ -123,7 +123,7 @@ MonoBehaviour:
   projetil: {fileID: 1029496171083325692, guid: 0612f2afecd8da940b203880a2641b0c,
     type: 3}
   pontoDisparo: {fileID: 8142450329282733210}
-  vidaMaxima: 50
+  vidaMaxima: 100
   velocidade: 2
   taxaDisparo: 2
   velocidadeProjetil: 10
