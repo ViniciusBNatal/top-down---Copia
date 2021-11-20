@@ -239,7 +239,7 @@ PrefabInstance:
     - target: {fileID: 467254051271393572, guid: 59f09c031e293154ab34b2aec70998e2,
         type: 3}
       propertyPath: acao.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PortaPorChave
+      value: InteracaoComPorta
       objectReference: {fileID: 0}
     - target: {fileID: 3433617467775492415, guid: 59f09c031e293154ab34b2aec70998e2,
         type: 3}

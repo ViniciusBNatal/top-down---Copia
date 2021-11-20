@@ -45,7 +45,7 @@ public class Botao : MonoBehaviour, SalvamentoEntreCenas
     public void TentarAbrirPorta()
     {
         if (EstadoBotao())
-            portaRelacionada.PortaPorBotao(valorBotao);
+            portaRelacionada.BotaoPrecionado(valorBotao);
     }
     private bool EstadoBotao()
     {

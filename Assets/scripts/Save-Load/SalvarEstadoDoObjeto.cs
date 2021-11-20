@@ -15,6 +15,7 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
     //dados das portas
     static Dictionary<string, bool> estadoPortas = new Dictionary<string, bool>();
     static Dictionary<string, bool> eventoEspecialOcorrido = new Dictionary<string, bool>();
+    static Dictionary<string, int> btnsPrecionados = new Dictionary<string, int>();
     //dados dos centros de recurso
     static Dictionary<string, bool> estadoCentroDeRecursos = new Dictionary<string, bool>();
     static Dictionary<string, int> tempoRestanteCentroDeRecursos = new Dictionary<string, int>();
@@ -77,6 +78,8 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
         itemMissaoNPC.Clear();
         //dialogos unicos
         dialogosFinalizados.Clear();
+        //botoes
+        botaoUsoUnico.Clear();
     }
     public void Salvar_CarregarDadosDaBase(BaseScript baseScript, int acao)
     {
@@ -89,7 +92,7 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                 if (VidaDaBase != -1)
                     baseScript.SetVidaAtual(VidaDaBase);
                 break;
-        }    
+        }
     }
     public void Salvar_CarregarDadosDosModulos(SlotModulo moduloScript, int acao)
     {
@@ -140,6 +143,11 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                     eventoEspecialOcorrido[portaScript.gameObject.name] = portaScript.GetEventoOcorrido();
                 else
                     eventoEspecialOcorrido.Add(portaScript.gameObject.name, portaScript.GetEventoOcorrido());
+                //salva botoes precionados
+                if (btnsPrecionados.ContainsKey(portaScript.gameObject.name))
+                    btnsPrecionados[portaScript.gameObject.name] = portaScript.GetBotoesPrecionados();
+                else
+                    btnsPrecionados.Add(portaScript.gameObject.name, portaScript.GetBotoesPrecionados());
                 break;
             case 1://carregar
                 //carrega estado porta
@@ -148,6 +156,9 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                 //carrega evento especial
                 if (eventoEspecialOcorrido.ContainsKey(portaScript.gameObject.name))
                     portaScript.SetEventoOcorrido(eventoEspecialOcorrido[portaScript.gameObject.name]);
+                //carrega botoes precionados
+                if (btnsPrecionados.ContainsKey(portaScript.gameObject.name))
+                    portaScript.SetBotoesPrecionados(btnsPrecionados[portaScript.gameObject.name]);
                 break;
         }
     }
@@ -183,7 +194,7 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                     centroScript.SetCentroDeInimigos(estadoCentroDeRecursos[centroScript.gameObject.name]);
                 //carrega tempo restante
                 if (tempoRestanteCentroDeRecursos.ContainsKey(centroScript.gameObject.name))
-                    centroScript.SetTempoRestanteCooldown(tempoRestanteCentroDeRecursos[centroScript.gameObject.name] -(Mathf.FloorToInt(Time.time - SalvamentoDosCentrosDeRecursosManager.Instance.TempoDeSaidaDaFase(SceneManager.GetActiveScene().buildIndex))));
+                    centroScript.SetTempoRestanteCooldown(tempoRestanteCentroDeRecursos[centroScript.gameObject.name] - (Mathf.FloorToInt(Time.time - SalvamentoDosCentrosDeRecursosManager.Instance.TempoDeSaidaDaFase(SceneManager.GetActiveScene().buildIndex))));
                 //carrega vida restante
                 if (vidaRestanteCentroDeRecursos.ContainsKey(centroScript.gameObject.name))
                     centroScript.SetVidaAtual(vidaRestanteCentroDeRecursos[centroScript.gameObject.name]);

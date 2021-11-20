@@ -35,30 +35,28 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
         if (chaveNecessaria != null)
             chave = chaveNecessaria.GetComponent<recurso_coletavel>().ReferenciaItem();
     }
-    public void PortaPorBotao(int valorBotao)
+    public void BotaoPrecionado(int valorBotao)
     {
         botoesPrecionados += valorBotao;
-        if (botoesPrecionados >= nDeBotoesNecessarios)
+        if (!aberta)
         {
-            //AbrePorta();
-            StartCoroutine(this.TempoPorta());
+            if (UIinventario.Instance.ProcurarChave(chave) && botoesPrecionados >= nDeBotoesNecessarios)
+                StartCoroutine(this.TempoPorta());
         }
+        else
+            StartCoroutine(this.TempoPorta());
     }
-    public void PortaPorChave()
+    public void InteracaoComPorta()
     {
         if (!aberta)
         {
-            if (UIinventario.Instance.ProcurarChave(chave))
-            {
+            if (UIinventario.Instance.ProcurarChave(chave) && botoesPrecionados >= nDeBotoesNecessarios)
                 StartCoroutine(this.TempoPorta());
-            }
             else
                 DialogeManager.Instance.IniciarDialogo(dialogo[0]);
         }
         else
-        {
             StartCoroutine(this.TempoPorta());
-        }
     }
     private IEnumerator TempoPorta()
     {
@@ -159,6 +157,14 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     public void SetEventoOcorrido(bool b)
     {
         eventoOcorreu = b;
+    }
+    public int GetBotoesPrecionados()
+    {
+        return botoesPrecionados;
+    }
+    public void SetBotoesPrecionados(int i)
+    {
+        botoesPrecionados = i;
     }
     public void AtivarRobo()
     {
