@@ -46,11 +46,13 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
         flash = GetComponent<EfeitoFlash>();
         SpriteDoObj = GetComponent<SpriteRenderer>();
         VidaAtualDoCentroDeSpawn = VidaMaxDoCentroDeSpawn;
+        
     }
     private void Start()
     {
         SalvamentoDosCentrosDeRecursosManager.Instance.AdicionarCentroALista(this.gameObject);
-        DefineEstado();
+        if (GetComponent<SalvarEstadoDoObjeto>() != null && !GetComponent<SalvarEstadoDoObjeto>().GetObjNaListaDeSalvos(this.gameObject.name))
+            DefineEstado();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -203,6 +205,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     public void AcaoSeEstadoJaModificado()
     {
         GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosCentrosDeRecursos(this, 1);
+        DefineEstado();
     }
     //funções de set e get
     private void DefineSprite(Sprite sprite)

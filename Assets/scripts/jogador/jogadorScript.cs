@@ -48,7 +48,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         SendoEmpurrado,
         EmUI
     };
-    [HideInInspector] public estados estadosJogador = estados.EmAcao;// 0 = em acao, 1 = em menus, 2 = em construcao 
+    /*[HideInInspector]*/ public estados estadosJogador = estados.EmAcao;// 0 = em acao, 1 = em menus, 2 = em construcao 
     private ReceitaDeCrafting moduloCriado;
     private bool podeAnimar = true;
     private Vector2 direcaoProjetil = Vector2.zero;
@@ -260,7 +260,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 if (BaseScript.Instance != null)
                 {
                     BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(false);
-                    ClickEmObjetos.Instance.RetornarMaterialOriginal(); 
+                    //ClickEmObjetos.Instance.RetornarMaterialOriginal(); 
                 }
                 break;
             case 3://em dialogo

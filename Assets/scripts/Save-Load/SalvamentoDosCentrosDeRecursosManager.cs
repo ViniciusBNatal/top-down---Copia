@@ -28,6 +28,7 @@ public class SalvamentoDosCentrosDeRecursosManager : MonoBehaviour
         string cena = IndexFaseBase.Substring(0, IndexFaseBase.Length - 6).Substring(IndexFaseBase.LastIndexOf('/') + 1);
         if (TemposDeSaidaDasFases.ContainsKey(cena))
         {
+            //Mydebug.mydebug.MyPrint("salvei tempo de saida da fase");
             return TemposDeSaidaDasFases[cena];
         }
         else

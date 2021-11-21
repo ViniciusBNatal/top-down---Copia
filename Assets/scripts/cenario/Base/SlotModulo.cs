@@ -152,7 +152,7 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
     }
     public void VisualConstrucao(bool emConstrucao)
     {
-        if (emConstrucao)
+        if (emConstrucao && !animacaoConstrucao.activeInHierarchy)
         {
             animacaoConstrucao.SetActive(true);
             if (iconeDoModulo.sprite == null)//visal de costrução
@@ -171,6 +171,8 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
             //iconeSlotDeModulo.material = materiais[0];
             //iconeDoModulo.material = materiais[0];
             animacaoConstrucao.SetActive(false);
+            if (iconeSlotDeModulo.material != materiais[0])
+                iconeSlotDeModulo.material = materiais[0];
         }
     }
 }

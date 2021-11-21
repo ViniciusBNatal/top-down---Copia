@@ -102,6 +102,8 @@ MonoBehaviour:
   item: {fileID: 0}
   recursoColetavelPreFab: {fileID: 769133423071464344, guid: 501ac6922bc98ff4a90c352f139fbe97,
     type: 3}
+  direcaoLancamentoX: 0
+  direcaoLancamentoY: 0
   iconeCentroDeRecursosPadrao: {fileID: 0}
   iconeCentroDeRecursosGasto: {fileID: 0}
   Timer: {fileID: 5246777891263325015}
@@ -116,8 +118,11 @@ MonoBehaviour:
   iconeCentroDeInimigos: {fileID: 0}
   inimigoPrefab: {fileID: 0}
   qntdMaximaDeInimigos: 0
+  qntdMaximaDeInimigosEmCena: 0
   intervaloEntreSpawns: 0
   VidaMaxDoCentroDeSpawn: 0
+  distanciaXDeSpawnDosInimigos: 0
+  distanciaYDeSpawnDosInimigos: 0
 --- !u!70 &6895422993060629283
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
