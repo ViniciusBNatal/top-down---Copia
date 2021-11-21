@@ -16,19 +16,20 @@ public class inimigoAnimScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat("MOVHORIZONTAL", inimigoScript.direcaoDeMovimentacao.x);
-        animator.SetFloat("MOVVERTICAL", inimigoScript.direcaoDeMovimentacao.y);
+        if (!inimigoScript.GetParalisado())
+        {
+            animator.SetFloat("MOVHORIZONTAL", inimigoScript.direcaoDeMovimentacao.x);
+            animator.SetFloat("MOVVERTICAL", inimigoScript.direcaoDeMovimentacao.y);
+        }
     }
     public void AtaqueMelee()
     {
         animator.SetTrigger("ATQMELEE");
     }
-    public void AtaqueRanged(Vector2 direcaoDisparo, float multiplicador)
+    public void AtaqueRanged(float multiplicador)
     {
         animator.SetFloat("TXDISP", multiplicador);
         animator.SetBool("ATQRANGE", true);
-        animator.SetFloat("RANGEHORZ", direcaoDisparo.x);
-        animator.SetFloat("RANGEVERT", direcaoDisparo.y);
     }
     public void Esconder()
     {
@@ -41,5 +42,14 @@ public class inimigoAnimScript : MonoBehaviour
     public void PararDisparos()
     {
         animator.SetBool("ATQRANGE", false);
+    }
+    public Animator GetAnimator()
+    {
+        return animator;
+    }
+    public void SetDirecaoProjetil(Vector2 vec)
+    {
+        animator.SetFloat("RANGEHORZ", vec.x);
+        animator.SetFloat("RANGEVERT", vec.y);
     }
 }

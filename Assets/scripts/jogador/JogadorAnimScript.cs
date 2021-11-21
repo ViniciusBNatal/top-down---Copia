@@ -16,7 +16,7 @@ public class JogadorAnimScript : MonoBehaviour
 
     void Update()
     {
-        if (jogador.GetPodeAnimar())
+        if (jogador.GetPodeAnimar() && !UIinventario.Instance.pausado)
         {
             movimento.x = Input.GetAxisRaw("Horizontal");
             movimento.y = Input.GetAxisRaw("Vertical");
@@ -35,14 +35,16 @@ public class JogadorAnimScript : MonoBehaviour
             }
         }
     }
-    public void AnimarAtaqueMelee(float dirX, float dirY)
+    public void AnimarAtaqueMelee(float dirX, float dirY, float taxaDeAtaque)
     {
+        animator.SetFloat("TXMELEE", taxaDeAtaque);
         animator.SetFloat("HORZMELEE", dirX);
         animator.SetFloat("VERTMELEE", dirY);
         animator.SetTrigger("MELEE");
     }
-    public void AnimarDisparo(float dirX, float dirY)
+    public void AnimarDisparo(float dirX, float dirY, float taxaDeDisparo)
     {
+        animator.SetFloat("TXDISP", taxaDeDisparo);
         animator.SetFloat("HORZDISPARO", dirX);
         animator.SetFloat("VERTDISPARO", dirY);
         animator.SetTrigger("DISPARO");

@@ -30,13 +30,16 @@ public class inimigoScript : MonoBehaviour
     //variaveis privadas
     [Header("Não Mexer")]
     [SerializeField] private GameObject primPontoDeNavPrefab;
-    private CircleCollider2D areaDetecao;
+    [SerializeField] private Collider2D areaDetecao;
+    [SerializeField] private GameObject animacaoRelogio;
+    [SerializeField] private Material[] materiais;
     private EfeitoFlash flash;
     private inimigoAnimScript inimigoAnimScript;
     private Vector2 direcaoProjetil;
     private Transform alvo;
     private float vidaAtual;
-    //private bool atirando = false;
+    private bool paralisado = false;
+    private SpriteRenderer spriteInimigo;
     //private bool trocarOrdemPontosDeFuga = false;
     public enum TiposDeMovimentacao
     {
@@ -55,14 +58,18 @@ public class inimigoScript : MonoBehaviour
     private UnityAction AoReceberDano;
     private string pontoDefugaParaTeleportar;
     private bool escondido = false;
+    private bool atirando = false;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        areaDetecao = GetComponent<CircleCollider2D>();
         flash = GetComponent<EfeitoFlash>();
         rb = GetComponent<Rigidbody2D>();
         inimigoAnimScript = GetComponent<inimigoAnimScript>();
+        spriteInimigo = GetComponent<SpriteRenderer>();
         vidaAtual = vidaMaxima;
+    }
+    void Start()
+    {
         if (tiposDeMovimentacao == TiposDeMovimentacao.movimentacaoFixa)
             movimentacaoFixa = true;
         else if (tiposDeMovimentacao == TiposDeMovimentacao.movimentacaoLivre)
@@ -81,32 +88,35 @@ public class inimigoScript : MonoBehaviour
     private void FixedUpdate()
     {
         //orientacaoSprite();
-        switch (tiposDeMovimentacao)
+        if (!paralisado)
         {
-            //case TiposDeMovimentacao.estatico:
-            //    break;
-            case TiposDeMovimentacao.movimentacaoFixa:
-                rb.velocity = (direcaoDeMovimentacao * velocidade);
-                break;
-            case TiposDeMovimentacao.movimentacaoLivre:
-                if (alvo != null)
-                {
-                    direcaoDeMovimentacao = (alvo.position - transform.position).normalized;
+            switch (tiposDeMovimentacao)
+            {
+                //case TiposDeMovimentacao.estatico:
+                //    break;
+                case TiposDeMovimentacao.movimentacaoFixa:
                     rb.velocity = (direcaoDeMovimentacao * velocidade);
-                    if (salvandoPontosDeNavegacao == null)
-                        salvandoPontosDeNavegacao = StartCoroutine(this.salvaPontosParaNavegacao());
-                }
-                else if (PrecisaRetornarAoPontoInicial)
-                {
-                    direcaoDeMovimentacao = (ProximoPonto() - transform.position).normalized;
-                    rb.velocity = (direcaoDeMovimentacao * velocidade);
-                    VerificarSePontoFoiAlcancado();
-                }
-                break;
-            //case TiposDeMovimentacao.movimentacaoEntrePontosFixa:
-            //    break;
-            default:
-                break;
+                    break;
+                case TiposDeMovimentacao.movimentacaoLivre:
+                    if (alvo != null)
+                    {
+                        direcaoDeMovimentacao = (alvo.position - transform.position).normalized;
+                        rb.velocity = (direcaoDeMovimentacao * velocidade);
+                        if (salvandoPontosDeNavegacao == null)
+                            salvandoPontosDeNavegacao = StartCoroutine(this.salvaPontosParaNavegacao());
+                    }
+                    else if (PrecisaRetornarAoPontoInicial)
+                    {
+                        direcaoDeMovimentacao = (ProximoPonto() - transform.position).normalized;
+                        rb.velocity = (direcaoDeMovimentacao * velocidade);
+                        VerificarSePontoFoiAlcancado();
+                    }
+                    break;
+                //case TiposDeMovimentacao.movimentacaoEntrePontosFixa:
+                //    break;
+                default:
+                    break;
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
@@ -123,7 +133,6 @@ public class inimigoScript : MonoBehaviour
                     inimigoAnimScript.Surgir(false);
                     inimigoAnimScript.Esconder();
                 }
-                //Teleportar(tiposDeMovimentacao);
             }
             else
             {
@@ -139,11 +148,7 @@ public class inimigoScript : MonoBehaviour
             //retornando = false;
             if (disparo)
             {
-                //atirando = true;
-                direcaoProjetil = (alvo.position - pontoDisparo.position).normalized;
-                inimigoAnimScript.AtaqueRanged(direcaoProjetil, taxaDisparo);
-            //    if (!atirando)
-            //        StartCoroutine(this.Disparar());
+                inimigoAnimScript.AtaqueRanged(taxaDisparo);
             }
         }
     }
@@ -152,6 +157,7 @@ public class inimigoScript : MonoBehaviour
         if (collision.gameObject.tag == "Player" && this.isActiveAndEnabled)
         {
             alvo = null;
+            atirando = false;
             rb.velocity = Vector2.zero;
             salvandoPontosDeNavegacao = null;
             PrecisaRetornarAoPontoInicial = true;
@@ -191,36 +197,19 @@ public class inimigoScript : MonoBehaviour
     }
     public void Atirar()
     {
-        //if (atirando)
-        //{
-        if (alvo != null)
+        if (!atirando && alvo != null)
         {
+            atirando = true;
             direcaoProjetil = (alvo.position - pontoDisparo.position).normalized;
+            inimigoAnimScript.SetDirecaoProjetil(direcaoProjetil);
             GameObject balains = Instantiate(projetil, pontoDisparo.position, Quaternion.identity);
             balains.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));
             balains.GetComponent<Rigidbody2D>().velocity = velocidadeProjetil * direcaoProjetil;
             balains.GetComponent<balaHit>().SetDano(danoRanged);
             balains.GetComponent<balaHit>().SetDuracaoStun(tempoDeStunNoJogador);
+            atirando = false;
         }
-            //atirando = false;
-        //}
     }
-    //IEnumerator Disparar()
-    //{
-    //    while(alvo != null)
-    //    {
-    //        atirando = true;
-    //        direcaoProjetil = (alvo.position - pontoDisparo.position).normalized;
-    //        inimigoAnimScript.AtaqueRanged(direcaoProjetil);
-    //        GameObject balains = Instantiate(projetil, pontoDisparo.position, Quaternion.identity);
-    //        balains.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));
-    //        balains.GetComponent<Rigidbody2D>().velocity = velocidadeProjetil * direcaoProjetil;
-    //        balains.GetComponent<balaHit>().SetDano(danoRanged);
-    //        balains.GetComponent<balaHit>().SetDuracaoStun(tempoDeStunNoJogador);
-    //        yield return new WaitForSeconds(taxaDisparo);
-    //        atirando = false;
-    //    }
-    //}
     private void orientacaoSprite()// roda o sprite de acordo com a posição do jogador
     {
         if (direcaoDeMovimentacao.x < 0)
@@ -236,26 +225,57 @@ public class inimigoScript : MonoBehaviour
         inimigoAnimScript.Esconder();
 
     }
-    public void mudancaVida(float valor)
+    public void mudancaVida(float valor, string tag)
     {
         if (!imortal)
         {
-            if (flash != null)
-                flash.Flash(Color.red);
-            vidaAtual += valor;
-            if (vidaAtual > vidaMaxima)
+            if (tag == "projetil")
             {
-                vidaAtual = vidaMaxima;
+                StartCoroutine(this.Paralisar(valor));
             }
-            else if (vidaAtual <= 0)
+            else
             {
-                if (CentroDeSpawn != null)
+                if (flash != null)
+                    flash.Flash(Color.red);
+                vidaAtual += valor;
+                if (vidaAtual > vidaMaxima)
                 {
-                    CentroDeSpawn.InimigoDerrotado();
+                    vidaAtual = vidaMaxima;
                 }
-                vidaAtual = 0f;
-                Destroy(this.gameObject);
+                else if (vidaAtual <= 0)
+                {
+                    if (CentroDeSpawn != null)
+                    {
+                        CentroDeSpawn.InimigoDerrotado();
+                    }
+                    vidaAtual = 0f;
+                    Destroy(this.gameObject);
+                }
             }
+        }
+    }
+    IEnumerator Paralisar(float temp)
+    {
+        paralisado = true;
+        rb.velocity = Vector2.zero;
+        inimigoAnimScript.GetAnimator().enabled = false;
+        VisualParalisado(true);
+        yield return new WaitForSeconds(temp);
+        VisualParalisado(false);
+        inimigoAnimScript.GetAnimator().enabled = true;
+        paralisado = false;
+    }
+    private void VisualParalisado(bool ligar_desligar)
+    {
+        if (ligar_desligar)
+        {
+            animacaoRelogio.SetActive(true);
+            spriteInimigo.material = materiais[1];
+        }
+        else
+        {
+            animacaoRelogio.SetActive(false);
+            spriteInimigo.material = materiais[0];
         }
     }
     public bool GetMovimentacaoFixa()
@@ -328,5 +348,9 @@ public class inimigoScript : MonoBehaviour
     {
         areaDetecao.enabled = true;
         escondido = false;
+    }
+    public bool GetParalisado()
+    {
+        return paralisado;
     }
 }

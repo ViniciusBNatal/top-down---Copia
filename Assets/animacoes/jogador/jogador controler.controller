@@ -100,7 +100,7 @@ AnimatorStateMachine:
     m_Position: {x: 770, y: -250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6624490728855837051}
-    m_Position: {x: 260, y: 290, z: 0}
+    m_Position: {x: 270, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8957304332924424698}
     m_Position: {x: -20, y: 90, z: 0}
@@ -155,13 +155,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: -2623829395950092983}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: TXDISP
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
@@ -502,6 +502,18 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: TXDISP
+    m_Type: 1
+    m_DefaultFloat: 1
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: TXMELEE
+    m_Type: 1
+    m_DefaultFloat: 1
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -664,13 +676,13 @@ AnimatorState:
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
   m_Mirror: 0
-  m_SpeedParameterActive: 0
+  m_SpeedParameterActive: 1
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 6588123947598947360}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: TXMELEE
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5186592385747069209}
   m_Layer: 0
   m_Name: bala
-  m_TagString: Untagged
+  m_TagString: projetil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,6 +134,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DuracaoDaBala: 2
-  dano: 0
   balaJogador: 0
   balaInimigo: 1

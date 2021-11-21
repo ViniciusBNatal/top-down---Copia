@@ -89,7 +89,7 @@ PrefabInstance:
         type: 3}
       propertyPath: inimigoPrefab
       value: 
-      objectReference: {fileID: 2820751787885480187, guid: c3c1752696e69eb43b5547b2dfd03ac1,
+      objectReference: {fileID: 252890446424482694, guid: de8f411b5b12f4146811cbebcd0302a8,
         type: 3}
     - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
         type: 3}

@@ -66,13 +66,13 @@ public class BossAlho : MonoBehaviour
         desastreManager.Instance.PararTodasCorotinas();
         jogadorScript.Instance.MudarEstadoJogador(1);
         LimpaAtqsDaCena();
-        jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(this.transform);
+        jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(this.transform, 0f);
         StartCoroutine(this.tempo());
     }
     IEnumerator tempo()
     {
         yield return new WaitForSeconds(3f);
-        jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform);
+        jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform, 0f);
         UIinventario.Instance.AbrirVitoria();
         //Application.Quit();
         Destroy(this.gameObject);

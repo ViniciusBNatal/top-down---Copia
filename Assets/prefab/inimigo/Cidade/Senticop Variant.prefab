@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!61 &8798680814197569570
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7144508238864702503}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.71875, y: 0.9375}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &7276215348137802533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12,6 +38,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Senticop Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: disparo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: danoRanged
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: areaDetecao
+      value: 
+      objectReference: {fileID: 8798680814197569570}
     - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}
       propertyPath: forcaRepulsao
@@ -98,5 +139,12 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 566375125526406925, guid: 6959c447e85d94e4fac3d623cdfa8a03, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6959c447e85d94e4fac3d623cdfa8a03, type: 3}
+--- !u!1 &7144508238864702503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 566375125526406914, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+    type: 3}
+  m_PrefabInstance: {fileID: 7276215348137802533}
+  m_PrefabAsset: {fileID: 0}

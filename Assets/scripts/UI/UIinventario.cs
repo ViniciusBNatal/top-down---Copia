@@ -9,6 +9,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     private bool inventarioAberto = false;
     [SerializeField] private bool tutorial;
     [SerializeField] private List<UpgradeSlot> listaSlotUpgradesBase = new List<UpgradeSlot>();
+    [SerializeField] private float zoomOutAoConstruir;
     private Dictionary<string, ItemSlot> itens = new Dictionary<string, ItemSlot>();
     [Header("Nao Mexer")]
     [SerializeField] private GameObject CaixaDeDialogos;
@@ -21,6 +22,8 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private GameObject abaSelecionarTempo;
     [SerializeField] private GameObject abaVitoriaDoJogo;
     [SerializeField] private GameObject abaDerrotaDoJogo;
+    [SerializeField] private GameObject abaPausa;
+    [HideInInspector] public bool pausado = false;
     public GameObject craftingBossFinal;
     private int TempoAtual = 0;
     public bool InventarioAberto => inventarioAberto;
@@ -32,7 +35,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) && (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmAcao || jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmUI))
+        if (Input.GetKeyDown(KeyCode.I) && (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmAcao || jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmUI) && !pausado)
         {
             if (inventarioAberto)
             {
@@ -45,6 +48,27 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
                 abreInventario();
             }
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!pausado)
+                abrePausa();
+            else
+                fechaPausa();
+        }
+    }
+    public void abrePausa()
+    {
+        pausado = true;
+        inventarioAberto = true;
+        abaPausa.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void fechaPausa()
+    {
+        pausado = false;
+        inventarioAberto = false;
+        abaPausa.SetActive(false);
+        Time.timeScale = 1f;
     }
     public void fecharTodoInventario()
     {
@@ -176,7 +200,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             }
             jogadorScript.Instance.SetModuloConstruido(slot.construcaoConfirmada());
             BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(true);
-            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(BaseScript.Instance.transform);
+            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(BaseScript.Instance.transform, zoomOutAoConstruir);
             fechaInventario();
             jogadorScript.Instance.MudarEstadoJogador(2);
         }
@@ -218,7 +242,6 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         jogadorScript.Instance.IndicarInteracaoPossivel(null, false);
         if (BaseScript.Instance != null)
         {
-            Debug.Log("salvar modulos e base");
             BaseScript.Instance.SalvarEstado();
             BaseScript.Instance.SalvarEstadosDosModulos();
         }
@@ -332,6 +355,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     }
     public void AbrirMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(NomeFasePorBuildIndex(0));
     }
     public void FecharJogo()

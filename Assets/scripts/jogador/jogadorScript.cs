@@ -17,7 +17,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private float alcanceMelee;
     private Vector2 distanciaAtaqueMelee;
     [SerializeField] private float danoMelee;
-    [SerializeField] private float danoProjetil;
+    [SerializeField] private float tempParalisacaoProjetil;
     [Header("Componentes")]
     //[SerializeField] private JogadorAnimScript animScript;
     [SerializeField] private Transform posicaoMelee;
@@ -48,10 +48,11 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         SendoEmpurrado,
         EmUI
     };
-    public estados estadosJogador = estados.EmAcao;// 0 = em acao, 1 = em menus, 2 = em construcao 
+    [HideInInspector] public estados estadosJogador = estados.EmAcao;// 0 = em acao, 1 = em menus, 2 = em construcao 
     private ReceitaDeCrafting moduloCriado;
     private bool podeAnimar = true;
     private Vector2 direcaoProjetil = Vector2.zero;
+    [SerializeField] private GameObject caixaComTudo;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -66,21 +67,28 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         //if (Input.GetKeyDown(KeyCode.L))  
         //    SceneManager.LoadScene("testes");
-        switch (estadosJogador)
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            case estados.EmAcao: //movimentando
-                MovimentoInput();
-                InputAtirar();
-                InputAtaqueMelee();
-                break;
-            //case estados.EmContrucao://construindo
-            //    //executando click em objetos
-            //    break;
-            case estados.EmDialogo:
-                InputProsseguirDialogo();
-                break;
-            default:
-                break;
+            Instantiate(caixaComTudo, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+        }
+        if (!UIinventario.Instance.pausado)
+        {
+            switch (estadosJogador)
+            {
+                case estados.EmAcao: //movimentando
+                    MovimentoInput();
+                    InputAtirar();
+                    InputAtaqueMelee();
+                    break;
+                //case estados.EmContrucao://construindo
+                //    //executando click em objetos
+                //    break;
+                case estados.EmDialogo:
+                    InputProsseguirDialogo();
+                    break;
+                default:
+                    break;
+            }
         }
     }
     private void FixedUpdate()
@@ -91,6 +99,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
          }
          else if (estadosJogador == estados.SendoEmpurrado)
          {
+            //rb.AddForce(-forcaEmpurrao * direcaoEmpurrao);
             rb.velocity = -forcaEmpurrao * direcaoEmpurrao;
          }
          else
@@ -118,20 +127,52 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         {
             if (!atirando)
             {
-                //atirando = true;
+                atirando = true;
                 MudarEstadoJogador(1);
                 Vector3 dirAnim = (PegaPosicoMouse() - transform.position).normalized;
                 direcaoProjetil = (PegaPosicoMouse() - pontoDeDisparo.position).normalized;
-                JogadorAnimScript.Instance.AnimarDisparo(dirAnim.x, dirAnim.y);
+                JogadorAnimScript.Instance.AnimarDisparo(dirAnim.x, dirAnim.y, taxaDeDisparo);
                 //SoundManager.Instance.TocarSom(SoundManager.TipoSom.JogadorAtirando);
             }
         }
     }
+    public void Atira()
+    {
+        if (atirando)
+        {
+            GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
+            bala.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));//rotaciona a bala
+            bala.GetComponent<Rigidbody2D>().velocity = direcaoProjetil * velocidadeProjetil;//new Vector3(direcaoProjetil.x / Mathf.Abs(direcaoProjetil.x), direcaoProjetil.y / Mathf.Abs(direcaoProjetil.y), 0f)
+            bala.GetComponent<balaHit>().SetDano(tempParalisacaoProjetil);
+            MudarEstadoJogador(0);
+            atirando = false;
+        }
+    }
     private void InputAtaqueMelee()// animação e inflinge dano caso encontre algo
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !atacando)
         {
-            StartCoroutine(this.atacarMelee());
+            atacando = true;
+            JogadorAnimScript.Instance.AnimarAtaqueMelee(posicaoMelee.localPosition.x, posicaoMelee.localPosition.y, taxaDeAtaqueMelee);
+        }
+    }
+    public void ataqueMelee()
+    {
+        if (atacando)
+        {
+            Collider2D[] objetosAcertados = Physics2D.OverlapCircleAll(posicaoMelee.position, alcanceMelee, objetosAcertaveisLayer);//hit em objetos
+            foreach (Collider2D objeto in objetosAcertados)
+            {
+                if (objeto.gameObject.layer == 8)
+                {
+                    objeto.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigoScript>().mudancaVida(-danoMelee, this.tag);
+                }
+                else if (objeto.gameObject.layer == 9 && !desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
+                {
+                    objeto.gameObject.GetComponentInParent<CentroDeRecurso>().RecebeuHit();
+                }
+            }
+            atacando = false;
         }
     }
     private void InputProsseguirDialogo()
@@ -143,15 +184,18 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     private void MudaAreaAtaque(float movX, float movY)// atualiza a direção do ataque melee sempre que o jogador muda de direção
     {
-        if (Input.GetButton("Horizontal")) //&& movX != 0)
+        if (!atacando)
         {
-            posicaoMelee.localPosition =  new Vector3(movX * Mathf.Abs(distanciaAtaqueMelee.x), distanciaAtaqueMelee.y, 0f);
-            pontoDeDisparo.localPosition = new Vector3(movX * Mathf.Abs(pontoDeDisparo.localPosition.x), 0f, 0f);
-        } 
-        if (Input.GetButton("Vertical")) //&& movY != 0)
-        {
-            posicaoMelee.localPosition = new Vector3(0f, movY * Mathf.Abs(distanciaAtaqueMelee.x), 0f);
-            pontoDeDisparo.localPosition = new Vector3(pontoDeDisparo.localPosition.x, movY * Mathf.Abs(pontoDeDisparo.localPosition.y), 0f);
+            if (Input.GetButton("Horizontal")) //&& movX != 0)
+            {
+                posicaoMelee.localPosition =  new Vector3(movX * Mathf.Abs(distanciaAtaqueMelee.x), distanciaAtaqueMelee.y, 0f);
+                pontoDeDisparo.localPosition = new Vector3(movX * Mathf.Abs(pontoDeDisparo.localPosition.x), 0f, 0f);
+            } 
+            if (Input.GetButton("Vertical")) //&& movY != 0)
+            {
+                posicaoMelee.localPosition = new Vector3(0f, movY * Mathf.Abs(distanciaAtaqueMelee.x), 0f);
+                pontoDeDisparo.localPosition = new Vector3(pontoDeDisparo.localPosition.x, movY * Mathf.Abs(pontoDeDisparo.localPosition.y), 0f);
+            }
         }
     }
     /*private void mousePrecionado()
@@ -212,7 +256,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         {
             case 2://em construção
                 if (comportamentoCamera.GetFocoDaCamera() != this.transform && BossAlho.Instance == null)
-                    comportamentoCamera.MudaFocoCamera(transform);
+                    comportamentoCamera.MudaFocoCamera(transform, 0f);
                 if (BaseScript.Instance != null)
                 {
                     BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(false);
@@ -248,58 +292,17 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         yield return new WaitForSeconds(duracaoEmpurrao);
         MudarEstadoJogador(0);
     }
-    public void Atira()
-    {
-        if (!atirando)
-        {
-            atirando = true;
-            StartCoroutine(this.atirar());
-        }
-          //GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
-          //Vector3 direcao = (PegaPosicoMouse() - pontoDeDisparo.position).normalized;
-          //bala.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg));//rotaciona a bala
-          //bala.GetComponent<Rigidbody2D>().velocity = direcao * velocidadeProjetil;
-          //bala.GetComponent<balaHit>().SetDano(danoProjetil);
-          //atirando = false;
-          //MudarEstadoJogador(0);
-    }
-    IEnumerator atirar()
-    {               
-        if (estadosJogador == estados.Paralisado)
-        {
-            GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
-            bala.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));//rotaciona a bala
-            bala.GetComponent<Rigidbody2D>().velocity = direcaoProjetil * velocidadeProjetil;//new Vector3(direcaoProjetil.x / Mathf.Abs(direcaoProjetil.x), direcaoProjetil.y / Mathf.Abs(direcaoProjetil.y), 0f)
-            bala.GetComponent<balaHit>().SetDano(danoProjetil);
-            MudarEstadoJogador(0);
-            yield return new WaitForSeconds(taxaDeDisparo);
-            atirando = false;
-        }
-    }
-    IEnumerator atacarMelee()
-    {
-        if (!atacando)
-        {
-            atacando = true;
-            JogadorAnimScript.Instance.AnimarAtaqueMelee(posicaoMelee.localPosition.x, posicaoMelee.localPosition.y);
-            Collider2D[] objetosAcertados = Physics2D.OverlapCircleAll(posicaoMelee.position, alcanceMelee, objetosAcertaveisLayer);//hit em objetos
-            foreach (Collider2D objeto in objetosAcertados)
-            {
-                if (objeto.gameObject.layer == 8)
-                {
-                    objeto.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigoScript>().mudancaVida(-danoMelee);
-                }
-                else if (objeto.gameObject.layer == 9 && !desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
-                {
-                    objeto.gameObject.GetComponentInParent<CentroDeRecurso>().RecebeuHit();
-                }
-            }
-            yield return new WaitForSeconds(taxaDeAtaqueMelee);
-            atacando = false;
-        }
-    }
     public void mudancaRelogio(float valor, float duracaoStn)
     {
+        if (atirando && estadosJogador == estados.Paralisado)
+        {
+            MudarEstadoJogador(0);
+            atirando = false;
+        }
+        if (atacando)
+        {
+            atacando = false;
+        }
         JogadorAnimScript.Instance.Hit(duracaoStn);
         desastreManager.Instance.AvisoDePerigoTimer();
         //if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
@@ -372,7 +375,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     public void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
-        comportamentoCamera.MudaFocoCamera(transform);
+        comportamentoCamera.MudaFocoCamera(transform, 0);
     }
     public void SetDirecaoDeMovimentacaoAleatoria(Vector2 vec)
     {

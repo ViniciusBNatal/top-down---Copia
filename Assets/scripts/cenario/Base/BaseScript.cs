@@ -294,7 +294,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     }
     private IEnumerator GameOver()
     {
-        jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(transform);
+        jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(transform, 0f);
         //tocar animação
         if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
             desastreManager.Instance.encerramentoDesastres();

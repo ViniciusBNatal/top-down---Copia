@@ -153,7 +153,7 @@ public class DialogeManager : MonoBehaviour
         {
             RetornarCameraAoJogadorNoFinalDoDialogo();
             if (dialogoAtual.FocarComCamera[index] != null)
-                jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(dialogoAtual.FocarComCamera[index]);
+                jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(dialogoAtual.FocarComCamera[index], 0f);
         }
     }
     public bool GetEstadoDialogo()

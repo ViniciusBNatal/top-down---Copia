@@ -8,6 +8,7 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     [SerializeField] private int qntd;
     [SerializeField] private float tempoParaLiberarColeta;
     [SerializeField] private BoxCollider2D areaColetavel;
+    [SerializeField] private BoxCollider2D areaFisica;
     private GameObject NPCRelacionado = null;
     private Rigidbody2D rb;
     private SpriteRenderer icone;
@@ -65,12 +66,13 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
                 localDeDropY = 1;
         }
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(new Vector2(localDeDropX, localDeDropY).normalized * forca);
+        rb.AddForce(new Vector2(localDeDropX, localDeDropY) * forca);
     }
     IEnumerator ligarColeta()
     {
         yield return new WaitForSeconds(tempoParaLiberarColeta);
         areaColetavel.enabled = true;
+        areaFisica.enabled = true;
     }
     public void SalvarEstado()
     {

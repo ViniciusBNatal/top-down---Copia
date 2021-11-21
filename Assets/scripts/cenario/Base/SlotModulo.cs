@@ -145,7 +145,7 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
     {
         if (BossAlho.Instance == null)
         {
-            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform);
+            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform, 0f);
             jogadorScript.Instance.MudarEstadoJogador(0);
             Tutorial();
         }
