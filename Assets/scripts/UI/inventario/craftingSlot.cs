@@ -19,7 +19,12 @@ public class craftingSlot : MonoBehaviour
     private void Start()
     {
         if (receita.desastre == "")
-            iconeDoDesastre.enabled = false;
+        {
+            if(receita.modulo != 1)
+                iconeDoDesastre.sprite = DesastresList.Instance.SelecionaSpriteModulo(receita.modulo);
+            else
+                iconeDoDesastre.enabled = false;
+        }
         else
             iconeDoDesastre.sprite = DesastresList.Instance.SelecionaSpriteDesastre(receita.desastre);
         //iconeDoModulo.sprite = DesastresList.Instance.SelecionaSpriteModulo(receita.modulo);

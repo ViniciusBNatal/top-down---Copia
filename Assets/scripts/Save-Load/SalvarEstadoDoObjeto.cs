@@ -175,7 +175,6 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
         {
             case 0://salva
                 //salva estado 
-                Mydebug.mydebug.MyPrint("salvando centro de recurso");
                 if (estadoCentroDeRecursos.ContainsKey(centroScript.gameObject.name))
                     estadoCentroDeRecursos[centroScript.gameObject.name] = centroScript.GetCentroDeInimigos();
                 else
@@ -198,7 +197,6 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                 break;
             case 1://carregar
                 //carrega estado 
-                Mydebug.mydebug.MyPrint("carregando centro de recursos");
                 if (estadoCentroDeRecursos.ContainsKey(centroScript.gameObject.name))
                     centroScript.SetCentroDeInimigos(estadoCentroDeRecursos[centroScript.gameObject.name]);
                 //carrega tempo restante
