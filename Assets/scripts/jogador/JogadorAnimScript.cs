@@ -63,4 +63,8 @@ public class JogadorAnimScript : MonoBehaviour
     {
         animator.SetFloat("HITMULTI", 1f);
     }
+    public Animator Getanimator()
+    {
+        return animator;
+    }
 }

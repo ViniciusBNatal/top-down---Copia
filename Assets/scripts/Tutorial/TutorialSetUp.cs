@@ -6,8 +6,8 @@ public class TutorialSetUp : MonoBehaviour
 {
     public static TutorialSetUp Instance { get; private set; }
     [SerializeField] private float intervaloDuranteTutorial;
-    [SerializeField] private GameObject caixaDeRecurso;
     [SerializeField] private Transform pontoDeSpawnObjetos;
+    public Transform pontoDeCombateJogador;
     [SerializeField] private List<Dialogo> dialogosDoTutorial = new List<Dialogo>();
     private int sequenciaDialogos = 0;
     private void Awake()
@@ -39,13 +39,27 @@ public class TutorialSetUp : MonoBehaviour
     {
         BaseScript.Instance.Tutorial();// agr irá ativar a possibilidade de interagir com a maquina
     }
+    public void AoAcertarDisparoNoInimigo()
+    {
+        jogadorScript.Instance.GetAnimacoesTutorial().GetComponent<Animator>().SetBool("DISP", false);
+        IniciarDialogo();
+    }
+    public void AoEliminarOInimigo()
+    {
+        jogadorScript.Instance.GetAnimacoesTutorial().GetComponent<Animator>().SetBool("MELEE", false);
+        IniciarDialogo();
+    }
     public void AoTerminoDoDialogoReparadaAMaquinaDoTempo()
     {
         desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f, true);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
     }
-    public void CriarObjeto()
+    public void CriarObjeto(GameObject obj)
     {
-        Instantiate(caixaDeRecurso, pontoDeSpawnObjetos.position, Quaternion.identity);
+        Instantiate(obj, pontoDeSpawnObjetos.position, Quaternion.identity);
+    }
+    public int GetSequenciaDialogos()
+    {
+        return sequenciaDialogos;
     }
 }

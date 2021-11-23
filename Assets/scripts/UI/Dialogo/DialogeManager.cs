@@ -98,7 +98,7 @@ public class DialogeManager : MonoBehaviour
             DialogoFinalizado(this, System.EventArgs.Empty);
         }
         if (dialogoAtual.FocarComCamera.Length > 0)
-            DialogoFinalizado -= jogadorScript.Instance.AoFinalizarDialogo;
+            DialogoFinalizado -= CinemachineBehaviour.Instance.AoFinalizarDialogo;
     }
     public void LimparListaDeAoFinalizarDialogo()
     {
@@ -107,8 +107,10 @@ public class DialogeManager : MonoBehaviour
     }
     private void RetornarCameraAoJogadorNoFinalDoDialogo()
     {
-        if (DialogoFinalizado != jogadorScript.Instance.AoFinalizarDialogo)
-            DialogoFinalizado += jogadorScript.Instance.AoFinalizarDialogo;
+        if (DialogoFinalizado != CinemachineBehaviour.Instance.AoFinalizarDialogo)
+            DialogoFinalizado += CinemachineBehaviour.Instance.AoFinalizarDialogo;
+        //if (DialogoFinalizado != jogadorScript.Instance.AoFinalizarDialogo)
+        //    DialogoFinalizado += jogadorScript.Instance.AoFinalizarDialogo;
     }
     private void TrocaNPC()
     {

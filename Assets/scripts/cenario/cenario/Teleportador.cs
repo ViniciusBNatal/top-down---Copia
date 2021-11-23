@@ -17,7 +17,8 @@ public class Teleportador : MonoBehaviour
     {
         SalvamentoDosCentrosDeRecursosManager.Instance.SalvarTempoDeSaida();
         SalvamentoDosCentrosDeRecursosManager.Instance.SalvarCentrosDeRecursoDaCenaAtual();
-        jogadorScript.Instance.IndicarInteracaoPossivel(null, false);
+        jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
+        // anim de trensição de mundo
         string IndexFaseBase = SceneUtility.GetScenePathByBuildIndex(BuildIndexDaFaseBaseJogador);//pega o caminho da cena na pasta de arquivos
         string cenaPrincipal = IndexFaseBase.Substring(0, IndexFaseBase.Length - 6).Substring(IndexFaseBase.LastIndexOf('/') + 1);
         SceneManager.LoadScene(cenaPrincipal);

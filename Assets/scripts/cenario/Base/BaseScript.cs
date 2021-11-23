@@ -14,12 +14,14 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     [SerializeField] private int QntdDeDefesasNecessarias;
     [SerializeField] private GameObject BossPrefab;
     [SerializeField] private TMP_Text vidaAtualText;
+    [SerializeField] private GameObject animNovoTempo;
+    [SerializeField] private AnimationClip animDestruicaoModulo;
     private bool duranteMelhoria = false;
-    [SerializeField] private bool tutorial;
     private List<SlotModulo> listaModulos = new List<SlotModulo>();
     private int vidaAtual;
-    private int DefesasFeitas = 0;
-    [HideInInspector] public Animator animator;
+    private int DefesasOcorridasDuranteMelhoriaBase = 0;
+    private int defesasContraDisastre;
+    [HideInInspector] public Animator animator { get; private set; }
 
     private void Awake()
     {
@@ -32,11 +34,11 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     private void Start()
     {
         jogadorScript.Instance.transform.position = posicaoDeChegadaPorTeleporte.position;
-        jogadorScript.Instance.Tutorial();
+        //jogadorScript.Instance.Tutorial();
     }
     public void VerificarModulos()
     {
-        int defendido = 0;
+        defesasContraDisastre = 0;
         for (int a = 0; a < desastreManager.Instance.GetQntdDesastresParaOcorrer(); a++)
         {
             int forcaTotal = 0;
@@ -55,7 +57,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
                 if (mod.GetvalorResistencia() >= desastreManager.Instance.GetForcaSorteada(a))
                 {
                     mod.RemoverModulo();
-                    defendido++;
+                    defesasContraDisastre++;
                     encontrouDefesaDeMesmoValor = true;
                     break;
                 }
@@ -90,7 +92,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
                         {
                             m.RemoverModulo();
                         }
-                        defendido++;
+                        defesasContraDisastre++;
                         break;
                     }
                     /*if (forcaTotal == desastreManager.Instance.GetForcaSorteada(a)) // se quiser q subtraia das forças
@@ -117,26 +119,63 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
                 }
             }
         }
-        if (desastreManager.Instance.GetQntdDesastresParaOcorrer() == defendido)
+        if (desastreManager.Instance.GetQntdDesastresParaOcorrer() == defesasContraDisastre)
         {
-            Debug.Log("defendido");
+            if(TutorialSetUp.Instance == null)
+                animator.SetTrigger("DEFENDIDO");
         }
         else
         {
+            if (TutorialSetUp.Instance == null)
+                animator.SetTrigger("HIT");
+            //vidaAtual -= desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre;
+            //vidaAtualText.text = vidaAtual.ToString();
+            //if (vidaAtual <= 0)
+            //{
+            //    GameOver();
+            //    Debug.Log("Perdeu");
+            //}
+            //else
+            //{
+                //if (TutorialSetUp.Instance == null)
+                //    animator.SetTrigger("HIT");
+                //if (defesasContraDisastre == 0)// caso não defendeu nada cancela a animação de destruição dos modulos
+                //{
+                //    desastreManager.Instance.encerramentoDesastres();
+                //    jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform, 0f);
+                //    jogadorScript.Instance.MudarEstadoJogador(0);
+                //    RecomecarDesastres();
+                //}
+            //}
             //if (!tutorial)
             //{
-            for (int i = 0; i < desastreManager.Instance.GetQntdDesastresParaOcorrer() - defendido; i++)
-            {
-                vidaAtual--;
-                vidaAtualText.text = vidaAtual.ToString();
-                if (vidaAtual <= 0)
-                {
-                    StartCoroutine(this.GameOver());
-                    //Debug.Log("Perdeu");
-                }
-            }
-            Debug.Log(vidaAtual);
+            //for (int i = 0; i < desastreManager.Instance.GetQntdDesastresParaOcorrer() - defendido; i++)
+            //{
+            //    vidaAtual--;
+            //    vidaAtualText.text = vidaAtual.ToString();
+            //    if (vidaAtual <= 0)
+            //    {
+            //        GameOver();
+            //        //Debug.Log("Perdeu");
+            //    }
+            //    
             //}
+            //Debug.Log(vidaAtual);
+            //
+            //}
+        }
+    }
+    public void MudancaVida()
+    {
+        vidaAtual -= desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre;
+        vidaAtualText.text = vidaAtual.ToString();
+        if (vidaAtual <= 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            FimCustceneSeNaoConseguiuDefender();
         }
     }
     public void AbreEFechaMenuDeTrocaDeTempo()
@@ -147,14 +186,18 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
        }
        else
        {
-           if (!jogadorScript.Instance.InterfaceJogador.InventarioAberto)
-           {
-               jogadorScript.Instance.InterfaceJogador.abreMenuDeTempos();
-           }
-           else
-           {
-               jogadorScript.Instance.InterfaceJogador.fechaMenuDeTempos();
-           }
+            if (animNovoTempo.activeSelf)
+            {
+                Ativa_DesativaAnimacaoDeNovoTempoLiberado(false);
+            }
+            if (!jogadorScript.Instance.InterfaceJogador.InventarioAberto)
+            {
+                jogadorScript.Instance.InterfaceJogador.abreMenuDeTempos();
+            }
+            else
+            {
+                jogadorScript.Instance.InterfaceJogador.fechaMenuDeTempos();
+            }
        }
     } 
     public void AdicionarModulo(SlotModulo modulo)
@@ -167,42 +210,97 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
         {
             if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
             {
-                EncerrarDesastresEVerificarDefesa();
-                if (tutorial)
+                custceneDestruicaoModulo.OcorrerEvento = false;
+                if (BossAlho.Instance == null)
                 {
-                    Tutorial();
-                    return;
+                    CutsceneDestruicaoDosModulos();
                 }
-                RecomecarDesastres();
+                else
+                {
+                    VerificarModulos();
+                    //Ativar_DesativarInteracao(true);
+                    desastreManager.Instance.encerramentoDesastres();
+                    IndicadorDosDesastres.Instance.LimpaPlaca();
+                    desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
+                    RecomecarDesastres();
+                }
+                //EncerrarDesastresEVerificarDefesa();
+                //if (tutorial)
+                //{
+                //    Tutorial();
+                //    return;
+                //}
+                //RecomecarDesastres();
             }
         }
     }
     public void Tutorial()
     {
-        if (tutorial)
+        //DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+        IndicadorDosDesastres.Instance.LimpaPlaca();
+        desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
+        TutorialSetUp.Instance.IniciarDialogo();
+        custceneDestruicaoModulo.OcorrerEvento = false;
+    }
+    /*private void EncerrarDesastresEVerificarDefesa()
+    {
+        if (BossAlho.Instance == null)
         {
-            DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-            tutorial = false;
-            TutorialSetUp.Instance.IniciarDialogo();
-            return;
+            CutsceneDestruicaoDosModulos();
         }
-        areaDeInteracao.SetActive(true);
-    }
-    private void EncerrarDesastresEVerificarDefesa()
+        else
+        {
+            VerificarModulos();
+            //Ativar_DesativarInteracao(true);
+            desastreManager.Instance.encerramentoDesastres();
+            IndicadorDosDesastres.Instance.LimpaPlaca();
+            desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
+        }
+    }*/
+    public void CutsceneDestruicaoDosModulos()
     {
-        VerificarModulos();
-        Ativar_DesativarInteracao(true);
         desastreManager.Instance.encerramentoDesastres();
+        if (BossAlho.Instance == null)
+        {
+            jogadorScript.Instance.MudarEstadoJogador(1);
+            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(this.transform, UIinventario.Instance.zoomOutAoConstruir);
+        }
+        VerificarModulos();
     }
-    private void RecomecarDesastres()
+    private void FimCustcene()
     {
+        if (BossAlho.Instance == null)
+        {
+            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform, 0f);
+            jogadorScript.Instance.MudarEstadoJogador(0);
+        }
+        desastreManager.Instance.Ativar_desativarInteracoesDaBase(true, true);
+        if (TutorialSetUp.Instance != null)
+            Tutorial();
+        else
+            RecomecarDesastres();
+    }
+    public void FimCutsceneSeConseguiuDefender()
+    {
+        FimCustcene();
+    }
+    private void FimCustceneSeNaoConseguiuDefender()
+    {
+        if (defesasContraDisastre == 0)
+            FimCustcene();
+    }
+    public void RecomecarDesastres()
+    {
+        IndicadorDosDesastres.Instance.LimpaPlaca();
+        desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
+        //custceneDestruicaoModulo.finalizandoCutscene = false;
         if (duranteMelhoria)
         {
-            DefesasFeitas++;
-            if (DefesasFeitas == QntdDeDefesasNecessarias)
+            DefesasOcorridasDuranteMelhoriaBase++;
+            if (DefesasOcorridasDuranteMelhoriaBase == QntdDeDefesasNecessarias)
             {
                 duranteMelhoria = false;
-                DefesasFeitas = 0;
+                DefesasOcorridasDuranteMelhoriaBase = 0;
                 if (UIinventario.Instance.VerificarSeLiberouBossFinal())//verificação para o boss
                 {
                     //pode ter um dialogo aqui
@@ -210,6 +308,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
                     return;
                 }
                 desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre(), true);
+                Ativa_DesativaAnimacaoDeNovoTempoLiberado(true);
                 //DesastresList.Instance.LiberarNovosDesastres(UIinventario.Instance.GetTempoAtual());//ativa a possibilidade do evento desse tempo acontecer
             }
             else
@@ -222,6 +321,10 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
         desastreManager.Instance.MudarTempoAcumuladoParaDesastre(0f);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
     }
+    public void Ativa_DesativaAnimacaoDeNovoTempoLiberado(bool b)
+    {
+        animNovoTempo.SetActive(b);
+    }
     public void Ativar_DesativarInteracao(bool b)
     {
         areaDeInteracao.SetActive(b);
@@ -233,13 +336,6 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     public void CancelarInscricaoEmDialogoFinalizado()
     {
         DialogeManager.Instance.DialogoFinalizado -= AoFinalizarDialogo;
-    }
-    public void DesligarTutorialDosModulos()
-    {
-        for (int i = 0; i < listaModulos.Count; i++)
-        {
-            listaModulos[i].SetTutorial(false);
-        }
     }
     public void Ativar_DesativarVisualConstrucaoModulos(bool b)
     {
@@ -292,14 +388,16 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     {
         return vidaAtual;
     }
-    private IEnumerator GameOver()
+    private void GameOver()
     {
         jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(transform, 0f);
-        //tocar animação
         if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
             desastreManager.Instance.encerramentoDesastres();
         desastreManager.Instance.PararTodasCorotinas();
-        yield return new WaitForSeconds(2f);
+        animator.SetTrigger("DESTRUIDO");
+    }
+    public void AbrirGameOver()
+    {
         UIinventario.Instance.abrirAbaDeGameOver();
     }
 }

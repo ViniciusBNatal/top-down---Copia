@@ -8,7 +8,6 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     public static jogadorScript Instance { get; private set; }
     //variáveis publicas
     [Header("Valores Numéricos")]
-    [SerializeField] private bool tutorial;
     [SerializeField] private float velocidade;
     //private float vidaMaxima = 1;
     [SerializeField] private float velocidadeProjetil;
@@ -17,17 +16,19 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private float alcanceMelee;
     private Vector2 distanciaAtaqueMelee;
     [SerializeField] private float danoMelee;
+    [SerializeField] private float forcaKnockbackNosInimigos;
+    [SerializeField] private float duracaoKnockbakNosInimigos;
     [SerializeField] private float tempParalisacaoProjetil;
     [Header("Componentes")]
     //[SerializeField] private JogadorAnimScript animScript;
-    [SerializeField] private Transform posicaoMelee;
     public Camera mainCamera;
-    [SerializeField] private GameObject projetilPrefab;
-    [SerializeField] private GameObject armaMelee;
+    [SerializeField] private Transform posicaoMelee;
     [SerializeField] private Transform pontoDeDisparo;
+    [SerializeField] private GameObject projetilPrefab;
     [SerializeField] private LayerMask objetosAcertaveisLayer;
     public UIinventario InterfaceJogador;
-    [SerializeField] private SpriteRenderer iconeInteracao;
+    [SerializeField] private GameObject iconeInteracao;
+    [SerializeField] private GameObject animacoesTutorial;
     public CinemachineBehaviour comportamentoCamera;
     //variáveis privadas
     //private float vidaAtual;
@@ -62,10 +63,16 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         distanciaAtaqueMelee.x = posicaoMelee.localPosition.x;
         distanciaAtaqueMelee.y = posicaoMelee.localPosition.y;
     }
+    private void Start()
+    {
+        if (TutorialSetUp.Instance != null)
+            Tutorial();
+    }
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.L))  
+        //if (Input.GetKeyDown(KeyCode.L))
+        //    Debug.Log(TutorialSetUp.Instance);
         //    SceneManager.LoadScene("testes");
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -85,6 +92,15 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 //    break;
                 case estados.EmDialogo:
                     InputProsseguirDialogo();
+                    break;
+                case estados.Paralisado:
+                    if (TutorialSetUp.Instance != null)
+                    {
+                        if (TutorialSetUp.Instance.GetSequenciaDialogos() == 1)
+                            InputAtirar();
+                        else if (TutorialSetUp.Instance.GetSequenciaDialogos() == 2)
+                            InputAtaqueMelee();
+                    }
                     break;
                 default:
                     break;
@@ -111,6 +127,8 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         float movX = Input.GetAxisRaw("Horizontal");
         float movY = Input.GetAxisRaw("Vertical");
+        if (TutorialSetUp.Instance != null && (movX != 0 || movY != 0))
+            animacoesTutorial.SetActive(false);
         MudaAreaAtaque(movX, movY);
         movimento = new Vector2(movX, movY).normalized;//normalized faz com q o movimento seja igual para todas as direções, não passando de um limite de 1
     }
@@ -165,7 +183,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
             {
                 if (objeto.gameObject.layer == 8)
                 {
-                    objeto.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigoScript>().mudancaVida(-danoMelee, this.tag);
+                    objeto.GetComponent<hitbox_inimigo>().inimigo.GetComponent<inimigoScript>().mudancaVida(-danoMelee, this.tag, forcaKnockbackNosInimigos, this.transform.position, duracaoKnockbakNosInimigos);
                 }
                 else if (objeto.gameObject.layer == 9 && !desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
                 {
@@ -182,7 +200,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
             DialogeManager.Instance.MostraProximoDialogo();
         }
     }
-    private void MudaAreaAtaque(float movX, float movY)// atualiza a direção do ataque melee sempre que o jogador muda de direção
+    public void MudaAreaAtaque(float movX, float movY)// atualiza a direção do ataque melee sempre que o jogador muda de direção
     {
         if (!atacando)
         {
@@ -264,7 +282,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 }
                 break;
             case 3://em dialogo
-                if (DialogeManager.Instance.GetEstadoDialogo())
+                if (DialogeManager.Instance.GetEstadoDialogo() && TutorialSetUp.Instance == null)
                 {
                     Debug.Log("remover dialogo");
                     DialogeManager.Instance.FimDialogo();
@@ -328,15 +346,18 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         //    vidaAtual = 0f;
         //}
     }
-    public void IndicarInteracaoPossivel(Sprite imagem, bool visivel)
+    public void IndicarInteracaoPossivel(float botao, bool visivel)
     {
         if (visivel)
         {
-            iconeInteracao.sprite = imagem;
-            iconeInteracao.enabled = true;
+            iconeInteracao.SetActive(true);
+            iconeInteracao.GetComponent<Animator>().SetFloat("BOTOES", botao);
         }
         else
-            iconeInteracao.enabled = false;
+        {
+            iconeInteracao.GetComponent<Animator>().SetFloat("BOTOES", 0f);
+            iconeInteracao.SetActive(false);
+        }
     }
     public void BaguncaControles(float unidadesX, float unidadesY, float forcaGeral)
     {
@@ -356,26 +377,33 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         return podeAnimar;
     }
-    public void SetTutorial(bool b)
-    {
-        tutorial = b;
-    }
     public void Tutorial()
     {
-        if (tutorial)
+        TutorialSetUp.Instance.SetupInicialJogador();
+    }
+    public void AoFinalizarDialogo(object origem, System.EventArgs args)
+    {
+        if(TutorialSetUp.Instance != null)
         {
-            TutorialSetUp.Instance.SetupInicialJogador();
-            tutorial = false;
+            if (TutorialSetUp.Instance.GetSequenciaDialogos() == 1)
+            {
+                MudarEstadoJogador(1);
+                transform.position = TutorialSetUp.Instance.pontoDeCombateJogador.position;
+                animacoesTutorial.SetActive(true);
+                animacoesTutorial.GetComponent<Animator>().SetBool("DISP", true);
+                JogadorAnimScript.Instance.Getanimator().SetFloat("HORIZONTAL", 1f);
+                JogadorAnimScript.Instance.Getanimator().SetFloat("VERTICAL", 0f);
+                //Time.timeScale = 0f;
+            }
         }
+        //else
+            //comportamentoCamera.MudaFocoCamera(transform, 0);
     }
     public void AoLevantar()
     {
         JogadorAnimScript.Instance.Levantar(false);
+        DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
         TutorialSetUp.Instance.IniciarDialogo();
-    }
-    public void AoFinalizarDialogo(object origem, System.EventArgs args)
-    {
-        comportamentoCamera.MudaFocoCamera(transform, 0);
     }
     public void SetDirecaoDeMovimentacaoAleatoria(Vector2 vec)
     {
@@ -389,5 +417,9 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
         moduloCriado = ScriptableObject.CreateInstance<ReceitaDeCrafting>();
         moduloCriado = modulo;
+    }
+    public GameObject GetAnimacoesTutorial()
+    {
+        return animacoesTutorial;
     }
 }

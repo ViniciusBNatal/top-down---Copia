@@ -5,9 +5,15 @@ using Cinemachine;
 
 public class CinemachineBehaviour : MonoBehaviour
 {
+    public static CinemachineBehaviour Instance;
     private CinemachineVirtualCamera CM;
     private float visaoPadrao;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
     void Start()
     {
         CM = this.GetComponent<CinemachineVirtualCamera>();
@@ -26,5 +32,9 @@ public class CinemachineBehaviour : MonoBehaviour
     public Transform GetFocoDaCamera()
     {
         return CM.LookAt;
+    }
+    public void AoFinalizarDialogo(object origem, System.EventArgs args)
+    {
+        MudaFocoCamera(jogadorScript.Instance.transform, 0);
     }
 }

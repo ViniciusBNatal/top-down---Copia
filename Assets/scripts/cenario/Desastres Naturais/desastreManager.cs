@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class desastreManager : MonoBehaviour, AcoesNoTutorial
+public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
 {
     public static desastreManager Instance { get; private set; }
     [Header("CONFIGURAÇÃO DO MANAGER")]
@@ -11,7 +11,6 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private int chanceDeDesastre;
     [SerializeField] private float TempoMinimoRestante;
     [SerializeField] private float AumentoDeTempAoLiberarNovaFase;
-    [SerializeField] private bool tutorial;
     private int minutos;
     private int segundos;
     [Header("TERREMOTO")]
@@ -66,7 +65,7 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
         //ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
         //StartCoroutine(this.LogicaDesastres());
     }
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -74,21 +73,21 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
             qntdDeDesastresParaOcorrer = 2;
             desastresSorteados[0] = "TERREMOTO";
             desastresSorteados[1] = "ERRUPCAO TERRENA";
-    //        //desastresSorteados[2] = "NUVEM DE INSETOS";
+                    //desastresSorteados[2] = "NUVEM DE INSETOS";
             forcasSorteados[0] = 2;
             forcasSorteados[1] = 2;
-    //        //forcasSorteados[2] = 1;
+                    //forcasSorteados[2] = 1;
             IndicadorDosDesastres.Instance.PreenchePlaca();
-    //        //Virus();
-    //        //ErrupcaoTerrena();
-    //        //Terremoto();
-    //        //StopAllCoroutines();
+                    //Virus();
+                    //ErrupcaoTerrena();
+                    //Terremoto();
+                    //StopAllCoroutines();
             ConfigurarTimer(3f, tempoAcumulado, true);
-    //        SetUpParaNovoSorteioDeDesastres();
-            StartCoroutine(this.LogicaDesastres(false));
-    //        //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
+            SetUpParaNovoSorteioDeDesastres();
+            StartCoroutine(this.LogicaDesastres(true));
+            Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
         }
-    }
+    }*/
     //desastres
     private void Terremoto()
     {
@@ -256,7 +255,7 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     private void IniciarDesastres()
     {
         desastreAcontecendo = true;
-        Ativar_desativarInteracoesDaBase(true);
+        Ativar_desativarInteracoesDaBase(false, false);
         for (int i = 0; i < qntdDeDesastresParaOcorrer; i++)
         {
             switch (desastresSorteados[i].ToUpper())
@@ -316,12 +315,16 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
             }
             errupcoesEmCena.Clear();
         }
-        Ativar_desativarInteracoesDaBase(false);
-        IndicadorDosDesastres.Instance.LimpaPlaca();
-        SetUpParaNovoSorteioDeDesastres();
-        Tutorial();
+        //if (BossAlho.Instance == null)
+        //    Ativar_desativarInteracoesDaBase(true, true);
+        //else
+        //    Ativar_desativarInteracoesDaBase(false, true);
+        //IndicadorDosDesastres.Instance.LimpaPlaca();
+        //SetUpParaNovoSorteioDeDesastres();
+        //if (TutorialSetUp.Instance != null)
+        //    Tutorial();
     }
-    private void SetUpParaNovoSorteioDeDesastres()
+    public void SetUpParaNovoSorteioDeDesastres()
     {
         for (int i = 0; i < desastresSorteados.Length; i++)
         {
@@ -368,14 +371,10 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
             yield return new WaitForSeconds(intervaloEntreHitsChuvaAcida);
         }
     }
-    public void Tutorial()
+    /*public void Tutorial()
     {
-        if (tutorial)
-        {
             //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
-            tutorial = false;
-        }
-    }
+    }*/
     public void AdionarVirusALista(GameObject obj) 
     {
         virusEmCena.Add(obj);
@@ -392,24 +391,14 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     {
         errupcoesEmCena.Remove(obj);
     }
-    public void Ativar_desativarInteracoesDaBase(bool trancar_DestrancarInteracoes)
+    public void Ativar_desativarInteracoesDaBase(bool liga_desligaPortal, bool liga_desligaMesaDeCrafting)
     {
         UIinventario.Instance.fechaInventario();
         UIinventario.Instance.fechaMenuDeTempos();
-        if (trancar_DestrancarInteracoes)
-        {
-            if (mesaCraftingScript.Instance != null)
-                mesaCraftingScript.Instance.Desativar_AtivarInteracao(false);
-            if (BaseScript.Instance != null)
-                BaseScript.Instance.Ativar_DesativarInteracao(false);
-        }
-        else
-        {
-            if (mesaCraftingScript.Instance != null)
-                mesaCraftingScript.Instance.Desativar_AtivarInteracao(true);
-            if (BaseScript.Instance != null)
-                BaseScript.Instance.Ativar_DesativarInteracao(true);
-        }
+        if (mesaCraftingScript.Instance != null)
+            mesaCraftingScript.Instance.Desativar_AtivarInteracao(liga_desligaMesaDeCrafting);
+        if (BaseScript.Instance != null)
+            BaseScript.Instance.Ativar_DesativarInteracao(liga_desligaPortal);
     }
     public int GetForcaSorteada(int i)
     {
@@ -437,14 +426,15 @@ public class desastreManager : MonoBehaviour, AcoesNoTutorial
     }
     public void DiminuirTempoRestanteParaDesastre(float temp)
     {
-        temp = Mathf.Clamp(temp, 0, tempoRestante);
+        //temp = Mathf.Clamp(temp, 0, tempoRestante);
         if (tempoRestante > TempoMinimoRestante)
         {
             if (tempoRestante - temp < TempoMinimoRestante)
             {
                 tempoRestante = TempoMinimoRestante;
             }
-            tempoRestante -= temp;
+            else
+                tempoRestante -= temp;
         }
     }
     public float GetTempoRestanteParaDesastre()

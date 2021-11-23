@@ -7,9 +7,9 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
     [SerializeField] private SpriteRenderer iconeDoModulo;
     [SerializeField] private SpriteRenderer iconeDoDesastre;
     [SerializeField] private SpriteRenderer iconeDeMultiplicador;
-    [SerializeField] private bool tutorial = true;
     [HideInInspector] public List<Material> materiais = new List<Material>();
     [SerializeField] private GameObject animacaoConstrucao;
+    [SerializeField] private GameObject animacaoDestruicaoModulo;
     private SpriteRenderer iconeSlotDeModulo;
     private int resistenciaModulo = 0;
     private string NomeDesastre = "";
@@ -61,6 +61,7 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
     }
     public void RemoverModulo()
     {
+        animacaoDestruicaoModulo.GetComponent<Animator>().SetTrigger("EXPLODIR");
         SetSpriteDoModulo(null);
         SetSpriteDoDesastre(null);
         SetSpriteDoMultiplicador(null);
@@ -105,17 +106,9 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
     }
     public void Tutorial()
     {
-        if (tutorial)
-        {
             //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
             DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-            BaseScript.Instance.DesligarTutorialDosModulos();
             TutorialSetUp.Instance.IniciarDialogo();
-        }
-    }
-    public void SetTutorial(bool b)//para desligar a funçao de tutorial de todos os modulos atravéz da basescript
-    {
-        tutorial = b;
     }
     protected virtual void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
@@ -147,7 +140,8 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
         {
             jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform, 0f);
             jogadorScript.Instance.MudarEstadoJogador(0);
-            Tutorial();
+            if(TutorialSetUp.Instance != null)
+                Tutorial();
         }
     }
     public void VisualConstrucao(bool emConstrucao)

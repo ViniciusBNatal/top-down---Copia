@@ -39,6 +39,7 @@ public class inimigoScript : MonoBehaviour
     private Transform alvo;
     private float vidaAtual;
     private bool paralisado = false;
+    private bool empurrado = false;
     private SpriteRenderer spriteInimigo;
     //private bool trocarOrdemPontosDeFuga = false;
     public enum TiposDeMovimentacao
@@ -59,6 +60,8 @@ public class inimigoScript : MonoBehaviour
     private string pontoDefugaParaTeleportar;
     private bool escondido = false;
     private bool atirando = false;
+    private float forcaEmpurrao;
+    private Vector2 direcaoEmpurrao;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -90,32 +93,35 @@ public class inimigoScript : MonoBehaviour
         //orientacaoSprite();
         if (!paralisado)
         {
-            switch (tiposDeMovimentacao)
+            if (empurrado && tiposDeMovimentacao == TiposDeMovimentacao.movimentacaoLivre)
             {
-                //case TiposDeMovimentacao.estatico:
-                //    break;
-                case TiposDeMovimentacao.movimentacaoFixa:
-                    rb.velocity = (direcaoDeMovimentacao * velocidade);
-                    break;
-                case TiposDeMovimentacao.movimentacaoLivre:
-                    if (alvo != null)
-                    {
-                        direcaoDeMovimentacao = (alvo.position - transform.position).normalized;
-                        rb.velocity = (direcaoDeMovimentacao * velocidade);
-                        if (salvandoPontosDeNavegacao == null)
-                            salvandoPontosDeNavegacao = StartCoroutine(this.salvaPontosParaNavegacao());
-                    }
-                    else if (PrecisaRetornarAoPontoInicial)
-                    {
-                        direcaoDeMovimentacao = (ProximoPonto() - transform.position).normalized;
-                        rb.velocity = (direcaoDeMovimentacao * velocidade);
-                        VerificarSePontoFoiAlcancado();
-                    }
-                    break;
-                //case TiposDeMovimentacao.movimentacaoEntrePontosFixa:
-                //    break;
-                default:
-                    break;
+                rb.velocity = -forcaEmpurrao * direcaoEmpurrao;
+            }
+            else
+            {
+                switch (tiposDeMovimentacao)
+                {
+                    case TiposDeMovimentacao.movimentacaoFixa:
+                        rb.velocity = direcaoDeMovimentacao * velocidade;
+                        break;
+                    case TiposDeMovimentacao.movimentacaoLivre:
+                        if (alvo != null)
+                        {
+                            direcaoDeMovimentacao = (alvo.position - transform.position).normalized;
+                            rb.velocity = direcaoDeMovimentacao * velocidade;
+                            if (salvandoPontosDeNavegacao == null)
+                                salvandoPontosDeNavegacao = StartCoroutine(this.salvaPontosParaNavegacao());
+                        }
+                        else if (PrecisaRetornarAoPontoInicial)
+                        {
+                            direcaoDeMovimentacao = (ProximoPonto() - transform.position).normalized;
+                            rb.velocity = direcaoDeMovimentacao * velocidade;
+                            VerificarSePontoFoiAlcancado();
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
@@ -225,19 +231,24 @@ public class inimigoScript : MonoBehaviour
         inimigoAnimScript.Esconder();
 
     }
-    public void mudancaVida(float valor, string tag)
+    public void mudancaVida(float dano, string origemHit, float forca, Vector3 origemPosHit, float duracaoStun)
     {
         if (!imortal)
         {
-            if (tag == "projetil")
+            if (origemHit == "projetil")
             {
-                StartCoroutine(this.Paralisar(valor));
+                StartCoroutine(this.Paralisar(dano));
+                if (TutorialSetUp.Instance != null)
+                {
+                    DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+                    TutorialSetUp.Instance.AoAcertarDisparoNoInimigo();
+                }
             }
             else
             {
                 if (flash != null)
                     flash.Flash(Color.red);
-                vidaAtual += valor;
+                vidaAtual += dano;
                 if (vidaAtual > vidaMaxima)
                 {
                     vidaAtual = vidaMaxima;
@@ -249,10 +260,29 @@ public class inimigoScript : MonoBehaviour
                         CentroDeSpawn.InimigoDerrotado();
                     }
                     vidaAtual = 0f;
+                    if (TutorialSetUp.Instance != null)
+                    {
+                        DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+                        TutorialSetUp.Instance.AoEliminarOInimigo();
+                    }
                     Destroy(this.gameObject);
                 }
+                Empurrar(forca, origemPosHit, duracaoStun);
             }
         }
+    }
+    private void Empurrar(float forca, Vector3 direcao, float duracao)
+    {
+        forcaEmpurrao = forca;
+        direcaoEmpurrao = (direcao - this.transform.position).normalized;
+        empurrado = true;
+        StartCoroutine(this.duracaoEmpurrao(duracao));
+    }
+    IEnumerator duracaoEmpurrao(float temp)
+    {
+        yield return new WaitForSeconds(temp);
+        empurrado = false;
+        rb.velocity = Vector2.zero;
     }
     IEnumerator Paralisar(float temp)
     {
@@ -344,13 +374,23 @@ public class inimigoScript : MonoBehaviour
             }
         }
     }
-    public void LigaDetecao()
-    {
-        areaDetecao.enabled = true;
-        escondido = false;
-    }
     public bool GetParalisado()
     {
         return paralisado;
+    }
+    protected virtual void AoFinalizarDialogo(object origem, System.EventArgs args)
+    {
+        switch (TutorialSetUp.Instance.GetSequenciaDialogos())
+        {
+            case 2:
+                jogadorScript.Instance.GetAnimacoesTutorial().GetComponent<Animator>().SetBool("MELEE", true);
+                JogadorAnimScript.Instance.Getanimator().SetFloat("HORIZONTAL", 1f);
+                JogadorAnimScript.Instance.Getanimator().SetFloat("VERTICAL", 0f);
+                jogadorScript.Instance.MudarEstadoJogador(1);
+                break;
+            case 3:
+                jogadorScript.Instance.GetAnimacoesTutorial().GetComponent<Animator>().SetBool("MOV", true);
+                break;
+        }
     }
 }

@@ -5,15 +5,15 @@ using UnityEngine;
 public class SelecionadorDeIconeDeInteracao : MonoBehaviour
 {
     //public static SelecionadorDeIconeDeInteracao Instance { get; private set; }
-    [SerializeField] private List<Sprite> listaDosIconesDeInteracao = new List<Sprite>();
+    [SerializeField] private List<int> listaDosIconesDeInteracao = new List<int>();
 
     //private void Awake()
     //{
     //    Instance = this;
     //}
-    public Sprite SelecionaIconeDeInteracao(KeyCode tecla)
+    public int SelecionaIconeDeInteracao(KeyCode tecla)
     {
-        Sprite sprite = null;
+        int sprite = 0;
         switch (tecla)
         {
             case (KeyCode.E):

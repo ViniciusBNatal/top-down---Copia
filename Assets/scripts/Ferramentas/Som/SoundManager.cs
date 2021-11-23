@@ -43,6 +43,10 @@ public class SoundManager : MonoBehaviour
     {
         Musica();
     }
+    private void OnLevelWasLoaded(int level)
+    {
+        Musica();
+    }
     public void SetupAudios()
     {
         foreach(SomConfig somcnf in Sons)
@@ -69,6 +73,7 @@ public class SoundManager : MonoBehaviour
             {
                 SomGobj = new GameObject("Somgobj");
                 SomEfeitosSource = SomGobj.AddComponent<AudioSource>();
+                SomGobj.transform.SetParent(this.transform);
             }
             SomConfig somEscolhido = PegarSom(tipoDoSom);
             SomEfeitosSource.volume = somEscolhido.Volume;
@@ -131,13 +136,16 @@ public class SoundManager : MonoBehaviour
         {
             SomMusicaGobj = new GameObject("Musicagobj");
             SomMusicaSource = SomMusicaGobj.AddComponent<AudioSource>();
+            SomMusicaGobj.transform.SetParent(this.transform);
         }
         string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex);//pega o caminho da cena na pasta de arquivos
         string cenaAtualNome = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
         foreach(SomConfig som in Sons)
         {
-            if (som.tipoSom.ToString().ToUpper() == cenaAtualNome.ToUpper())
+            if (som.som.ToString().ToUpper() == cenaAtualNome.ToUpper())
             {
+                som.Loop = true;
+                som.tipoSom = TipoSom.Global;
                 SomMusicaSource.clip = som.ArquivosDESom[0];
                 if (!SomMusicaSource.isPlaying)
                     SomMusicaSource.Play();

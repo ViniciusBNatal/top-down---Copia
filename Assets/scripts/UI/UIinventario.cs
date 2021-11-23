@@ -7,9 +7,8 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
 {
     public static UIinventario Instance { get; private set; }
     private bool inventarioAberto = false;
-    [SerializeField] private bool tutorial;
     [SerializeField] private List<UpgradeSlot> listaSlotUpgradesBase = new List<UpgradeSlot>();
-    [SerializeField] private float zoomOutAoConstruir;
+    public float zoomOutAoConstruir;
     private Dictionary<string, ItemSlot> itens = new Dictionary<string, ItemSlot>();
     [Header("Nao Mexer")]
     [SerializeField] private GameObject CaixaDeDialogos;
@@ -231,15 +230,23 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
                 //itens[slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting]);
             }
             fechaMenuDeTempos();
-            Tutorial();
-            LiberarNovBtnDeTrocaDeTempo(slot, !tutorial);
+            desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
+            if (TutorialSetUp.Instance != null)
+            {
+                Tutorial();
+                LiberarNovBtnDeTrocaDeTempo(slot, false);
+            }
+            else
+                LiberarNovBtnDeTrocaDeTempo(slot, true);
         }
     }
     public void AoClicarEmMudarDeTempo(UpgradeSlot slot)
     {
-        Tutorial();
+        if (TutorialSetUp.Instance != null)
+            Tutorial();
         fechaMenuDeTempos();
-        jogadorScript.Instance.IndicarInteracaoPossivel(null, false);
+        // anim de trensição de mundo
+        jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
         if (BaseScript.Instance != null)
         {
             BaseScript.Instance.SalvarEstado();
@@ -257,8 +264,8 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         {
             desastreManager.Instance.encerramentoDesastres();
             BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
-            BaseScript.Instance.Ativar_DesativarInteracao(false);
-            jogadorScript.Instance.IndicarInteracaoPossivel(null, false);
+            desastreManager.Instance.Ativar_desativarInteracoesDaBase(false, true);
+            jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
             desastreManager.Instance.ConfigurarTimer(BaseScript.Instance.GetIntervaloDuranteOAprimoramentoDaBase(), 0f, true);
             desastreManager.Instance.PararTodasCorotinas();
             desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
@@ -274,24 +281,21 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     }
     public void Tutorial()
     {
-        if (tutorial)
+        if (TempoAtual == 0)//antes de definir o tempo atual, inica um dialogo
         {
-            if (TempoAtual == 0)//antes de definir o tempo atual, inica um dialogo
-            {
-                //DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-                BaseScript.Instance.CancelarInscricaoEmDialogoFinalizado();
-                BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(false);//pois sempre q aperto para melhorar, é uma defesa da base
-                BaseScript.Instance.animator.enabled = true;
-                TutorialSetUp.Instance.IniciarDialogo();
-            }
-            else
-            {
-                //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
-                desastreManager.Instance.MudarTempoAcumuladoParaDesastre(0f);
-                desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre(), true);
-                desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
-                tutorial = false;
-            }
+            //DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+            //BaseScript.Instance.CancelarInscricaoEmDialogoFinalizado();
+            //BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(false);//pois sempre q aperto para melhorar, é uma defesa da base
+            BaseScript.Instance.animator.enabled = true;
+            BaseScript.Instance.Ativa_DesativaAnimacaoDeNovoTempoLiberado(true);
+            TutorialSetUp.Instance.IniciarDialogo();
+        }
+        else
+        {
+            //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
+            desastreManager.Instance.MudarTempoAcumuladoParaDesastre(0f);
+            desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre(), true);
+            desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
         }
     }
     public bool VerificarSeLiberouBossFinal()
