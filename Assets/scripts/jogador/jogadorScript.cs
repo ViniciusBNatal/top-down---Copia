@@ -78,7 +78,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         {
             Instantiate(caixaComTudo, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         }
-        if (!UIinventario.Instance.pausado)
+        if (/*!UIinventario.Instance.pausado*/!InterfaceMenu.Instance.pausado)
         {
             switch (estadosJogador)
             {

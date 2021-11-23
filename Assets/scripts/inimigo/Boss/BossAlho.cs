@@ -73,7 +73,8 @@ public class BossAlho : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform, 0f);
-        UIinventario.Instance.AbrirVitoria();
+        InterfaceMenu.Instance.AbrirVitoria();
+        //UIinventario.Instance.AbrirVitoria();
         //Application.Quit();
         Destroy(this.gameObject);
     }

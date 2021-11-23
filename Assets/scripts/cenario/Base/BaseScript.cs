@@ -398,6 +398,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     }
     public void AbrirGameOver()
     {
-        UIinventario.Instance.abrirAbaDeGameOver();
+        InterfaceMenu.Instance.AbrirGameOver();
+        //UIinventario.Instance.abrirAbaDeGameOver();
     }
 }

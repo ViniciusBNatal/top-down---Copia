@@ -19,10 +19,11 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private GameObject slotItemPrefab;
     [SerializeField] private Transform posicaoDosIconesDeItens;
     [SerializeField] private GameObject abaSelecionarTempo;
-    [SerializeField] private GameObject abaVitoriaDoJogo;
-    [SerializeField] private GameObject abaDerrotaDoJogo;
-    [SerializeField] private GameObject abaPausa;
-    [HideInInspector] public bool pausado = false;
+    //[SerializeField] private GameObject abaVitoriaDoJogo;
+    //[SerializeField] private GameObject abaDerrotaDoJogo;
+    //[SerializeField] private GameObject abaPausa;
+    //[SerializeField] private GameObject abaOpcoes;
+    //[HideInInspector] public bool pausado = false;
     public GameObject craftingBossFinal;
     private int TempoAtual = 0;
     public bool InventarioAberto => inventarioAberto;
@@ -34,7 +35,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) && (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmAcao || jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmUI) && !pausado)
+        if (Input.GetKeyDown(KeyCode.I) && (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmAcao || jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmUI) && /*!pausado*/!InterfaceMenu.Instance.pausado)
         {
             if (inventarioAberto)
             {
@@ -47,28 +48,43 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
                 abreInventario();
             }
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (!pausado)
-                abrePausa();
-            else
-                fechaPausa();
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    if (!pausado)
+        //        abrePausa();
+        //    else
+        //    {
+        //        fechaPausa();
+        //        fechaOpcoes();
+        //    }
+        //}
     }
-    public void abrePausa()
-    {
-        pausado = true;
-        inventarioAberto = true;
-        abaPausa.SetActive(true);
-        Time.timeScale = 0f;
-    }
-    public void fechaPausa()
-    {
-        pausado = false;
-        inventarioAberto = false;
-        abaPausa.SetActive(false);
-        Time.timeScale = 1f;
-    }
+    //public void abrePausa()
+    //{
+    //    pausado = true;
+    //    inventarioAberto = true;
+    //    abaPausa.SetActive(true);
+    //    Time.timeScale = 0f;
+    //}
+    //public void fechaPausa()
+    //{
+    //    pausado = false;
+    //    inventarioAberto = false;
+    //    abaPausa.SetActive(false);
+    //    Time.timeScale = 1f;
+    //}
+    //public void abreOpcoes()
+    //{
+    //    inventarioAberto = true;
+    //    abaPausa.SetActive(false);
+    //    abaOpcoes.SetActive(true);
+    //}
+    //public void fechaOpcoes()
+    //{
+    //    inventarioAberto = false;
+    //    abaOpcoes.SetActive(false);
+    //    abaPausa.SetActive(true);
+    //}
     public void fecharTodoInventario()
     {
         inventarioAberto = false;
@@ -100,12 +116,12 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         inventarioAberto = false;
         abaSelecionarTempo.SetActive(false);
     }
-    public void abrirAbaDeGameOver()
-    {
-        jogadorScript.Instance.MudarEstadoJogador(0);
-        inventarioAberto = true;
-        abaDerrotaDoJogo.SetActive(true);
-    }
+    //public void abrirAbaDeGameOver()
+    //{
+    //    jogadorScript.Instance.MudarEstadoJogador(0);
+    //    inventarioAberto = true;
+    //    abaDerrotaDoJogo.SetActive(true);
+    //}
 
     public void AoClicarBtnInventario()
     {
@@ -349,21 +365,12 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
         return cenaParaAbrir;
     }
-    public void AbrirVitoria()
-    {
-        jogadorScript.Instance.MudarEstadoJogador(5);
-        craftingBossFinal.SetActive(false);
-        inventarioAberto = true;
-        inventarioParent.SetActive(true);
-        abaVitoriaDoJogo.SetActive(true);
-    }
-    public void AbrirMenu()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(NomeFasePorBuildIndex(0));
-    }
-    public void FecharJogo()
-    {
-        Application.Quit();
-    }
+    //public void AbrirVitoria()
+    //{
+    //    jogadorScript.Instance.MudarEstadoJogador(5);
+    //    craftingBossFinal.SetActive(false);
+    //    inventarioAberto = true;
+    //    inventarioParent.SetActive(true);
+    //    abaVitoriaDoJogo.SetActive(true);
+    //}
 }

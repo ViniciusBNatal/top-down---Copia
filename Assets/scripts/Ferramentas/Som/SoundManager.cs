@@ -9,6 +9,8 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance { get; private set; }
     private static Dictionary<Som, float> intervalosDosSons = new Dictionary<Som, float>();
     private static Dictionary<Som, float> ultimaVezTocado = new Dictionary<Som, float>();
+    [SerializeField] private GameObject SomEfeitosGobjPrefab;
+    [SerializeField] private GameObject SomMusicaGobjPrefab;
     private static GameObject SomGobj;
     private static AudioSource SomEfeitosSource;
     private static GameObject SomMusicaGobj;
@@ -38,9 +40,12 @@ public class SoundManager : MonoBehaviour
             Instance = this;
             SetupAudios();
         }
+        else
+            Destroy(gameObject);
     }
     private void Start()
     {
+        DontDestroyOnLoad(gameObject);
         Musica();
     }
     private void OnLevelWasLoaded(int level)
@@ -71,8 +76,8 @@ public class SoundManager : MonoBehaviour
         {
             if (SomGobj == null)
             {
-                SomGobj = new GameObject("Somgobj");
-                SomEfeitosSource = SomGobj.AddComponent<AudioSource>();
+                SomGobj = Instantiate(SomEfeitosGobjPrefab, this.transform);//new GameObject("Somgobj")
+                SomEfeitosSource = SomGobj.GetComponent<AudioSource>();
                 SomGobj.transform.SetParent(this.transform);
             }
             SomConfig somEscolhido = PegarSom(tipoDoSom);
@@ -134,8 +139,8 @@ public class SoundManager : MonoBehaviour
     {
         if (SomMusicaGobj == null)
         {
-            SomMusicaGobj = new GameObject("Musicagobj");
-            SomMusicaSource = SomMusicaGobj.AddComponent<AudioSource>();
+            SomMusicaGobj = Instantiate(SomMusicaGobjPrefab, this.transform);//new GameObject("Musicagobj")
+            SomMusicaSource = SomMusicaGobj.GetComponent<AudioSource>();
             SomMusicaGobj.transform.SetParent(this.transform);
         }
         string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex);//pega o caminho da cena na pasta de arquivos

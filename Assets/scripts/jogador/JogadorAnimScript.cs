@@ -16,7 +16,7 @@ public class JogadorAnimScript : MonoBehaviour
 
     void Update()
     {
-        if (jogador.GetPodeAnimar() && !UIinventario.Instance.pausado)
+        if (jogador.GetPodeAnimar() && /*!UIinventario.Instance.pausado*/ !InterfaceMenu.Instance.pausado)
         {
             movimento.x = Input.GetAxisRaw("Horizontal");
             movimento.y = Input.GetAxisRaw("Vertical");
