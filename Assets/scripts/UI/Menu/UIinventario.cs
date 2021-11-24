@@ -19,6 +19,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private GameObject slotItemPrefab;
     [SerializeField] private Transform posicaoDosIconesDeItens;
     [SerializeField] private GameObject abaSelecionarTempo;
+    public GameObject caixaGuiaDeConstruao;
     //[SerializeField] private GameObject abaVitoriaDoJogo;
     //[SerializeField] private GameObject abaDerrotaDoJogo;
     //[SerializeField] private GameObject abaPausa;

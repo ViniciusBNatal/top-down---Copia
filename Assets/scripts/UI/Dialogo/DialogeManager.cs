@@ -23,6 +23,7 @@ public class DialogeManager : MonoBehaviour
     private string textoDialogo;
     [HideInInspector]
     public bool limparDelegate = true;
+    private bool limparImagemNPC = false;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -74,11 +75,20 @@ public class DialogeManager : MonoBehaviour
     }
     public void FimDialogo()
     {
+        limparImagemNPC = true;
         animator.SetBool("aberto", false);
         index = 0;
         jogadorScript.Instance.MudarEstadoJogador(0);
         AoFinalizarDialogo();
         LimparListaDeAoFinalizarDialogo();
+    }
+    public void LimparImagemDosNPCs()
+    {
+        if (limparImagemNPC)
+        {
+            animatorImage.SetInteger("NPC", 0);
+            limparImagemNPC = false;
+        }
     }
     IEnumerator EscreveDialogo(string frase)
     {

@@ -106,9 +106,10 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
     }
     public void Tutorial()
     {
-            //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
-            DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-            TutorialSetUp.Instance.IniciarDialogo();
+        //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
+        UIinventario.Instance.caixaGuiaDeConstruao.SetActive(false);
+        DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+        TutorialSetUp.Instance.IniciarDialogo();
     }
     protected virtual void AoFinalizarDialogo(object origem, System.EventArgs args)
     {

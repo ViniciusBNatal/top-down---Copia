@@ -16,11 +16,20 @@ public class mesaCraftingScript : MonoBehaviour
         {
             jogadorScript.Instance.InterfaceJogador.abreInventario();
             jogadorScript.Instance.InterfaceJogador.AoClicarBtnCriacao();
+            if (TutorialSetUp.Instance != null)
+            {
+                if (TutorialSetUp.Instance.GetSequenciaDialogos() == 3)
+                {
+                    Desativar_AtivarInteracao(false);
+                    jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
+                    UIinventario.Instance.caixaGuiaDeConstruao.SetActive(true);
+                }
+            }
         }
         else
         {
-            jogadorScript.Instance.InterfaceJogador.fechaInventario();
-            jogadorScript.Instance.InterfaceJogador.AoClicarBtnInventario();
+             jogadorScript.Instance.InterfaceJogador.fechaInventario();
+             jogadorScript.Instance.InterfaceJogador.AoClicarBtnInventario();
         }
     }
     public void Desativar_AtivarInteracao(bool b)

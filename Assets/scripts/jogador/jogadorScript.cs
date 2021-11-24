@@ -162,7 +162,15 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
             bala.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));//rotaciona a bala
             bala.GetComponent<Rigidbody2D>().velocity = direcaoProjetil * velocidadeProjetil;//new Vector3(direcaoProjetil.x / Mathf.Abs(direcaoProjetil.x), direcaoProjetil.y / Mathf.Abs(direcaoProjetil.y), 0f)
             bala.GetComponent<balaHit>().SetDano(tempParalisacaoProjetil);
-            MudarEstadoJogador(0);
+            if (TutorialSetUp.Instance != null)
+            {
+                if (TutorialSetUp.Instance.GetSequenciaDialogos() > 1)
+                {
+                    MudarEstadoJogador(0);
+                }
+            }
+            else
+                MudarEstadoJogador(0);
             atirando = false;
         }
     }

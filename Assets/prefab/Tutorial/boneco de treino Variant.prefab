@@ -86,8 +86,13 @@ PrefabInstance:
     - target: {fileID: 4662088269654304648, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4662088269654304648, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7bcecf5f855986d4db2f9e517a50a889, type: 2}
     - target: {fileID: 5451056344384544442, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}
       propertyPath: m_LocalPosition.x
