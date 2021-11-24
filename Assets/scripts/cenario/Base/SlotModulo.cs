@@ -107,7 +107,6 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
     public void Tutorial()
     {
         //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
-        UIinventario.Instance.caixaGuiaDeConstruao.SetActive(false);
         DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
         TutorialSetUp.Instance.IniciarDialogo();
     }

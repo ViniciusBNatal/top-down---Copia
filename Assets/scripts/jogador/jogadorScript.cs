@@ -164,7 +164,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
             bala.GetComponent<balaHit>().SetDano(tempParalisacaoProjetil);
             if (TutorialSetUp.Instance != null)
             {
-                if (TutorialSetUp.Instance.GetSequenciaDialogos() > 1)
+                if (TutorialSetUp.Instance.GetSequenciaDialogos() > 2)
                 {
                     MudarEstadoJogador(0);
                 }

@@ -219,6 +219,8 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(BaseScript.Instance.transform, zoomOutAoConstruir);
             fechaInventario();
             jogadorScript.Instance.MudarEstadoJogador(2);
+            if (TutorialSetUp.Instance != null)
+                caixaGuiaDeConstruao.SetActive(false);
         }
     }
     public void AoClicarparaMelhorar(UpgradeSlot slot)

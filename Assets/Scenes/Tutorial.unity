@@ -1728,10 +1728,9 @@ MonoBehaviour:
   dialogo:
     NomeNPC:
     - Dr Alho
-    IDdoNPC: 01000000
+    ImagemNPC: []
     Frases:
     - "Isso \xE9 depois"
-    EstadoImagemNPC: []
     FocarComCamera: []
     EventosDuranteDialogo: []
 --- !u!1 &225395766
@@ -4128,7 +4127,7 @@ MonoBehaviour:
   NomeNPCText: {fileID: 2036472649}
   DialogoText: {fileID: 1429167285}
   velocidadeDasLetras: 0.02
-  animatorImage: {fileID: 909585228}
+  ImagemNPC: {fileID: 909585229}
   setaContinuarDialogo: {fileID: 234433508}
   limparDelegate: 1
 --- !u!114 &582580337
@@ -51999,7 +51998,6 @@ GameObject:
   - component: {fileID: 909585227}
   - component: {fileID: 909585230}
   - component: {fileID: 909585229}
-  - component: {fileID: 909585228}
   m_Layer: 5
   m_Name: icone NPC
   m_TagString: Untagged
@@ -52026,25 +52024,6 @@ RectTransform:
   m_AnchoredPosition: {x: -205.5, y: -0.8}
   m_SizeDelta: {x: 115, y: 135}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &909585228
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 909585226}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 35a17795cf5408e46821052b8d2b03b3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &909585229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65237,7 +65216,15 @@ MonoBehaviour:
   - NomeNPC:
     - ???
     - Dr Alho
-    IDdoNPC: 01000000
+    ImagemNPC:
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
+    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
+    - {fileID: 21300000, guid: bc36cfa1ace3dcb49a7b0a6ffc70a22c, type: 3}
+    - {fileID: 21300000, guid: ac057e696d19a74438921848f229350b, type: 3}
+    - {fileID: 21300000, guid: f6862986a3dba0d40a109305fa7da1c0, type: 3}
+    - {fileID: 21300000, guid: b5386c6d4ee01f543844cefdf547ad81, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
     Frases:
     - "Aika!!! O que voc\xEA fez???"
     - Como assim quem sou eu?! Eu sou o seu chefe, o ilustre Dr.Alho!
@@ -65253,15 +65240,6 @@ MonoBehaviour:
       durante essa jornada e perdeu sua mem\xF3ria vamos fazer um treino r\xE1pido
       para voc\xEA se lembrar do que \xE9 capaz."
     - "Segure o BOT\xC3O DIREITO do mouse para congelar o boneco no tempo "
-    EstadoImagemNPC:
-    - 1
-    - 2
-    - 2
-    - 2
-    - 2
-    - 2
-    - 2
-    - 2
     FocarComCamera: []
     EventosDuranteDialogo:
     - m_PersistentCalls:
@@ -65294,17 +65272,14 @@ MonoBehaviour:
           m_CallState: 2
   - NomeNPC:
     - ao acertar o tiro no inimigo
-    IDdoNPC: 01000000
+    ImagemNPC: []
     Frases:
     - "Muito bem Agora bata no boneco com o BOT\xC3O ESQUERDO do mouse\r.\n \r"
-    EstadoImagemNPC:
-    - 2
-    - 1
     FocarComCamera: []
     EventosDuranteDialogo: []
   - NomeNPC:
     - ao matar o inimigo no melee
-    IDdoNPC: 01000000
+    ImagemNPC: []
     Frases:
     - "Espere! Meus sensores detectaram que voc\xEA causou uma perturba\xE7\xE3o
       no espa\xE7o tempo, fazendo com que desastres de diferentes eras ocorram periodicamente."
@@ -65314,9 +65289,6 @@ MonoBehaviour:
     - "Destrua a caixa e construa o m\xF3dulo de defesa na MESA DE FABRICA\xC7\xC3O
       para o desastre que vai aparecer no seu dispositivo, ele servir\xE1 para proteger
       o portal, caso sofra 3 danos ele ir\xE1 ser destru\xEDdo. "
-    EstadoImagemNPC:
-    - 2
-    - 1
     FocarComCamera:
     - {fileID: 0}
     - {fileID: 0}
@@ -65338,19 +65310,16 @@ MonoBehaviour:
           m_CallState: 2
   - NomeNPC:
     - Criar caixa
-    IDdoNPC: 01000000
+    ImagemNPC: []
     Frases:
     - "Muito bem agora espere o desastre, ele j\xE1 est\xE1 se aproximando."
-    EstadoImagemNPC:
-    - 2
-    - 1
     FocarComCamera: []
     EventosDuranteDialogo:
     - m_PersistentCalls:
         m_Calls: []
   - NomeNPC:
     - Dr Alho
-    IDdoNPC: 01000000
+    ImagemNPC: []
     Frases:
     - "Parab\xE9ns voc\xEA conseguiu sobreviver esse desastre, mas lembre-se que
       eles nunca v\xE3o parar de acontecer, ent\xE3o fique atento aos seus recursos,
@@ -65359,9 +65328,6 @@ MonoBehaviour:
       construir um modulo mais fraco do que o necess\xE1rio o portal ser\xE1 danificado,
       se ele for danificado 3 vezes temo que ir\xE1 explodir."
     - "Agora v\xE1 at\xE9 o portal e o conserte!"
-    EstadoImagemNPC:
-    - 1
-    - 2
     FocarComCamera:
     - {fileID: 0}
     - {fileID: 0}
@@ -65369,7 +65335,7 @@ MonoBehaviour:
     EventosDuranteDialogo: []
   - NomeNPC:
     - Dr Alho
-    IDdoNPC: 01000000
+    ImagemNPC: []
     Frases:
     - "Muito bem, agora voc\xEA deve explorar as eras para procurar as pe\xE7as de
       reparo da m\xE1quina do tempo."
@@ -65383,9 +65349,6 @@ MonoBehaviour:
       vezes. Ele vai ficar inutiliz\xE1vel por um tempo e como uma nova era estar\xE1
       abrindo v\xE1rios desastres ir\xE3o iniciar rapidamente."
     - Boa sorte!
-    EstadoImagemNPC:
-    - 2
-    - 1
     FocarComCamera: []
     EventosDuranteDialogo: []
 --- !u!1 &1847444099

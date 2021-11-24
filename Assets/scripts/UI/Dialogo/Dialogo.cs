@@ -7,10 +7,10 @@ using UnityEngine.Events;
 public class Dialogo
 {
     public string[] NomeNPC;
-    public int[] IDdoNPC;
+    //public int[] IDdoNPC;
+    public Sprite[] ImagemNPC;
     [TextArea(1, 4)]
     public string[] Frases;
-    public float[] EstadoImagemNPC;
     public Transform[] FocarComCamera;
     public UnityEvent[] EventosDuranteDialogo;
 }

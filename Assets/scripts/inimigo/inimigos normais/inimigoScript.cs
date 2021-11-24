@@ -240,8 +240,11 @@ public class inimigoScript : MonoBehaviour
                 StartCoroutine(this.Paralisar(dano));
                 if (TutorialSetUp.Instance != null)
                 {
-                    DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-                    TutorialSetUp.Instance.AoAcertarDisparoNoInimigo();
+                    if (TutorialSetUp.Instance.GetSequenciaDialogos() == 1)
+                    {
+                        DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+                        TutorialSetUp.Instance.AoAcertarDisparoNoInimigo();
+                    }
                 }
             }
             else
@@ -262,8 +265,11 @@ public class inimigoScript : MonoBehaviour
                     vidaAtual = 0f;
                     if (TutorialSetUp.Instance != null)
                     {
-                        DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-                        TutorialSetUp.Instance.AoEliminarOInimigo();
+                        if (TutorialSetUp.Instance.GetSequenciaDialogos() == 2)
+                        {
+                            DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+                            TutorialSetUp.Instance.AoEliminarOInimigo();
+                        }
                     }
                     Destroy(this.gameObject);
                 }

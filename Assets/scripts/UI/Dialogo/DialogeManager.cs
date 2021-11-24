@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DialogeManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class DialogeManager : MonoBehaviour
     [SerializeField] private TMP_Text NomeNPCText;
     [SerializeField] private TMP_Text DialogoText;
     [SerializeField] private float velocidadeDasLetras;
-    [SerializeField] private Animator animatorImage;
+    [SerializeField] private Image ImagemNPC;
     [SerializeField] private GameObject setaContinuarDialogo;
     private Animator animator;
     private Queue<string> Frases = new Queue<string>();
@@ -36,7 +37,7 @@ public class DialogeManager : MonoBehaviour
         Frases.Clear();
         jogadorScript.Instance.MudarEstadoJogador(3);
         dialogoAtual = dialogo;
-        TrocaNPC();
+        //TrocaNPC();
         animator.SetBool("aberto", true);
         TrocarNomeNPC();
         foreach(string frase in dialogo.Frases)
@@ -57,8 +58,7 @@ public class DialogeManager : MonoBehaviour
             setaContinuarDialogo.SetActive(false);
             textoDialogo = Frases.Dequeue();
             TrocarNomeNPC();
-            TrocaNPC();
-            TrocaEstadoImagemDoNPC();
+            TrocaImagemDoNPC();
             TrocarFocoDaCamera();
             AcionarEventosDuranteDialogo();
             index++;
@@ -86,7 +86,7 @@ public class DialogeManager : MonoBehaviour
     {
         if (limparImagemNPC)
         {
-            animatorImage.SetInteger("NPC", 0);
+            ImagemNPC.sprite = null;
             limparImagemNPC = false;
         }
     }
@@ -119,30 +119,16 @@ public class DialogeManager : MonoBehaviour
     {
         if (DialogoFinalizado != CinemachineBehaviour.Instance.AoFinalizarDialogo)
             DialogoFinalizado += CinemachineBehaviour.Instance.AoFinalizarDialogo;
-        //if (DialogoFinalizado != jogadorScript.Instance.AoFinalizarDialogo)
-        //    DialogoFinalizado += jogadorScript.Instance.AoFinalizarDialogo;
     }
-    private void TrocaNPC()
+    private void TrocaImagemDoNPC()
     {
-        if (dialogoAtual.IDdoNPC.Length != 0)
+        if (dialogoAtual.ImagemNPC.Length != 0)
         {
-            if (index <= dialogoAtual.IDdoNPC.Length - 1)
-                animatorImage.SetInteger("NPC", dialogoAtual.IDdoNPC[index]);
-            else
-                animatorImage.SetInteger("NPC", dialogoAtual.IDdoNPC[0]);
+            if (index <= dialogoAtual.ImagemNPC.Length - 1)
+                ImagemNPC.sprite = dialogoAtual.ImagemNPC[index];
         }
         else
-            Debug.LogError("Dialogo está sem um NPC NA IMAGEM");
-    }
-    private void TrocaEstadoImagemDoNPC()
-    {
-        if (dialogoAtual.EstadoImagemNPC.Length != 0)
-        {
-            if (index <= dialogoAtual.EstadoImagemNPC.Length - 1)
-                animatorImage.SetFloat("ESTADO", dialogoAtual.EstadoImagemNPC[index]);
-        }
-        else
-            animatorImage.SetFloat("ESTADO", 1f);
+            ImagemNPC.sprite = null;
     }
     private void TrocarNomeNPC()
     {
