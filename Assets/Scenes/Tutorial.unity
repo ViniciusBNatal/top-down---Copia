@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -65217,14 +65217,14 @@ MonoBehaviour:
     - ???
     - Dr Alho
     ImagemNPC:
-    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
-    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
-    - {fileID: 21300000, guid: bc36cfa1ace3dcb49a7b0a6ffc70a22c, type: 3}
-    - {fileID: 21300000, guid: ac057e696d19a74438921848f229350b, type: 3}
-    - {fileID: 21300000, guid: f6862986a3dba0d40a109305fa7da1c0, type: 3}
     - {fileID: 21300000, guid: b5386c6d4ee01f543844cefdf547ad81, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 21300000, guid: f6862986a3dba0d40a109305fa7da1c0, type: 3}
+    - {fileID: 21300000, guid: ac057e696d19a74438921848f229350b, type: 3}
+    - {fileID: 21300000, guid: 7bb96a89c6ceb6949ad1c0e371068f69, type: 3}
+    - {fileID: 21300000, guid: ac057e696d19a74438921848f229350b, type: 3}
+    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
+    - {fileID: 21300000, guid: 7bb96a89c6ceb6949ad1c0e371068f69, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
     - "Aika!!! O que voc\xEA fez???"
     - Como assim quem sou eu?! Eu sou o seu chefe, o ilustre Dr.Alho!
@@ -65271,15 +65271,19 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - NomeNPC:
-    - ao acertar o tiro no inimigo
-    ImagemNPC: []
+    - Dr Alho
+    ImagemNPC:
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
     - "Muito bem Agora bata no boneco com o BOT\xC3O ESQUERDO do mouse\r.\n \r"
     FocarComCamera: []
     EventosDuranteDialogo: []
   - NomeNPC:
-    - ao matar o inimigo no melee
-    ImagemNPC: []
+    - Dr Alho
+    ImagemNPC:
+    - {fileID: 21300000, guid: 7bb96a89c6ceb6949ad1c0e371068f69, type: 3}
+    - {fileID: 21300000, guid: 7bb96a89c6ceb6949ad1c0e371068f69, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
     - "Espere! Meus sensores detectaram que voc\xEA causou uma perturba\xE7\xE3o
       no espa\xE7o tempo, fazendo com que desastres de diferentes eras ocorram periodicamente."
@@ -65295,6 +65299,8 @@ MonoBehaviour:
     - {fileID: 1195308730}
     EventosDuranteDialogo:
     - m_PersistentCalls:
+        m_Calls: []
+    - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1837283354}
           m_MethodName: CriarObjeto
@@ -65308,9 +65314,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls: []
   - NomeNPC:
-    - Criar caixa
-    ImagemNPC: []
+    - Dr Alho
+    ImagemNPC:
+    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
     Frases:
     - "Muito bem agora espere o desastre, ele j\xE1 est\xE1 se aproximando."
     FocarComCamera: []
@@ -65319,7 +65328,10 @@ MonoBehaviour:
         m_Calls: []
   - NomeNPC:
     - Dr Alho
-    ImagemNPC: []
+    ImagemNPC:
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
+    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
     - "Parab\xE9ns voc\xEA conseguiu sobreviver esse desastre, mas lembre-se que
       eles nunca v\xE3o parar de acontecer, ent\xE3o fique atento aos seus recursos,
@@ -65335,7 +65347,12 @@ MonoBehaviour:
     EventosDuranteDialogo: []
   - NomeNPC:
     - Dr Alho
-    ImagemNPC: []
+    ImagemNPC:
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
+    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
+    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
     - "Muito bem, agora voc\xEA deve explorar as eras para procurar as pe\xE7as de
       reparo da m\xE1quina do tempo."

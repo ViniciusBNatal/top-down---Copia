@@ -156,7 +156,11 @@ MonoBehaviour:
   dialogos:
   - NomeNPC:
     - Dr. Alho MECHA
-    IDdoNPC: 01000000
+    ImagemNPC:
+    - {fileID: 21300000, guid: bc36cfa1ace3dcb49a7b0a6ffc70a22c, type: 3}
+    - {fileID: 21300000, guid: bc36cfa1ace3dcb49a7b0a6ffc70a22c, type: 3}
+    - {fileID: 21300000, guid: bc36cfa1ace3dcb49a7b0a6ffc70a22c, type: 3}
+    - {fileID: 21300000, guid: bc36cfa1ace3dcb49a7b0a6ffc70a22c, type: 3}
     Frases:
     - "HA Ha ha voc\xEA caiu direitinho no meu plano, a coisa mais conveniente foi
       voc\xEA ter perdido a mem\xF3ria ap\xF3s ter descoberto meu plano "
@@ -164,7 +168,6 @@ MonoBehaviour:
       reav\xEA-lo e por o meu plano maligno em pratica..."
     - "Finalmente irei criar uma planta\xE7\xE3o de alho por todo o espa\xE7o tempo"
     - Prepare-se para morrer
-    EstadoImagemNPC: []
     FocarComCamera:
     - {fileID: 3199460214712093555}
     EventosDuranteDialogo: []
