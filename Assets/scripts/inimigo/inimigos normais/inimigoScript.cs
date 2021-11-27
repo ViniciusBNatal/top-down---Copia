@@ -143,6 +143,7 @@ public class inimigoScript : MonoBehaviour
             else
             {
                 inimigoAnimScript.Surgir(true);
+                escondido = false;
             }
         }
     }
@@ -229,7 +230,11 @@ public class inimigoScript : MonoBehaviour
         pontoDefugaParaTeleportar = gobj.name;
         inimigoAnimScript.Surgir(true);
         inimigoAnimScript.Esconder();
-
+    }
+    public void LigarDetecao()
+    {
+        inimigoAnimScript.Surgir(false);
+        areaDetecao.enabled = true;
     }
     public void mudancaVida(float dano, string origemHit, float forca, Vector3 origemPosHit, float duracaoStun)
     {
