@@ -187,6 +187,8 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         if (atacando)
         {
             Collider2D[] objetosAcertados = Physics2D.OverlapCircleAll(posicaoMelee.position, alcanceMelee, objetosAcertaveisLayer);//hit em objetos
+            //if (objetosAcertados.Length == 0)
+            //    SoundManager.Instance.TocarSom(SoundManager.Som.JogadorAtqMelee);
             foreach (Collider2D objeto in objetosAcertados)
             {
                 if (objeto.gameObject.layer == 8)

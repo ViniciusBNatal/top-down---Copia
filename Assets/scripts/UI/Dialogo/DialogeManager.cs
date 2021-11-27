@@ -9,8 +9,6 @@ public class DialogeManager : MonoBehaviour
     public static DialogeManager Instance { get; private set; }
     public delegate void DialogeManagerEventHandler(object origem, System.EventArgs args);
     public event DialogeManagerEventHandler DialogoFinalizado;
-    //[SerializeField] private Text NomeNPCText;
-    //[SerializeField] private Text DialogoText;
     [SerializeField] private TMP_Text NomeNPCText;
     [SerializeField] private TMP_Text DialogoText;
     [SerializeField] private float velocidadeDasLetras;
@@ -124,11 +122,15 @@ public class DialogeManager : MonoBehaviour
     {
         if (dialogoAtual.ImagemNPC.Length != 0)
         {
+            ImagemNPC.enabled = true;
             if (index <= dialogoAtual.ImagemNPC.Length - 1)
                 ImagemNPC.sprite = dialogoAtual.ImagemNPC[index];
         }
         else
+        {
             ImagemNPC.sprite = null;
+            ImagemNPC.enabled = false;
+        }
     }
     private void TrocarNomeNPC()
     {

@@ -26,7 +26,12 @@ public class SoundManager : MonoBehaviour
         Lixao,
         JogadorAndando,
         JogadorAtirando,
-        JogadorAtqMelee
+        JogadorAtqMelee,
+        JogadorLevouHit,
+        InimigoLevouHit,
+        BaseExplodindo,
+        ModuloExplodindo,
+        ViagemNoTempo
     };
     public enum TipoSom
     {
@@ -52,7 +57,7 @@ public class SoundManager : MonoBehaviour
     {
         Musica();
     }
-    public void SetupAudios()
+    private void SetupAudios()
     {
         foreach(SomConfig somcnf in Sons)
         {
@@ -103,7 +108,7 @@ public class SoundManager : MonoBehaviour
         //        break;
         //}
     }
-    public SomConfig PegarSom(Som tipoSom)
+    private SomConfig PegarSom(Som tipoSom)
     {
         foreach (SomConfig somcnf in Sons)
         {
@@ -113,7 +118,7 @@ public class SoundManager : MonoBehaviour
         Debug.LogError("Som" + tipoSom + "Não encontrado!");
         return null;
     }
-    public bool PodeTocarSom(Som tipoSom)
+    private bool PodeTocarSom(Som tipoSom)
     {
         foreach (SomConfig somcnf in Sons)
         {

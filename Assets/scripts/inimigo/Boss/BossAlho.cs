@@ -20,10 +20,13 @@ public class BossAlho : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+        animator = GetComponent<Animator>();
     }
     void Start()
     {
-        animator = GetComponent<Animator>();
+        IndicadorDosDesastres.Instance.LimpaPlaca();
+        desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
+        desastreManager.Instance.Ativar_desativarInteracoesDaBase(false, true);
         DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
         DialogeManager.Instance.IniciarDialogo(dialogos[0]);
         //dialogos.AtivarDialogo();
@@ -56,7 +59,7 @@ public class BossAlho : MonoBehaviour
     private void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
         UIinventario.Instance.craftingBossFinal.SetActive(true);
-        desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres() - ReducaoIntervaloDesastres, 0f, true);
+        desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f, true);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
         StartCoroutine(this.PadraoDeAtaque());
     }

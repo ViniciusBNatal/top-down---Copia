@@ -25,4 +25,8 @@ public class custceneDestruicaoModulo : MonoBehaviour
             //    BaseScript.Instance.RecomecarDesastres();
         }
     }
+    public void SomModuloExplodindo()
+    {
+        //SoundManager.Instance.TocarSom(SoundManager.Som.ModuloExplodindo);
+    }
 }

@@ -37,17 +37,22 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     }
     private void FixedUpdate()
     {
-        MovimentarNPC();
+        //MovimentarNPC();
     }
     public void Interacao()
     {
-        if (nDeDialogos == 0)
+        if (dialogos.Length > 1)
         {
-            DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-            DialogeManager.Instance.IniciarDialogo(dialogos[nDeDialogos]);
+            if (nDeDialogos == 0)
+            {
+                DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+                DialogeManager.Instance.IniciarDialogo(dialogos[nDeDialogos]);
+            }
+            else
+                VerificarMissao(true);
         }
         else
-            VerificarMissao(true);
+            DialogeManager.Instance.IniciarDialogo(dialogos[0]);
     }
     private void VerificarMissao(bool encadearDialogos)
     {
@@ -93,7 +98,11 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
                 nDeDialogos = 3;
                 EventosAoCompletarMissao.Invoke();
                 DialogeManager.Instance.limparDelegate = true;
+                StartCoroutine(this.Movvimentacao());
                 SalvarEstado();
+                break;
+            case 3:
+                StartCoroutine(this.Movvimentacao());
                 break;
             default:
                 break;
@@ -134,16 +143,18 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     {
         nDeDialogos = i;
     }
-    public void MovimentarNPC()
+    IEnumerator Movvimentacao()
     {
-        if (nDeDialogos == 3 && (direcaoParaMoverX != 0 || direcaoParaMoverY != 0))
+        if (direcaoParaMoverX != 0 || direcaoParaMoverY != 0)
         {
             animator.SetFloat("HORZ", direcaoParaMoverX);
             animator.SetFloat("VERTC", direcaoParaMoverY);
-            if (Mathf.Abs(transform.position.x - posInicial.x) * direcaoParaMoverX < distanciaMaxParaPerocrer && Mathf.Abs(transform.position.y - posInicial.y) * direcaoParaMoverY < distanciaMaxParaPerocrer)
+            while (Mathf.Sqrt(Mathf.Pow(transform.position.x - posInicial.x, 2)) < distanciaMaxParaPerocrer && Mathf.Sqrt(Mathf.Pow(transform.position.y - posInicial.y, 2)) < distanciaMaxParaPerocrer)
+            {
                 rb.velocity = new Vector2(direcaoParaMoverX, direcaoParaMoverY) * velocidade;
-            else
-                rb.velocity = Vector2.zero;
+                yield return new WaitForSeconds(.2f);
+            }
+            rb.velocity = Vector2.zero;
         }
     }
 }

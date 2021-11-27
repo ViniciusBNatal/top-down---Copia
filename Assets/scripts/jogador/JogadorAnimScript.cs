@@ -58,6 +58,7 @@ public class JogadorAnimScript : MonoBehaviour
         float f = Mathf.Pow(multiplicador, -1f);//se a duração do stun é de .5 a anim deve tocar 2 vezes mais rápida
         animator.SetFloat("HITMULTI", f);
         animator.SetTrigger("HIT");
+        //SoundManager.Instance.TocarSom(SoundManager.Som.JogadorLevouHit);
     }
     public void FimHit()
     {

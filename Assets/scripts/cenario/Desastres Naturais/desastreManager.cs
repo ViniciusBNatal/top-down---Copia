@@ -85,7 +85,7 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
             ConfigurarTimer(3f, tempoAcumulado, true);
             SetUpParaNovoSorteioDeDesastres();
             StartCoroutine(this.LogicaDesastres(true));
-            Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
+            //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
         }
     }*/
     //desastres

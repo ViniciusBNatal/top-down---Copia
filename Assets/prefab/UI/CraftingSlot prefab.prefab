@@ -834,6 +834,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receita: {fileID: 0}
+  botoesDeForca:
+  - {fileID: 6620522510461658330}
+  - {fileID: 9035506469152955772}
+  - {fileID: 3577774730983842461}
   recursoNecessarioUIPrefab: {fileID: 8703963735021367692, guid: 90d56447fc9b0fb48afa6afe872a8156,
     type: 3}
   recursosGrid: {fileID: 526244646486904992}

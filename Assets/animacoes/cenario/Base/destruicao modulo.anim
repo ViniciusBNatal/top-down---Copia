@@ -20,9 +20,35 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: bbe4b8c5dca36014088412410f7b46a0, type: 3}
+      value: {fileID: -7871404559008911792, guid: eec1326bb9752514d95776bfa0e624e6,
+        type: 3}
+    - time: 0.16666667
+      value: {fileID: 7158906591968765088, guid: eec1326bb9752514d95776bfa0e624e6,
+        type: 3}
+    - time: 0.33333334
+      value: {fileID: 4551404270101263320, guid: eec1326bb9752514d95776bfa0e624e6,
+        type: 3}
+    - time: 0.5
+      value: {fileID: 8728335962729001944, guid: eec1326bb9752514d95776bfa0e624e6,
+        type: 3}
+    - time: 0.6666667
+      value: {fileID: 5372734174628288090, guid: eec1326bb9752514d95776bfa0e624e6,
+        type: 3}
     - time: 0.8333333
-      value: {fileID: 21300000, guid: bbe4b8c5dca36014088412410f7b46a0, type: 3}
+      value: {fileID: 1013719577098559052, guid: eec1326bb9752514d95776bfa0e624e6,
+        type: 3}
+    - time: 1
+      value: {fileID: -1680317997983518196, guid: eec1326bb9752514d95776bfa0e624e6,
+        type: 3}
+    - time: 1.1666666
+      value: {fileID: 6079723976537389283, guid: eec1326bb9752514d95776bfa0e624e6,
+        type: 3}
+    - time: 1.3333334
+      value: {fileID: -9203065932833516070, guid: eec1326bb9752514d95776bfa0e624e6,
+        type: 3}
+    - time: 1.5
+      value: {fileID: -4856336188464782500, guid: eec1326bb9752514d95776bfa0e624e6,
+        type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,14 +68,22 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: bbe4b8c5dca36014088412410f7b46a0, type: 3}
-    - {fileID: 21300000, guid: bbe4b8c5dca36014088412410f7b46a0, type: 3}
+    - {fileID: -7871404559008911792, guid: eec1326bb9752514d95776bfa0e624e6, type: 3}
+    - {fileID: 7158906591968765088, guid: eec1326bb9752514d95776bfa0e624e6, type: 3}
+    - {fileID: 4551404270101263320, guid: eec1326bb9752514d95776bfa0e624e6, type: 3}
+    - {fileID: 8728335962729001944, guid: eec1326bb9752514d95776bfa0e624e6, type: 3}
+    - {fileID: 5372734174628288090, guid: eec1326bb9752514d95776bfa0e624e6, type: 3}
+    - {fileID: 1013719577098559052, guid: eec1326bb9752514d95776bfa0e624e6, type: 3}
+    - {fileID: -1680317997983518196, guid: eec1326bb9752514d95776bfa0e624e6, type: 3}
+    - {fileID: 6079723976537389283, guid: eec1326bb9752514d95776bfa0e624e6, type: 3}
+    - {fileID: -9203065932833516070, guid: eec1326bb9752514d95776bfa0e624e6, type: 3}
+    - {fileID: -4856336188464782500, guid: eec1326bb9752514d95776bfa0e624e6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 1.6666666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -69,7 +103,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 1
+  - time: 0.6666667
+    functionName: SomModuloExplodindo
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.6666666
     functionName: FimCutscene
     data: 
     objectReferenceParameter: {fileID: 0}

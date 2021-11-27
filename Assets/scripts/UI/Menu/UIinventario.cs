@@ -19,12 +19,8 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private GameObject slotItemPrefab;
     [SerializeField] private Transform posicaoDosIconesDeItens;
     [SerializeField] private GameObject abaSelecionarTempo;
+    public GameObject transicaoLevelsAnimacao;
     public GameObject caixaGuiaDeConstruao;
-    //[SerializeField] private GameObject abaVitoriaDoJogo;
-    //[SerializeField] private GameObject abaDerrotaDoJogo;
-    //[SerializeField] private GameObject abaPausa;
-    //[SerializeField] private GameObject abaOpcoes;
-    //[HideInInspector] public bool pausado = false;
     public GameObject craftingBossFinal;
     private int TempoAtual = 0;
     public bool InventarioAberto => inventarioAberto;
@@ -264,14 +260,28 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         if (TutorialSetUp.Instance != null)
             Tutorial();
         fechaMenuDeTempos();
-        // anim de trensição de mundo
-        jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
+        TransicaoDeFase.faseParaCarregar = slot.FaseParaAbrir();
         if (BaseScript.Instance != null)
         {
             BaseScript.Instance.SalvarEstado();
             BaseScript.Instance.SalvarEstadosDosModulos();
         }
-        SceneManager.LoadScene(slot.FaseParaAbrir());
+        transicaoLevelsAnimacao.SetActive(true);
+        Ativar_DesativarTransicaoDeFase(true);
+        //jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
+        //if (BaseScript.Instance != null)
+        //{
+        //    BaseScript.Instance.SalvarEstado();
+        //    BaseScript.Instance.SalvarEstadosDosModulos();
+        //}
+        //SceneManager.LoadScene(slot.FaseParaAbrir());
+    }
+    public void Ativar_DesativarTransicaoDeFase(bool b)
+    {
+        if (b)
+            transicaoLevelsAnimacao.GetComponent<Animator>().SetTrigger("INICIAR");
+        else
+            transicaoLevelsAnimacao.GetComponent<Animator>().SetTrigger("FINALIZAR");
     }
     public void LiberarNovBtnDeTrocaDeTempo(UpgradeSlot slot, bool ativarDefesa)
     {

@@ -129,7 +129,6 @@ MonoBehaviour:
   iconeDoModulo: {fileID: 4610957849029268936}
   iconeDoDesastre: {fileID: 3044425054166110305}
   iconeDeMultiplicador: {fileID: 6476883124414127307}
-  tutorial: 1
   materiais:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 2100000, guid: 78c417c94bbe63448ae81759d5015d16, type: 2}
@@ -383,8 +382,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7005566913578387332}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 792723552344176777}
   m_RootOrder: 2
@@ -433,7 +432,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.76, y: 6}
+  m_Size: {x: 1.6875, y: 1.5625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0

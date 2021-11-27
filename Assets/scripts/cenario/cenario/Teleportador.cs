@@ -18,10 +18,12 @@ public class Teleportador : MonoBehaviour
         SalvamentoDosCentrosDeRecursosManager.Instance.SalvarTempoDeSaida();
         SalvamentoDosCentrosDeRecursosManager.Instance.SalvarCentrosDeRecursoDaCenaAtual();
         jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
-        // anim de trensição de mundo
         string IndexFaseBase = SceneUtility.GetScenePathByBuildIndex(BuildIndexDaFaseBaseJogador);//pega o caminho da cena na pasta de arquivos
         string cenaPrincipal = IndexFaseBase.Substring(0, IndexFaseBase.Length - 6).Substring(IndexFaseBase.LastIndexOf('/') + 1);
-        SceneManager.LoadScene(cenaPrincipal);
+        TransicaoDeFase.faseParaCarregar = cenaPrincipal;
+        UIinventario.Instance.transicaoLevelsAnimacao.SetActive(true);
+        UIinventario.Instance.Ativar_DesativarTransicaoDeFase(true);
+        //SceneManager.LoadScene(cenaPrincipal);
     }
     private void DialogoInicial()
     {

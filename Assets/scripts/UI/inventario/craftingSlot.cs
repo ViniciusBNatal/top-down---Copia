@@ -7,6 +7,7 @@ using TMPro;
 public class craftingSlot : MonoBehaviour
 {
     public ReceitaDeCrafting receita;
+    [SerializeField] private Image[] botoesDeForca = new Image[3];
     [SerializeField] private GameObject recursoNecessarioUIPrefab;
     [SerializeField] private GameObject recursosGrid;
     [SerializeField] private Image iconeDoModulo;
@@ -67,6 +68,13 @@ public class craftingSlot : MonoBehaviour
                     novosValores[i] = receita.quantidadeDosRecursos[i] + 2 * receita.incrementoEntreForcas;
                 }
                 break;
+        }
+        for (int i = 0; i < botoesDeForca.Length; i++)
+        {
+            if (i == f - 1)
+                botoesDeForca[i].color = Color.green;
+            else
+                botoesDeForca[i].color = Color.white;
         }
     }
     public void FalhaNoCrafting(bool Insuficiente, int recurso)

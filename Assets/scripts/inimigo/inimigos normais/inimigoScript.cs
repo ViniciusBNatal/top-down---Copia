@@ -252,6 +252,7 @@ public class inimigoScript : MonoBehaviour
                 if (flash != null)
                     flash.Flash(Color.red);
                 vidaAtual += dano;
+                //SoundManager.Instance.TocarSom(SoundManager.Som.InimigoLevouHit);
                 if (vidaAtual > vidaMaxima)
                 {
                     vidaAtual = vidaMaxima;

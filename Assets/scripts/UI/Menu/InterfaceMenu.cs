@@ -85,16 +85,18 @@ public class InterfaceMenu : MonoBehaviour
         }
         MenuParaRetornar.SetActive(true);
     }
-    public void AbrirGameOver()
+    public void AbrirGameOver()//sempre deve ser o penultimo menu na lista
     {
         jogadorScript.Instance.MudarEstadoJogador(0);
-        //AbrirMenu();
+        abaMenus.SetActive(true);
+        AbrirMenu(menus[menus.Count - 2]);
     }
-    public void AbrirVitoria()
+    public void AbrirVitoria()//sempre deve ser o ultimo menu na lista
     {
         jogadorScript.Instance.MudarEstadoJogador(5);
-        //craftingBossFinal.SetActive(false);
-        //AbrirMenu();
+        UIinventario.Instance.craftingBossFinal.SetActive(false);
+        abaMenus.SetActive(true);
+        AbrirMenu(menus[menus.Count - 1]);
     }
     private void ApagarDadosDoJogo()
     {

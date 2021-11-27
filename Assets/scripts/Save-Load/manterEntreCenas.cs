@@ -17,6 +17,8 @@ public class manterEntreCenas : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         else
             Destroy(gameObject);
+        if (UIinventario.Instance != null)
+            UIinventario.Instance.Ativar_DesativarTransicaoDeFase(false);
     }
     //private void Awake()
     //{

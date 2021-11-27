@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
 {
@@ -14,6 +15,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     [SerializeField] private int QntdDeDefesasNecessarias;
     [SerializeField] private GameObject BossPrefab;
     [SerializeField] private TMP_Text vidaAtualText;
+    [SerializeField] private Image VidaImagem;
     [SerializeField] private GameObject animNovoTempo;
     [SerializeField] private AnimationClip animDestruicaoModulo;
     private bool duranteMelhoria = false;
@@ -168,6 +170,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     public void MudancaVida()
     {
         vidaAtual -= desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre;
+        VidaImagem.fillAmount -= (1f / vidaMax) * desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre;
         vidaAtualText.text = vidaAtual.ToString();
         if (vidaAtual <= 0)
         {
@@ -269,12 +272,14 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     }
     private void FimCustcene()
     {
-        if (BossAlho.Instance == null)
+        if (BossAlho.Instance == null)//se o boss n existe tem custcene 
         {
             jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform, 0f);
             jogadorScript.Instance.MudarEstadoJogador(0);
+            desastreManager.Instance.Ativar_desativarInteracoesDaBase(true, true);
         }
-        desastreManager.Instance.Ativar_desativarInteracoesDaBase(true, true);
+        else
+            desastreManager.Instance.Ativar_desativarInteracoesDaBase(false, true);
         if (TutorialSetUp.Instance != null)
             Tutorial();
         else
@@ -395,6 +400,10 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
             desastreManager.Instance.encerramentoDesastres();
         desastreManager.Instance.PararTodasCorotinas();
         animator.SetTrigger("DESTRUIDO");
+    }
+    public void SomPortalDestruido()
+    {
+        //SoundManager.Instance.TocarSom(SoundManager.Som.BaseExplodindo);
     }
     public void AbrirGameOver()
     {
