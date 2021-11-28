@@ -72,6 +72,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     void Update()
     {
         //if (Input.GetKeyDown(KeyCode.L))
+        //    SoundManager.Instance.TocarSom(SoundManager.Som.ModuloExplodindo);
         //    Debug.Log(TutorialSetUp.Instance);
         //    SceneManager.LoadScene("testes");
         if (Input.GetKeyDown(KeyCode.P))
@@ -283,7 +284,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         switch ((int)estadosJogador)
         {
             case 2://em construção
-                if (comportamentoCamera.GetFocoDaCamera() != this.transform && BossAlho.Instance == null)
+                if (comportamentoCamera.GetFocoDaCamera() != this.transform /*&& BossAlho.Instance == null*/)
                     comportamentoCamera.MudaFocoCamera(transform, 0f);
                 if (BaseScript.Instance != null)
                 {

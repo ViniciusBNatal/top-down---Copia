@@ -16,6 +16,8 @@ public class SoundManager : MonoBehaviour
     private static GameObject SomMusicaGobj;
     private static AudioSource SomMusicaSource;
     public SomConfig[] Sons;
+    private static Dictionary<string, SomConfig> SonsDicionario = new Dictionary<string, SomConfig>();
+    [SerializeField] private Som somTestes;
     public enum Som
     {
         Menu,
@@ -48,6 +50,11 @@ public class SoundManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+            TocarSom(somTestes);
+    }
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -61,13 +68,7 @@ public class SoundManager : MonoBehaviour
     {
         foreach(SomConfig somcnf in Sons)
         {
-            //foreach(AudioClip somClip in somcnf.ArquivosDESom)
-            //{
-            //    somClip.volume = somcnf.Volume;
-            //    somClip.pitch = somcnf.Pitch;
-            //    somClip.loop = somcnf.Loop;
-            //    somcnf.ArquivosDESom.
-            //}
+            SonsDicionario.Add(somcnf.som.ToString(), somcnf);
             if (somcnf.intervaloEntreSons > 0)
             {
                 intervalosDosSons.Add(somcnf.som, somcnf.intervaloEntreSons);
@@ -96,6 +97,7 @@ public class SoundManager : MonoBehaviour
                     SomEfeitosSource.Play();
                     break;
                 case TipoSom.Local:
+                    Debug.Log("a");
                     SomEfeitosSource.PlayOneShot(somEscolhido.ArquivosDESom[(int)Random.Range(0, somEscolhido.ArquivosDESom.Length)]);
                     break;
             }
@@ -110,35 +112,40 @@ public class SoundManager : MonoBehaviour
     }
     private SomConfig PegarSom(Som tipoSom)
     {
-        foreach (SomConfig somcnf in Sons)
+        if (SonsDicionario.ContainsKey(tipoSom.ToString()))
         {
-            if (somcnf.som == tipoSom)
-                return somcnf;
+            return SonsDicionario[tipoSom.ToString()];
         }
-        Debug.LogError("Som" + tipoSom + "Não encontrado!");
-        return null;
+        else
+        {
+            Debug.LogError("Som" + tipoSom + "Não encontrado!");
+            return null;
+        }
     }
     private bool PodeTocarSom(Som tipoSom)
     {
-        foreach (SomConfig somcnf in Sons)
+        if (intervalosDosSons.ContainsKey(tipoSom))
         {
-            if (somcnf.som == tipoSom && intervalosDosSons.ContainsKey(somcnf.som))
+            if (SonsDicionario.ContainsKey(tipoSom.ToString()))
             {
-                float intervalo = intervalosDosSons[somcnf.som];
-                float ultimaVez = ultimaVezTocado[somcnf.som];
+                float intervalo = intervalosDosSons[tipoSom];
+                float ultimaVez = ultimaVezTocado[tipoSom];
                 if (ultimaVez + intervalo < Time.time)
                 {
-                    ultimaVezTocado[somcnf.som] = Time.time;
+                    ultimaVezTocado[tipoSom] = Time.time;
                     return true;
                 }
                 else
                     return false;
             }
             else
-                return true;
+            {
+                Debug.LogError("Som" + tipoSom + "Não encontrado!");
+                return false;
+            }
         }
-        Debug.LogError("Som" + tipoSom + "Não encontrado!");
-        return false;
+        else
+            return true;
     }
     private void Musica()
     {
@@ -150,16 +157,13 @@ public class SoundManager : MonoBehaviour
         }
         string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex);//pega o caminho da cena na pasta de arquivos
         string cenaAtualNome = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
-        foreach(SomConfig som in Sons)
+        if (SonsDicionario.ContainsKey(cenaAtualNome))
         {
-            if (som.som.ToString().ToUpper() == cenaAtualNome.ToUpper())
-            {
-                som.Loop = true;
-                som.tipoSom = TipoSom.Global;
-                SomMusicaSource.clip = som.ArquivosDESom[0];
-                if (!SomMusicaSource.isPlaying)
-                    SomMusicaSource.Play();
-            }
+            SonsDicionario[cenaAtualNome].Loop = true;
+            SonsDicionario[cenaAtualNome].tipoSom = TipoSom.Global;
+            SomMusicaSource.clip = SonsDicionario[cenaAtualNome].ArquivosDESom[0];
+            if (!SomMusicaSource.isPlaying)
+                SomMusicaSource.Play();
         }
     }
     private string NomeFasePorBuildIndex(int index)

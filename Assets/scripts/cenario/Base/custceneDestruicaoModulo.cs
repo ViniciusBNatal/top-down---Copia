@@ -27,6 +27,6 @@ public class custceneDestruicaoModulo : MonoBehaviour
     }
     public void SomModuloExplodindo()
     {
-        //SoundManager.Instance.TocarSom(SoundManager.Som.ModuloExplodindo);
+        SoundManager.Instance.TocarSom(SoundManager.Som.ModuloExplodindo);
     }
 }

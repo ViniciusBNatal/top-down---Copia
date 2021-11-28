@@ -12,6 +12,8 @@ public class TransicaoDeFase : MonoBehaviour
     }
     public void DesligarGameObject()
     {
+        if (jogadorScript.Instance.estadosJogador != jogadorScript.estados.EmDialogo)
+            jogadorScript.Instance.MudarEstadoJogador(0);
         this.gameObject.SetActive(false);
     }
     public void SomTrocaDeCena()

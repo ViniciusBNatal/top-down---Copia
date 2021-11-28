@@ -261,6 +261,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             Tutorial();
         fechaMenuDeTempos();
         TransicaoDeFase.faseParaCarregar = slot.FaseParaAbrir();
+        jogadorScript.Instance.IndicarInteracaoPossivel(0, false);
         if (BaseScript.Instance != null)
         {
             BaseScript.Instance.SalvarEstado();
@@ -279,9 +280,14 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     public void Ativar_DesativarTransicaoDeFase(bool b)
     {
         if (b)
+        {
+            jogadorScript.Instance.MudarEstadoJogador(1);
             transicaoLevelsAnimacao.GetComponent<Animator>().SetTrigger("INICIAR");
+        }
         else
+        {
             transicaoLevelsAnimacao.GetComponent<Animator>().SetTrigger("FINALIZAR");
+        }
     }
     public void LiberarNovBtnDeTrocaDeTempo(UpgradeSlot slot, bool ativarDefesa)
     {

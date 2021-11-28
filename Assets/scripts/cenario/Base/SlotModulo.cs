@@ -136,13 +136,10 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
     }
     private void RetornarCameraEMudarEstadoJogador()
     {
-        if (BossAlho.Instance == null)
-        {
-            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform, 0f);
-            jogadorScript.Instance.MudarEstadoJogador(0);
-            if(TutorialSetUp.Instance != null)
-                Tutorial();
-        }
+        jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform, 0f);
+        jogadorScript.Instance.MudarEstadoJogador(0);
+        if (TutorialSetUp.Instance != null)
+            Tutorial();
     }
     public void VisualConstrucao(bool emConstrucao)
     {
