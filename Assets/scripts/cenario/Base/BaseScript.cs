@@ -388,6 +388,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     {
         vidaAtual = i;
         vidaAtualText.text = vidaAtual.ToString();
+        VidaImagem.fillAmount -= (1f / vidaMax) * (vidaMax - vidaAtual);
     }
     public int GetVidaAtual()
     {
