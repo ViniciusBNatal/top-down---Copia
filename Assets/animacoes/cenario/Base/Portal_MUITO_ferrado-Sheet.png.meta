@@ -1,61 +1,31 @@
 fileFormatVersion: 2
-guid: c079740d2834233479c5ca1b2c2ab775
+guid: fd20d82a5077e3341a22e85755c7c554
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1999408582170604070
-    second: Boss_Spritesheet_0
+      213: -124828485522499738
+    second: Portal_MUITO_ferrado-Sheet_0
   - first:
-      213: 517821959381221221
-    second: Boss_Spritesheet_1
+      213: 7059910912126562611
+    second: Portal_MUITO_ferrado-Sheet_1
   - first:
-      213: 9038335748365675615
-    second: Boss_Spritesheet_2
+      213: 333495137594561116
+    second: Portal_MUITO_ferrado-Sheet_2
   - first:
-      213: -5493863548469844800
-    second: Boss_Spritesheet_3
+      213: 2950328671051317438
+    second: Portal_MUITO_ferrado-Sheet_3
   - first:
-      213: -627358911963359575
-    second: Boss_Spritesheet_4
+      213: -4270167809325178716
+    second: Portal_MUITO_ferrado-Sheet_4
   - first:
-      213: 6964077274545780729
-    second: Boss_Spritesheet_5
+      213: -739628980106768823
+    second: Portal_MUITO_ferrado-Sheet_5
   - first:
-      213: -2420899814122119278
-    second: Boss_Spritesheet_6
+      213: -2935326097275652082
+    second: Portal_MUITO_ferrado-Sheet_6
   - first:
-      213: 1403010519932986474
-    second: Boss_Spritesheet_7
-  - first:
-      213: 2831331855196236720
-    second: Boss_Spritesheet_8
-  - first:
-      213: 6092372740705911959
-    second: Boss_Spritesheet_9
-  - first:
-      213: 7174228946307019967
-    second: Boss_Spritesheet_10
-  - first:
-      213: -5296579637524063611
-    second: Boss_Spritesheet_11
-  - first:
-      213: 4225119035268195936
-    second: Boss_Spritesheet_12
-  - first:
-      213: -7695877787034956036
-    second: Boss_Spritesheet_13
-  - first:
-      213: -1232148357886898019
-    second: Boss_Spritesheet_14
-  - first:
-      213: -6337497783637575695
-    second: Boss_Spritesheet_15
-  - first:
-      213: 3922042548741125369
-    second: Boss_Spritesheet_16
-  - first:
-      213: 8850589962709234564
-    second: Boss_Spritesheet_17
+      213: -2915402425999674434
+    second: Portal_MUITO_ferrado-Sheet_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -99,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 18
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -141,13 +111,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boss_Spritesheet_0
+      name: Portal_MUITO_ferrado-Sheet_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 392
-        width: 94
-        height: 94
+        x: 0
+        y: 0
+        width: 50
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +125,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: add8ad2ec7ca044e0800000000000000
-      internalID: -1999408582170604070
+      spriteID: 667d49e5725844ef0800000000000000
+      internalID: -124828485522499738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_Spritesheet_1
+      name: Portal_MUITO_ferrado-Sheet_1
       rect:
         serializedVersion: 2
-        x: 170
-        y: 392
-        width: 94
-        height: 94
+        x: 64
+        y: 0
+        width: 50
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56f70d9145caf2700800000000000000
-      internalID: 517821959381221221
+      spriteID: 331353fc197d9f160800000000000000
+      internalID: 7059910912126562611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_Spritesheet_2
+      name: Portal_MUITO_ferrado-Sheet_2
       rect:
         serializedVersion: 2
-        x: 323
-        y: 392
-        width: 94
-        height: 95
+        x: 128
+        y: 0
+        width: 50
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +167,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5cec0ad97e9e6d70800000000000000
-      internalID: 9038335748365675615
+      spriteID: c52d4aa8f00d0a400800000000000000
+      internalID: 333495137594561116
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_Spritesheet_3
+      name: Portal_MUITO_ferrado-Sheet_3
       rect:
         serializedVersion: 2
-        x: 17
-        y: 268
-        width: 94
-        height: 94
+        x: 192
+        y: 0
+        width: 50
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +188,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c4ecfcd530e1c3b0800000000000000
-      internalID: -5493863548469844800
+      spriteID: eb00aa87b4ca1f820800000000000000
+      internalID: 2950328671051317438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_Spritesheet_4
+      name: Portal_MUITO_ferrado-Sheet_4
       rect:
         serializedVersion: 2
-        x: 170
-        y: 268
-        width: 94
-        height: 94
+        x: 256
+        y: 0
+        width: 50
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,20 +209,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a69fb9b46c2b47f0800000000000000
-      internalID: -627358911963359575
+      spriteID: 4a06dd170015db4c0800000000000000
+      internalID: -4270167809325178716
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_Spritesheet_5
+      name: Portal_MUITO_ferrado-Sheet_5
       rect:
         serializedVersion: 2
-        x: 323
-        y: 268
-        width: 94
-        height: 95
+        x: 320
+        y: 0
+        width: 50
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,20 +230,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f7fba9426f55a060800000000000000
-      internalID: 6964077274545780729
+      spriteID: 94ec62f7c5f4cb5f0800000000000000
+      internalID: -739628980106768823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_Spritesheet_6
+      name: Portal_MUITO_ferrado-Sheet_6
       rect:
         serializedVersion: 2
-        x: 17
-        y: 145
-        width: 94
-        height: 94
+        x: 384
+        y: 0
+        width: 50
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,20 +251,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29f117e027c376ed0800000000000000
-      internalID: -2420899814122119278
+      spriteID: e0873ff6770a347d0800000000000000
+      internalID: -2935326097275652082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Boss_Spritesheet_7
+      name: Portal_MUITO_ferrado-Sheet_7
       rect:
         serializedVersion: 2
-        x: 170
-        y: 145
-        width: 94
-        height: 94
+        x: 448
+        y: 0
+        width: 50
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,92 +272,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a64edb862ae787310800000000000000
-      internalID: 1403010519932986474
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss_Spritesheet_8
-      rect:
-        serializedVersion: 2
-        x: 323
-        y: 145
-        width: 94
-        height: 95
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0bb283e3259ea4720800000000000000
-      internalID: 2831331855196236720
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss_Spritesheet_9
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 22
-        width: 94
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7948c099ab47c8450800000000000000
-      internalID: 6092372740705911959
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss_Spritesheet_10
-      rect:
-        serializedVersion: 2
-        x: 170
-        y: 22
-        width: 94
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fb474f9473bff8360800000000000000
-      internalID: 7174228946307019967
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Boss_Spritesheet_11
-      rect:
-        serializedVersion: 2
-        x: 323
-        y: 22
-        width: 94
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 58a9fc4d1e4ce76b0800000000000000
-      internalID: -5296579637524063611
+      spriteID: eb33af4a0f86a87d0800000000000000
+      internalID: -2915402425999674434
       vertices: []
       indices: 
       edges: []
