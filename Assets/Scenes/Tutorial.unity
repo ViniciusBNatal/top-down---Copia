@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -53234,12 +53234,22 @@ PrefabInstance:
     - target: {fileID: 8473697606045163635, guid: 59f09c031e293154ab34b2aec70998e2,
         type: 3}
       propertyPath: m_Size.x
-      value: 2.98
+      value: 2.9502528
       objectReference: {fileID: 0}
     - target: {fileID: 8473697606045163635, guid: 59f09c031e293154ab34b2aec70998e2,
         type: 3}
       propertyPath: m_Size.y
-      value: 2.91
+      value: 2.1847286
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473697606045163635, guid: 59f09c031e293154ab34b2aec70998e2,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.014873624
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473697606045163635, guid: 59f09c031e293154ab34b2aec70998e2,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.3626356
       objectReference: {fileID: 0}
     - target: {fileID: 9026574210593306821, guid: 59f09c031e293154ab34b2aec70998e2,
         type: 3}
@@ -53688,7 +53698,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.010217428, y: -0.35006237}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -53699,7 +53709,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.7066667, y: 1.7066667}
+  m_Size: {x: 1.9793172, y: 0.7349262}
   m_EdgeRadius: 0
 --- !u!212 &1195308729
 SpriteRenderer:
@@ -53739,7 +53749,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -869401897
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 902916456038304975, guid: 0eeb831efeeaeff4f977fbf1d8a036c1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -65241,7 +65251,7 @@ MonoBehaviour:
     - "Mas antes, como voc\xEA provavelmente ir\xE1 enfrentar v\xE1rios inimigos
       durante essa jornada e perdeu sua mem\xF3ria vamos fazer um treino r\xE1pido
       para voc\xEA se lembrar do que \xE9 capaz."
-    - "Segure o BOT\xC3O DIREITO do mouse para congelar o boneco no tempo "
+    - "Segure o BOT\xC3O DIREITO do mouse para congelar os alvos no tempo "
     FocarComCamera: []
     EventosDuranteDialogo:
     - m_PersistentCalls:
@@ -65289,12 +65299,13 @@ MonoBehaviour:
     Frases:
     - "Espere! Meus sensores detectaram que voc\xEA causou uma perturba\xE7\xE3o
       no espa\xE7o tempo, fazendo com que desastres de diferentes eras ocorram periodicamente."
-    - "Bom, agora vou te enviar a caixa com uma pe\xE7a de reparo do portal, um cron\xF4metro
+    - "Vou te enviar a caixa com uma pe\xE7a de reparo do portal, um cron\xF4metro
       para voc\xEA conseguir saber quando e qual o pr\xF3ximo desastre vai te atingir
       e uns recursos para construir um m\xF3dulo de defesa."
     - "Destrua a caixa e construa o m\xF3dulo de defesa na MESA DE FABRICA\xC7\xC3O
       para o desastre que vai aparecer no seu dispositivo, ele servir\xE1 para proteger
-      o portal, caso sofra 3 danos ele ir\xE1 ser destru\xEDdo. "
+      o portal, caso sofra 3 danos ele ir\xE1 ser destru\xEDdo e voc\xEA pode ver
+      seu invent\xE1rio ao pressionar TAB. "
     FocarComCamera:
     - {fileID: 0}
     - {fileID: 0}
@@ -65334,13 +65345,15 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
     - "Parab\xE9ns voc\xEA conseguiu sobreviver esse desastre, mas lembre-se que
-      eles nunca v\xE3o parar de acontecer, ent\xE3o fique atento aos seus recursos,
-      qual ser\xE1 o pr\xF3ximo desastre e ao tempo."
-    - "E n\xE3o esque\xE7a de ficar de olho na intensidade dos desastres, pois se
+      eles n\xE3o v\xE3o parar de acontecer, ent\xE3o fique atento aos seus RECURSOS
+      e qual ser\xE1 o pr\xF3ximo DESASTRE para conseguir se DEFENDER dentro do tempo."
+    - "E n\xE3o esque\xE7a de ficar de olho na INTENSIDADE dos desastres, pois se
       construir um modulo mais fraco do que o necess\xE1rio o portal ser\xE1 danificado,
       se ele for danificado 3 vezes temo que ir\xE1 explodir."
+    - "Ah! E a for\xE7a dos m\xF3dulos n\xE3o se somam"
     - "Agora v\xE1 at\xE9 o portal e o conserte!"
     FocarComCamera:
     - {fileID: 0}
@@ -65358,9 +65371,9 @@ MonoBehaviour:
     Frases:
     - "Muito bem, agora voc\xEA deve explorar as eras para procurar as pe\xE7as de
       reparo da m\xE1quina do tempo."
-    - "E n\xE3o se esque\xE7a de construir os m\xF3dulos de defesa para proteger
-      o portal e se um desastre ocorrer enquanto estiver fora volte o mais r\xE1pido
-      poss\xEDvel para o portal."
+    - "E n\xE3o se esque\xE7a de CONSTRUIR M\xD3DULOS DE DEFESA para proteger o portal
+      e se um desastre ocorrer enquanto estiver fora volte o mais r\xE1pido poss\xEDvel
+      para o portal."
     - "Agora selecione a era liberada e tente buscar as pe\xE7as para consertar o
       portal por completo e voltar para o meu laborat\xF3rio para consertarmos a
       bagun\xE7a que voc\xEA criou no espa\xE7o tempo."
