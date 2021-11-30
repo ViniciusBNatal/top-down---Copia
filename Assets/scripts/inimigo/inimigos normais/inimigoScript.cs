@@ -245,7 +245,8 @@ public class inimigoScript : MonoBehaviour
                 StartCoroutine(this.Paralisar(dano));
                 if (TutorialSetUp.Instance != null)
                 {
-                    if (TutorialSetUp.Instance.GetSequenciaDialogos() == 1)
+                    TutorialSetUp.Instance.hitsDeDisparosNoInimigo++;
+                    if (TutorialSetUp.Instance.GetSequenciaDialogos() == 1 && TutorialSetUp.Instance.hitsDeDisparosNoInimigo == 1)
                     {
                         jogadorScript.Instance.EncerrarDisparos();
                         DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
@@ -275,7 +276,11 @@ public class inimigoScript : MonoBehaviour
                         if (TutorialSetUp.Instance.GetSequenciaDialogos() == 2)
                         {
                             DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-                            TutorialSetUp.Instance.AoEliminarOInimigo();
+                            TutorialSetUp.Instance.AoEliminarOInimigoControlado();
+                        }
+                        else if (TutorialSetUp.Instance.GetSequenciaDialogos() == 3)
+                        {
+                            TutorialSetUp.Instance.IniciarDialogo();
                         }
                     }
                     Destroy(this.gameObject);

@@ -160,6 +160,9 @@ public class SoundManager : MonoBehaviour
         {
             SonsDicionario[cenaAtualNome].Loop = true;
             SonsDicionario[cenaAtualNome].tipoSom = TipoSom.Global;
+            SomMusicaSource.volume = SonsDicionario[cenaAtualNome].Volume;
+            SomMusicaSource.pitch = SonsDicionario[cenaAtualNome].Pitch;
+            SomMusicaSource.loop = SonsDicionario[cenaAtualNome].Loop;
             SomMusicaSource.clip = SonsDicionario[cenaAtualNome].ArquivosDESom[0];
             if (!SomMusicaSource.isPlaying)
                 SomMusicaSource.Play();

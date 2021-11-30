@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -195,6 +195,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 14751533}
   m_CullTransparentMesh: 0
+--- !u!1 &19870981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 19870982}
+  m_Layer: 0
+  m_Name: ponto de treinamento melee boneco
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &19870982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19870981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.27, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1133437610}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &26035022
 GameObject:
   m_ObjectHideFlags: 0
@@ -3838,6 +3868,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &541171012
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1133437610}
+    m_Modifications:
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154179913025444541, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_Name
+      value: direcionador de inimigo
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307530728906777341, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: NovaDirecao.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307530728906777341, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: NovaDirecao.Array.data[0].x
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcbce32c913bf2f48974098d69672465, type: 3}
 --- !u!1 &569346637
 GameObject:
   m_ObjectHideFlags: 0
@@ -51295,6 +51404,12 @@ Transform:
   m_Father: {fileID: 2056875272}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &792282916 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+    type: 3}
+  m_PrefabInstance: {fileID: 1688602410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &799635069 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 792723552344176777, guid: 35083fcfe44c00d4d90b01215a261ea8,
@@ -52653,12 +52768,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963939990}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.12, y: -12, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 16.48, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1837283353}
-  m_RootOrder: 4
+  m_Father: {fileID: 1133437610}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &975169303
 GameObject:
@@ -53368,6 +53483,72 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1133437609
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1133437610}
+  m_Layer: 0
+  m_Name: pontos de spawn nos objetos do tutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1133437610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133437609}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2024005635}
+  - {fileID: 963939991}
+  - {fileID: 19870982}
+  - {fileID: 1735766270}
+  - {fileID: 792282916}
+  - {fileID: 1142209884}
+  m_Father: {fileID: 1837283353}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1142209883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1142209884}
+  m_Layer: 0
+  m_Name: ponto de spawn caixa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1142209884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142209883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.49, y: -12.96, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1133437610}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1150778114
 GameObject:
   m_ObjectHideFlags: 0
@@ -64773,6 +64954,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665648418}
   m_CullTransparentMesh: 0
+--- !u!1001 &1688602410
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1133437610}
+    m_Modifications:
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3154179913025444541, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: m_Name
+      value: direcionador de inimigo (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307530728906777341, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: NovaDirecao.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7307530728906777341, guid: fcbce32c913bf2f48974098d69672465,
+        type: 3}
+      propertyPath: NovaDirecao.Array.data[0].x
+      value: -1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcbce32c913bf2f48974098d69672465, type: 3}
 --- !u!1 &1707998592
 GameObject:
   m_ObjectHideFlags: 0
@@ -65125,6 +65385,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733967260}
   m_CullTransparentMesh: 0
+--- !u!4 &1735766270 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 711908985592235589, guid: fcbce32c913bf2f48974098d69672465,
+    type: 3}
+  m_PrefabInstance: {fileID: 541171012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1757719712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 792723552344176777, guid: 35083fcfe44c00d4d90b01215a261ea8,
@@ -65204,8 +65470,7 @@ Transform:
   - {fileID: 637352775}
   - {fileID: 1015395296}
   - {fileID: 2056661103}
-  - {fileID: 2024005635}
-  - {fileID: 963939991}
+  - {fileID: 1133437610}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -65222,7 +65487,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intervaloDuranteTutorial: 3
-  pontoDeSpawnObjetos: {fileID: 2024005635}
+  pontoDeSpawnBonecoMovel: {fileID: 2024005635}
+  pontoParaTerinamentoMelee: {fileID: 19870982}
+  pontoSpawnCaixaDeRecursos: {fileID: 1142209884}
   pontoDeCombateJogador: {fileID: 963939991}
   dialogosDoTutorial:
   - NomeNPC:
@@ -65297,22 +65564,32 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 7bb96a89c6ceb6949ad1c0e371068f69, type: 3}
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - "Espere! Meus sensores detectaram que voc\xEA causou uma perturba\xE7\xE3o
-      no espa\xE7o tempo, fazendo com que desastres de diferentes eras ocorram periodicamente."
-    - "Vou te enviar a caixa com uma pe\xE7a de reparo do portal, um cron\xF4metro
-      para voc\xEA conseguir saber quando e qual o pr\xF3ximo desastre vai te atingir
-      e uns recursos para construir um m\xF3dulo de defesa."
-    - "Destrua a caixa e construa o m\xF3dulo de defesa na MESA DE FABRICA\xC7\xC3O
-      para o desastre que vai aparecer no seu dispositivo, ele servir\xE1 para proteger
-      o portal, caso sofra 3 danos ele ir\xE1 ser destru\xEDdo e voc\xEA pode ver
-      seu invent\xE1rio ao pressionar TAB. "
-    FocarComCamera:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 1195308730}
+    - agora mate o boneco como quiser
+    FocarComCamera: []
     EventosDuranteDialogo:
     - m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1837283354}
+          m_MethodName: CriarObjeto
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 3533248755068537306, guid: 50103a4e07b993f4087690c3481c2c39,
+              type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - NomeNPC:
+    - "ap\xF3s matar o boneco quando estiver livre"
+    ImagemNPC:
+    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
+    Frases:
+    - agora quebre a caixa e construa o modulo na mesa
+    FocarComCamera:
+    - {fileID: 1195308730}
+    EventosDuranteDialogo:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1837283354}
@@ -65327,18 +65604,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls: []
-  - NomeNPC:
-    - Dr Alho
-    ImagemNPC:
-    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
-    Frases:
-    - "Muito bem agora espere o desastre, ele j\xE1 est\xE1 se aproximando."
-    FocarComCamera: []
-    EventosDuranteDialogo:
-    - m_PersistentCalls:
-        m_Calls: []
   - NomeNPC:
     - Dr Alho
     ImagemNPC:
@@ -65383,6 +65648,30 @@ MonoBehaviour:
     - Boa sorte!
     FocarComCamera: []
     EventosDuranteDialogo: []
+  - NomeNPC:
+    - Dr Alho
+    ImagemNPC:
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
+    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
+    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
+    Frases:
+    - "Muito bem, agora voc\xEA deve explorar as eras para procurar as pe\xE7as de
+      reparo da m\xE1quina do tempo."
+    - "E n\xE3o se esque\xE7a de CONSTRUIR M\xD3DULOS DE DEFESA para proteger o portal
+      e se um desastre ocorrer enquanto estiver fora volte o mais r\xE1pido poss\xEDvel
+      para o portal."
+    - "Agora selecione a era liberada e tente buscar as pe\xE7as para consertar o
+      portal por completo e voltar para o meu laborat\xF3rio para consertarmos a
+      bagun\xE7a que voc\xEA criou no espa\xE7o tempo."
+    - "Ah! e tome muito CUIDADO quando voc\xEA for consertar o portal das pr\xF3ximas
+      vezes. Ele vai ficar inutiliz\xE1vel por um tempo e como uma nova era estar\xE1
+      abrindo v\xE1rios desastres ir\xE3o iniciar rapidamente."
+    - Boa sorte!
+    FocarComCamera: []
+    EventosDuranteDialogo: []
+  hitsDeDisparosNoInimigo: 0
 --- !u!1 &1847444099
 GameObject:
   m_ObjectHideFlags: 0
@@ -66799,7 +67088,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2024005635}
   m_Layer: 0
-  m_Name: ponto de spawn objetos
+  m_Name: ponto de spawn boneco movel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66812,12 +67101,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2024005634}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.69, y: -12, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 18.27, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1837283353}
-  m_RootOrder: 3
+  m_Father: {fileID: 1133437610}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2034708359
 GameObject:

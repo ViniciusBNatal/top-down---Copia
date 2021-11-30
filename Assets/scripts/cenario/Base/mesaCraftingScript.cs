@@ -18,7 +18,7 @@ public class mesaCraftingScript : MonoBehaviour
             jogadorScript.Instance.InterfaceJogador.AoClicarBtnCriacao();
             if (TutorialSetUp.Instance != null)
             {
-                if (TutorialSetUp.Instance.GetSequenciaDialogos() == 3)
+                if (TutorialSetUp.Instance.GetSequenciaDialogos() == 4)
                 {
                     Desativar_AtivarInteracao(false);
                     jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
