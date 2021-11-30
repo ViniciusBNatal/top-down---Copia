@@ -12,11 +12,13 @@ public class craftingSlot : MonoBehaviour
     [SerializeField] private GameObject recursosGrid;
     [SerializeField] private Image iconeDoModulo;
     [SerializeField] private Image iconeDoDesastre;
+    //[SerializeField] private Image iconeBotaoConstrucao;
     private List<TMP_Text> qntdNecessariaParaCadarecursoText = new List<TMP_Text>();
     private List<int> novosValores = new List<int>();
     private List<Animator> iconesDeRecursosNecessarios = new List<Animator>();
     private int divisor = 3;
     private int forca = 1;
+    //private bool forcaSelecionada = false;
     private void Start()
     {
         if (receita.desastre == "")
@@ -27,7 +29,10 @@ public class craftingSlot : MonoBehaviour
                 iconeDoDesastre.enabled = false;
         }
         else
+        {
             iconeDoDesastre.sprite = DesastresList.Instance.SelecionaSpriteDesastre(receita.desastre);
+            botoesDeForca[0].color = Color.green;
+        }
         //iconeDoModulo.sprite = DesastresList.Instance.SelecionaSpriteModulo(receita.modulo);
         for(int i = 0;i < receita.itensNecessarios.Count; i++)//adiciona a quantidade e a imagem para cada recurso na receita
         {
@@ -45,6 +50,7 @@ public class craftingSlot : MonoBehaviour
     public void TrocaForcamodulo(int f)
     {
         forca = f;
+        //forcaSelecionada = true;
         switch (f)
         {
             case 1:
@@ -105,4 +111,12 @@ public class craftingSlot : MonoBehaviour
     {
         return forca;
     }
+    //public bool GetForcaFoiSelecionada()
+    //{
+    //    return forcaSelecionada;
+    //}
+    //public void SetForcaFoiSelecionada(bool b)
+    //{
+    //    forcaSelecionada = b;
+    //}
 }

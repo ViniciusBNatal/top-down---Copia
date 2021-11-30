@@ -170,7 +170,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     public void MudancaVida()
     {
         vidaAtual -= desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre;
-        VidaImagem.fillAmount -= (1f / vidaMax) * desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre;
+        VidaImagem.fillAmount -= (1f / vidaMax) * (desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre);
         vidaAtualText.text = vidaAtual.ToString();
         if (vidaAtual <= 0)
         {

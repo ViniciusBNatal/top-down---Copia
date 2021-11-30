@@ -32,6 +32,9 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     public CinemachineBehaviour comportamentoCamera;
     //variáveis privadas
     //private float vidaAtual;
+    //inputs
+    private KeyCode inputDisparo = KeyCode.Mouse1;
+    private KeyCode inputAtaqueMelee = KeyCode.Mouse0;
     private Vector2 movimento;
     private Rigidbody2D rb;
     private bool atirando = false;
@@ -54,6 +57,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     private bool podeAnimar = true;
     private Vector2 direcaoProjetil = Vector2.zero;
     [SerializeField] private GameObject caixaComTudo;
+    private GameObject balaDisparada = null;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -75,7 +79,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         //    SoundManager.Instance.TocarSom(SoundManager.Som.ModuloExplodindo);
         //    Debug.Log(TutorialSetUp.Instance);
         //    SceneManager.LoadScene("testes");
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && Input.GetKey(KeyCode.LeftShift))
         {
             Instantiate(caixaComTudo, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         }
@@ -102,6 +106,8 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                         else if (TutorialSetUp.Instance.GetSequenciaDialogos() == 2)
                             InputAtaqueMelee();
                     }
+                    if (Input.GetKeyUp(inputDisparo) && atirando)
+                        EncerrarDisparos();
                     break;
                 default:
                     break;
@@ -142,7 +148,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     private void InputAtirar()//dispara ao apertar o botão direito do mouse
     {
-        if (Input.GetKey(KeyCode.Mouse1))
+        if (Input.GetKey(inputDisparo))
         {
             if (!atirando)
             {
@@ -150,34 +156,37 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 MudarEstadoJogador(1);
                 Vector3 dirAnim = (PegaPosicoMouse() - transform.position).normalized;
                 direcaoProjetil = (PegaPosicoMouse() - pontoDeDisparo.position).normalized;
-                JogadorAnimScript.Instance.AnimarDisparo(dirAnim.x, dirAnim.y, taxaDeDisparo);
+                JogadorAnimScript.Instance.AnimarDisparo(dirAnim.x, dirAnim.y, taxaDeDisparo, atirando);
                 //SoundManager.Instance.TocarSom(SoundManager.TipoSom.JogadorAtirando);
             }
         }
     }
+    public void EncerrarDisparos()
+    {
+        atirando = false;
+        JogadorAnimScript.Instance.AnimarDisparo(0f, 0f, taxaDeDisparo, atirando);
+        if (TutorialSetUp.Instance != null)
+        {
+            if (TutorialSetUp.Instance.GetSequenciaDialogos() > 2)
+                MudarEstadoJogador(0);
+        }
+        else
+            MudarEstadoJogador(0);
+    }
     public void Atira()
     {
-        if (atirando)
+        if (balaDisparada == null)
         {
-            GameObject bala = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
-            bala.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));//rotaciona a bala
-            bala.GetComponent<Rigidbody2D>().velocity = direcaoProjetil * velocidadeProjetil;//new Vector3(direcaoProjetil.x / Mathf.Abs(direcaoProjetil.x), direcaoProjetil.y / Mathf.Abs(direcaoProjetil.y), 0f)
-            bala.GetComponent<balaHit>().SetDano(tempParalisacaoProjetil);
-            if (TutorialSetUp.Instance != null)
-            {
-                if (TutorialSetUp.Instance.GetSequenciaDialogos() > 2)
-                {
-                    MudarEstadoJogador(0);
-                }
-            }
-            else
-                MudarEstadoJogador(0);
-            atirando = false;
+            balaDisparada = Instantiate(projetilPrefab, pontoDeDisparo.position, Quaternion.identity);
+            balaDisparada.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));//rotaciona a bala
+            balaDisparada.GetComponent<Rigidbody2D>().velocity = direcaoProjetil * velocidadeProjetil;//new Vector3(direcaoProjetil.x / Mathf.Abs(direcaoProjetil.x), direcaoProjetil.y / Mathf.Abs(direcaoProjetil.y), 0f)
+            balaDisparada.GetComponent<balaHit>().SetDano(tempParalisacaoProjetil);
+            balaDisparada = null;
         }
     }
     private void InputAtaqueMelee()// animação e inflinge dano caso encontre algo
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !atacando)
+        if (Input.GetKeyDown(inputAtaqueMelee) && !atacando)
         {
             atacando = true;
             JogadorAnimScript.Instance.AnimarAtaqueMelee(posicaoMelee.localPosition.x, posicaoMelee.localPosition.y, taxaDeAtaqueMelee);
@@ -327,6 +336,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         {
             MudarEstadoJogador(0);
             atirando = false;
+            JogadorAnimScript.Instance.AnimarDisparo(0f, 0f, taxaDeDisparo, atirando);
         }
         if (atacando)
         {

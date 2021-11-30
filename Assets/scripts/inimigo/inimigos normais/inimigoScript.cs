@@ -247,6 +247,7 @@ public class inimigoScript : MonoBehaviour
                 {
                     if (TutorialSetUp.Instance.GetSequenciaDialogos() == 1)
                     {
+                        jogadorScript.Instance.EncerrarDisparos();
                         DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
                         TutorialSetUp.Instance.AoAcertarDisparoNoInimigo();
                     }

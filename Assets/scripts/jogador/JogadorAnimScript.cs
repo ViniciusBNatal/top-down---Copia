@@ -42,12 +42,12 @@ public class JogadorAnimScript : MonoBehaviour
         animator.SetFloat("VERTMELEE", dirY);
         animator.SetTrigger("MELEE");
     }
-    public void AnimarDisparo(float dirX, float dirY, float taxaDeDisparo)
+    public void AnimarDisparo(float dirX, float dirY, float taxaDeDisparo, bool animar)
     {
         animator.SetFloat("TXDISP", taxaDeDisparo);
         animator.SetFloat("HORZDISPARO", dirX);
         animator.SetFloat("VERTDISPARO", dirY);
-        animator.SetTrigger("DISPARO");
+        animator.SetBool("DISPARO", animar);
     }
     public void Levantar(bool b)
     {

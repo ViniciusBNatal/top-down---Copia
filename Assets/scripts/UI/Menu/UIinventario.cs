@@ -188,36 +188,39 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     }
     public void AoClicarParaConstruirItem(craftingSlot slot)
     {
-        int possuiTodosOsRecursos = 0;
-        for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.receita.itensNecessarios.Count; tiposRecursosParaCrafting++)//passa para o próximo recurso na lista de crafting do objeto
-        {
-            if (itens.ContainsKey(slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID))
+        //if (slot.GetForcaFoiSelecionada())
+        //{
+            int possuiTodosOsRecursos = 0;
+            for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.receita.itensNecessarios.Count; tiposRecursosParaCrafting++)//passa para o próximo recurso na lista de crafting do objeto
             {
-                if (itens[slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID].qntdRecurso >= slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting])
-                    possuiTodosOsRecursos++;
+                if (itens.ContainsKey(slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID))
+                {
+                    if (itens[slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID].qntdRecurso >= slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting])
+                        possuiTodosOsRecursos++;
+                    else
+                        slot.FalhaNoCrafting(true, tiposRecursosParaCrafting);
+                }
                 else
-                    slot.FalhaNoCrafting(true, tiposRecursosParaCrafting);
+                {
+                    slot.FalhaNoCrafting(false, tiposRecursosParaCrafting);
+                }
             }
-            else
+            if (possuiTodosOsRecursos == slot.receita.itensNecessarios.Count)// caso tenha todos os itens e a quantidade necessária, consome eles para criar a receita
             {
-                slot.FalhaNoCrafting(false, tiposRecursosParaCrafting);
+                for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.receita.itensNecessarios.Count; tiposRecursosParaCrafting++)
+                {
+                    AtualizaInventarioUI(slot.receita.itensNecessarios[tiposRecursosParaCrafting], -slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]);
+                    //itens[slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]);
+                }
+                jogadorScript.Instance.SetModuloConstruido(slot.construcaoConfirmada());
+                BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(true);
+                jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(BaseScript.Instance.transform, zoomOutAoConstruir);
+                fechaInventario();
+                jogadorScript.Instance.MudarEstadoJogador(2);
+                if (TutorialSetUp.Instance != null)
+                    caixaGuiaDeConstruao.SetActive(false);
             }
-        }
-        if (possuiTodosOsRecursos == slot.receita.itensNecessarios.Count)// caso tenha todos os itens e a quantidade necessária, consome eles para criar a receita
-        {
-            for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.receita.itensNecessarios.Count; tiposRecursosParaCrafting++)
-            {
-                AtualizaInventarioUI(slot.receita.itensNecessarios[tiposRecursosParaCrafting], -slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]);
-                //itens[slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]);
-            }
-            jogadorScript.Instance.SetModuloConstruido(slot.construcaoConfirmada());
-            BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(true);
-            jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(BaseScript.Instance.transform, zoomOutAoConstruir);
-            fechaInventario();
-            jogadorScript.Instance.MudarEstadoJogador(2);
-            if (TutorialSetUp.Instance != null)
-                caixaGuiaDeConstruao.SetActive(false);
-        }
+        //}
     }
     public void AoClicarparaMelhorar(UpgradeSlot slot)
     {
@@ -260,7 +263,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         if (TutorialSetUp.Instance != null)
             Tutorial();
         fechaMenuDeTempos();
-        TransicaoDeFase.faseParaCarregar = slot.FaseParaAbrir();
+        TransicaoDeFase.faseParaCarregar = slot.GetFaseParaAbrir();
         jogadorScript.Instance.IndicarInteracaoPossivel(0, false);
         if (BaseScript.Instance != null)
         {

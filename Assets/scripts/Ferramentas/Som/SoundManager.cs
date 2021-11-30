@@ -97,7 +97,6 @@ public class SoundManager : MonoBehaviour
                     SomEfeitosSource.Play();
                     break;
                 case TipoSom.Local:
-                    Debug.Log("a");
                     SomEfeitosSource.PlayOneShot(somEscolhido.ArquivosDESom[(int)Random.Range(0, somEscolhido.ArquivosDESom.Length)]);
                     break;
             }

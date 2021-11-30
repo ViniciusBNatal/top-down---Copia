@@ -9,7 +9,7 @@ public class UpgradeSlot : MonoBehaviour
 {
     [Header("Confugurações do Slot de Upgrade")]
     [SerializeField] private ReceitaDeCrafting receita;
-    [SerializeField] private int IndexFaseNaBuild;
+    [SerializeField] private string FaseParaAbrir;
     //public int fase;
     [Header("Não Mexer")]
     [SerializeField] private GameObject IconeETextoDorecursoNecessarioPrefab;
@@ -41,12 +41,12 @@ public class UpgradeSlot : MonoBehaviour
         BtnTrocartempo.SetActive(true);
         Destroy(recursosGrid.gameObject);
     }
-    public string FaseParaAbrir()
-    {
-        string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(IndexFaseNaBuild);//pega o caminho da cena na pasta de arquivos
-        string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
-        return cenaParaAbrir;
-    }
+    //public string FaseParaAbrir()
+    //{
+    //    string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(FaseParaAbrir);//pega o caminho da cena na pasta de arquivos
+    //    string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
+    //    return cenaParaAbrir;
+    //}
     public void FalhaNoCrafting(bool Insuficiente, int recurso)
     {
         switch (Insuficiente)
@@ -62,5 +62,9 @@ public class UpgradeSlot : MonoBehaviour
     public ReceitaDeCrafting GetReceita()
     {
         return receita;
+    }
+    public string GetFaseParaAbrir()
+    {
+        return FaseParaAbrir;
     }
 }

@@ -65,17 +65,19 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
         //ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
         //StartCoroutine(this.LogicaDesastres());
     }
-   /* private void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
             PararTodasCorotinas();
-            qntdDeDesastresParaOcorrer = 2;
-            desastresSorteados[0] = "TERREMOTO";
-            desastresSorteados[1] = "ERRUPCAO TERRENA";
+            encerramentoDesastres();
+            SetUpParaNovoSorteioDeDesastres();
+            qntdDeDesastresParaOcorrer = 1;
+            desastresSorteados[0] = "NUVEM DE INSETOS";
+            //desastresSorteados[1] = "ERRUPCAO TERRENA";
                     //desastresSorteados[2] = "NUVEM DE INSETOS";
             forcasSorteados[0] = 2;
-            forcasSorteados[1] = 2;
+            //forcasSorteados[1] = 2;
                     //forcasSorteados[2] = 1;
             IndicadorDosDesastres.Instance.PreenchePlaca();
                     //Virus();
@@ -83,11 +85,10 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
                     //Terremoto();
                     //StopAllCoroutines();
             ConfigurarTimer(3f, tempoAcumulado, true);
-            SetUpParaNovoSorteioDeDesastres();
-            StartCoroutine(this.LogicaDesastres(true));
+            StartCoroutine(this.LogicaDesastres(false));
             //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
         }
-    }*/
+    }
     //desastres
     private void Terremoto()
     {

@@ -7,7 +7,7 @@ public class Teleportador : MonoBehaviour
 {
     [SerializeField] private Transform pontoDeChegada;
     [SerializeField] private DialogoUnico dialogoInicial;
-    const int BuildIndexDaFaseBaseJogador = 2;
+    const string NomeFaseDeRotornoDosteleportes = "BaseJogador";
     private void Start()
     {
         jogadorScript.Instance.transform.position = pontoDeChegada.position;
@@ -18,9 +18,7 @@ public class Teleportador : MonoBehaviour
         SalvamentoDosCentrosDeRecursosManager.Instance.SalvarTempoDeSaida();
         SalvamentoDosCentrosDeRecursosManager.Instance.SalvarCentrosDeRecursoDaCenaAtual();
         jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
-        string IndexFaseBase = SceneUtility.GetScenePathByBuildIndex(BuildIndexDaFaseBaseJogador);//pega o caminho da cena na pasta de arquivos
-        string cenaPrincipal = IndexFaseBase.Substring(0, IndexFaseBase.Length - 6).Substring(IndexFaseBase.LastIndexOf('/') + 1);
-        TransicaoDeFase.faseParaCarregar = cenaPrincipal;
+        TransicaoDeFase.faseParaCarregar = NomeFaseDeRotornoDosteleportes;
         UIinventario.Instance.transicaoLevelsAnimacao.SetActive(true);
         UIinventario.Instance.Ativar_DesativarTransicaoDeFase(true);
         //SceneManager.LoadScene(cenaPrincipal);

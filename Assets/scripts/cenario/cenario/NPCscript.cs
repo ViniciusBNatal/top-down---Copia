@@ -98,11 +98,11 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
                 nDeDialogos = 3;
                 EventosAoCompletarMissao.Invoke();
                 DialogeManager.Instance.limparDelegate = true;
-                StartCoroutine(this.Movvimentacao());
+                StartCoroutine(this.Movimentacao());
                 SalvarEstado();
                 break;
             case 3:
-                StartCoroutine(this.Movvimentacao());
+                StartCoroutine(this.Movimentacao());
                 break;
             default:
                 break;
@@ -143,7 +143,7 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     {
         nDeDialogos = i;
     }
-    IEnumerator Movvimentacao()
+    IEnumerator Movimentacao()
     {
         if (direcaoParaMoverX != 0 || direcaoParaMoverY != 0)
         {

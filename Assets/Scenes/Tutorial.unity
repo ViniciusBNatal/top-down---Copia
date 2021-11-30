@@ -2111,7 +2111,7 @@ PrefabInstance:
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
       propertyPath: FaseParaAbrir
-      value: 4
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
@@ -3107,7 +3107,7 @@ PrefabInstance:
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
       propertyPath: FaseParaAbrir
-      value: 1
+      value: Floresta
       objectReference: {fileID: 0}
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
@@ -55835,7 +55835,7 @@ PrefabInstance:
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
       propertyPath: FaseParaAbrir
-      value: 3
+      value: Lixao
       objectReference: {fileID: 0}
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
@@ -56148,7 +56148,7 @@ PrefabInstance:
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}
       propertyPath: FaseParaAbrir
-      value: 2
+      value: Cidade
       objectReference: {fileID: 0}
     - target: {fileID: 2975015299375550603, guid: e4646c721b0be404592a4655834f74b8,
         type: 3}

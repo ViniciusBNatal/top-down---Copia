@@ -37,15 +37,9 @@ public class InterfaceMenu : MonoBehaviour
             }
         }
     }
-    private string CenaPorBuildIndex(int buildIndex)
+    public void AbrirCena(string cena)
     {
-        string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(buildIndex);//pega o caminho da cena na pasta de arquivos
-        string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
-        return cenaParaAbrir;
-    }
-    public void AbrirCena(int buildIndex)
-    {
-        SceneManager.LoadScene(CenaPorBuildIndex(buildIndex));
+        SceneManager.LoadScene(cena);
     }
     public void FecharJogo()
     {
@@ -71,7 +65,7 @@ public class InterfaceMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         ApagarDadosDoJogo();
-        AbrirCena(0);
+        AbrirCena("Menu");
     }
     public void AbrirMenu(GameObject MenuParaRetornar)
     {

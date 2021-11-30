@@ -53,7 +53,7 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
             localDeDropX = direcaoX;        
         else
         {
-            localDeDropX = Random.Range(-1, 1);
+            localDeDropX = Random.Range(-1f, 2f);
             if (localDeDropX == 0)
                 localDeDropX = 1;
         }
@@ -61,12 +61,12 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
             localDeDropY = direcaoY;
         else
         {
-            localDeDropY = Random.Range(-1, 1);
+            localDeDropY = Random.Range(-1f, 2f);
             if (localDeDropY == 0)
                 localDeDropY = 1;
         }
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(new Vector2(localDeDropX, localDeDropY) * forca);
+        rb.AddForce(new Vector2(localDeDropX, localDeDropY).normalized * forca);
     }
     IEnumerator ligarColeta()
     {
