@@ -32,6 +32,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6016671135979278976, guid: 34e1519d6625d6a4e8d582968c134aad,
         type: 3}
+    - target: {fileID: 6555396283836806, guid: 8647048ece137f643a2fdf9ea5f1e64d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1189917926951549827, guid: 8647048ece137f643a2fdf9ea5f1e64d,
         type: 3}
       propertyPath: velocidade
@@ -103,6 +107,11 @@ PrefabInstance:
       propertyPath: dialogo.Frases.Array.data[3]
       value: "E se voc\xEA me der algo de ut\xEDl talvez eu te deixe acessar o parque
         que eu estou guardando"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1566196007067271499, guid: 8647048ece137f643a2fdf9ea5f1e64d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.738
       objectReference: {fileID: 0}
     - target: {fileID: 3673411486788668162, guid: 8647048ece137f643a2fdf9ea5f1e64d,
         type: 3}
