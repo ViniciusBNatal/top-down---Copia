@@ -12,6 +12,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: boneco de treino Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: danoMelee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: forcaRepulsao
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: tiposDeMovimentacao
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: tempoDeStunNoJogador
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: direcaoDeMovimentacao.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 566375125526406925, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}
       propertyPath: m_Enabled

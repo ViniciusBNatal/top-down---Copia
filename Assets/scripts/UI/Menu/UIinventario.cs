@@ -32,7 +32,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) && (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmAcao || jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmUI) && /*!pausado*/!InterfaceMenu.Instance.pausado)
+        if (Input.GetKeyDown(KeyCode.Tab) && (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmAcao || jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmUI) && /*!pausado*/!InterfaceMenu.Instance.pausado)
         {
             if (inventarioAberto)
             {

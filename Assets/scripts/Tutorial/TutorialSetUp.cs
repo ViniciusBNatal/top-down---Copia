@@ -6,10 +6,14 @@ public class TutorialSetUp : MonoBehaviour
 {
     public static TutorialSetUp Instance { get; private set; }
     [SerializeField] private float intervaloDuranteTutorial;
-    [SerializeField] private Transform pontoDeSpawnObjetos;
+    [SerializeField] private Transform pontoDeSpawnBonecoMovel;
+    [SerializeField] private Transform pontoParaTerinamentoMelee;
+    [SerializeField] private Transform pontoSpawnCaixaDeRecursos;
     public Transform pontoDeCombateJogador;
     [SerializeField] private List<Dialogo> dialogosDoTutorial = new List<Dialogo>();
+    private inimigoScript bonecoDeTreinamento;
     private int sequenciaDialogos = 0;
+    public int hitsDeDisparosNoInimigo = 0;
     private void Awake()
     {
         Instance = this;
@@ -42,9 +46,12 @@ public class TutorialSetUp : MonoBehaviour
     public void AoAcertarDisparoNoInimigo()
     {
         jogadorScript.Instance.GetAnimacoesTutorial().GetComponent<Animator>().SetBool("DISP", false);
+        bonecoDeTreinamento.tiposDeMovimentacao = inimigoScript.TiposDeMovimentacao.estatico;
+        bonecoDeTreinamento.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        bonecoDeTreinamento.transform.position = pontoParaTerinamentoMelee.position;
         IniciarDialogo();
     }
-    public void AoEliminarOInimigo()
+    public void AoEliminarOInimigoControlado()
     {
         jogadorScript.Instance.GetAnimacoesTutorial().GetComponent<Animator>().SetBool("MELEE", false);
         IniciarDialogo();
@@ -54,9 +61,21 @@ public class TutorialSetUp : MonoBehaviour
         desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f, true);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
     }
+    public void AoEliminarBonecoLivrimente()
+    {
+
+    }
     public void CriarObjeto(GameObject obj)
     {
-        Instantiate(obj, pontoDeSpawnObjetos.position, Quaternion.identity);
+        if (obj.GetComponent<caixa_recursos>())
+        {
+            Instantiate(obj, pontoSpawnCaixaDeRecursos.position, Quaternion.identity);
+        }
+        else if (obj.GetComponent<inimigoScript>())
+        {
+            GameObject gobj = Instantiate(obj, pontoDeSpawnBonecoMovel.position, Quaternion.identity);
+            bonecoDeTreinamento = gobj.GetComponent<inimigoScript>();
+        }
     }
     public int GetSequenciaDialogos()
     {
