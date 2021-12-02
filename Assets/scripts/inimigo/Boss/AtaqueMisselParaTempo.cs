@@ -61,7 +61,8 @@ public class AtaqueMisselParaTempo : MonoBehaviour
             if (recursosCriados[i] != null)
                 recursosCriados[i].GetComponent<recurso_coletavel>().LancaRecurso(forca, 0f, 0f);
         }
-        BossAlho.Instance.RemoverAtqDaLista(gobjPai.gameObject);
+        if (BossAlho.Instance != null)
+            BossAlho.Instance.RemoverAtqDaLista(gobjPai.gameObject);
         Destroy(gobjPai);
     }
     public void FimAnimacao()

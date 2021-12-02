@@ -9,7 +9,7 @@ public class TutorialSetUp : MonoBehaviour
     [SerializeField] private Transform pontoDeSpawnBonecoMovel;
     [SerializeField] private Transform pontoParaTerinamentoMelee;
     [SerializeField] private Transform pontoSpawnCaixaDeRecursos;
-    public Transform pontoDeCombateJogador;
+    //public Transform pontoDeCombateJogador;
     [SerializeField] private List<Dialogo> dialogosDoTutorial = new List<Dialogo>();
     private inimigoScript bonecoDeTreinamento;
     private int sequenciaDialogos = 0;
@@ -76,6 +76,10 @@ public class TutorialSetUp : MonoBehaviour
             bonecoDeTreinamento = gobj.GetComponent<inimigoScript>();
             bonecoDeTreinamento.GetAnimScript().SetTipoBonecoDeTreino(true);//todos boneco criados são móveis
         }
+    }
+    public void TeleportarJogador(Transform pontoDeTeleporte)
+    {
+        jogadorScript.Instance.transform.position = pontoDeTeleporte.position;
     }
     public int GetSequenciaDialogos()
     {

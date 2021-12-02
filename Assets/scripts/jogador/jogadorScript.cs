@@ -413,7 +413,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
             if (TutorialSetUp.Instance.GetSequenciaDialogos() == 1)
             {
                 MudarEstadoJogador(1);
-                transform.position = TutorialSetUp.Instance.pontoDeCombateJogador.position;
+                //transform.position = TutorialSetUp.Instance.pontoDeCombateJogador.position;
                 animacoesTutorial.SetActive(true);
                 animacoesTutorial.GetComponent<Animator>().SetBool("DISP", true);
                 JogadorAnimScript.Instance.Getanimator().SetFloat("HORIZONTAL", 1f);
