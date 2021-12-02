@@ -32,6 +32,7 @@ public class TutorialSetUp : MonoBehaviour
         //Debug.Log("devo aparecer 1 vez");
         desastreManager.Instance.ConfigurarTimer(intervaloDuranteTutorial, 0f, true);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(false);
+        IndicadorDosDesastres.Instance.AtivarCheckDeModuloConstruido(1, "ERRUPCAO TERRENA", 1);
     }
     public void IniciarDialogo()
     {
@@ -49,6 +50,8 @@ public class TutorialSetUp : MonoBehaviour
         bonecoDeTreinamento.tiposDeMovimentacao = inimigoScript.TiposDeMovimentacao.estatico;
         bonecoDeTreinamento.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         bonecoDeTreinamento.transform.position = pontoParaTerinamentoMelee.position;
+        bonecoDeTreinamento.GetAnimScript().enabled = true;
+        bonecoDeTreinamento.GetAnimScript().SetTipoBonecoDeTreino(false);
         IniciarDialogo();
     }
     public void AoEliminarOInimigoControlado()
@@ -61,10 +64,6 @@ public class TutorialSetUp : MonoBehaviour
         desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f, true);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
     }
-    public void AoEliminarBonecoLivrimente()
-    {
-
-    }
     public void CriarObjeto(GameObject obj)
     {
         if (obj.GetComponent<caixa_recursos>())
@@ -75,6 +74,7 @@ public class TutorialSetUp : MonoBehaviour
         {
             GameObject gobj = Instantiate(obj, pontoDeSpawnBonecoMovel.position, Quaternion.identity);
             bonecoDeTreinamento = gobj.GetComponent<inimigoScript>();
+            bonecoDeTreinamento.GetAnimScript().SetTipoBonecoDeTreino(true);//todos boneco criados são móveis
         }
     }
     public int GetSequenciaDialogos()

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef51c6ae952d9064197bab3d6e99eecc, type: 3}
+  m_Name: teste
+  m_EditorClassIdentifier: 
+  TextoResumoMissao: "Testando anima\xE7\xF5es"
+  TextoDetalheMissao: teston de placeholder
+  iconeMissao: {fileID: 9048378865737007891, guid: e98206ab92934cd4fa2c4638b38cc987,
+    type: 3}

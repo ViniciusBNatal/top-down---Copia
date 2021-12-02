@@ -7,6 +7,7 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
 {
     private int nDeDialogos = 0;
     [SerializeField] private GameObject objetoDeMissao;
+    [SerializeField] private Missao missaoNPC;
     [Range(-1,1)]
     [SerializeField] private int direcaoParaMoverX;
     [Range(-1, 1)]
@@ -79,6 +80,13 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
                     SalvarEstado();//salva q ja pegou missao e n cumpriu
             }
         }
+    }
+    public void AtualizarStatusMissao(bool finalizada)
+    {
+        if (!finalizada)
+            MissoesManager.Instance.AdicionarMissao(missaoNPC);
+        else
+            MissoesManager.Instance.ConcluirMissao(missaoNPC);
     }
     private void AoFinalizarDialogo(object origem, System.EventArgs args)
     {

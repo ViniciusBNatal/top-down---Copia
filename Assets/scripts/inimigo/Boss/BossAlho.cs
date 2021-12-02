@@ -10,11 +10,11 @@ public class BossAlho : MonoBehaviour
     [SerializeField] private GameObject misselPrefab;
     [SerializeField] private GameObject sementeDeAlhoPrefab;
     [SerializeField] private Transform pontoDeSpawnDaSemente;
-    //[SerializeField] private DialogoUnico dialogos;
+    [SerializeField] private Missao missaoMatarBoss;
     [SerializeField] private List<Dialogo> dialogos = new List<Dialogo>();
     private bool atacar = true;
     private Animator animator;
-    private List<GameObject> ataquesEmCena = new List<GameObject>(); 
+    private List<GameObject> ataquesEmCena = new List<GameObject>();
     // Start is called before the first frame update
     private void Awake()
     {
@@ -66,6 +66,7 @@ public class BossAlho : MonoBehaviour
     public void BossDerotado()
     {
         atacar = false;
+        MissoesManager.Instance.ConcluirMissao(missaoMatarBoss);
         desastreManager.Instance.PararTodasCorotinas();
         jogadorScript.Instance.MudarEstadoJogador(1);
         LimpaAtqsDaCena();

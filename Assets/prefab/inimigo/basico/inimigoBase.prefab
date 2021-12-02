@@ -166,6 +166,7 @@ MonoBehaviour:
   pontoDisparo: {fileID: 5766492688547367779}
   vidaMaxima: 100
   velocidade: 3
+  reducaoVelocDuranteAtaqueMelee: 1
   taxaDisparo: 2
   velocidadeProjetil: 10
   danoMelee: 10

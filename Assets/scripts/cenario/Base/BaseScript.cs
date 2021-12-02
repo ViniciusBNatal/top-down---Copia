@@ -18,6 +18,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     [SerializeField] private Image VidaImagem;
     [SerializeField] private GameObject animNovoTempo;
     [SerializeField] private AnimationClip animDestruicaoModulo;
+    [SerializeField] private Missao[] missoesDeLiberarNovoTempo = new Missao[3];
     private bool duranteMelhoria = false;
     private List<SlotModulo> listaModulos = new List<SlotModulo>();
     private int vidaAtual;
@@ -306,6 +307,9 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
             {
                 duranteMelhoria = false;
                 DefesasOcorridasDuranteMelhoriaBase = 0;
+                MissoesManager.Instance.ConcluirMissao(missoesDeLiberarNovoTempo[UIinventario.Instance.GetTempoAtual() - 2]);// -2 pois quando vai liberar o 1 tempo fora do tutorial o valo de tempoatual é 2
+                if(UIinventario.Instance.GetTempoAtual() - 1 < missoesDeLiberarNovoTempo.Length)
+                    MissoesManager.Instance.AdicionarMissao(missoesDeLiberarNovoTempo[UIinventario.Instance.GetTempoAtual() - 1]);// -1 para pegar o sucessor
                 if (UIinventario.Instance.VerificarSeLiberouBossFinal())//verificação para o boss
                 {
                     //pode ter um dialogo aqui

@@ -16,9 +16,11 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private GameObject abaInventario;
     [SerializeField] private GameObject abaCriação;
     [SerializeField] private GameObject btnCriacao;
+    [SerializeField] private GameObject btnMissoes;
     [SerializeField] private GameObject slotItemPrefab;
     [SerializeField] private Transform posicaoDosIconesDeItens;
     [SerializeField] private GameObject abaSelecionarTempo;
+    [SerializeField] private GameObject abaMissoes;
     public GameObject transicaoLevelsAnimacao;
     public GameObject caixaGuiaDeConstruao;
     public GameObject craftingBossFinal;
@@ -37,66 +39,34 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             if (inventarioAberto)
             {
                 fechaInventario();
-                btnCriacao.SetActive(true);
+                //btnCriacao.SetActive(true);
             }
             else
             {
-                btnCriacao.SetActive(false);
-                abreInventario();
+                //btnCriacao.SetActive(false);
+                abreInventario(false, true);
             }
         }
-        //if (Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    if (!pausado)
-        //        abrePausa();
-        //    else
-        //    {
-        //        fechaPausa();
-        //        fechaOpcoes();
-        //    }
-        //}
     }
-    //public void abrePausa()
-    //{
-    //    pausado = true;
-    //    inventarioAberto = true;
-    //    abaPausa.SetActive(true);
-    //    Time.timeScale = 0f;
-    //}
-    //public void fechaPausa()
-    //{
-    //    pausado = false;
-    //    inventarioAberto = false;
-    //    abaPausa.SetActive(false);
-    //    Time.timeScale = 1f;
-    //}
-    //public void abreOpcoes()
-    //{
-    //    inventarioAberto = true;
-    //    abaPausa.SetActive(false);
-    //    abaOpcoes.SetActive(true);
-    //}
-    //public void fechaOpcoes()
-    //{
-    //    inventarioAberto = false;
-    //    abaOpcoes.SetActive(false);
-    //    abaPausa.SetActive(true);
-    //}
     public void fecharTodoInventario()
     {
         inventarioAberto = false;
         inventarioParent.SetActive(false);
         abaSelecionarTempo.SetActive(false);
     }
-    public void abreInventario()
+    public void abreInventario(bool ativarCriacao, bool ativarMissoes)
     {
         jogadorScript.Instance.MudarEstadoJogador(5);
         inventarioAberto = true;
         inventarioParent.SetActive(true);
+        btnMissoes.SetActive(ativarMissoes);
+        btnCriacao.SetActive(ativarCriacao);
         AoClicarBtnInventario();
     }
     public void fechaInventario()
     {
+        //if (Time.timeScale == 0f)//Pausar
+        //    Time.timeScale = 1f;
         jogadorScript.Instance.MudarEstadoJogador(0);
         inventarioAberto = false;
         inventarioParent.SetActive(false);
@@ -113,23 +83,25 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         inventarioAberto = false;
         abaSelecionarTempo.SetActive(false);
     }
-    //public void abrirAbaDeGameOver()
-    //{
-    //    jogadorScript.Instance.MudarEstadoJogador(0);
-    //    inventarioAberto = true;
-    //    abaDerrotaDoJogo.SetActive(true);
-    //}
-
     public void AoClicarBtnInventario()
     {
+        //if (Time.timeScale == 0f)//Pausar
+        //    Time.timeScale = 1f;
         abaInventario.SetActive(true);
         abaCriação.SetActive(false);
+        abaMissoes.SetActive(false);
     }
 
     public void AoClicarBtnCriacao()
     {
         abaInventario.SetActive(false);
         abaCriação.SetActive(true);
+    }
+    public void AoClicarBtnMissoes()
+    {
+        abaInventario.SetActive(false);
+        abaMissoes.SetActive(true);
+        //Time.timeScale = 0f;//Pausar
     }
 
     private void CriaNovoSlotDeItem(Item item, int quantidade)

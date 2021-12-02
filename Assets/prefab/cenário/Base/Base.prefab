@@ -549,6 +549,10 @@ MonoBehaviour:
   animNovoTempo: {fileID: 5612951950091487434}
   animDestruicaoModulo: {fileID: 7400000, guid: b55174e8e74958946a1f06efd5d09f4e,
     type: 2}
+  missoesDeLiberarNovoTempo:
+  - {fileID: 11400000, guid: 65dfbcd9cc76fd84fa5dfff7118f4f83, type: 2}
+  - {fileID: 11400000, guid: 357769ab702a9ec4193970aa296e556d, type: 2}
+  - {fileID: 11400000, guid: 227bc2b4f80df17498d54281cbb96e79, type: 2}
 --- !u!61 &8083962399815963917
 BoxCollider2D:
   m_ObjectHideFlags: 0

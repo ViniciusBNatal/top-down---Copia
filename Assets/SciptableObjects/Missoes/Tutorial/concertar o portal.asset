@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef51c6ae952d9064197bab3d6e99eecc, type: 3}
+  m_Name: concertar o portal
+  m_EditorClassIdentifier: 
+  TextoResumoMissao: Concerte o portal
+  TextoDetalheMissao: "V\xE1 at\xE9 o porta e interaja com sua interface, ao CLICAR
+    na engrenagem ele ser\xE1 reparado"
+  iconeMissao: {fileID: -4850906774548208983, guid: b92a96c8dfdd1154bb1ca2ba26140280,
+    type: 3}

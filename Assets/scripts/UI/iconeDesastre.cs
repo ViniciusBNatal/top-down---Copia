@@ -4,6 +4,7 @@ using TMPro;
 
 public class iconeDesastre : MonoBehaviour
 {
-    public Image imagem;
+    public Image imagemDoDesastre;
+    public Image caixaDeCheck;
     public TMP_Text texto;
 }

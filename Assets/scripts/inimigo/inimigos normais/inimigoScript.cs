@@ -18,6 +18,7 @@ public class inimigoScript : MonoBehaviour
     [Header("Valores numéricos")]
     [SerializeField] private float vidaMaxima;
     [SerializeField] private float velocidade;
+    [SerializeField] private float reducaoVelocDuranteAtaqueMelee;
     [SerializeField] private float taxaDisparo;
     //[SerializeField] private float raioVisao;
     [SerializeField] private float velocidadeProjetil;
@@ -39,7 +40,7 @@ public class inimigoScript : MonoBehaviour
     private Transform alvo;
     private float vidaAtual;
     private bool paralisado = false;
-    private bool empurrado = false;
+    private bool SendoEmpurrado = false;
     private SpriteRenderer spriteInimigo;
     //private bool trocarOrdemPontosDeFuga = false;
     public enum TiposDeMovimentacao
@@ -62,6 +63,7 @@ public class inimigoScript : MonoBehaviour
     private bool atirando = false;
     private float forcaEmpurrao;
     private Vector2 direcaoEmpurrao;
+    private float reducaoVelocidade = 0f;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -93,7 +95,7 @@ public class inimigoScript : MonoBehaviour
         //orientacaoSprite();
         if (!paralisado)
         {
-            if (empurrado && tiposDeMovimentacao == TiposDeMovimentacao.movimentacaoLivre)
+            if (SendoEmpurrado && tiposDeMovimentacao == TiposDeMovimentacao.movimentacaoLivre)
             {
                 rb.velocity = -forcaEmpurrao * direcaoEmpurrao;
             }
@@ -102,13 +104,13 @@ public class inimigoScript : MonoBehaviour
                 switch (tiposDeMovimentacao)
                 {
                     case TiposDeMovimentacao.movimentacaoFixa:
-                        rb.velocity = direcaoDeMovimentacao * velocidade;
+                        rb.velocity = direcaoDeMovimentacao * (velocidade - reducaoVelocidade);
                         break;
                     case TiposDeMovimentacao.movimentacaoLivre:
                         if (alvo != null)
                         {
                             direcaoDeMovimentacao = (alvo.position - transform.position).normalized;
-                            rb.velocity = direcaoDeMovimentacao * velocidade;
+                            rb.velocity = direcaoDeMovimentacao * (velocidade - reducaoVelocidade);
                             if (salvandoPontosDeNavegacao == null)
                                 salvandoPontosDeNavegacao = StartCoroutine(this.salvaPontosParaNavegacao());
                         }
@@ -202,6 +204,15 @@ public class inimigoScript : MonoBehaviour
             }
         }
     }
+    public void AtivaReducaoVelocidade()
+    {
+        Debug.Log("a");
+        reducaoVelocidade = reducaoVelocDuranteAtaqueMelee;
+    }
+    public void DesativaReducaoVelocidade()
+    {
+        reducaoVelocidade = 0f;
+    }
     public void Atirar()
     {
         if (!atirando && alvo != null)
@@ -293,13 +304,13 @@ public class inimigoScript : MonoBehaviour
     {
         forcaEmpurrao = forca;
         direcaoEmpurrao = (direcao - this.transform.position).normalized;
-        empurrado = true;
+        SendoEmpurrado = true;
         StartCoroutine(this.duracaoEmpurrao(duracao));
     }
     IEnumerator duracaoEmpurrao(float temp)
     {
         yield return new WaitForSeconds(temp);
-        empurrado = false;
+        SendoEmpurrado = false;
         rb.velocity = Vector2.zero;
     }
     IEnumerator Paralisar(float temp)

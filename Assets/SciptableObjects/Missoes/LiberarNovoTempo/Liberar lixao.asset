@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef51c6ae952d9064197bab3d6e99eecc, type: 3}
+  m_Name: Liberar lixao
+  m_EditorClassIdentifier: 
+  TextoResumoMissao: "Explore a Cidade Para liberar o pr\xF3ximo tempo"
+  TextoDetalheMissao: "Procure na cidade pelos seus recursos e a c\xE1psula do tempo
+    para melhorar o portal"
+  iconeMissao: {fileID: -5243431847575177645, guid: bb06ae432563b6b4b8e93179d35d7cef,
+    type: 3}

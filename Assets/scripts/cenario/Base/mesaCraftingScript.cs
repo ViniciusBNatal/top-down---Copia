@@ -14,7 +14,7 @@ public class mesaCraftingScript : MonoBehaviour
     {
         if (!jogadorScript.Instance.InterfaceJogador.InventarioAberto)
         {
-            jogadorScript.Instance.InterfaceJogador.abreInventario();
+            jogadorScript.Instance.InterfaceJogador.abreInventario(true, false);
             jogadorScript.Instance.InterfaceJogador.AoClicarBtnCriacao();
             if (TutorialSetUp.Instance != null)
             {

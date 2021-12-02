@@ -58,6 +58,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     private Vector2 direcaoProjetil = Vector2.zero;
     [SerializeField] private GameObject caixaComTudo;
     private GameObject balaDisparada = null;
+    //[SerializeField] private Missao m;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -76,10 +77,13 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     void Update()
     {
         //if (Input.GetKeyDown(KeyCode.L))
-        //    SoundManager.Instance.TocarSom(SoundManager.Som.ModuloExplodindo);
-        //    Debug.Log(TutorialSetUp.Instance);
-        //    SceneManager.LoadScene("testes");
-        if (Input.GetKeyDown(KeyCode.P) && Input.GetKey(KeyCode.LeftShift))
+        //    MissoesManager.Instance.AdicionarMissao(m);
+        //if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        //    MissoesManager.Instance.ConcluirMissao(m);
+            //    SoundManager.Instance.TocarSom(SoundManager.Som.ModuloExplodindo);
+            //    Debug.Log(TutorialSetUp.Instance);
+            //    SceneManager.LoadScene("testes");
+            if (Input.GetKeyDown(KeyCode.P) && Input.GetKey(KeyCode.LeftShift))
         {
             Instantiate(caixaComTudo, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         }

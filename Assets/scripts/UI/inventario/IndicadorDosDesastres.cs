@@ -7,7 +7,7 @@ using TMPro;
 public class IndicadorDosDesastres : MonoBehaviour
 {
     public static IndicadorDosDesastres Instance { get; private set; }
-    private List<GameObject> iconesDesenhados = new List<GameObject>();
+    private List<iconeDesastre> iconesDesenhados = new List<iconeDesastre>();
     //private List<Image> iconesDesenhados = new List<Image>();
     //private List<Image> multiplicadoresDesenhados = new List<Image>();
     [SerializeField] private GameObject iconesDesastrPrefab;
@@ -55,16 +55,21 @@ public class IndicadorDosDesastres : MonoBehaviour
     public void PreenchePlaca()
     {
         //limpa os icones para os próximos desastres
+        float distanciaEntreIcones = 0;
         LimpaPlaca();
         for (int i = 0; i < desastreManager.Instance.GetQntdDesastresParaOcorrer(); i++)//preenche a tela de acordo com o que foi sorteado e a quantidade de desastres
         {
             GameObject icone = Instantiate(iconesDesastrPrefab, PosIcones.transform);
-            icone.GetComponent<iconeDesastre>().imagem.sprite = DesastresList.Instance.SelecionaSpriteDesastre(desastreManager.Instance.GetDesastreSorteado(i));
-            icone.GetComponent<iconeDesastre>().texto.text = desastreManager.Instance.forcasSorteados[i].ToString();
+            iconesDesenhados.Add(icone.GetComponent<iconeDesastre>());
+            iconesDesenhados[i].imagemDoDesastre.sprite = DesastresList.Instance.SelecionaSpriteDesastre(desastreManager.Instance.GetDesastreSorteado(i));
+            iconesDesenhados[i].texto.text = desastreManager.Instance.forcasSorteados[i].ToString();
+            /*icone.GetComponent<iconeDesastre>().imagemDoDesastre.sprite = DesastresList.Instance.SelecionaSpriteDesastre(desastreManager.Instance.GetDesastreSorteado(i));
+            icone.GetComponent<iconeDesastre>().texto.text = desastreManager.Instance.forcasSorteados[i].ToString();*/
             float largura = icone.GetComponent<RectTransform>().rect.width;
             float altura = icone.GetComponent<RectTransform>().rect.height;
-            icone.transform.localPosition = new Vector3((i * -largura), -(i / divisor) * altura, 0);
-            iconesDesenhados.Add(icone);
+            if (i > 0)
+                distanciaEntreIcones = .5f;
+            icone.transform.localPosition = new Vector3((i * -largura) + distanciaEntreIcones, -(i / divisor) * altura, 0);
             ////icone do multiplicador
             //Image iconeDeMultiplicador = Instantiate(iconesDesastrPrefab, PosicaoIconesMultiplicador.transform.position, Quaternion.identity, PosicaoIconesMultiplicador.transform);
             //Sprite iconeMult = DesastresList.Instance.SelecionaSpriteMultiplicador(desastreManager.Instance.GetForcaSorteada(i));
@@ -81,6 +86,16 @@ public class IndicadorDosDesastres : MonoBehaviour
             //iconeDeDesastre.transform.localPosition = new Vector3(0f, -(alturaiconeDesastre * i + .1f), 0f);
             //iconeDeDesastre.GetComponent<Image>().sprite = iconeDes;
             //iconesDesenhados.Add(iconeDeDesastre);
+        }
+    }
+    public void AtivarCheckDeModuloConstruido(int forca, string desastre, int modulo)
+    {
+        for (int i = 0; i < iconesDesenhados.Count; i++)
+        {
+            if (iconesDesenhados[i].texto.text == forca.ToString() && iconesDesenhados[i].imagemDoDesastre.sprite == DesastresList.Instance.SelecionaSpriteDesastre(desastre) && modulo == 1)
+            {
+                iconesDesenhados[i].caixaDeCheck.enabled = true;
+            }
         }
     }
 }

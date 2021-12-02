@@ -153,6 +153,7 @@ MonoBehaviour:
   sementeDeAlhoPrefab: {fileID: 6681289161254987899, guid: ab4554795a0271b4895f3d8a8d9470fb,
     type: 3}
   pontoDeSpawnDaSemente: {fileID: 3199460214441609073}
+  missaoMatarBoss: {fileID: 11400000, guid: f2c94f9cc09c2d2458dfe2640969df53, type: 2}
   dialogos:
   - NomeNPC:
     - Dr. Alho MECHA

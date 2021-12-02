@@ -7,7 +7,7 @@ public class inimigoAnimScript : MonoBehaviour
     private Animator animator;
     private inimigoScript inimigoScript;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         inimigoScript = GetComponent<inimigoScript>();
@@ -51,5 +51,9 @@ public class inimigoAnimScript : MonoBehaviour
     {
         animator.SetFloat("RANGEHORZ", vec.x);
         animator.SetFloat("RANGEVERT", vec.y);
+    }
+    public void SetTipoBonecoDeTreino(bool movel)
+    {
+        animator.SetBool("MOVIMENTO", movel);
     }
 }
