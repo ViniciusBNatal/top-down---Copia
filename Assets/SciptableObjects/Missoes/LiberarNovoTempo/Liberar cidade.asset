@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef51c6ae952d9064197bab3d6e99eecc, type: 3}
   m_Name: Liberar cidade
   m_EditorClassIdentifier: 
-  TextoResumoMissao: "Explore a floresta Para liberar o pr\xF3ximo tempo"
-  TextoDetalheMissao: "Procure na floresta pelos seus recursos e a c\xE1psula do
-    tempo para melhorar o portal"
+  TextoResumoMissao: "Explore a floresta para liberar o pr\xF3ximo tempo"
+  TextoDetalheMissao: "Procure na floresta pela c\xE1psula do tempo para melhorar
+    o portal e recursos para se defender dos desastres."
   iconeMissao: {fileID: -2581383725821536159, guid: 2de7739c0fc074e4d8a2c281f7db7532,
     type: 3}

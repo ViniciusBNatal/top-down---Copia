@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef51c6ae952d9064197bab3d6e99eecc, type: 3}
   m_Name: matar boneco com melee
   m_EditorClassIdentifier: 
-  TextoResumoMissao: Mate o boneco com seus ataques corpo a corpo
+  TextoResumoMissao: Derrote o boneco de teste com ataque
   TextoDetalheMissao: "Precionando o bot\xE3o esquedo do mouse se performa um ataque
-    corpo a corpo que ir\xE1 empurrar e ferir inimigos e alvos"
+    corpo a corpo que ir\xE1 empurrar e ferir inimigos e alvos."
   iconeMissao: {fileID: 8724382764289865341, guid: 611557d1b8a18804c9b7251dba554712,
     type: 3}

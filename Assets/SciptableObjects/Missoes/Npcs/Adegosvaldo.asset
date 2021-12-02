@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef51c6ae952d9064197bab3d6e99eecc, type: 3}
   m_Name: Adegosvaldo
   m_EditorClassIdentifier: 
-  TextoResumoMissao: "Encontre o objeto nost\xE1lgico"
-  TextoDetalheMissao: Adegosvaldo disse para buscarmos um item de seu passado no
-    parque
+  TextoResumoMissao: Encontre o objeto pessoal
+  TextoDetalheMissao: "Adegosvaldo disse para buscarmos um item de seu passado no
+    parque. Em troca ele nos deixar\xE1 entrar em seu lix\xE3o."
   iconeMissao: {fileID: 21300000, guid: f721d06689441d2459b927474bbef62d, type: 3}

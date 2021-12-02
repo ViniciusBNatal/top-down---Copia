@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Policial
   m_EditorClassIdentifier: 
   TextoResumoMissao: Encontre algo para incriminar os manifestantes
-  TextoDetalheMissao: "O policial disse que s\xF3 deixaria passar caso conseguirmos
-    algo para incriminar os manifestantes, ser\xE1 que naquele laborat\xF3rio tem
-    algo de perigoso?"
+  TextoDetalheMissao: "O policial disse que s\xF3 nos deixaria passar caso conseguirmos
+    algo para incriminar os manifestantes, devemos procurar um jeito de entrar naquele
+    laborat\xF3rio."
   iconeMissao: {fileID: 21300000, guid: 262acd0e569e8504092d41b61dc952e4, type: 3}
