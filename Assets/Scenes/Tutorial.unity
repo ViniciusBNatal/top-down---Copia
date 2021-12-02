@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2167,7 +2167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.92156863}
+  m_Color: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 0.9607843}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -52832,7 +52832,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142209883}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.49, y: -12.96, z: 0}
+  m_LocalPosition: {x: 20.03, y: -1.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1133437610}
@@ -66640,7 +66640,7 @@ MonoBehaviour:
     - "Mas antes, como voc\xEA provavelmente ir\xE1 enfrentar v\xE1rios inimigos
       durante essa jornada e perdeu sua mem\xF3ria vamos fazer um treino r\xE1pido
       para voc\xEA se lembrar do que \xE9 capaz."
-    - "Segure o BOT\xC3O DIREITO do mouse para congelar os alvos no tempo "
+    - "SEGURE o BOT\xC3O DIREITO do mouse para congelar o inimigo no tempo. "
     FocarComCamera: []
     EventosDuranteDialogo:
     - m_PersistentCalls:
@@ -66688,7 +66688,7 @@ MonoBehaviour:
     ImagemNPC:
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - "Muito bem Agora bata no boneco com o BOT\xC3O ESQUERDO do mouse\r.\n \r"
+    - "Muito bem! Agora bata no boneco com o BOT\xC3O ESQUERDO do mouse\r.\n \r"
     FocarComCamera: []
     EventosDuranteDialogo:
     - m_PersistentCalls:
@@ -66721,10 +66721,8 @@ MonoBehaviour:
     - Dr Alho
     ImagemNPC:
     - {fileID: 21300000, guid: 7bb96a89c6ceb6949ad1c0e371068f69, type: 3}
-    - {fileID: 21300000, guid: 7bb96a89c6ceb6949ad1c0e371068f69, type: 3}
-    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - agora mate o boneco como quiser
+    - Agora derrote o boneco com os movimentos que acabou de aprender
     FocarComCamera: []
     EventosDuranteDialogo:
     - m_PersistentCalls:
@@ -66766,12 +66764,15 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - NomeNPC:
-    - "ap\xF3s matar o boneco quando estiver livre"
+    - Dr Alho
     ImagemNPC:
-    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - agora quebre a caixa e construa o modulo na mesa
+    - Agora quebre essa caixa para coletar os recursos.
+    - "Em seguida, dirija-se a mesa de trabalho para construir o m\xF3dulo de defesa."
     FocarComCamera:
+    - {fileID: 1142209884}
     - {fileID: 1195308730}
     EventosDuranteDialogo:
     - m_PersistentCalls:
@@ -66820,14 +66821,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - "Parab\xE9ns voc\xEA conseguiu sobreviver esse desastre, mas lembre-se que
-      eles n\xE3o v\xE3o parar de acontecer, ent\xE3o fique atento aos seus RECURSOS
-      e qual ser\xE1 o pr\xF3ximo DESASTRE para conseguir se DEFENDER dentro do tempo."
-    - "E n\xE3o esque\xE7a de ficar de olho na INTENSIDADE dos desastres, pois se
-      construir um modulo mais fraco do que o necess\xE1rio o portal ser\xE1 danificado,
-      se ele for danificado 3 vezes temo que ir\xE1 explodir."
-    - "Ah! E a for\xE7a dos m\xF3dulos n\xE3o se somam"
-    - "Agora v\xE1 at\xE9 o portal e o conserte!"
+    - Agora espere o desastre ele deve atingiro portal em breve.
     FocarComCamera:
     - {fileID: 0}
     - {fileID: 0}
@@ -66865,22 +66859,22 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
-    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - "Muito bem, agora voc\xEA deve explorar as eras para procurar as pe\xE7as de
-      reparo da m\xE1quina do tempo."
-    - "E n\xE3o se esque\xE7a de CONSTRUIR M\xD3DULOS DE DEFESA para proteger o portal
-      e se um desastre ocorrer enquanto estiver fora volte o mais r\xE1pido poss\xEDvel
-      para o portal."
-    - "Agora selecione a era liberada e tente buscar as pe\xE7as para consertar o
-      portal por completo e voltar para o meu laborat\xF3rio para consertarmos a
-      bagun\xE7a que voc\xEA criou no espa\xE7o tempo."
-    - "Ah! e tome muito CUIDADO quando voc\xEA for consertar o portal das pr\xF3ximas
-      vezes. Ele vai ficar inutiliz\xE1vel por um tempo e como uma nova era estar\xE1
-      abrindo v\xE1rios desastres ir\xE3o iniciar rapidamente."
-    - Boa sorte!
-    FocarComCamera: []
+    - "Parab\xE9ns voc\xEA conseguiu sobreviver esse desastre, mas lembre-se que
+      eles N\xC3O v\xE3o parar de acontecer, ent\xE3o fique atento aos seus RECURSOS
+      e qual ser\xE1 o pr\xF3ximo DESASTRE para conseguir se DEFENDER dentro do tempo."
+    - "E n\xE3o esque\xE7a de ficar de olho na INTENSIDADE dos desastres, pois se
+      construir um modulo mais fraco do que o necess\xE1rio o portal ser\xE1 danificado,
+      se ele for danificado 3 vezes temo que ir\xE1 explodir."
+    - "Ah! E tenha aten\xE7\xE3o com a for\xE7a dos desastres, pois a for\xE7a dos
+      m\xF3dulos n\xE3o se somam."
+    - "Agora v\xE1 at\xE9 o portal e o conserte!"
+    FocarComCamera:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 1808072268}
     EventosDuranteDialogo:
     - m_PersistentCalls:
         m_Calls:

@@ -15,6 +15,6 @@ MonoBehaviour:
   TextoResumoMissao: Espere pelo desastre
   TextoDetalheMissao: "Sempre que o cron\xF4metro chegar a zero, um desastre ir\xE1
     ocorrer. Chegue a base para se proteger dos desastres e lembre-se de proteger
-    o portal construido os m\xF3dulos corretos"
+    o portal construido os m\xF3dulos corretos."
   iconeMissao: {fileID: -4696150687652059407, guid: ff298f82dae67ae4db184235a60d2209,
     type: 3}

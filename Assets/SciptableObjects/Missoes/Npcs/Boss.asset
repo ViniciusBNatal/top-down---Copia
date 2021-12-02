@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef51c6ae952d9064197bab3d6e99eecc, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  TextoResumoMissao: Me Mata
-  TextoDetalheMissao: "Construa o m\xF3dulo indicado no canto superior direito, abaixo
-    do cron\xF4metro"
+  TextoResumoMissao: Derrote o Dr. Alho
+  TextoDetalheMissao: "Tenho que derrotar o Dr. alho, deve h\xE1ver algum m\xF3dulo
+    que possa me ajudar a derrot\xE1-lo."
   iconeMissao: {fileID: 0}

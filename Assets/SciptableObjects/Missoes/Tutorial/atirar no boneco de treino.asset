@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: atirar no boneco de treino
   m_EditorClassIdentifier: 
   TextoResumoMissao: 'Atire no boneco de treino '
-  TextoDetalheMissao: "segurando o bot\xE3o direito do mouse dispare contra o boneco "
+  TextoDetalheMissao: "segurando o bot\xE3o direito do mouse dispare contra o boneco. "
   iconeMissao: {fileID: 1848503343446782892, guid: eee20d4829f99f9439d33d8dd7779976,
     type: 3}
