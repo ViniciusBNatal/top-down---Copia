@@ -20,7 +20,7 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     private int botoesPrecionados = 0;
     private BoxCollider2D colisao;
     private bool iniciouCorrotina = false;
-    private Item chave = null;
+    private item chave = null;
     private Animator animator;
     private bool eventoOcorreu = false;
     private void Awake()

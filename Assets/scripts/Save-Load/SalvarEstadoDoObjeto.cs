@@ -23,7 +23,7 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
     static Dictionary<string, int> extracoesRestanteCentroDeRecursos = new Dictionary<string, int>();
     //dados dos npcs
     static Dictionary<string, int> estadoMissaoNPC = new Dictionary<string, int>();
-    static Dictionary<string, Item> itemMissaoNPC = new Dictionary<string, Item>();
+    static Dictionary<string, item> itemMissaoNPC = new Dictionary<string, item>();
     //dados dialogos unicos
     static Dictionary<string, bool> dialogosFinalizados = new Dictionary<string, bool>();
     //dados botões

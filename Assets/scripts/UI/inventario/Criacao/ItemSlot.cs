@@ -6,7 +6,7 @@ using TMPro;
 
 public class ItemSlot : MonoBehaviour
 {
-    public Item item;
+    public item item;
     [SerializeField] private TMP_Text qntdItemText;
     //[SerializeField] private Text qntdItemText;
     public int qntdRecurso;

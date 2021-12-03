@@ -6,7 +6,7 @@ using TMPro;
 public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, SalvamentoEntreCenas
 {
     [Header("Recurso dropado")]
-    [SerializeField] private Item item;
+    [SerializeField] private item item;
     [SerializeField] private GameObject recursoColetavelPreFab;
     [Range(-1,1)]
     [SerializeField] private int direcaoLancamentoX;
