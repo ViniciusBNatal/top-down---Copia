@@ -15,5 +15,4 @@ MonoBehaviour:
   TextoResumoMissao: Concerte o portal
   TextoDetalheMissao: "V\xE1 at\xE9 o porta e interaja com sua interface, ao CLICAR
     na engrenagem ele ser\xE1 reparado."
-  iconeMissao: {fileID: -4850906774548208983, guid: b92a96c8dfdd1154bb1ca2ba26140280,
-    type: 3}
+  iconeMissao: {fileID: 21300000, guid: 6bdc762cc280fb049880a0a16c4e708d, type: 3}

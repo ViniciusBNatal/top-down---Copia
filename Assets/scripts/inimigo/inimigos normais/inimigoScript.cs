@@ -42,6 +42,7 @@ public class inimigoScript : MonoBehaviour
     private bool paralisado = false;
     private bool SendoEmpurrado = false;
     private SpriteRenderer spriteInimigo;
+    private Coroutine paralisar = null;
     //private bool trocarOrdemPontosDeFuga = false;
     public enum TiposDeMovimentacao
     {
@@ -213,7 +214,7 @@ public class inimigoScript : MonoBehaviour
     {
         reducaoVelocidade = 0f;
     }
-    public void Atirar()
+    public IEnumerator Atirar()
     {
         if (!atirando && alvo != null)
         {
@@ -225,6 +226,7 @@ public class inimigoScript : MonoBehaviour
             balains.GetComponent<Rigidbody2D>().velocity = velocidadeProjetil * direcaoProjetil;
             balains.GetComponent<balaHit>().SetDano(danoRanged);
             balains.GetComponent<balaHit>().SetDuracaoStun(tempoDeStunNoJogador);
+            yield return new WaitForSeconds(Time.deltaTime);
             atirando = false;
         }
     }
@@ -253,15 +255,18 @@ public class inimigoScript : MonoBehaviour
         {
             if (origemHit == "projetil")
             {
-                StartCoroutine(this.Paralisar(dano));
-                if (TutorialSetUp.Instance != null)
+                if (paralisar == null)
                 {
-                    TutorialSetUp.Instance.hitsDeDisparosNoInimigo++;
-                    if (TutorialSetUp.Instance.GetSequenciaDialogos() == 1 && TutorialSetUp.Instance.hitsDeDisparosNoInimigo == 1)
+                    paralisar = StartCoroutine(this.Paralisar(dano));
+                    if (TutorialSetUp.Instance != null)
                     {
-                        jogadorScript.Instance.EncerrarDisparos();
-                        DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
-                        TutorialSetUp.Instance.AoAcertarDisparoNoInimigo();
+                        TutorialSetUp.Instance.tirosAcertadosNoInimigo++;
+                        if (TutorialSetUp.Instance.GetSequenciaDialogos() == 1 && TutorialSetUp.Instance.tirosAcertadosNoInimigo >= TutorialSetUp.Instance.hitsDeDisparosNoInimigo)
+                        {
+                            jogadorScript.Instance.EncerrarDisparos();
+                            DialogeManager.Instance.DialogoFinalizado += AoFinalizarDialogo;
+                            TutorialSetUp.Instance.AoAcertarDisparoNoInimigo();
+                        }
                     }
                 }
             }
@@ -317,12 +322,14 @@ public class inimigoScript : MonoBehaviour
     {
         paralisado = true;
         rb.velocity = Vector2.zero;
-        inimigoAnimScript.GetAnimator().enabled = false;
+        if (TutorialSetUp.Instance == null)
+            inimigoAnimScript.GetAnimator().enabled = false;
         VisualParalisado(true);
         yield return new WaitForSeconds(temp);
         VisualParalisado(false);
         inimigoAnimScript.GetAnimator().enabled = true;
         paralisado = false;
+        paralisar = null;
     }
     private void VisualParalisado(bool ligar_desligar)
     {

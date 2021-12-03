@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 574282732951226099}
   - component: {fileID: 5748838003046816153}
   - component: {fileID: 5186592385747069209}
+  - component: {fileID: 5539862308720165625}
   m_Layer: 0
   m_Name: bala robo
   m_TagString: projetil
@@ -137,3 +138,22 @@ MonoBehaviour:
   DuracaoDaBala: 2
   balaJogador: 0
   balaInimigo: 1
+--- !u!95 &5539862308720165625
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029496171083325692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c2b2b6777338244c86f22b1fccad29f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

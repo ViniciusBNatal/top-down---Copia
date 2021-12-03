@@ -177,7 +177,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         else
             MudarEstadoJogador(0);
     }
-    public void Atira()
+    public IEnumerator Atira()
     {
         if (balaDisparada == null)
         {
@@ -185,6 +185,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
             balaDisparada.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));//rotaciona a bala
             balaDisparada.GetComponent<Rigidbody2D>().velocity = direcaoProjetil * velocidadeProjetil;//new Vector3(direcaoProjetil.x / Mathf.Abs(direcaoProjetil.x), direcaoProjetil.y / Mathf.Abs(direcaoProjetil.y), 0f)
             balaDisparada.GetComponent<balaHit>().SetDano(tempParalisacaoProjetil);
+            yield return new WaitForSeconds(Time.deltaTime);
             balaDisparada = null;
         }
     }
