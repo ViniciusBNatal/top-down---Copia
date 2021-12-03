@@ -15,4 +15,4 @@ MonoBehaviour:
   TextoResumoMissao: "Quebre a caixa e construa o m\xF3dulo"
   TextoDetalheMissao: "V\xE1 At\xE9 a parte inferior da base, quebre a caixa com
     seu ataque e construa o m\xF3dulo indicado no canto superior direito de sua interface."
-  iconeMissao: {fileID: 21300000, guid: 434758122da944744a210148b3df4709, type: 3}
+  iconeMissao: {fileID: 21300000, guid: b013b3dc34360084eaf2884227b338f0, type: 3}

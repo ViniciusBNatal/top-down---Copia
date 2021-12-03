@@ -15,5 +15,4 @@ MonoBehaviour:
   TextoResumoMissao: "Explore a floresta para liberar o pr\xF3ximo tempo"
   TextoDetalheMissao: "Procure na floresta pela c\xE1psula do tempo para melhorar
     o portal e recursos para se defender dos desastres."
-  iconeMissao: {fileID: -2581383725821536159, guid: 2de7739c0fc074e4d8a2c281f7db7532,
-    type: 3}
+  iconeMissao: {fileID: 21300000, guid: b013b3dc34360084eaf2884227b338f0, type: 3}

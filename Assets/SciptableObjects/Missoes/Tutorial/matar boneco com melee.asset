@@ -15,5 +15,4 @@ MonoBehaviour:
   TextoResumoMissao: Derrote o boneco de teste com ataque
   TextoDetalheMissao: "Precionando o bot\xE3o esquedo do mouse se performa um ataque
     corpo a corpo que ir\xE1 empurrar e ferir inimigos e alvos."
-  iconeMissao: {fileID: 8724382764289865341, guid: 611557d1b8a18804c9b7251dba554712,
-    type: 3}
+  iconeMissao: {fileID: 21300000, guid: b013b3dc34360084eaf2884227b338f0, type: 3}

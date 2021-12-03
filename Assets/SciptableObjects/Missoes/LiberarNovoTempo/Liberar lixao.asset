@@ -15,5 +15,4 @@ MonoBehaviour:
   TextoResumoMissao: "Explore a Cidade Para liberar o pr\xF3ximo tempo"
   TextoDetalheMissao: "Procure na cidade pela c\xE1psula do tempo para melhorar o
     portal e recursos para se defender dos desastres."
-  iconeMissao: {fileID: -5243431847575177645, guid: bb06ae432563b6b4b8e93179d35d7cef,
-    type: 3}
+  iconeMissao: {fileID: 21300000, guid: b013b3dc34360084eaf2884227b338f0, type: 3}
