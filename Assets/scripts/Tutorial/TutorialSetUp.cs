@@ -14,6 +14,7 @@ public class TutorialSetUp : MonoBehaviour
     private inimigoScript bonecoDeTreinamento;
     private int sequenciaDialogos = 0;
     public int hitsDeDisparosNoInimigo = 0;
+    [HideInInspector] public int tirosAcertadosNoInimigo;
     private void Awake()
     {
         Instance = this;
@@ -49,9 +50,8 @@ public class TutorialSetUp : MonoBehaviour
         jogadorScript.Instance.GetAnimacoesTutorial().GetComponent<Animator>().SetBool("DISP", false);
         bonecoDeTreinamento.tiposDeMovimentacao = inimigoScript.TiposDeMovimentacao.estatico;
         bonecoDeTreinamento.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        bonecoDeTreinamento.transform.position = pontoParaTerinamentoMelee.position;
-        bonecoDeTreinamento.GetAnimScript().enabled = true;
         bonecoDeTreinamento.GetAnimScript().SetTipoBonecoDeTreino(false);
+        bonecoDeTreinamento.transform.position = pontoParaTerinamentoMelee.position;
         IniciarDialogo();
     }
     public void AoEliminarOInimigoControlado()
