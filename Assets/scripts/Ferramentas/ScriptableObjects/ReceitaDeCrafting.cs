@@ -14,7 +14,7 @@ public class ReceitaDeCrafting : ScriptableObject
     public int incrementoEntreForcas;
     private int forca;
     [Header("Receita")]
-    public List<Item> itensNecessarios = new List<Item>();
+    public List<item> itensNecessarios = new List<item>();
     public List<int> quantidadeDosRecursos = new List<int>();
 
     public void SetForca(int f)

@@ -104,7 +104,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         //Time.timeScale = 0f;//Pausar
     }
 
-    private void CriaNovoSlotDeItem(Item item, int quantidade)
+    private void CriaNovoSlotDeItem(item item, int quantidade)
     {
         GameObject obj = Instantiate(slotItemPrefab, posicaoDosIconesDeItens.position, Quaternion.identity, posicaoDosIconesDeItens);
         ItemSlot script = obj.GetComponent<ItemSlot>();
@@ -112,7 +112,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         script.atualizaQuantidade(quantidade);
         itens.Add(item.ID, obj.GetComponent<ItemSlot>());
     }
-    public void AtualizaInventarioUI(Item item, int quantidade)
+    public void AtualizaInventarioUI(item item, int quantidade)
     {
         if (itens.ContainsKey(item.ID))
         {
@@ -319,7 +319,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     {
         return TempoAtual;
     }
-    public bool ProcurarChave(Item chave)
+    public bool ProcurarChave(item chave)
     {
         if (chave != null)
         {

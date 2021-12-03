@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
 {
-    [SerializeField] private Item item;
+    [SerializeField] private item item;
     [SerializeField] private int qntd;
     [SerializeField] private float tempoParaLiberarColeta;
     [SerializeField] private BoxCollider2D areaColetavel;
@@ -33,11 +33,11 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
             Destroy(this.gameObject);
         }
     }
-    public void DefineItem(Item it)
+    public void DefineItem(item it)
     {
         item = it;
     }
-    public Item ReferenciaItem()
+    public item ReferenciaItem()
     {
         return item;
     }

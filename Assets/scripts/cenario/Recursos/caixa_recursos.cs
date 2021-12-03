@@ -10,7 +10,7 @@ public class caixa_recursos : MonoBehaviour, CentroDeRecurso, SalvamentoEntreCen
     [SerializeField] private int direcaoLancamentoX;
     [Range(-1, 1)]
     [SerializeField] private int direcaoLancamentoY;
-    [SerializeField] private List<Item> itens = new List<Item>();
+    [SerializeField] private List<item> itens = new List<item>();
     [SerializeField] private List<int> qntdDoRecursoDropado = new List<int>();
     [Header ("Não Mexer")]
     [SerializeField] private GameObject recursoColetavelPreFab;

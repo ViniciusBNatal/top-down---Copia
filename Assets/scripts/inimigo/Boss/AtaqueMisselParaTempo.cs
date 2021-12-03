@@ -9,7 +9,7 @@ public class AtaqueMisselParaTempo : MonoBehaviour
     [SerializeField] private float duracaoExplosao;
     [Header("Componentes do recurso dropado")]
     [SerializeField] private float forca;
-    [SerializeField] private List<Item> itens = new List<Item>();
+    [SerializeField] private List<item> itens = new List<item>();
     [SerializeField] private List<int> qntdDoRecursoDropado = new List<int>();
     [Header("Não Mexer")]
     [SerializeField] private SpriteRenderer areaDaExplosaoIndicador;

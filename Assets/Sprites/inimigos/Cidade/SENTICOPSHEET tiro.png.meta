@@ -1,0 +1,392 @@
+fileFormatVersion: 2
+guid: a1ec1286578d51b4e87b5cbc26e73b3e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7981435735462810685
+    second: SENTICOPSHEET tiro_0
+  - first:
+      213: 4081925858247948959
+    second: SENTICOPSHEET tiro_1
+  - first:
+      213: 4053071614106816931
+    second: SENTICOPSHEET tiro_2
+  - first:
+      213: -8571744207964732538
+    second: SENTICOPSHEET tiro_3
+  - first:
+      213: 2242028415115470909
+    second: SENTICOPSHEET tiro_4
+  - first:
+      213: -2765125868459116392
+    second: SENTICOPSHEET tiro_5
+  - first:
+      213: 4885871537112672320
+    second: SENTICOPSHEET tiro_6
+  - first:
+      213: -6346391090609479584
+    second: SENTICOPSHEET tiro_7
+  - first:
+      213: -509649298015704766
+    second: SENTICOPSHEET tiro_8
+  - first:
+      213: -21274854671013585
+    second: SENTICOPSHEET tiro_9
+  - first:
+      213: -3333772577540874591
+    second: SENTICOPSHEET tiro_10
+  - first:
+      213: -4352121162682457065
+    second: SENTICOPSHEET tiro_11
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SENTICOPSHEET tiro_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 141
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cb612e6c7e3c3190800000000000000
+      internalID: -7981435735462810685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SENTICOPSHEET tiro_1
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 142
+        width: 29
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9ab95ce0f9e5a830800000000000000
+      internalID: 4081925858247948959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SENTICOPSHEET tiro_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 143
+        width: 29
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a15e00b8276f3830800000000000000
+      internalID: 4053071614106816931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SENTICOPSHEET tiro_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 94
+        width: 29
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68300c2de0c0b0980800000000000000
+      internalID: -8571744207964732538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SENTICOPSHEET tiro_4
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 95
+        width: 29
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d382a4bf6f84d1f10800000000000000
+      internalID: 2242028415115470909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SENTICOPSHEET tiro_5
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 97
+        width: 29
+        height: 35
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89830434cac40a9d0800000000000000
+      internalID: -2765125868459116392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SENTICOPSHEET tiro_6
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 48
+        width: 23
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 048eacbc64a1ec340800000000000000
+      internalID: 4885871537112672320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SENTICOPSHEET tiro_7
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 49
+        width: 23
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060a48e7de61de7a0800000000000000
+      internalID: -6346391090609479584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SENTICOPSHEET tiro_8
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 50
+        width: 23
+        height: 36
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2492fb7e9ac5de8f0800000000000000
+      internalID: -509649298015704766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SENTICOPSHEET tiro_9
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 6
+        width: 22
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f29afa4e1aa64bff0800000000000000
+      internalID: -21274854671013585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SENTICOPSHEET tiro_10
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 7
+        width: 22
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.47}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aedcb9f08f0cb1d0800000000000000
+      internalID: -3333772577540874591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SENTICOPSHEET tiro_11
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 8
+        width: 22
+        height: 37
+      alignment: 9
+      pivot: {x: 0.5, y: 0.45}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7142ade6cd82a93c0800000000000000
+      internalID: -4352121162682457065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

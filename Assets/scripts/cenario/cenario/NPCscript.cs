@@ -18,7 +18,7 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     [SerializeField] private Transform pontoDeSpawnObjeto;
     [SerializeField] private Dialogo[] dialogos;
     [SerializeField] private UnityEvent EventosAoCompletarMissao;
-    private Item itemMissao = null;
+    private item itemMissao = null;
     private Rigidbody2D rb;
     private Animator animator;
     private Vector2 posInicial;
@@ -135,11 +135,11 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
         if (nDeDialogos == 3)
             AoCompletarAMissao();
     }
-    public Item GetItemDaMissao()
+    public item GetItemDaMissao()
     {
         return itemMissao;
     }
-    public void SetItemDaMissao(Item obj)
+    public void SetItemDaMissao(item obj)
     {
         itemMissao = obj;
     }
