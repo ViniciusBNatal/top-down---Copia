@@ -15,4 +15,4 @@ MonoBehaviour:
   TextoResumoMissao: Derrote o boneco de treino
   TextoDetalheMissao: Usando o que lhe ensinei, destrua o boneco de treinamento novamente
     como quiser.
-  iconeMissao: {fileID: 21300000, guid: b013b3dc34360084eaf2884227b338f0, type: 3}
+  iconeMissao: {fileID: 21300000, guid: ac057e696d19a74438921848f229350b, type: 3}

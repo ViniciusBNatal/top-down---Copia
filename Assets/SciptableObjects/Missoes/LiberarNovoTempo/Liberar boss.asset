@@ -15,4 +15,5 @@ MonoBehaviour:
   TextoResumoMissao: "Explore o Lix\xE3o Para liberar o pr\xF3ximo tempo"
   TextoDetalheMissao: "Procure no lix\xE3o pela c\xE1psula do tempo para melhorar
     o portal e recursos para se defender dos desastres."
-  iconeMissao: {fileID: 21300000, guid: b013b3dc34360084eaf2884227b338f0, type: 3}
+  iconeMissao: {fileID: -2458307936719980594, guid: 548c40a82c1fa774683be9f317ba4b73,
+    type: 3}

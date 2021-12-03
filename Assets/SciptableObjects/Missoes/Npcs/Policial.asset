@@ -16,4 +16,4 @@ MonoBehaviour:
   TextoDetalheMissao: "O policial disse que s\xF3 nos deixaria passar caso conseguirmos
     algo para incriminar os manifestantes, devemos procurar um jeito de entrar naquele
     laborat\xF3rio."
-  iconeMissao: {fileID: 21300000, guid: b013b3dc34360084eaf2884227b338f0, type: 3}
+  iconeMissao: {fileID: 21300000, guid: 262acd0e569e8504092d41b61dc952e4, type: 3}
