@@ -40,6 +40,7 @@ public class MissoesManager : MonoBehaviour
             //cria a missão no tracker de missões
             GameObject temp = Instantiate(missao, TrackerMissoes.position, Quaternion.identity, TrackerMissoes);
             temp.GetComponent<missaoPrefabScript>().textoDetalhesMissao.gameObject.SetActive(false);
+            temp.GetComponent<missaoPrefabScript>().molduraMissao.enabled = false;
             float largura = temp.GetComponent<RectTransform>().rect.width;
             float altura = temp.GetComponent<missaoPrefabScript>().caixaIconeEResumoMissao.rect.height;
             temp.transform.localPosition = new Vector3(largura / 2f, -(missoesAtivasTracker.Count * altura), 0);

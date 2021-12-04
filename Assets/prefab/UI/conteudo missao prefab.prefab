@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iconeStatusMssao: {fileID: 5535220581234304290}
   iconeMissaoConcluida: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  molduraMissao: {fileID: 5535220580627860430}
   textoResumoMissao: {fileID: 5535220581734772441}
   textoDetalhesMissao: {fileID: 4708937106685704132}
   caixaIconeEResumoMissao: {fileID: 5535220581723676040}
@@ -263,8 +264,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.68963623, y: -64.1}
-  m_SizeDelta: {x: -47.104736, y: 69.45715}
+  m_AnchoredPosition: {x: -13.276184, y: -59}
+  m_SizeDelta: {x: -66.55237, y: 69.45715}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5535220581723676086
 CanvasRenderer:
@@ -492,8 +493,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.7000122, y: -35.37}
-  m_SizeDelta: {x: -47.083923, y: -126.87085}
+  m_AnchoredPosition: {x: 0, y: -36.5}
+  m_SizeDelta: {x: -40, y: -113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2742313086705045895
 CanvasRenderer:

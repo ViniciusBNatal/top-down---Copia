@@ -50,11 +50,11 @@ public class SoundManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
             TocarSom(somTestes);
-    }
+    }*/
     private void Start()
     {
         DontDestroyOnLoad(gameObject);

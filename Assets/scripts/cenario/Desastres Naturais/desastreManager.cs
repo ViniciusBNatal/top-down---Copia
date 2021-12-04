@@ -65,7 +65,7 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
         //ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
         //StartCoroutine(this.LogicaDesastres());
     }
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -88,7 +88,7 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
             StartCoroutine(this.LogicaDesastres(false));
             //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
         }
-    }
+    }*/
     //desastres
     private void Terremoto()
     {
@@ -457,7 +457,8 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
     public float GetIntervaloDeTempoEntreOsDesastres()
     {
         if (BossAlho.Instance != null)
-            return intervaloEntreOsDesastres - BossAlho.Instance.GetReducaoIntervaloDesastres();
+            return BossAlho.Instance.GetReducaoIntervaloDesastres();
+        //return intervaloEntreOsDesastres - BossAlho.Instance.GetReducaoIntervaloDesastres();
         else
             return intervaloEntreOsDesastres + (UIinventario.Instance.GetTempoAtual() - 1) * AumentoDeTempAoLiberarNovaFase;
     }

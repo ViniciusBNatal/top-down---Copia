@@ -58,7 +58,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     private Vector2 direcaoProjetil = Vector2.zero;
     [SerializeField] private GameObject caixaComTudo;
     private GameObject balaDisparada = null;
-    //[SerializeField] private Missao m;
+    [SerializeField] private Missao m;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -76,18 +76,11 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.L))
-        //    MissoesManager.Instance.AdicionarMissao(m);
-        //if (Input.GetKeyDown(KeyCode.KeypadEnter))
-        //    MissoesManager.Instance.ConcluirMissao(m);
-            //    SoundManager.Instance.TocarSom(SoundManager.Som.ModuloExplodindo);
-            //    Debug.Log(TutorialSetUp.Instance);
-            //    SceneManager.LoadScene("testes");
-            if (Input.GetKeyDown(KeyCode.P) && Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.P) && Input.GetKey(KeyCode.LeftShift))
         {
             Instantiate(caixaComTudo, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         }
-        if (/*!UIinventario.Instance.pausado*/!InterfaceMenu.Instance.pausado)
+        if (!InterfaceMenu.Instance.pausado)
         {
             switch (estadosJogador)
             {
@@ -117,6 +110,13 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                     break;
             }
         }
+        //if (Input.GetKeyDown(KeyCode.L))
+        //    MissoesManager.Instance.AdicionarMissao(m);
+        //if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        //    MissoesManager.Instance.ConcluirMissao(m);
+        //    SoundManager.Instance.TocarSom(SoundManager.Som.ModuloExplodindo);
+        //    Debug.Log(TutorialSetUp.Instance);
+        //    SceneManager.LoadScene("testes");
     }
     private void FixedUpdate()
     {

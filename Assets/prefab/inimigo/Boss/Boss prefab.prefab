@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3199460214712093557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.08, y: 13.82, z: 11}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3199460214441609073}
@@ -154,6 +154,8 @@ MonoBehaviour:
     type: 3}
   pontoDeSpawnDaSemente: {fileID: 3199460214441609073}
   missaoMatarBoss: {fileID: 11400000, guid: f2c94f9cc09c2d2458dfe2640969df53, type: 2}
+  chanceDeAtaqueMissel: 75
+  chanceDeAtaqueAlho: 25
   dialogos:
   - NomeNPC:
     - Dr. Alho MECHA

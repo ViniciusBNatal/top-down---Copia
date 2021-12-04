@@ -8,6 +8,7 @@ public class missaoPrefabScript : MonoBehaviour
 {
     public Image iconeStatusMssao;
     [SerializeField] private Sprite iconeMissaoConcluida;
+    public Image molduraMissao;
     public TMP_Text textoResumoMissao;
     public TMP_Text textoDetalhesMissao;
     public RectTransform caixaIconeEResumoMissao;

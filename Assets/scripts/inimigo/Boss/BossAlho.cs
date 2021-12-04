@@ -11,6 +11,8 @@ public class BossAlho : MonoBehaviour
     [SerializeField] private GameObject sementeDeAlhoPrefab;
     [SerializeField] private Transform pontoDeSpawnDaSemente;
     [SerializeField] private Missao missaoMatarBoss;
+    [SerializeField] private float chanceDeAtaqueMissel;
+    //[SerializeField] private float chanceDeAtaqueAlho;
     [SerializeField] private List<Dialogo> dialogos = new List<Dialogo>();
     private bool atacar = true;
     private Animator animator;
@@ -35,8 +37,15 @@ public class BossAlho : MonoBehaviour
     {
         while (atacar)
         {
-            int r = Random.Range(0, 2);
-            switch (r)
+            float atqMissel = Random.Range(1f, 101f);
+            //float atqAlho = Random.Range(1f, 101f);
+            if (atqMissel <= chanceDeAtaqueMissel)
+                animator.SetTrigger("MISSEL");
+            //else if (atqAlho <= chanceDeAtaqueAlho)
+            //    animator.SetTrigger("SEMENTE");
+            else
+                animator.SetTrigger("SEMENTE");
+            /*switch (r)
             {
                 case 0:
                     animator.SetTrigger("MISSEL");
@@ -44,7 +53,7 @@ public class BossAlho : MonoBehaviour
                 case 1:
                     animator.SetTrigger("SEMENTE");
                     break;
-            }
+            }*/
             yield return new WaitForSeconds(intervaloEntreAtaques);
         }
     }

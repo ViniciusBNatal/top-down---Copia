@@ -16,7 +16,7 @@ public class craftingSlot : MonoBehaviour
     private List<TMP_Text> qntdNecessariaParaCadarecursoText = new List<TMP_Text>();
     private List<int> novosValores = new List<int>();
     private List<Animator> iconesDeRecursosNecessarios = new List<Animator>();
-    private int divisor = 3;
+    private int divisor = 4;
     private int forca = 1;
     //private bool forcaSelecionada = false;
     private void Start()
