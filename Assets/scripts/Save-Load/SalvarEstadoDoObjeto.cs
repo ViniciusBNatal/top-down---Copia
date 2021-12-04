@@ -113,9 +113,9 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                     desastreModulos.Add(moduloScript.gameObject.name, moduloScript.GetNomeDesastre());
                 //salva resistencia
                 if (forcaModulos.ContainsKey(moduloScript.gameObject.name))
-                    forcaModulos[moduloScript.gameObject.name] = moduloScript.GetvalorResistencia();
+                    forcaModulos[moduloScript.gameObject.name] = moduloScript.GetForca();
                 else
-                    forcaModulos.Add(moduloScript.gameObject.name, moduloScript.GetvalorResistencia());
+                    forcaModulos.Add(moduloScript.gameObject.name, moduloScript.GetForca());
                 //salva tipo do modulo
                 if (tipoDosModulos.ContainsKey(moduloScript.gameObject.name))
                     tipoDosModulos[moduloScript.gameObject.name] = moduloScript.GetModulo();
@@ -128,7 +128,7 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
                     moduloScript.SetNomeDesastre(desastreModulos[moduloScript.gameObject.name]);
                 //salva resistencia
                 if (forcaModulos.ContainsKey(moduloScript.gameObject.name))
-                    moduloScript.SetValorResistencia(forcaModulos[moduloScript.gameObject.name]);
+                    moduloScript.SetForca(forcaModulos[moduloScript.gameObject.name]);
                 //salva tipo do modulo
                 if (tipoDosModulos.ContainsKey(moduloScript.gameObject.name))
                     moduloScript.SetModulo(tipoDosModulos[moduloScript.gameObject.name]);

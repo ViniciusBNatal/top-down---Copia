@@ -11,6 +11,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     public float zoomOutAoConstruir;
     private Dictionary<string, ItemSlot> itens = new Dictionary<string, ItemSlot>();
     [Header("Nao Mexer")]
+    public Missao[] missoesDeLiberarNovoTempo = new Missao[3];
     [SerializeField] private GameObject CaixaDeDialogos;
     [SerializeField] private GameObject inventarioParent;
     [SerializeField] private GameObject abaInventario;
@@ -276,6 +277,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
             desastreManager.Instance.Ativar_desativarInteracoesDaBase(false, true);
             jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
+            MissoesManager.Instance.ConcluirMissao(missoesDeLiberarNovoTempo[GetTempoAtual() - 2]);// -2 pois quando vai liberar o 1 tempo fora do tutorial o valo de tempoatual é 2
             desastreManager.Instance.ConfigurarTimer(BaseScript.Instance.GetIntervaloDuranteOAprimoramentoDaBase(), 0f, true);
             desastreManager.Instance.PararTodasCorotinas();
             desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);

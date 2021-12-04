@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -53434,6 +53434,10 @@ MonoBehaviour:
   - {fileID: 687970495}
   - {fileID: 1324814667}
   zoomOutAoConstruir: 8
+  missoesDeLiberarNovoTempo:
+  - {fileID: 11400000, guid: 65dfbcd9cc76fd84fa5dfff7118f4f83, type: 2}
+  - {fileID: 11400000, guid: 357769ab702a9ec4193970aa296e556d, type: 2}
+  - {fileID: 11400000, guid: 227bc2b4f80df17498d54281cbb96e79, type: 2}
   CaixaDeDialogos: {fileID: 586751624}
   inventarioParent: {fileID: 227252790}
   abaInventario: {fileID: 1638189200}
@@ -53497,6 +53501,8 @@ MonoBehaviour:
   - {fileID: 538141016}
   - {fileID: 211389424}
   - {fileID: 956388530}
+  salvarObjetosScript: {fileID: 372600995}
+  salvarTempoDeSaidasScript: {fileID: 372600996}
   pausado: 0
 --- !u!114 &1218820975
 MonoBehaviour:

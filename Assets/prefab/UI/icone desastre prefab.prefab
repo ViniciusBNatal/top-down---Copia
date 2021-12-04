@@ -92,7 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imagemDoDesastre: {fileID: 1111692778396153179}
   caixaDeCheck: {fileID: 4513311127964489334}
-  texto: {fileID: 5619014841149833341}
+  textoForca: {fileID: 5619014841149833341}
+  forca: 0
 --- !u!1 &4393457597018209632
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +254,7 @@ GameObject:
   - component: {fileID: 8415364987499709335}
   - component: {fileID: 5619014841149833341}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: forca desastre text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

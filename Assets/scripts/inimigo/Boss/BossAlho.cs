@@ -59,6 +59,7 @@ public class BossAlho : MonoBehaviour
     private void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
         UIinventario.Instance.craftingBossFinal.SetActive(true);
+        MissoesManager.Instance.AdicionarMissao(missaoMatarBoss);
         desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f, true);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
         StartCoroutine(this.PadraoDeAtaque());

@@ -21,10 +21,10 @@ public class IndicadorDosDesastres : MonoBehaviour
         if (Instance == null)
             Instance = this;
     }
-    private void Start()
+    /*private void Start()
     {
         PreenchePlaca();
-    }
+    }*/
     public void LimpaPlaca()
     {
         if (iconesDesenhados.Count != 0)
@@ -61,8 +61,10 @@ public class IndicadorDosDesastres : MonoBehaviour
         {
             GameObject icone = Instantiate(iconesDesastrPrefab, PosIcones.transform);
             iconesDesenhados.Add(icone.GetComponent<iconeDesastre>());
+            iconesDesenhados[i].forca = desastreManager.Instance.forcasSorteados[i];
+            iconesDesenhados[i].desastre = desastreManager.Instance.GetDesastreSorteado(i);
             iconesDesenhados[i].imagemDoDesastre.sprite = DesastresList.Instance.SelecionaSpriteDesastre(desastreManager.Instance.GetDesastreSorteado(i));
-            iconesDesenhados[i].texto.text = desastreManager.Instance.forcasSorteados[i].ToString();
+            iconesDesenhados[i].textoForca.text = desastreManager.Instance.forcasSorteados[i].ToString();
             /*icone.GetComponent<iconeDesastre>().imagemDoDesastre.sprite = DesastresList.Instance.SelecionaSpriteDesastre(desastreManager.Instance.GetDesastreSorteado(i));
             icone.GetComponent<iconeDesastre>().texto.text = desastreManager.Instance.forcasSorteados[i].ToString();*/
             float largura = icone.GetComponent<RectTransform>().rect.width;
@@ -87,14 +89,32 @@ public class IndicadorDosDesastres : MonoBehaviour
             //iconeDeDesastre.GetComponent<Image>().sprite = iconeDes;
             //iconesDesenhados.Add(iconeDeDesastre);
         }
+        AtivarCheckDeModuloConstruido();
     }
-    public void AtivarCheckDeModuloConstruido(int forca, string desastre, int modulo)
+    public void AtivarCheckDeModuloConstruido()
     {
         for (int i = 0; i < iconesDesenhados.Count; i++)
         {
-            if (iconesDesenhados[i].texto.text == forca.ToString() && iconesDesenhados[i].imagemDoDesastre.sprite == DesastresList.Instance.SelecionaSpriteDesastre(desastre) && modulo == 1)
+            int forcaTotal = 0;
+            for (int a = 0; a < BaseScript.Instance.GetQntdModulos(); a++)
             {
-                iconesDesenhados[i].caixaDeCheck.enabled = true;
+                if (BaseScript.Instance.GetModuloNaLista(a).GetNomeDesastre() == iconesDesenhados[i].desastre && BaseScript.Instance.GetModuloNaLista(a).GetModulo() == 1)
+                {
+                    if (BaseScript.Instance.GetModuloNaLista(a).GetForca() >= iconesDesenhados[i].forca)
+                    {
+                        iconesDesenhados[i].caixaDeCheck.enabled = true;
+                        break;
+                    }
+                    else
+                    {
+                        forcaTotal += BaseScript.Instance.GetModuloNaLista(a).GetForca();
+                        if (forcaTotal >= iconesDesenhados[i].forca)
+                        {
+                            iconesDesenhados[i].caixaDeCheck.enabled = true;
+                            break;
+                        }
+                    }
+                }
             }
         }
     }

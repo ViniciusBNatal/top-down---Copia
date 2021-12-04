@@ -26,7 +26,7 @@ public class AtaqueMisselParaTempo : MonoBehaviour
     public void AoAtingirOChao()
     {
         areaDaExplosao.enabled = true;
-        areaDaExplosaoIndicador.enabled = false;
+        //areaDaExplosaoIndicador.enabled = false;
         //animator.enabled = false;
         for (int i = 0; i < itens.Count; i++)
         {

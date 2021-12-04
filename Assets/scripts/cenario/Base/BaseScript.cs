@@ -18,7 +18,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     [SerializeField] private Image VidaImagem;
     [SerializeField] private GameObject animNovoTempo;
     [SerializeField] private AnimationClip animDestruicaoModulo;
-    [SerializeField] private Missao[] missoesDeLiberarNovoTempo = new Missao[3];
+    [SerializeField] private Missao missaoDefenderBase;
     private bool duranteMelhoria = false;
     private List<SlotModulo> listaModulos = new List<SlotModulo>();
     private int vidaAtual;
@@ -57,7 +57,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
             }
             foreach (SlotModulo mod in ModulosDeMesmoDesastre)
             {
-                if (mod.GetvalorResistencia() >= desastreManager.Instance.GetForcaSorteada(a))
+                if (mod.GetForca() >= desastreManager.Instance.GetForcaSorteada(a))
                 {
                     mod.RemoverModulo();
                     defesasContraDisastre++;
@@ -88,7 +88,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
                 foreach (SlotModulo mod in modulosParaContaDeForca)
                 {
                     modulosNaConta.Add(mod);
-                    forcaTotal += mod.GetvalorResistencia();
+                    forcaTotal += mod.GetForca();
                     if (forcaTotal >= desastreManager.Instance.GetForcaSorteada(a))
                     {
                         foreach (SlotModulo m in modulosNaConta)
@@ -307,9 +307,9 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
             {
                 duranteMelhoria = false;
                 DefesasOcorridasDuranteMelhoriaBase = 0;
-                MissoesManager.Instance.ConcluirMissao(missoesDeLiberarNovoTempo[UIinventario.Instance.GetTempoAtual() - 2]);// -2 pois quando vai liberar o 1 tempo fora do tutorial o valo de tempoatual é 2
-                if(UIinventario.Instance.GetTempoAtual() - 1 < missoesDeLiberarNovoTempo.Length)
-                    MissoesManager.Instance.AdicionarMissao(missoesDeLiberarNovoTempo[UIinventario.Instance.GetTempoAtual() - 1]);// -1 para pegar o sucessor
+                MissoesManager.Instance.ConcluirMissao(missaoDefenderBase);
+                if (UIinventario.Instance.GetTempoAtual() - 1 < UIinventario.Instance.missoesDeLiberarNovoTempo.Length)
+                    MissoesManager.Instance.AdicionarMissao(UIinventario.Instance.missoesDeLiberarNovoTempo[UIinventario.Instance.GetTempoAtual() - 1]);// -1 para pegar o sucessor
                 if (UIinventario.Instance.VerificarSeLiberouBossFinal())//verificação para o boss
                 {
                     //pode ter um dialogo aqui
@@ -353,9 +353,19 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
             listaModulos[i].VisualConstrucao(b);
         }
     }
+    public int GetQntdModulos()
+    {
+        return listaModulos.Count;
+    }
+    public SlotModulo GetModuloNaLista(int index)
+    {
+        return listaModulos[index];
+    }
     public void Ativar_DesativarDuranteDefesaParaMelhorarBase(bool b)
     {
         duranteMelhoria = b;
+        if (b)
+            MissoesManager.Instance.AdicionarMissao(missaoDefenderBase);
     }
     public Transform GetPosicaoParaTeleporte()
     {

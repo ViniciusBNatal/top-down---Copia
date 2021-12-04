@@ -272,6 +272,11 @@ public class inimigoScript : MonoBehaviour
             }
             else
             {
+                if (paralisar != null)
+                {
+                    StopCoroutine(this.Paralisar(0f));
+                    FinalizacaoParalisar();
+                }
                 if (flash != null)
                     flash.Flash(Color.red);
                 vidaAtual += dano;
@@ -326,6 +331,10 @@ public class inimigoScript : MonoBehaviour
             inimigoAnimScript.GetAnimator().enabled = false;
         VisualParalisado(true);
         yield return new WaitForSeconds(temp);
+        FinalizacaoParalisar();
+    }
+    private void FinalizacaoParalisar()
+    {
         VisualParalisado(false);
         inimigoAnimScript.GetAnimator().enabled = true;
         paralisado = false;

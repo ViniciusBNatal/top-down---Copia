@@ -10,6 +10,8 @@ public class InterfaceMenu : MonoBehaviour
     const int fase = 1;
     [SerializeField] private GameObject abaMenus;
     [SerializeField] private List<GameObject> menus = new List<GameObject>();
+    [SerializeField] private SalvarEstadoDoObjeto salvarObjetosScript;
+    [SerializeField] private SalvamentoDosCentrosDeRecursosManager salvarTempoDeSaidasScript;
     [HideInInspector] public bool pausado = false;
     private void Awake()
     {
@@ -96,8 +98,8 @@ public class InterfaceMenu : MonoBehaviour
     {
         if (TutorialSetUp.Instance == null)
         {
-            GetComponent<SalvarEstadoDoObjeto>().LimparDados();
-            GetComponent<SalvamentoDosCentrosDeRecursosManager>().LimparDados();
+            salvarObjetosScript.LimparDados();
+            salvarTempoDeSaidasScript.LimparDados();
         }
     }
 }

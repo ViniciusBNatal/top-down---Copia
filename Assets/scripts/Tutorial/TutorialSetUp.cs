@@ -33,7 +33,7 @@ public class TutorialSetUp : MonoBehaviour
         //Debug.Log("devo aparecer 1 vez");
         desastreManager.Instance.ConfigurarTimer(intervaloDuranteTutorial, 0f, true);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(false);
-        IndicadorDosDesastres.Instance.AtivarCheckDeModuloConstruido(1, "ERRUPCAO TERRENA", 1);
+        //IndicadorDosDesastres.Instance.AtivarCheckDeModuloConstruido();
     }
     public void IniciarDialogo()
     {
