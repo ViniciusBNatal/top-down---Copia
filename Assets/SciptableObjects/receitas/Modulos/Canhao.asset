@@ -17,10 +17,11 @@ MonoBehaviour:
   desastre: 
   incrementoEntreForcas: 0
   itensNecessarios:
+  - {fileID: 11400000, guid: 2e55fca245e9bf84a8da5955dbcd6c40, type: 2}
   - {fileID: 11400000, guid: bf37def55dca4bf4aa6e606a6eedbbd6, type: 2}
   - {fileID: 11400000, guid: 3c3693480a42c664091250d2df3f1290, type: 2}
   - {fileID: 11400000, guid: c46d4db61ed04784fb525b41adac2f46, type: 2}
   - {fileID: 11400000, guid: 8c1df2e01c921d84898d0f9a381c59cb, type: 2}
   - {fileID: 11400000, guid: 9f861b795b8aa3d4aa92ca1078c7c87d, type: 2}
   - {fileID: 11400000, guid: 0e0cbdf6ffddaf741977cba61f39bf4f, type: 2}
-  quantidadeDosRecursos: 080000000d0000000f0000000a000000100000000c000000
+  quantidadeDosRecursos: 11000000080000000d0000000f0000000a000000100000000c000000

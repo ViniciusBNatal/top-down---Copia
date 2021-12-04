@@ -283,7 +283,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8c1df2e01c921d84898d0f9a381c59cb, type: 2}
   - {fileID: 11400000, guid: bf37def55dca4bf4aa6e606a6eedbbd6, type: 2}
   - {fileID: 11400000, guid: 9f861b795b8aa3d4aa92ca1078c7c87d, type: 2}
-  qntdDoRecursoDropado: 050000000300000004000000
+  - {fileID: 11400000, guid: 2e55fca245e9bf84a8da5955dbcd6c40, type: 2}
+  qntdDoRecursoDropado: 05000000030000000400000001000000
   recursoColetavelPreFab: {fileID: 769133423071464344, guid: 501ac6922bc98ff4a90c352f139fbe97,
     type: 3}
 --- !u!1 &6728166412975395651
