@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intervaloEntreAtaques: 6
-  ReducaoIntervaloDesastres: 120
+  ReducaoIntervaloDesastres: 90
   misselPrefab: {fileID: 1324030936459174767, guid: 11e3063f0b1839d4dafe4e17d1885505,
     type: 3}
   sementeDeAlhoPrefab: {fileID: 6681289161254987899, guid: ab4554795a0271b4895f3d8a8d9470fb,
