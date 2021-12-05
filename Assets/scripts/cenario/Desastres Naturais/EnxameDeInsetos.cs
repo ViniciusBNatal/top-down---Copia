@@ -7,6 +7,7 @@ public class EnxameDeInsetos : MonoBehaviour
     [Header("Valores numéricos")]
     [SerializeField] private float velocidade;
     [SerializeField] private float dano;
+    [SerializeField] private float desaceleracao;
     /*[SerializeField]*/ private float intervaloEntreAtaques;
     [SerializeField] private float forcaEmpurrao;
     [SerializeField] private float duracaoStun;
@@ -26,13 +27,27 @@ public class EnxameDeInsetos : MonoBehaviour
         alvo = jogadorScript.Instance.transform;
         StartCoroutine("movimentacao");
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            jogadorScript.Instance.Knockback(duracaoStun, forcaEmpurrao, this.transform);
+            jogadorScript.Instance.SetDesaceleracao(0f);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            jogadorScript.Instance.SetDesaceleracao(desaceleracao);
+        }
+    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Player")
+    //    {
+    //        jogadorScript.Instance.Knockback(duracaoStun, forcaEmpurrao, this.transform);
+    //    }
+    //}
     IEnumerator movimentacao()
     {
         while (true)

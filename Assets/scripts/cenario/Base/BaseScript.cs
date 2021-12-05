@@ -170,8 +170,8 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     }
     public void MudancaVida()
     {
-        vidaAtual -= desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre;
-        VidaImagem.fillAmount -= (1f / vidaMax) * (desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre);
+        //vidaAtual -= desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre;
+        //VidaImagem.fillAmount -= (1f / vidaMax) * (desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre);
         vidaAtualText.text = vidaAtual.ToString();
         if (vidaAtual <= 0)
         {
@@ -214,20 +214,22 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
         {
             if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
             {
-                custceneDestruicaoModulo.OcorrerEvento = false;
-                if (BossAlho.Instance == null)
-                {
-                    CutsceneDestruicaoDosModulos();
-                }
-                else
-                {
-                    VerificarModulos();
-                    //Ativar_DesativarInteracao(true);
-                    desastreManager.Instance.encerramentoDesastres();
-                    IndicadorDosDesastres.Instance.LimpaPlaca();
-                    desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
-                    RecomecarDesastres();
-                }
+                custceneDestruicaoModulo.OcorreuCustcene = false;
+                CutsceneDestruicaoDosModulos();
+                //if (BossAlho.Instance == null)
+                //{
+                //    CutsceneDestruicaoDosModulos();
+                //}
+                //else
+                //{
+                //    VerificarModulos();
+                //    //Ativar_DesativarInteracao(true);
+                //    desastreManager.Instance.encerramentoDesastres();
+                //    //desastreManager.Instance.PararTodasCorotinas();
+                //    IndicadorDosDesastres.Instance.LimpaPlaca();
+                //    desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
+                //    RecomecarDesastres();
+                //}
                 //EncerrarDesastresEVerificarDefesa();
                 //if (tutorial)
                 //{
@@ -244,7 +246,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
         IndicadorDosDesastres.Instance.LimpaPlaca();
         desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
         TutorialSetUp.Instance.IniciarDialogo();
-        custceneDestruicaoModulo.OcorrerEvento = false;
+        custceneDestruicaoModulo.OcorreuCustcene = false;
     }
     /*private void EncerrarDesastresEVerificarDefesa()
     {
@@ -299,6 +301,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
     {
         IndicadorDosDesastres.Instance.LimpaPlaca();
         desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
+        desastreManager.Instance.SortearDesastresGeral();
         //custceneDestruicaoModulo.finalizandoCutscene = false;
         if (duranteMelhoria)
         {
@@ -328,7 +331,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
             desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre(), true);
         }
         desastreManager.Instance.MudarTempoAcumuladoParaDesastre(0f);
-        desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
+        desastreManager.Instance.IniciarCorrotinaLogicaDesastres(/*true*/);
     }
     public void Ativa_DesativaAnimacaoDeNovoTempoLiberado(bool b)
     {

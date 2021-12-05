@@ -207,7 +207,6 @@ public class inimigoScript : MonoBehaviour
     }
     public void AtivaReducaoVelocidade()
     {
-        Debug.Log("a");
         reducaoVelocidade = reducaoVelocDuranteAtaqueMelee;
     }
     public void DesativaReducaoVelocidade()

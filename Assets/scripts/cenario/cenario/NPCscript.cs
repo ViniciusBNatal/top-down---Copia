@@ -78,6 +78,7 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
                 }
                 else
                     SalvarEstado();//salva q ja pegou missao e n cumpriu
+                DialogeManager.Instance.limparDelegate = true;
             }
         }
     }
@@ -104,13 +105,14 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
                 break;
             case 2:
                 nDeDialogos = 3;
-                EventosAoCompletarMissao.Invoke();
                 DialogeManager.Instance.limparDelegate = true;
-                StartCoroutine(this.Movimentacao());
+                EventosAoCompletarMissao.Invoke();
+                //StartCoroutine(this.Movimentacao());
                 SalvarEstado();
                 break;
             case 3:
-                StartCoroutine(this.Movimentacao());
+                EventosAoCompletarMissao.Invoke();
+                //StartCoroutine(this.Movimentacao());
                 break;
             default:
                 break;
@@ -151,7 +153,11 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     {
         nDeDialogos = i;
     }
-    IEnumerator Movimentacao()
+    public void MovimentarNPC()
+    {
+        StartCoroutine(this.Movimentacao());
+    }
+    private IEnumerator Movimentacao()
     {
         if (direcaoParaMoverX != 0 || direcaoParaMoverY != 0)
         {

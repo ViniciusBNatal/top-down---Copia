@@ -115,7 +115,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -154,7 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad630d064707fb045920dcd1b69f6c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 1
+  velocidade: 2
   dano: 10
+  desaceleracao: 2
   forcaEmpurrao: 10
   duracaoStun: 0.5

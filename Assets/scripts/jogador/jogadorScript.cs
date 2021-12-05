@@ -9,6 +9,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     //variáveis publicas
     [Header("Valores Numéricos")]
     [SerializeField] private float velocidade;
+    private float desaceleracao = 0f;
     //private float vidaMaxima = 1;
     [SerializeField] private float velocidadeProjetil;
     [SerializeField] private float taxaDeDisparo;
@@ -42,7 +43,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     private float forcaEmpurrao;
     private Vector2 direcaoEmpurrao;
     [Header("Não Mexer")]
-    private Vector2 baguncarControles = new Vector2(0,0);
+    private Vector2 DirecoesMovDuranteTerremoto = new Vector2(0,0);
     public enum estados
     {
         EmAcao,
@@ -122,7 +123,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     {
          if (estadosJogador == estados.EmAcao)
          {
-            rb.velocity = movimento * velocidade + baguncarControles;
+            rb.velocity = movimento * (velocidade - desaceleracao) + DirecoesMovDuranteTerremoto;
          }
          else if (estadosJogador == estados.SendoEmpurrado)
          {
@@ -232,12 +233,12 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
             if (Input.GetButton("Horizontal")) //&& movX != 0)
             {
                 posicaoMelee.localPosition =  new Vector3(movX * Mathf.Abs(distanciaAtaqueMelee.x), distanciaAtaqueMelee.y, 0f);
-                pontoDeDisparo.localPosition = new Vector3(movX * Mathf.Abs(pontoDeDisparo.localPosition.x), 0f, 0f);
+                //pontoDeDisparo.localPosition = new Vector3(movX * Mathf.Abs(pontoDeDisparo.localPosition.x), 0f, 0f);
             } 
             if (Input.GetButton("Vertical")) //&& movY != 0)
             {
                 posicaoMelee.localPosition = new Vector3(0f, movY * Mathf.Abs(distanciaAtaqueMelee.x), 0f);
-                pontoDeDisparo.localPosition = new Vector3(pontoDeDisparo.localPosition.x, movY * Mathf.Abs(pontoDeDisparo.localPosition.y), 0f);
+                //pontoDeDisparo.localPosition = new Vector3(pontoDeDisparo.localPosition.x, movY * Mathf.Abs(pontoDeDisparo.localPosition.y), 0f);
             }
         }
     }
@@ -387,11 +388,11 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     public void BaguncaControles(float unidadesX, float unidadesY, float forcaGeral)
     {
-        baguncarControles = new Vector2(Random.Range(-unidadesX, unidadesX),Random.Range(-unidadesY, unidadesY)) * forcaGeral;
-        if (baguncarControles.x == 0)
-            baguncarControles.x = 1;
-        if (baguncarControles.y == 0)
-            baguncarControles.y = 1;
+        DirecoesMovDuranteTerremoto = new Vector2(Random.Range(-unidadesX, unidadesX),Random.Range(-unidadesY, unidadesY)) * forcaGeral;
+        if (DirecoesMovDuranteTerremoto.x == 0)
+            DirecoesMovDuranteTerremoto.x = 1;
+        if (DirecoesMovDuranteTerremoto.y == 0)
+            DirecoesMovDuranteTerremoto.y = 1;
     }
     private void OnDrawGizmosSelected()
     {
@@ -433,7 +434,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     }
     public void SetDirecaoDeMovimentacaoAleatoria(Vector2 vec)
     {
-        baguncarControles = vec;
+        DirecoesMovDuranteTerremoto = vec;
     }
     public ReceitaDeCrafting GetModuloConstruido()
     {
@@ -447,5 +448,19 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     public GameObject GetAnimacoesTutorial()
     {
         return animacoesTutorial;
+    }
+    public float GetDesaceleracao()
+    {
+        return desaceleracao;
+    }
+    public void SetDesaceleracao(float valor)
+    {
+        if (velocidade - valor <= 0f)
+        {
+            Debug.LogWarning("desaceleração maior que velocidade jogador");
+            desaceleracao = velocidade * .9f;
+        }
+        else
+            desaceleracao = valor;
     }
 }

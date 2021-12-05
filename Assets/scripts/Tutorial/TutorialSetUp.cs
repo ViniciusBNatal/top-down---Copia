@@ -32,7 +32,7 @@ public class TutorialSetUp : MonoBehaviour
     {
         //Debug.Log("devo aparecer 1 vez");
         desastreManager.Instance.ConfigurarTimer(intervaloDuranteTutorial, 0f, true);
-        desastreManager.Instance.IniciarCorrotinaLogicaDesastres(false);
+        desastreManager.Instance.IniciarCorrotinaLogicaDesastres(/*false*/);
         //IndicadorDosDesastres.Instance.AtivarCheckDeModuloConstruido();
     }
     public void IniciarDialogo()
@@ -59,11 +59,11 @@ public class TutorialSetUp : MonoBehaviour
         jogadorScript.Instance.GetAnimacoesTutorial().GetComponent<Animator>().SetBool("MELEE", false);
         IniciarDialogo();
     }
-    public void AoTerminoDoDialogoReparadaAMaquinaDoTempo()
+    /*public void AoTerminoDoDialogoReparadaAMaquinaDoTempo()
     {
         desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f, true);
         desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
-    }
+    }*/
     public void CriarObjeto(GameObject obj)
     {
         if (obj.GetComponent<caixa_recursos>())

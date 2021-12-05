@@ -6,7 +6,7 @@ public class BossAlho : MonoBehaviour
 {
     public static BossAlho Instance { get; private set; }
     [SerializeField] private float intervaloEntreAtaques;
-    [SerializeField] private float ReducaoIntervaloDesastres;
+    [SerializeField] private float intervaloEntreDeastresDuranteBoss;
     [SerializeField] private GameObject misselPrefab;
     [SerializeField] private GameObject sementeDeAlhoPrefab;
     [SerializeField] private Transform pontoDeSpawnDaSemente;
@@ -70,7 +70,8 @@ public class BossAlho : MonoBehaviour
         UIinventario.Instance.craftingBossFinal.SetActive(true);
         MissoesManager.Instance.AdicionarMissao(missaoMatarBoss);
         desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), 0f, true);
-        desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
+        desastreManager.Instance.SortearDesastresGeral();
+        desastreManager.Instance.IniciarCorrotinaLogicaDesastres(/*true*/);
         StartCoroutine(this.PadraoDeAtaque());
     }
     public void BossDerotado()
@@ -94,7 +95,7 @@ public class BossAlho : MonoBehaviour
     }
     public float GetReducaoIntervaloDesastres()
     {
-        return ReducaoIntervaloDesastres;
+        return intervaloEntreDeastresDuranteBoss;
     }
     public void RemoverAtqDaLista(GameObject gobj)
     {

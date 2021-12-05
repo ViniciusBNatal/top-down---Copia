@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class custceneDestruicaoModulo : MonoBehaviour
 {
-    [HideInInspector] public static bool OcorrerEvento { get; set; }
+    [HideInInspector] public static bool OcorreuCustcene { get; set; }
     public void FimCutscene()
     {
-        if (!OcorrerEvento && BaseScript.Instance.GetVidaAtual() > 0)
+        if (!OcorreuCustcene && BaseScript.Instance.GetVidaAtual() > 0)
         {
-            OcorrerEvento = true;
+            OcorreuCustcene = true;
             BaseScript.Instance.FimCutsceneSeConseguiuDefender();
             //IndicadorDosDesastres.Instance.LimpaPlaca();
             //desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();

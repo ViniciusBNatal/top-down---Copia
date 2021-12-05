@@ -46,6 +46,7 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
     [Header("NÃO MEXER")]
     //[SerializeField] private PostProcessScript CMefeitos;
     [SerializeField] private TMP_Text timer;
+    [HideInInspector] public Coroutine DesastreCorrotina = null;
     private bool desastreAcontecendo = false;
     private float tempoAcumulado = 0f;
     private float tempoRestante;
@@ -141,20 +142,23 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
         if (animar)
             timer.GetComponent<Animator>().SetTrigger("AVISO");
     }
-    public void IniciarCorrotinaLogicaDesastres(bool sortearDesastres)
+    public void IniciarCorrotinaLogicaDesastres(/*bool sortearDesastres*/)
     {
-        StartCoroutine(Instance.LogicaDesastres(sortearDesastres));
+        if (DesastreCorrotina == null)
+            DesastreCorrotina = StartCoroutine(Instance.LogicaDesastres(/*sortearDesastres*/));
+        else
+            Debug.LogWarning("A corrotina de desastre já está acontecendo");
     }
     public void PararTodasCorotinas()
     {
         StopAllCoroutines();
     }
-    private IEnumerator LogicaDesastres(bool sortearDesastres)
+    private IEnumerator LogicaDesastres(/*bool sortearDesastres*/)
     {
-        if (sortearDesastres)
+        /*if (sortearDesastres)
         {
-            SortearGeral(chanceDeDesastre);
-        }
+            SortearGeral();
+        }*/
         //qntdDeDesastresParaOcorrer = 1;
         //desastresSorteados[0] = "terremoto";
         //forcasSorteados[0] = 1;
@@ -187,6 +191,7 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
                 TempoCurto();
             }
         }
+        DesastreCorrotina = null;
     }
     private void TempoCurto()
     {
@@ -197,7 +202,7 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
     {
         timer.GetComponent<Animator>().SetTrigger("PERIGO");
     }
-    private void SortearGeral(int chanceDesastre)
+    public void SortearDesastresGeral()
     {
         int desastresParaocorrer = 0;
         int desastresPossiveis = 0;
@@ -213,13 +218,13 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
             for (int i = 0; i < desastresPossiveis; i++)
             {
                 int r = Random.Range(1, 101);
-                if (r <= chanceDesastre)
+                if (r <= chanceDeDesastre)
                     desastresParaocorrer++;
             }
-            if (desastresParaocorrer == 0)
+            if (desastresParaocorrer == 0)// caso não conseguiu ter nenhum desastre rola novamente até ter no minimo 1 desastre
             {
                 SetUpParaNovoSorteioDeDesastres();
-                SortearGeral(chanceDesastre);
+                SortearDesastresGeral();
                 return;
             }
             DefinirQntdDeDesastresParaOcorrer(desastresParaocorrer);
@@ -230,6 +235,7 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
             DefinirForcaParaDesastre(i, forcaEscolhida);
             SorteiaDesastre(desastresPossiveis);
         }
+        IndicadorDosDesastres.Instance.PreenchePlaca();
     }
     private void SorteiaDesastre(int desastrPossiveis)
     {

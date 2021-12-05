@@ -12,7 +12,7 @@ public class missaoPrefabScript : MonoBehaviour
     public TMP_Text textoResumoMissao;
     public TMP_Text textoDetalhesMissao;
     public RectTransform caixaIconeEResumoMissao;
-    public Missao missaoScrObj;
+    [HideInInspector] public Missao missaoScrObj;
     public Animator animCaixaMissao;
     public Animator animIcone;
     public Animator animResumoMissao;

@@ -35,17 +35,34 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmAcao || jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmUI) && /*!pausado*/!InterfaceMenu.Instance.pausado)
+        if (Input.GetKeyDown(KeyCode.Tab) && (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmAcao || jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmUI) && !InterfaceMenu.Instance.pausado)
         {
             if (inventarioAberto)
             {
-                fechaInventario();
+                if (TutorialSetUp.Instance == null)
+                {
+                    fechaInventario();
+                }
+                else
+                {
+                    if (TutorialSetUp.Instance.GetSequenciaDialogos() != 4)
+                        fechaInventario();
+                }
                 //btnCriacao.SetActive(true);
             }
             else
             {
+                if (TutorialSetUp.Instance == null)
+                {
+                    abreInventario(false, true);
+                }
+                else
+                {
+                    if (TutorialSetUp.Instance.GetSequenciaDialogos() != 4)
+                        abreInventario(false, true);
+                }
                 //btnCriacao.SetActive(false);
-                abreInventario(false, true);
+                //abreInventario(false, true);
             }
         }
     }
@@ -221,7 +238,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
                 //itens[slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting]);
             }
             fechaMenuDeTempos();
-            desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
+            //desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
             if (TutorialSetUp.Instance != null)
             {
                 Tutorial();
@@ -271,7 +288,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         TempoAtual++;
         if (TempoAtual < listaSlotUpgradesBase.Count)
             listaSlotUpgradesBase[TempoAtual].gameObject.SetActive(true); // liga o próximo botão da lista
-        if (ativarDefesa)
+        if (ativarDefesa)//quando começar a defesa não troca os desastres mais, mantem os que já estavam
         {
             desastreManager.Instance.encerramentoDesastres();
             BaseScript.Instance.Ativar_DesativarDuranteDefesaParaMelhorarBase(true);
@@ -279,18 +296,21 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
             MissoesManager.Instance.ConcluirMissao(missoesDeLiberarNovoTempo[GetTempoAtual() - 2]);// -2 pois quando vai liberar o 1 tempo fora do tutorial o valo de tempoatual é 2
             desastreManager.Instance.ConfigurarTimer(BaseScript.Instance.GetIntervaloDuranteOAprimoramentoDaBase(), 0f, true);
-            desastreManager.Instance.PararTodasCorotinas();
-            desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
+            //desastreManager.Instance.SortearDesastresGeral();
+            //desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
+            //desastreManager.Instance.PararTodasCorotinas();
+            //desastreManager.Instance.IniciarCorrotinaLogicaDesastres(false);
+            //desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
         }
     }
     public UpgradeSlot GetBtnEspecifico(int i)
     {
         return listaSlotUpgradesBase[i];
     }
-    private void AoFinalizarDialogo(object origem, System.EventArgs args)
+    /*private void AoFinalizarDialogo(object origem, System.EventArgs args)
     {
         TutorialSetUp.Instance.AoTerminoDoDialogoReparadaAMaquinaDoTempo();
-    }
+    }*/
     public void Tutorial()
     {
         if (TempoAtual == 0)//antes de definir o tempo atual, inica um dialogo
@@ -306,8 +326,9 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         {
             //DialogeManager.Instance.LimparListaDeAoFinalizarDialogo();
             desastreManager.Instance.MudarTempoAcumuladoParaDesastre(0f);
+            desastreManager.Instance.SortearDesastresGeral();
             desastreManager.Instance.ConfigurarTimer(desastreManager.Instance.GetIntervaloDeTempoEntreOsDesastres(), desastreManager.Instance.GetTempoAcumuladoParaDesastre(), true);
-            desastreManager.Instance.IniciarCorrotinaLogicaDesastres(true);
+            desastreManager.Instance.IniciarCorrotinaLogicaDesastres(/*true*/);
         }
     }
     public bool VerificarSeLiberouBossFinal()

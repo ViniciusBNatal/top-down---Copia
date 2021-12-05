@@ -30,7 +30,7 @@ public class MissoesManager : MonoBehaviour
     //}
     public void AdicionarMissao(Missao missaoScrObj)
     {
-        if (!missoesAtivasMenu.ContainsKey(missaoScrObj))
+        if (!missoesAtivasMenu.ContainsKey(missaoScrObj) && !missoesAtivasTracker.ContainsKey(missaoScrObj))
         {
             //cria a missão na aba de missões
             GameObject missao = Instantiate(ConteudoMissaoPrefab, scrollViewConteudo.position, Quaternion.identity, scrollViewConteudo);
@@ -43,7 +43,7 @@ public class MissoesManager : MonoBehaviour
             temp.GetComponent<missaoPrefabScript>().molduraMissao.enabled = false;
             float largura = temp.GetComponent<RectTransform>().rect.width;
             float altura = temp.GetComponent<missaoPrefabScript>().caixaIconeEResumoMissao.rect.height;
-            temp.transform.localPosition = new Vector3(largura / 2f, -(missoesAtivasTracker.Count * altura), 0);
+            temp.transform.localPosition = new Vector3(largura / 2f, -(missoesAtivasTracker.Count * altura + (missoesAtivasTracker.Count * 10f)), 0);
             //salva missão nas listas para remoção futura
             missoesAtivasTracker.Add(missaoScrObj, temp.GetComponent<missaoPrefabScript>());
             missoesAtivasMenu.Add(missaoScrObj, missaoScript);

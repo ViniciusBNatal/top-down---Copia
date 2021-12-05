@@ -82,11 +82,11 @@ public class DialogeManager : MonoBehaviour
     }
     public void LimparImagemDosNPCs()
     {
-        if (limparImagemNPC)
-        {
-            ImagemNPC.sprite = null;
-            limparImagemNPC = false;
-        }
+        //if (limparImagemNPC)
+        //{
+        //    ImagemNPC.sprite = null;
+        //    limparImagemNPC = false;
+        //}
     }
     IEnumerator EscreveDialogo(string frase)
     {
@@ -111,7 +111,10 @@ public class DialogeManager : MonoBehaviour
     public void LimparListaDeAoFinalizarDialogo()
     {
         if (limparDelegate)
+        {
+            Debug.Log("limpar delegate");
             DialogoFinalizado = delegate { };
+        }
     }
     private void RetornarCameraAoJogadorNoFinalDoDialogo()
     {
