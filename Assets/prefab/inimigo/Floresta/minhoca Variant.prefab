@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}
       propertyPath: imortal
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}
@@ -72,6 +72,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Radius
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406925, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 566375125526406926, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}

@@ -4,19 +4,36 @@ using UnityEngine;
 
 public class pontoDeFugaScript : MonoBehaviour
 {
-    [SerializeField] private inimigoScript inimigoRelacionado;
+    [HideInInspector] public List<inimigoScript> inimigosRelacionadosPorSpawn = new List<inimigoScript>();
+    [SerializeField] private List<inimigoScript> inimigosFixos = new List<inimigoScript>();
     public Transform pontoDeTeleporte;
     // Start is called before the first frame update
-    void Start()
+    /*void Start()
     {
-        if (inimigoRelacionado.tiposDeMovimentacao == inimigoScript.TiposDeMovimentacao.movimentacaoEntrePontosFixa)
-            inimigoRelacionado.AdicionarPontoDeFuga(this.gameObject);
-    }
+        Debug.Log(inimigosRelacionados.Count);
+        //if (inimigosRelacionados.tiposDeMovimentacao == inimigoScript.TiposDeMovimentacao.movimentacaoEntrePontosFixa)
+        //    inimigosRelacionados.AdicionarPontoDeFuga(this.gameObject);
+    }*/
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && inimigoRelacionado.tiposDeMovimentacao == inimigoScript.TiposDeMovimentacao.movimentacaoEntrePontosFixa)
+        if (collision.tag == "Player")
         {
-            inimigoRelacionado.Fuga(this.gameObject);
+            if (inimigosRelacionadosPorSpawn.Count > 0)
+            {
+                foreach(inimigoScript inimigo in inimigosRelacionadosPorSpawn)
+                {
+                    if (inimigo.tiposDeMovimentacao == inimigoScript.TiposDeMovimentacao.movimentacaoEntrePontosFixa)
+                        inimigo.Fuga(pontoDeTeleporte);
+                }
+            }
+            if (inimigosFixos.Count > 0)
+            {
+                foreach (inimigoScript inimigo in inimigosFixos)
+                {
+                    if (inimigo.tiposDeMovimentacao == inimigoScript.TiposDeMovimentacao.movimentacaoEntrePontosFixa)
+                        inimigo.Fuga(pontoDeTeleporte);
+                }
+            }
         }
     }
 }

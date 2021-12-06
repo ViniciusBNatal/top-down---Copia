@@ -28,6 +28,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     [SerializeField] private bool centroDeInimigos;
     [SerializeField] private Sprite iconeCentroDeInimigos;
     [SerializeField] private GameObject inimigoPrefab;
+    [SerializeField] private pontoDeFugaScript[] pontosDefugaDoInimigoCriado;
     [SerializeField] private int qntdMaximaDeInimigos;
     [SerializeField] private int qntdMaximaDeInimigosEmCena;
     [SerializeField] private float intervaloEntreSpawns;
@@ -53,8 +54,15 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     private void Start()
     {
         SalvamentoDosCentrosDeRecursosManager.Instance.AdicionarCentroALista(this.gameObject);
-        if (GetComponent<SalvarEstadoDoObjeto>() != null && !GetComponent<SalvarEstadoDoObjeto>().GetObjNaListaDeSalvos(this.gameObject.name))
+        if (GetComponent<SalvarEstadoDoObjeto>() != null)
+        {
+            if (!GetComponent<SalvarEstadoDoObjeto>().GetObjNaListaDeSalvos(this.gameObject.name))//faz n ter conflito entre esse start e o do salvarEstadoDoObjeto
+                DefineEstado();
+        }
+        else
             DefineEstado();
+       //if (GetComponent<SalvarEstadoDoObjeto>() != null && !GetComponent<SalvarEstadoDoObjeto>().GetObjNaListaDeSalvos(this.gameObject.name))
+       //    DefineEstado();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -160,27 +168,63 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     }
     IEnumerator SpawnInimigos()
     {
-        if (qntdInimigosJaCriados < qntdMaximaDeInimigos)
+        if (qntdMaximaDeInimigos > 0)
         {
-            while(qntdInimigosAtuais < qntdMaximaDeInimigosEmCena)
+            if (qntdInimigosJaCriados < qntdMaximaDeInimigos)
             {
-                if (qntdInimigosJaCriados < qntdMaximaDeInimigos)
+                while (qntdInimigosAtuais < qntdMaximaDeInimigosEmCena)
                 {
-                    yield return new WaitForSeconds(intervaloEntreSpawns);
-                    GameObject inimigo = Instantiate(inimigoPrefab, transform.position + new Vector3(Random.Range(-distanciaXDeSpawnDosInimigos, distanciaXDeSpawnDosInimigos), Random.Range(-distanciaYDeSpawnDosInimigos, distanciaYDeSpawnDosInimigos), 0f), Quaternion.identity);
-                    inimigo.GetComponent<inimigoScript>().SetCentroDeSpawn(this.gameObject.GetComponent<CentroDeRecursoInfinito>());
-                    qntdInimigosAtuais++;
-                    qntdInimigosJaCriados++;
+                    if (qntdInimigosJaCriados < qntdMaximaDeInimigos)
+                    {
+                        yield return new WaitForSeconds(intervaloEntreSpawns);
+                        GameObject inimigo = Instantiate(inimigoPrefab, transform.position + new Vector3(Random.Range(-distanciaXDeSpawnDosInimigos, distanciaXDeSpawnDosInimigos), Random.Range(-distanciaYDeSpawnDosInimigos, distanciaYDeSpawnDosInimigos), 0f), Quaternion.identity);
+                        inimigo.GetComponent<inimigoScript>().SetCentroDeSpawn(this.gameObject.GetComponent<CentroDeRecursoInfinito>());
+                        if (inimigo.GetComponent<inimigoScript>().tiposDeMovimentacao == inimigoScript.TiposDeMovimentacao.movimentacaoEntrePontosFixa && pontosDefugaDoInimigoCriado.Length > 0)
+                        {
+                            foreach(pontoDeFugaScript ponto in pontosDefugaDoInimigoCriado)
+                            {
+                                ponto.inimigosRelacionadosPorSpawn.Add(inimigo.GetComponent<inimigoScript>());
+                            }
+                        }
+                        qntdInimigosAtuais++;
+                        qntdInimigosJaCriados++;
+                    }
+                    else
+                        break;
                 }
-                else
-                    break;
+                spawnandoInimigos = null;
+            }
+        }
+        else
+        {
+            while (qntdInimigosAtuais < qntdMaximaDeInimigosEmCena)
+            {
+                yield return new WaitForSeconds(intervaloEntreSpawns);
+                GameObject inimigo = Instantiate(inimigoPrefab, transform.position + new Vector3(Random.Range(-distanciaXDeSpawnDosInimigos, distanciaXDeSpawnDosInimigos), Random.Range(-distanciaYDeSpawnDosInimigos, distanciaYDeSpawnDosInimigos), 0f), Quaternion.identity);
+                inimigo.GetComponent<inimigoScript>().SetCentroDeSpawn(this.gameObject.GetComponent<CentroDeRecursoInfinito>());
+                if (inimigo.GetComponent<inimigoScript>().tiposDeMovimentacao == inimigoScript.TiposDeMovimentacao.movimentacaoEntrePontosFixa && pontosDefugaDoInimigoCriado.Length > 0)
+                {
+                    foreach (pontoDeFugaScript ponto in pontosDefugaDoInimigoCriado)
+                    {
+                        ponto.inimigosRelacionadosPorSpawn.Add(inimigo.GetComponent<inimigoScript>());
+                    }
+                }
+                qntdInimigosAtuais++;
             }
             spawnandoInimigos = null;
         }
+        
     }
-    public void InimigoDerrotado()
+    public void InimigoDerrotado(inimigoScript inimigoDerrotado)
     {
         qntdInimigosAtuais--;
+        if (pontosDefugaDoInimigoCriado.Length > 0 && inimigoPrefab.GetComponent<inimigoScript>().tiposDeMovimentacao == inimigoScript.TiposDeMovimentacao.movimentacaoEntrePontosFixa)
+        {
+            foreach (pontoDeFugaScript ponto in pontosDefugaDoInimigoCriado)
+            {
+                ponto.inimigosRelacionadosPorSpawn.Remove(inimigoDerrotado);
+            }
+        }
         if (centroDeInimigos && spawnandoInimigos == null)
             spawnandoInimigos =  StartCoroutine(this.SpawnInimigos());
     }
