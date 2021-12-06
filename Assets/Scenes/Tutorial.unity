@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1417,7 +1417,7 @@ PrefabInstance:
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -30
+      value: -29.999756
       objectReference: {fileID: 0}
     - target: {fileID: 6613528273911097989, guid: a196cf5032d987341aec70fb88e970cb,
         type: 3}
@@ -2072,7 +2072,7 @@ RectTransform:
   m_Father: {fileID: 1206282878}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.00000005086263, y: 0}
   m_AnchorMax: {x: 0.75556093, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -2149,10 +2149,10 @@ RectTransform:
   m_Father: {fileID: 1218820973}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 182.9347, y: 0}
-  m_SizeDelta: {x: 365.8694, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -222.1, y: -5.4}
+  m_SizeDelta: {x: 355, y: 430}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &227252792
 MonoBehaviour:
@@ -2167,7 +2167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7686275, g: 0.7686275, b: 0.7686275, a: 0.9607843}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.93333334}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -50727,8 +50727,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 100, y: 41}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 100, y: 35}
+  m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739607440
 MonoBehaviour:
@@ -52301,7 +52301,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 96, y: -62}
+  m_AnchoredPosition: {x: 96, y: -67}
   m_SizeDelta: {x: 250, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1011149121 stripped
@@ -53969,10 +53969,10 @@ RectTransform:
   m_Father: {fileID: 1347118157}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000012234, y: 0}
-  m_SizeDelta: {x: 197.62296, y: 226.83096}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.8, y: 78}
+  m_SizeDelta: {x: 199.1907, y: -266.96173}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1220821522
 MonoBehaviour:
@@ -54030,7 +54030,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -54112,7 +54112,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 146.66345, y: -220.86786}
+  m_SizeDelta: {x: 146.66345, y: -283.21158}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1227435214
 MonoBehaviour:
@@ -55225,10 +55225,10 @@ RectTransform:
   m_Father: {fileID: 1218820973}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 134, y: 0}
-  m_SizeDelta: {x: 265.1853, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 133.3, y: -25}
+  m_SizeDelta: {x: 266.5963, y: 334.30658}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1347118158
 MonoBehaviour:
@@ -57046,8 +57046,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 223515648}
   m_HandleRect: {fileID: 223515647}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.75556093
+  m_Value: 0.00000020807887
+  m_Size: 0.7555608
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -65826,8 +65826,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -100, y: 41}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -100, y: 35}
+  m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1685986776
 MonoBehaviour:
@@ -67308,15 +67308,15 @@ MonoBehaviour:
     - "O qu\xEA? Voc\xEA n\xE3o se lembra de nada?"
     - "Bom do jeito que voc\xEA se teletransportou \xE9 surpreendente que ainda esteja
       viva! Mas isso n\xE3o importa, olha o que voc\xEA fez com a minha m\xE1quina!!!"
-    - "Ela est\xE1 muito danificada e as pe\xE7as foram parar em diferentes eras.
-      Voc\xEA precisa consertar a bagun\xE7a que fez e trazer minha preciosa m\xE1quina
+    - "Ela est\xE1 muito danificada e meus sensores indicam que as pe\xE7as foram
+      parar em diferentes eras."
+    - "Voc\xEA precisa consertar a bagun\xE7a que fez e trazer minha preciosa m\xE1quina
       de volta. Ela \xE9 o trabalho da minha vida."
-    - "Sorte a sua que eu desenvolvi um dispositivo capaz de mandar caixas de socorro
-      para o portal, onde quer que esteja, como medida de seguran\xE7a."
     - "Mas antes, como voc\xEA provavelmente ir\xE1 enfrentar v\xE1rios inimigos
       durante essa jornada e perdeu sua mem\xF3ria vamos fazer um treino r\xE1pido
       para voc\xEA se lembrar do que \xE9 capaz."
-    - "SEGURE o BOT\xC3O DIREITO do mouse para congelar o inimigo no tempo. "
+    - "SEGURE o BOT\xC3O DIREITO do mouse para congelar o inimigo no tempo, lembre-se
+      que o tiro sai no primeiro lugar que voc\xEA mirou e demora para carregar. "
     FocarComCamera: []
     EventosDuranteDialogo:
     - m_PersistentCalls:
@@ -67455,10 +67455,21 @@ MonoBehaviour:
     ImagemNPC:
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
+    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
+    - "Agora que voc\xEA lembrou o b\xE1sico do combate vou te ensinar como funciona
+      o b\xE1sico da constru\xE7\xE3o."
+    - "Sorte a sua que eu desenvolvi um dispositivo capaz de mandar caixas de socorro
+      para o portal, onde quer que esteja, como medida de seguran\xE7a."
     - Agora quebre essa caixa para coletar os recursos.
     - "Em seguida, dirija-se a mesa de trabalho para construir o m\xF3dulo de defesa."
+    - "Lembre-se, para checar o invent\xE1rio e o guia de miss\xF5es pressione TAB
+      e para fechar os menus pressione o mesmo bot\xE3o que usou para abr\xED-lo."
     FocarComCamera:
+    - {fileID: 0}
+    - {fileID: 0}
     - {fileID: 1142209884}
     - {fileID: 1195308730}
     EventosDuranteDialogo:
@@ -67504,11 +67515,8 @@ MonoBehaviour:
     - Dr Alho
     ImagemNPC:
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
-    - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
-    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
-    - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - Agora espere o desastre ele deve atingiro portal em breve.
+    - Agora espere o desastre ele deve atingir o portal em breve.
     FocarComCamera:
     - {fileID: 0}
     - {fileID: 0}
@@ -70236,10 +70244,10 @@ RectTransform:
   m_Father: {fileID: 920468636}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 32}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -70}
+  m_SizeDelta: {x: 0, y: 107.548935}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2127296021
 MonoBehaviour:
@@ -70260,7 +70268,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: "Ao confirmar o portal ficar\xE1 inutiliz\xE1vel e voc\xEA ter\xE1 que
+    se defender contra v\xE1rios desastres. Portanto tenha certeza de que est\xE1
+    preparado(a)."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: aa425a1721a07124e8c2a867e2da1916, type: 2}
   m_sharedMaterial: {fileID: 1978106960649548808, guid: aa425a1721a07124e8c2a867e2da1916,
@@ -70288,10 +70298,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 18.7
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
