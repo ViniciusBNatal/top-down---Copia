@@ -16,6 +16,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     [SerializeField] private Sprite iconeCentroDeRecursosPadrao;
     [SerializeField] private Sprite iconeCentroDeRecursosGasto;
     [SerializeField] private TMP_Text Timer;
+    [SerializeField] private Collider2D hitbox;
     [SerializeField] private Material[] materiais = new Material[2]; 
     [SerializeField] private int quantasVezesPodeSerExtraida;
     [SerializeField] private int qntdDoRecursoDropado = 1;
@@ -41,6 +42,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     private int minutos = 0;
     private int segundos = 0;
     private EfeitoFlash flash;
+    private bool jogadorProximo = false;
     private void Awake()
     {
         flash = GetComponent<EfeitoFlash>();
@@ -56,23 +58,25 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "Player" && tempoRestante <= 0)
         {
+            jogadorProximo = true;
             SpriteDoObj.material = materiais[1];
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && tempoRestante <= 0)
         {
+            jogadorProximo = false;
             SpriteDoObj.material = materiais[0];
         }
     }
     public void RecebeuHit()
     {
-        flash.Flash(Color.white);
         if (centroDeInimigos)
         {
+            flash.Flash(Color.white);
             AplicarDano();
         }
         else
@@ -95,6 +99,8 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
                 SetupCooldown();
                 StartCoroutine(this.RecursoCooldown());
             }
+            else
+                flash.Flash(Color.white);
         }
     }
     private void AplicarDano()
@@ -109,8 +115,9 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     }
     private void SetupCooldown()
     {
+        hitbox.enabled = false;
         Timer.gameObject.SetActive(true);
-        //SpriteDoObj.material = materiais[1];//aplica o material de escurecer
+        SpriteDoObj.material = materiais[2];//aplica o material de escurecer
         ConfiguraTimer();
         if (iconeCentroDeRecursosGasto != null)
             DefineSprite(iconeCentroDeRecursosGasto);
@@ -142,10 +149,14 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
             Timer.text = minutos.ToString("00") + ":" + segundos.ToString("00");
             yield return new WaitForSeconds(1f);
         }
-          vezesExtraida = 0;
-          Timer.gameObject.SetActive(false);
-          //SpriteDoObj.material = materiais[0];//aplica o material padrão
-          DefineSprite(iconeCentroDeRecursosPadrao);
+        vezesExtraida = 0;
+        Timer.gameObject.SetActive(false);
+        if (jogadorProximo)
+            SpriteDoObj.material = materiais[1];//aplica o material outline
+        else
+            SpriteDoObj.material = materiais[0];//aplica o material padrão
+        DefineSprite(iconeCentroDeRecursosPadrao);
+        hitbox.enabled = true;
     }
     IEnumerator SpawnInimigos()
     {

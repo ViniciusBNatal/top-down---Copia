@@ -128,6 +128,8 @@ MonoBehaviour:
   tempoParaLiberarColeta: 1
   areaColetavel: {fileID: 1287505487485014365}
   areaFisica: {fileID: 3925802245581034200}
+  AnimacaoTextoColetaPrefab: {fileID: 1373097053553321454, guid: 740fbceedd091db4fb9e0618b3e5e436,
+    type: 3}
 --- !u!50 &3291379234467560333
 Rigidbody2D:
   serializedVersion: 4

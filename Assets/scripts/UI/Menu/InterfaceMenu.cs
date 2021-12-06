@@ -13,31 +13,41 @@ public class InterfaceMenu : MonoBehaviour
     [SerializeField] private SalvarEstadoDoObjeto salvarObjetosScript;
     [SerializeField] private SalvamentoDosCentrosDeRecursosManager salvarTempoDeSaidasScript;
     [HideInInspector] public bool pausado = false;
+    [HideInInspector] public bool podePausar = true;
     private void Awake()
     {
         Instance = this;
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (jogadorScript.Instance != null)
+        //if (!UIinventario.Instance.InventarioAberto)
+        //{
+
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (!pausado)
+                if (podePausar)
                 {
-                    Ativa_DesativaPausaJogo(true);
-                    AbrirMenu(menus[0]);
+                    if (jogadorScript.Instance != null)
+                    {
+                        if (!pausado)
+                        {
+                            Ativa_DesativaPausaJogo(true);
+                            AbrirMenu(menus[0]);
+                        }
+                        else
+                        {
+                            Ativa_DesativaPausaJogo(false);
+                        }
+                    }
+                    else
+                    {
+                        AbrirMenu(menus[0]);
+                    }
                 }
                 else
-                {
-                    Ativa_DesativaPausaJogo(false);
-                }
+                    podePausar = true;
             }
-            else
-            {
-                AbrirMenu(menus[0]);
-            }
-        }
+        //}
     }
     public void AbrirCena(string cena)
     {

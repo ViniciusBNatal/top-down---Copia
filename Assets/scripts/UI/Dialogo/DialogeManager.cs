@@ -112,7 +112,6 @@ public class DialogeManager : MonoBehaviour
     {
         if (limparDelegate)
         {
-            Debug.Log("limpar delegate");
             DialogoFinalizado = delegate { };
         }
     }

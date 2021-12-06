@@ -107,9 +107,11 @@ MonoBehaviour:
   iconeCentroDeRecursosPadrao: {fileID: 0}
   iconeCentroDeRecursosGasto: {fileID: 0}
   Timer: {fileID: 5246777891263325015}
+  hitbox: {fileID: 932515329753222907}
   materiais:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 2100000, guid: c1114d0b1d68e3042804cc396f0b1147, type: 2}
+  - {fileID: 2100000, guid: 938eb1a82e4595d4da69a59ba7511c80, type: 2}
   quantasVezesPodeSerExtraida: 3
   qntdDoRecursoDropado: 1
   forca: 100

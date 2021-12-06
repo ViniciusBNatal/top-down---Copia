@@ -9,6 +9,7 @@ public class MissoesManager : MonoBehaviour
     [SerializeField] private GameObject ConteudoMissaoPrefab;
     [SerializeField] private Transform scrollViewConteudo;
     [SerializeField] private Transform TrackerMissoes;
+    [SerializeField] private GameObject textoObjetivo;
     public Dictionary<Missao, missaoPrefabScript> missoesAtivasMenu = new Dictionary<Missao, missaoPrefabScript>();
     public Dictionary<Missao, missaoPrefabScript> missoesAtivasTracker = new Dictionary<Missao, missaoPrefabScript>();
     public List<GameObject> posicaoMissoesNoTracker = new List<GameObject>();
@@ -32,6 +33,7 @@ public class MissoesManager : MonoBehaviour
     {
         if (!missoesAtivasMenu.ContainsKey(missaoScrObj) && !missoesAtivasTracker.ContainsKey(missaoScrObj))
         {
+            textoObjetivo.SetActive(true);
             //cria a missão na aba de missões
             GameObject missao = Instantiate(ConteudoMissaoPrefab, scrollViewConteudo.position, Quaternion.identity, scrollViewConteudo);
             missaoPrefabScript missaoScript = missao.GetComponent<missaoPrefabScript>();

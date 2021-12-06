@@ -9,6 +9,7 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     [SerializeField] private float tempoParaLiberarColeta;
     [SerializeField] private BoxCollider2D areaColetavel;
     [SerializeField] private BoxCollider2D areaFisica;
+    [SerializeField] private GameObject AnimacaoTextoColetaPrefab;
     private GameObject NPCRelacionado = null;
     private Rigidbody2D rb;
     private SpriteRenderer icone;
@@ -28,6 +29,9 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     {
         if (collision.gameObject.tag == "Player")
         {
+            GameObject gobj = Instantiate(AnimacaoTextoColetaPrefab, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+            gobj.GetComponentInChildren<AnimTextoFlutuanteScript>().texto.text = "+" + qntd.ToString();
+            gobj.transform.SetParent(null);
             collision.gameObject.GetComponent<jogadorScript>().InterfaceJogador.AtualizaInventarioUI(item, qntd);
             SalvarEstado();
             Destroy(this.gameObject);

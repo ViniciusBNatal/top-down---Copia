@@ -22,10 +22,12 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     [SerializeField] private Transform posicaoDosIconesDeItens;
     [SerializeField] private GameObject abaSelecionarTempo;
     [SerializeField] private GameObject abaMissoes;
+    [SerializeField] private GameObject abaConfimacaoMelhoriaPortal;
     public GameObject transicaoLevelsAnimacao;
     public GameObject caixaGuiaDeConstruao;
     public GameObject craftingBossFinal;
     private int TempoAtual = 0;
+    private UpgradeSlot slotReceitaMelhoriaselecionada;
     public bool InventarioAberto => inventarioAberto;
 
     private void Awake()
@@ -35,7 +37,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmAcao || jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmUI) && !InterfaceMenu.Instance.pausado)
+        if ((Input.GetKeyDown(KeyCode.Tab) || (Input.GetKeyDown(KeyCode.Escape) && inventarioAberto)) && (jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmAcao || jogadorScript.Instance.estadosJogador == jogadorScript.estados.EmUI) && !InterfaceMenu.Instance.pausado)
         {
             if (inventarioAberto)
             {
@@ -66,6 +68,16 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             }
         }
     }
+    public void abreConfirmacaoMelhoriaBase()
+    {
+        inventarioAberto = true;
+        abaConfimacaoMelhoriaPortal.SetActive(true);
+    }
+    public void fechaConfirmacaoMelhoriaBase()
+    {
+        inventarioAberto = false;
+        abaConfimacaoMelhoriaPortal.SetActive(false);
+    }
     public void fecharTodoInventario()
     {
         inventarioAberto = false;
@@ -74,6 +86,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     }
     public void abreInventario(bool ativarCriacao, bool ativarMissoes)
     {
+        InterfaceMenu.Instance.podePausar = false;
         jogadorScript.Instance.MudarEstadoJogador(5);
         inventarioAberto = true;
         inventarioParent.SetActive(true);
@@ -86,8 +99,14 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         //if (Time.timeScale == 0f)//Pausar
         //    Time.timeScale = 1f;
         jogadorScript.Instance.MudarEstadoJogador(0);
-        inventarioAberto = false;
         inventarioParent.SetActive(false);
+        inventarioAberto = false;
+        HabilitarPausa();
+    }
+    IEnumerator HabilitarPausa()
+    {
+        yield return new WaitForSeconds(Time.deltaTime);
+        InterfaceMenu.Instance.podePausar = true;
     }
     public void abreMenuDeTempos()
     {
@@ -120,6 +139,11 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         abaInventario.SetActive(false);
         abaMissoes.SetActive(true);
         //Time.timeScale = 0f;//Pausar
+    }
+    public void AoClicarBtnConstruirMelhoriaBase()
+    {
+        fechaConfirmacaoMelhoriaBase();
+        AprimorarBase();
     }
 
     private void CriaNovoSlotDeItem(item item, int quantidade)
@@ -214,6 +238,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
     }
     public void AoClicarparaMelhorar(UpgradeSlot slot)
     {
+        slotReceitaMelhoriaselecionada = null;
         List<int> recursosEncontrados = new List<int>();
         int possuiTodosOsRecursos = 0;
         for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.GetReceita().itensNecessarios.Count; tiposRecursosParaCrafting++)//passa para o próximo recurso na lista de crafting do objeto
@@ -232,21 +257,29 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         }
         if (possuiTodosOsRecursos == slot.GetReceita().itensNecessarios.Count)// caso tenha todos os itens e a quantidade necessária, consome eles para criar a receita
         {
-            for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slot.GetReceita().itensNecessarios.Count; tiposRecursosParaCrafting++)
-            {
-                AtualizaInventarioUI(slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting], -slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting]);
-                //itens[slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting]);
-            }
-            fechaMenuDeTempos();
-            //desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
-            if (TutorialSetUp.Instance != null)
-            {
-                Tutorial();
-                LiberarNovBtnDeTrocaDeTempo(slot, false);
-            }
+            slotReceitaMelhoriaselecionada = slot;
+            if (TutorialSetUp.Instance == null)
+                abreConfirmacaoMelhoriaBase();
             else
-                LiberarNovBtnDeTrocaDeTempo(slot, true);
+                AprimorarBase();
         }
+    }
+    public void AprimorarBase()
+    {
+        for (int tiposRecursosParaCrafting = 0; tiposRecursosParaCrafting < slotReceitaMelhoriaselecionada.GetReceita().itensNecessarios.Count; tiposRecursosParaCrafting++)
+        {
+            AtualizaInventarioUI(slotReceitaMelhoriaselecionada.GetReceita().itensNecessarios[tiposRecursosParaCrafting], -slotReceitaMelhoriaselecionada.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting]);
+            //itens[slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting]);
+        }
+        fechaMenuDeTempos();
+        //desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
+        if (TutorialSetUp.Instance != null)
+        {
+            Tutorial();
+            LiberarNovBtnDeTrocaDeTempo(slotReceitaMelhoriaselecionada, false);
+        }
+        else
+            LiberarNovBtnDeTrocaDeTempo(slotReceitaMelhoriaselecionada, true);
     }
     public void AoClicarEmMudarDeTempo(UpgradeSlot slot)
     {
