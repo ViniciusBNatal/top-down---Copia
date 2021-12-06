@@ -37,6 +37,11 @@ PrefabInstance:
       propertyPath: tiposDeMovimentacao
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: reducaoVelocDuranteAtaqueMelee
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 566375125526406926, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}
       propertyPath: m_Sprite
