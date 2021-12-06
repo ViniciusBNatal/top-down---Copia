@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9644923587cb5a4eb4fe7e9727f8448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intervaloEntreAtaques: 6
+  intervaloEntreAtaques: 5
   intervaloEntreDeastresDuranteBoss: 90
   misselPrefab: {fileID: 1324030936459174767, guid: 11e3063f0b1839d4dafe4e17d1885505,
     type: 3}
