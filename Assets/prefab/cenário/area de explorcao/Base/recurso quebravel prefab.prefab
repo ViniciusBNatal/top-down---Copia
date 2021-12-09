@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 525454675051048018}
   - component: {fileID: 8991288580678989614}
   - component: {fileID: 4767925194459054367}
-  - component: {fileID: 6895422993060629283}
   - component: {fileID: 3587871810044104300}
   - component: {fileID: 106350006385719392}
   m_Layer: 0
@@ -126,22 +125,6 @@ MonoBehaviour:
   VidaMaxDoCentroDeSpawn: 0
   distanciaXDeSpawnDosInimigos: 0
   distanciaYDeSpawnDosInimigos: 0
---- !u!70 &6895422993060629283
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3029989175299500926}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2.7768989, y: 1.4481094}
-  m_Direction: 1
 --- !u!114 &3587871810044104300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +193,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4695458348697519486}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0

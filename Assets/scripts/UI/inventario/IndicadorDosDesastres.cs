@@ -72,30 +72,31 @@ public class IndicadorDosDesastres : MonoBehaviour
             if (i > 0)
                 distanciaEntreIcones = .5f;
             icone.transform.localPosition = new Vector3((i * -largura) + distanciaEntreIcones, -(i / divisor) * altura, 0);
-            ////icone do multiplicador
-            //Image iconeDeMultiplicador = Instantiate(iconesDesastrPrefab, PosicaoIconesMultiplicador.transform.position, Quaternion.identity, PosicaoIconesMultiplicador.transform);
-            //Sprite iconeMult = DesastresList.Instance.SelecionaSpriteMultiplicador(desastreManager.Instance.GetForcaSorteada(i));
-            ////SelecionadorDeIconeDesastreEMultiplicador.Instance.SelecionarSpriteMultiplicador(forcasSorteados[i]);
-            //float alturaiconeMultiplicador = iconeDeMultiplicador.rectTransform.rect.height;
-            //iconeDeMultiplicador.transform.localPosition = new Vector3(0f, -(alturaiconeMultiplicador * i + .1f), 0f);
-            //iconeDeMultiplicador.GetComponent<Image>().sprite = iconeMult;
-            //multiplicadoresDesenhados.Add(iconeDeMultiplicador);
-            ////icone do desastre
-            //Image iconeDeDesastre = Instantiate(iconesDesastrPrefab, PosicaoIconesDesastre.transform.position, Quaternion.identity, PosicaoIconesDesastre.transform);
-            //Sprite iconeDes = DesastresList.Instance.SelecionaSpriteDesastre(desastreManager.Instance.GetDesastreSorteado(i));
-            ////SelecionadorDeIconeDesastreEMultiplicador.Instance.SelecionarSpriteDesastre(desastresSorteados[i]);
-            //float alturaiconeDesastre = iconeDeDesastre.rectTransform.rect.height;
-            //iconeDeDesastre.transform.localPosition = new Vector3(0f, -(alturaiconeDesastre * i + .1f), 0f);
-            //iconeDeDesastre.GetComponent<Image>().sprite = iconeDes;
-            //iconesDesenhados.Add(iconeDeDesastre);
+            /*//icone do multiplicador
+            Image iconeDeMultiplicador = Instantiate(iconesDesastrPrefab, PosicaoIconesMultiplicador.transform.position, Quaternion.identity, PosicaoIconesMultiplicador.transform);
+            Sprite iconeMult = DesastresList.Instance.SelecionaSpriteMultiplicador(desastreManager.Instance.GetForcaSorteada(i));
+            //SelecionadorDeIconeDesastreEMultiplicador.Instance.SelecionarSpriteMultiplicador(forcasSorteados[i]);
+            float alturaiconeMultiplicador = iconeDeMultiplicador.rectTransform.rect.height;
+            iconeDeMultiplicador.transform.localPosition = new Vector3(0f, -(alturaiconeMultiplicador * i + .1f), 0f);
+            iconeDeMultiplicador.GetComponent<Image>().sprite = iconeMult;
+            multiplicadoresDesenhados.Add(iconeDeMultiplicador);
+            //icone do desastre
+            Image iconeDeDesastre = Instantiate(iconesDesastrPrefab, PosicaoIconesDesastre.transform.position, Quaternion.identity, PosicaoIconesDesastre.transform);
+            Sprite iconeDes = DesastresList.Instance.SelecionaSpriteDesastre(desastreManager.Instance.GetDesastreSorteado(i));
+            //SelecionadorDeIconeDesastreEMultiplicador.Instance.SelecionarSpriteDesastre(desastresSorteados[i]);
+            float alturaiconeDesastre = iconeDeDesastre.rectTransform.rect.height;
+            iconeDeDesastre.transform.localPosition = new Vector3(0f, -(alturaiconeDesastre * i + .1f), 0f);
+            iconeDeDesastre.GetComponent<Image>().sprite = iconeDes;
+            iconesDesenhados.Add(iconeDeDesastre);*/
         }
-        AtivarCheckDeModuloConstruido();
+        AtualizarCheckDeModuloConstruido();
     }
-    public void AtivarCheckDeModuloConstruido()
+    public void AtualizarCheckDeModuloConstruido()
     {
         for (int i = 0; i < iconesDesenhados.Count; i++)
         {
             int forcaTotal = 0;
+            int ModulosNaoCorrespondentes = 0;
             for (int a = 0; a < BaseScript.Instance.GetQntdModulos(); a++)
             {
                 if (BaseScript.Instance.GetModuloNaLista(a).GetNomeDesastre() == iconesDesenhados[i].desastre && BaseScript.Instance.GetModuloNaLista(a).GetModulo() == 1)
@@ -113,9 +114,29 @@ public class IndicadorDosDesastres : MonoBehaviour
                             iconesDesenhados[i].caixaDeCheck.enabled = true;
                             break;
                         }
+                        else
+                            iconesDesenhados[i].caixaDeCheck.enabled = false;
                     }
+                }
+                else
+                {
+                    ModulosNaoCorrespondentes++;
+                    if (ModulosNaoCorrespondentes == BaseScript.Instance.GetQntdModulos())
+                        iconesDesenhados[i].caixaDeCheck.enabled = false;
                 }
             }
         }
+        VerificarSeDefesaEstaPronta();
+    }
+    public void VerificarSeDefesaEstaPronta()
+    {
+        int defesasProntas = 0;
+        for (int i = 0; i < iconesDesenhados.Count; i++)
+        {
+            if (iconesDesenhados[i].caixaDeCheck.enabled)
+                defesasProntas++;
+        }
+        if (defesasProntas == iconesDesenhados.Count && BaseScript.Instance.GetDuranteDefesaParaMelhorarBase())
+            desastreManager.Instance.ConfigurarTimer(3f, desastreManager.Instance.GetTempoAcumuladoParaDesastre(), false);
     }
 }

@@ -94,6 +94,7 @@ MonoBehaviour:
   caixaDeCheck: {fileID: 4513311127964489334}
   textoForca: {fileID: 5619014841149833341}
   forca: 0
+  desastre: 
 --- !u!1 &4393457597018209632
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,8 +277,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -21.35, y: 0}
-  m_SizeDelta: {x: 11.095245, y: 30}
+  m_AnchoredPosition: {x: -23.17, y: 0}
+  m_SizeDelta: {x: 16.408417, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8415364987499709335
 CanvasRenderer:
@@ -310,8 +311,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: aa425a1721a07124e8c2a867e2da1916, type: 2}
-  m_sharedMaterial: {fileID: 1978106960649548808, guid: aa425a1721a07124e8c2a867e2da1916,
+  m_fontAsset: {fileID: 11400000, guid: 8cffbe7100e2bce47b8acc67874d25a8, type: 2}
+  m_sharedMaterial: {fileID: 5132792481272847488, guid: 8cffbe7100e2bce47b8acc67874d25a8,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -344,7 +345,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

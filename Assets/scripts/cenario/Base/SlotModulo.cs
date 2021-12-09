@@ -56,7 +56,7 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
                 SetSpriteDoDesastre(DesastresList.Instance.SelecionaSpriteDesastre(NomeDesastre));
                 //cria o icone de multiplicador dependedo do nivel do crafting
                 SetSpriteDoMultiplicador(DesastresList.Instance.SelecionaSpriteMultiplicador(forcaModulo));
-                IndicadorDosDesastres.Instance.AtivarCheckDeModuloConstruido();
+                IndicadorDosDesastres.Instance.AtualizarCheckDeModuloConstruido();
             }
         }
     }

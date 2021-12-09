@@ -118,6 +118,11 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
         type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 4869204107715276095}
+    - target: {fileID: 4767925194459054367, guid: 6ec9799e588423a4592f0f3e551ba1db,
+        type: 3}
       propertyPath: iconeCentroDeRecursosPadrao
       value: 
       objectReference: {fileID: 21300000, guid: ed42977533b49414ebabaf738cb7879e,

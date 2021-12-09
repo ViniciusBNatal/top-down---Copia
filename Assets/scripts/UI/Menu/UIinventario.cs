@@ -272,6 +272,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             //itens[slot.GetReceita().itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.GetReceita().quantidadeDosRecursos[tiposRecursosParaCrafting]);
         }
         fechaMenuDeTempos();
+        fechaConfirmacaoMelhoriaBase();
         //desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
         if (TutorialSetUp.Instance != null)
         {
@@ -329,6 +330,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
             jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
             MissoesManager.Instance.ConcluirMissao(missoesDeLiberarNovoTempo[GetTempoAtual() - 2]);// -2 pois quando vai liberar o 1 tempo fora do tutorial o valo de tempoatual é 2
             desastreManager.Instance.ConfigurarTimer(BaseScript.Instance.GetIntervaloDuranteOAprimoramentoDaBase(), 0f, true);
+            IndicadorDosDesastres.Instance.VerificarSeDefesaEstaPronta();
             //desastreManager.Instance.SortearDesastresGeral();
             //desastreManager.Instance.SetUpParaNovoSorteioDeDesastres();
             //desastreManager.Instance.PararTodasCorotinas();

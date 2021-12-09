@@ -66,30 +66,30 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
         //ConfigurarTimer(intervaloEntreOsDesastres, tempoAcumulado);
         //StartCoroutine(this.LogicaDesastres());
     }
-    /*private void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            PararTodasCorotinas();
+            //PararTodasCorotinas();
             encerramentoDesastres();
             SetUpParaNovoSorteioDeDesastres();
-            qntdDeDesastresParaOcorrer = 1;
+            qntdDeDesastresParaOcorrer = 2;
             desastresSorteados[0] = "TERREMOTO";
-            //desastresSorteados[1] = "ERRUPCAO TERRENA";
+            desastresSorteados[1] = "ERRUPCAO TERRENA";
                     //desastresSorteados[2] = "NUVEM DE INSETOS";
             forcasSorteados[0] = 3;
-            //forcasSorteados[1] = 2;
+            forcasSorteados[1] = 3;
                     //forcasSorteados[2] = 1;
             IndicadorDosDesastres.Instance.PreenchePlaca();
-                    //Virus();
-                    //ErrupcaoTerrena();
-                    //Terremoto();
-                    //StopAllCoroutines();
+            //Virus();
+            //ErrupcaoTerrena();
+            //Terremoto();
+            //SortearDesastresGeral();
             ConfigurarTimer(15f, tempoAcumulado, true);
-            StartCoroutine(this.LogicaDesastres(false));
+            IniciarCorrotinaLogicaDesastres();
             //Debug.Log(desastresSorteados[0] + "," + desastresSorteados[1] + "," + desastresSorteados[2] + "," + desastresSorteados[3] + "," + desastresSorteados[4]);
         }
-    }*/
+    }
     //desastres
     private void Terremoto()
     {
