@@ -240,10 +240,10 @@ TextureImporter:
       name: Aika_Spritesheet_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 323
-        width: 28
-        height: 32
+        x: 4
+        y: 320
+        width: 30
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,10 +261,10 @@ TextureImporter:
       name: Aika_Spritesheet_1
       rect:
         serializedVersion: 2
-        x: 45
-        y: 323
-        width: 30
-        height: 30
+        x: 43
+        y: 320
+        width: 32
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,10 +282,10 @@ TextureImporter:
       name: Aika_Spritesheet_2
       rect:
         serializedVersion: 2
-        x: 86
-        y: 323
-        width: 29
-        height: 29
+        x: 83
+        y: 320
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -304,11 +304,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 180
-        y: 283
-        width: 30
-        height: 63
-      alignment: 9
-      pivot: {x: 0.56574506, y: 0.0014910017}
+        y: 280
+        width: 31
+        height: 66
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -324,12 +324,12 @@ TextureImporter:
       name: Aika_Spritesheet_4
       rect:
         serializedVersion: 2
-        x: 224
-        y: 283
-        width: 23
-        height: 61
-      alignment: 9
-      pivot: {x: 0.50816745, y: 0}
+        x: 221
+        y: 280
+        width: 29
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -346,9 +346,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6
-        y: 283
-        width: 28
-        height: 32
+        y: 280
+        width: 30
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,9 +367,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 45
-        y: 283
-        width: 30
-        height: 30
+        y: 280
+        width: 32
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -388,9 +388,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 86
-        y: 283
-        width: 29
-        height: 29
+        y: 280
+        width: 32
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,11 +409,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 138
-        y: 283
-        width: 30
-        height: 31
-      alignment: 9
-      pivot: {x: 0.6033137, y: 0.006059216}
+        y: 280
+        width: 31
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -430,9 +430,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7
-        y: 243
-        width: 26
-        height: 32
+        y: 240
+        width: 30
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -451,9 +451,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 46
-        y: 243
-        width: 28
-        height: 30
+        y: 240
+        width: 30
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -472,9 +472,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 87
-        y: 243
-        width: 27
-        height: 29
+        y: 240
+        width: 29
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -492,10 +492,10 @@ TextureImporter:
       name: Aika_Spritesheet_12
       rect:
         serializedVersion: 2
-        x: 141
-        y: 243
-        width: 24
-        height: 31
+        x: 140
+        y: 240
+        width: 25
+        height: 34
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -513,12 +513,12 @@ TextureImporter:
       name: Aika_Spritesheet_13
       rect:
         serializedVersion: 2
-        x: 180
+        x: 179
         y: 216
-        width: 30
+        width: 31
         height: 56
       alignment: 9
-      pivot: {x: 0.4156906, y: 0.47796223}
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -534,12 +534,12 @@ TextureImporter:
       name: Aika_Spritesheet_14
       rect:
         serializedVersion: 2
-        x: 224
+        x: 221
         y: 217
-        width: 23
+        width: 29
         height: 57
       alignment: 9
-      pivot: {x: 0.5492514, y: 0.45584455}
+      pivot: {x: 0.5, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -555,10 +555,10 @@ TextureImporter:
       name: Aika_Spritesheet_15
       rect:
         serializedVersion: 2
-        x: 7
-        y: 203
-        width: 26
-        height: 32
+        x: 4
+        y: 200
+        width: 29
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -576,10 +576,10 @@ TextureImporter:
       name: Aika_Spritesheet_16
       rect:
         serializedVersion: 2
-        x: 46
-        y: 203
-        width: 28
-        height: 30
+        x: 44
+        y: 200
+        width: 30
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -597,10 +597,10 @@ TextureImporter:
       name: Aika_Spritesheet_17
       rect:
         serializedVersion: 2
-        x: 87
-        y: 203
-        width: 27
-        height: 29
+        x: 85
+        y: 200
+        width: 29
+        height: 32
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -619,9 +619,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 3
-        y: 151
+        y: 148
         width: 30
-        height: 32
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -640,11 +640,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 49
-        y: 151
+        y: 148
         width: 55
-        height: 41
+        height: 44
       alignment: 9
-      pivot: {x: 0.3489477, y: 0.0069077653}
+      pivot: {x: 0.3, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -660,12 +660,12 @@ TextureImporter:
       name: Aika_Spritesheet_20
       rect:
         serializedVersion: 2
-        x: 115
-        y: 151
-        width: 53
-        height: 32
+        x: 114
+        y: 148
+        width: 54
+        height: 35
       alignment: 9
-      pivot: {x: 0.22216941, y: 0.0017366409}
+      pivot: {x: 0.2, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -682,11 +682,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 179
-        y: 151
+        y: 148
         width: 38
-        height: 40
+        height: 43
       alignment: 9
-      pivot: {x: 0.3478257, y: 0.004565048}
+      pivot: {x: 0.3, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -703,11 +703,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 151
+        y: 148
         width: 38
-        height: 40
+        height: 43
       alignment: 9
-      pivot: {x: 0.6957751, y: 0.005165863}
+      pivot: {x: 0.7, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -724,11 +724,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 305
-        y: 151
-        width: 53
-        height: 32
+        y: 148
+        width: 54
+        height: 35
       alignment: 9
-      pivot: {x: 0.7885322, y: 0.006457329}
+      pivot: {x: 0.8, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -745,11 +745,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 369
-        y: 151
+        y: 148
         width: 55
-        height: 41
+        height: 44
       alignment: 9
-      pivot: {x: 0.67891514, y: 0.0038917356}
+      pivot: {x: 0.7, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -766,9 +766,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 440
-        y: 151
+        y: 148
         width: 30
-        height: 32
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -787,9 +787,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4
-        y: 107
+        y: 104
         width: 30
-        height: 32
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -807,10 +807,10 @@ TextureImporter:
       name: Aika_Spritesheet_27
       rect:
         serializedVersion: 2
-        x: 44
-        y: 107
-        width: 31
-        height: 31
+        x: 43
+        y: 104
+        width: 32
+        height: 34
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -829,9 +829,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 85
-        y: 107
+        y: 104
         width: 30
-        height: 31
+        height: 34
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -850,9 +850,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 138
-        y: 107
+        y: 104
         width: 28
-        height: 32
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -871,9 +871,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 177
-        y: 107
+        y: 104
         width: 30
-        height: 31
+        height: 34
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -892,9 +892,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 217
-        y: 107
+        y: 104
         width: 31
-        height: 30
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -913,9 +913,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6
-        y: 64
+        y: 61
         width: 31
-        height: 32
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -934,9 +934,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 45
-        y: 64
+        y: 61
         width: 32
-        height: 32
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -955,9 +955,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 86
-        y: 64
+        y: 61
         width: 31
-        height: 32
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -976,9 +976,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 138
-        y: 64
+        y: 61
         width: 28
-        height: 32
+        height: 35
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -997,9 +997,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 180
-        y: 64
+        y: 61
         width: 30
-        height: 31
+        height: 34
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1018,9 +1018,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 217
-        y: 64
+        y: 61
         width: 31
-        height: 30
+        height: 33
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
