@@ -7,12 +7,18 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     [SerializeField] private item item;
     [SerializeField] private int qntd;
     [SerializeField] private float tempoParaLiberarColeta;
-    [SerializeField] private BoxCollider2D areaColetavel;
+    [SerializeField] private float ForcaMagnetismo;
+    [SerializeField] private string ConteudoTextoFlutuante;
+    [Range(0.05f, 1f)]
+    [SerializeField] private float velocidadeAnimTextoFlutuante;
+    [SerializeField] private BoxCollider2D areaMagnetismo;
     [SerializeField] private BoxCollider2D areaFisica;
+    [SerializeField] private BoxCollider2D areaDetectaColeta;
     [SerializeField] private GameObject AnimacaoTextoColetaPrefab;
     private GameObject NPCRelacionado = null;
     private Rigidbody2D rb;
     private SpriteRenderer icone;
+    private GameObject jogador = null;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -22,20 +28,41 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     void Start()
     {
         icone.sprite = item.icone;
-        if (areaColetavel.enabled == false)
+        if (areaMagnetismo.enabled == false)
             StartCoroutine(this.ligarColeta());
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && jogador == null)
         {
-            GameObject gobj = Instantiate(AnimacaoTextoColetaPrefab, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
-            gobj.GetComponentInChildren<AnimTextoFlutuanteScript>().texto.text = "+" + qntd.ToString();
-            gobj.transform.SetParent(null);
-            collision.gameObject.GetComponent<jogadorScript>().InterfaceJogador.AtualizaInventarioUI(item, qntd);
-            SalvarEstado();
-            Destroy(this.gameObject);
+            jogador = collision.gameObject;
+            StartCoroutine(this.MagnetismoItem());
         }
+    }
+    IEnumerator MagnetismoItem()
+    {
+        areaFisica.enabled = false;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        while (jogador != null)
+        {
+            Vector2 direcao = jogador.transform.position - transform.position;
+            rb.velocity = direcao.normalized * ForcaMagnetismo;
+            yield return new WaitForSeconds(Time.fixedDeltaTime);
+        }
+    }
+    public void ColetaItem()
+    {
+        GameObject gobj = Instantiate(AnimacaoTextoColetaPrefab, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
+        AnimTextoFlutuanteScript script = gobj.GetComponentInChildren<AnimTextoFlutuanteScript>();
+        script.SetVelocidadeAnim(velocidadeAnimTextoFlutuante);
+        if (ConteudoTextoFlutuante == "")
+            gobj.GetComponentInChildren<AnimTextoFlutuanteScript>().texto.text = "+" + qntd.ToString();
+        else
+            gobj.GetComponentInChildren<AnimTextoFlutuanteScript>().texto.text = ConteudoTextoFlutuante;
+        gobj.transform.SetParent(null);
+        jogador.GetComponent<jogadorScript>().InterfaceJogador.AtualizaInventarioUI(item, qntd);
+        SalvarEstado();
+        Destroy(this.gameObject);
     }
     public void DefineItem(item it)
     {
@@ -75,8 +102,9 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     IEnumerator ligarColeta()
     {
         yield return new WaitForSeconds(tempoParaLiberarColeta);
-        areaColetavel.enabled = true;
+        areaMagnetismo.enabled = true;
         areaFisica.enabled = true;
+        areaDetectaColeta.enabled = true;
     }
     public void SalvarEstado()
     {
