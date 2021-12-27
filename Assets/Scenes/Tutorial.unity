@@ -2928,7 +2928,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Confirmar
+  m_text: Confirm
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8cffbe7100e2bce47b8acc67874d25a8, type: 2}
   m_sharedMaterial: {fileID: 5132792481272847488, guid: 8cffbe7100e2bce47b8acc67874d25a8,
@@ -53993,9 +53993,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Primeiro selecione o n\xFAmero do m\xF3dulo correspondente a for\xE7a
-    do desastre no canto superior direito da tela, depois clique nas engrenagens
-    para constru\xED-lo."
+  m_text: First select the number corresponding to the strength of the disaster in
+    the upper right corner, then click on the cogwheel to build it.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8cffbe7100e2bce47b8acc67874d25a8, type: 2}
   m_sharedMaterial: {fileID: 5132792481272847488, guid: 8cffbe7100e2bce47b8acc67874d25a8,
@@ -54597,7 +54596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cancelar
+  m_text: Cancel
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8cffbe7100e2bce47b8acc67874d25a8, type: 2}
   m_sharedMaterial: {fileID: 5132792481272847488, guid: 8cffbe7100e2bce47b8acc67874d25a8,
@@ -67292,7 +67291,7 @@ MonoBehaviour:
   dialogosDoTutorial:
   - NomeNPC:
     - ???
-    - Dr Alho
+    - Dr Garlic
     ImagemNPC:
     - {fileID: 21300000, guid: b5386c6d4ee01f543844cefdf547ad81, type: 3}
     - {fileID: 21300000, guid: f6862986a3dba0d40a109305fa7da1c0, type: 3}
@@ -67303,20 +67302,21 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 7bb96a89c6ceb6949ad1c0e371068f69, type: 3}
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - "Aika!!! O que voc\xEA fez???"
-    - Como assim quem sou eu?! Eu sou o seu chefe, o ilustre Dr.Alho!
-    - "O qu\xEA? Voc\xEA n\xE3o se lembra de nada?"
-    - "Bom do jeito que voc\xEA se teletransportou \xE9 surpreendente que ainda esteja
-      viva! Mas isso n\xE3o importa, olha o que voc\xEA fez com a minha m\xE1quina!!!"
-    - "Ela est\xE1 muito danificada e meus sensores indicam que as pe\xE7as foram
-      parar em diferentes eras."
-    - "Voc\xEA precisa consertar a bagun\xE7a que fez e trazer minha preciosa m\xE1quina
-      de volta. Ela \xE9 o trabalho da minha vida."
-    - "Mas antes, como voc\xEA provavelmente ir\xE1 enfrentar v\xE1rios inimigos
-      durante essa jornada e perdeu sua mem\xF3ria vamos fazer um treino r\xE1pido
-      para voc\xEA se lembrar do que \xE9 capaz."
-    - "SEGURE o BOT\xC3O DIREITO do mouse para congelar o inimigo no tempo, lembre-se
-      que o tiro sai no primeiro lugar que voc\xEA mirou e demora para carregar. "
+    - Aika!!! What have you done???
+    - What do you mean who am I?! I am your boss, the great Dr. Garlic!
+    - "What? You don\u2019t remember anything?"
+    - "Well, from the way you just teleported I\u2019m amazed that you\u2019re still
+      alive! But that doesn\u2019t matter, look what you\u2019ve done to my precious
+      Time Machine!!!"
+    - It's extremely damaged! And my sensors indicate that the missing pieces wound
+      up in different time periods!
+    - "You need to fix the mess you\u2019ve made and fix my Time Machine!"
+    - "But before that, as you will probably need to fight several enemies during
+      this journey and have lost your memory let\u2019s do a quick refresher so you
+      can remember how to defend yourself."
+    - HOLD the RIGHT MOUSE BUTTON to freeze the enemy in time, do remember that the
+      shot takes a moment to load, and shoots from the first place that you aimed
+      at.
     FocarComCamera: []
     EventosDuranteDialogo:
     - m_PersistentCalls:
@@ -67371,11 +67371,11 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - NomeNPC:
-    - Dr Alho
+    - Dr Garlic
     ImagemNPC:
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - "Muito bem! Agora bata no boneco com o BOT\xC3O ESQUERDO do mouse\r.\n \r"
+    - Well done! Now hit the training dummy with the LEFT MOUSE BUTTON.
     FocarComCamera: []
     EventosDuranteDialogo:
     - m_PersistentCalls:
@@ -67405,11 +67405,11 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - NomeNPC:
-    - Dr Alho
+    - Dr Garlic
     ImagemNPC:
     - {fileID: 21300000, guid: 7bb96a89c6ceb6949ad1c0e371068f69, type: 3}
     Frases:
-    - Agora derrote o boneco com os movimentos que acabou de aprender
+    - "Now defeat the dummy with the move set you\u2019ve just acquired."
     FocarComCamera: []
     EventosDuranteDialogo:
     - m_PersistentCalls:
@@ -67451,7 +67451,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - NomeNPC:
-    - Dr Alho
+    - Dr Garlic
     ImagemNPC:
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
@@ -67459,14 +67459,15 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - "Agora que voc\xEA lembrou o b\xE1sico do combate vou te ensinar como funciona
-      o b\xE1sico da constru\xE7\xE3o."
-    - "Sorte a sua que eu desenvolvi um dispositivo capaz de mandar caixas de socorro
-      para o portal, onde quer que esteja, como medida de seguran\xE7a."
-    - Agora quebre essa caixa para coletar os recursos.
-    - "Em seguida, dirija-se a mesa de trabalho para construir o m\xF3dulo de defesa."
-    - "Lembre-se, para checar o invent\xE1rio e o guia de miss\xF5es pressione TAB
-      e para fechar os menus pressione o mesmo bot\xE3o que usou para abr\xED-lo."
+    - "Now that you\u2019ve remembered the basics of combat, I shall remind you of
+      the basics of construction."
+    - "You're lucky I\u2019ve developed a device capable of sending aid boxes to
+      the portal wherever it may be, in the case of emergencies."
+    - Now break that box and collect its resources.
+    - Next up, head to the worktable to construct the defense module.
+    - "Don't forget, in order to check your inventory and your current missions press
+      TAB, and in order to close menus use the same button you\u2019ve used to open
+      them."
     FocarComCamera:
     - {fileID: 0}
     - {fileID: 0}
@@ -67512,11 +67513,11 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - NomeNPC:
-    - Dr Alho
+    - Dr Garlic
     ImagemNPC:
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - Agora espere o desastre ele deve atingir o portal em breve.
+    - Now wait for the natural disaster that will soon hit the portal.
     FocarComCamera:
     - {fileID: 0}
     - {fileID: 0}
@@ -67549,22 +67550,24 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - NomeNPC:
-    - Dr Alho
+    - Dr Garlic
     ImagemNPC:
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - "Parab\xE9ns voc\xEA conseguiu sobreviver esse desastre, mas lembre-se que
-      eles N\xC3O v\xE3o parar de acontecer, ent\xE3o fique atento aos seus RECURSOS
-      e qual ser\xE1 o pr\xF3ximo DESASTRE para conseguir se DEFENDER dentro do tempo."
-    - "E n\xE3o esque\xE7a de ficar de olho na INTENSIDADE dos desastres, pois se
-      construir um modulo mais fraco do que o necess\xE1rio o portal ser\xE1 danificado,
-      se ele for danificado 3 vezes temo que ir\xE1 explodir."
-    - "Ah! E tenha aten\xE7\xE3o com a for\xE7a dos desastres, pois a for\xE7a dos
-      m\xF3dulos n\xE3o se somam."
-    - "Agora v\xE1 at\xE9 o portal e o conserte!"
+    - "Congratulations, you\u2019ve managed to survive this disaster, but remember
+      that they will NOT stop coming, so don\u2019t forget to keep an eye on your
+      RESOURCES as well as what are the next incoming DISASTERS so you may DEFEND
+      yourself in time."
+    - And remember to also check the INTENSITY of the disasters, as if you build
+      a module weaker than necessary the portal will still be damaged, and if you
+      build more than one of the same type of module, their strength does NOT add
+      up.
+    - "I\u2019m afraid that in the state that it is now if the portal is damaged
+      more than 3 TIMES it may very well explode."
+    - Now go and fix the portal!
     FocarComCamera:
     - {fileID: 0}
     - {fileID: 0}
@@ -67598,7 +67601,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - NomeNPC:
-    - Dr Alho
+    - Dr Garlic
     ImagemNPC:
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
@@ -67606,18 +67609,16 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 255490f979f7928408c86d03990f1d23, type: 3}
     - {fileID: 21300000, guid: 5dce7cbc7d8fc804395e2bf9e722bc87, type: 3}
     Frases:
-    - "Muito bem, agora voc\xEA deve explorar as eras para procurar as pe\xE7as de
-      reparo da m\xE1quina do tempo."
-    - "E n\xE3o se esque\xE7a de CONSTRUIR M\xD3DULOS DE DEFESA para proteger o portal
-      e se um desastre ocorrer enquanto estiver fora volte o mais r\xE1pido poss\xEDvel
-      para o portal."
-    - "Agora selecione a era liberada e tente buscar as pe\xE7as para consertar o
-      portal por completo e voltar para o meu laborat\xF3rio para consertarmos a
-      bagun\xE7a que voc\xEA criou no espa\xE7o tempo."
-    - "Ah! e tome muito CUIDADO quando voc\xEA for consertar o portal das pr\xF3ximas
-      vezes. Ele vai ficar inutiliz\xE1vel por um tempo e como uma nova era estar\xE1
-      abrindo v\xE1rios desastres ir\xE3o iniciar rapidamente."
-    - Boa sorte!
+    - "Great! Now you must explore the different eras and find the missing pieces
+      of the time machine so you can come back to my laboratory and we can fix the
+      mess you\u2019ve made in the space-time."
+    - "Don\u2019t forget to build defense modules before you go exploring for long."
+    - Should a natural disaster hit while you are still out exploring come back to
+      the portal as fast as you can.
+    - Ah! And be careful the next time you try to fix the machine. It will become
+      unusable for a moment and several disasters will happen as you open a new period
+      in time.
+    - Good luck!
     FocarComCamera: []
     EventosDuranteDialogo:
     - m_PersistentCalls:
@@ -70268,9 +70269,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ao confirmar o portal ficar\xE1 inutiliz\xE1vel e voc\xEA ter\xE1 que
-    se defender contra v\xE1rios desastres. Portanto tenha certeza de que est\xE1
-    preparado(a)."
+  m_text: By clicking confirm the portal will become unusable and you will have to
+    defend from several disasters at once. So please be sure you are ready.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8cffbe7100e2bce47b8acc67874d25a8, type: 2}
   m_sharedMaterial: {fileID: 5132792481272847488, guid: 8cffbe7100e2bce47b8acc67874d25a8,

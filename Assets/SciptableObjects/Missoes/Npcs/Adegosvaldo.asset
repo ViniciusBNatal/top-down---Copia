@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef51c6ae952d9064197bab3d6e99eecc, type: 3}
   m_Name: Adegosvaldo
   m_EditorClassIdentifier: 
-  TextoResumoMissao: Encontre o objeto pessoal
-  TextoDetalheMissao: "Adegosvaldo disse para buscarmos um item de seu passado no
-    parque. Em troca ele nos deixar\xE1 entrar em seu lix\xE3o."
+  TextoResumoMissao: Find the personal object.
+  TextoDetalheMissao: Adegosvaldo told you to find an object of his past in the park.
+    In exchange he will let you into his dumpster.
   iconeMissao: {fileID: 21300000, guid: 6bdc762cc280fb049880a0a16c4e708d, type: 3}

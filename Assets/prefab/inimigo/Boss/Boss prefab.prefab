@@ -157,19 +157,19 @@ MonoBehaviour:
   chanceDeAtaqueMissel: 60
   dialogos:
   - NomeNPC:
-    - Dr. Alho MECHA
+    - Dr. Garlic MECHA
     ImagemNPC:
     - {fileID: 21300000, guid: bc36cfa1ace3dcb49a7b0a6ffc70a22c, type: 3}
     - {fileID: 21300000, guid: bc36cfa1ace3dcb49a7b0a6ffc70a22c, type: 3}
     - {fileID: 21300000, guid: bc36cfa1ace3dcb49a7b0a6ffc70a22c, type: 3}
     - {fileID: 21300000, guid: bc36cfa1ace3dcb49a7b0a6ffc70a22c, type: 3}
     Frases:
-    - "HA Ha ha voc\xEA caiu direitinho no meu plano, a coisa mais conveniente foi
-      voc\xEA ter perdido a mem\xF3ria ap\xF3s ter descoberto meu plano "
-    - "Agora que voc\xEA consertou o portal pude me teletransportar at\xE9 aqui para
-      reav\xEA-lo e por o meu plano maligno em pratica..."
-    - "Finalmente irei criar uma planta\xE7\xE3o de alho por todo o espa\xE7o tempo"
-    - Prepare-se para morrer
+    - HA HA HA! You fell right into my hands! How convenient that you lost your memory
+      right after finding out about my plans!
+    - "Now that you\u2019ve fixed the Time Machine I could teleport here to see you
+      again and put my plans into practice..."
+    - Finally I will be able to create a garlic plantation throughout all of space-time!
+    - Prepare to die.
     FocarComCamera:
     - {fileID: 3199460214712093555}
     EventosDuranteDialogo: []

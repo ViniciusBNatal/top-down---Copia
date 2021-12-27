@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef51c6ae952d9064197bab3d6e99eecc, type: 3}
   m_Name: atirar no boneco de treino
   m_EditorClassIdentifier: 
-  TextoResumoMissao: Atire no boneco de treino 2 vezes
-  TextoDetalheMissao: "segurando o bot\xE3o direito do mouse dispare contra o boneco. "
+  TextoResumoMissao: Shoot the training dummy TWICE
+  TextoDetalheMissao: By holding the RIGHT MOUSE BUTTON shoot the training dummy
+    to freeze it in place and damage it.
   iconeMissao: {fileID: 21300000, guid: 6bdc762cc280fb049880a0a16c4e708d, type: 3}

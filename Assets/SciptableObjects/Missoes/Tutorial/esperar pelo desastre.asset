@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef51c6ae952d9064197bab3d6e99eecc, type: 3}
   m_Name: esperar pelo desastre
   m_EditorClassIdentifier: 
-  TextoResumoMissao: Espere pelo desastre
-  TextoDetalheMissao: "Sempre que o cron\xF4metro chegar a zero, um desastre ir\xE1
-    ocorrer. Chegue a base para se proteger dos desastres e lembre-se de proteger
-    o portal construido os m\xF3dulos corretos."
+  TextoResumoMissao: Wait for the disaster
+  TextoDetalheMissao: Every time the clock hits zero, a natural disaster will hit.
+    Go to the base to protect from disasters and remember to build the necessary
+    defense modules to protect the machine.
   iconeMissao: {fileID: 21300000, guid: 6bdc762cc280fb049880a0a16c4e708d, type: 3}
