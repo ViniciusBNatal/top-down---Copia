@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef51c6ae952d9064197bab3d6e99eecc, type: 3}
   m_Name: criar primeiro modulo
   m_EditorClassIdentifier: 
-  TextoResumoMissao: "Quebre a caixa e construa o m\xF3dulo"
-  TextoDetalheMissao: "V\xE1 At\xE9 a parte inferior da base, quebre a caixa com
-    seu ataque e construa o m\xF3dulo indicado no canto superior direito de sua interface."
+  TextoResumoMissao: Break the box and build the module
+  TextoDetalheMissao: Go to the SOUTH of the base, break the box with your attack
+    and build the module indicated on the top right corner.
   iconeMissao: {fileID: 21300000, guid: 6bdc762cc280fb049880a0a16c4e708d, type: 3}
