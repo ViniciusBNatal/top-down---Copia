@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
+public class desastreManager : MonoBehaviour, TocarSom /*AcoesNoTutorial*/
 {
     public static desastreManager Instance { get; private set; }
     [Header("CONFIGURAÇÃO DO MANAGER")]
     [SerializeField] private float intervaloEntreOsDesastres;
     [SerializeField] private int chanceDeDesastre;
     [SerializeField] private float TempoMinimoRestante;
+    [SerializeField] private float TempoRestanteParaInicioDoAvisoDoRelogio;
     [SerializeField] private float AumentoDeTempAoLiberarNovaFase;
+    [SerializeField] private SoundManager.Som SomRelogio;
     private int minutos;
     private int segundos;
     [Header("TERREMOTO")]
@@ -93,6 +95,7 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
     //desastres
     private void Terremoto()
     {
+        TocarSom(SoundManager.Som.DesastreTerremoto, null);
         CinemachineShake.Instance.ScreenShake(intensidadeScreenShakeTerremoto, true);
         StartCoroutine("baguncaControleJogador");
     }
@@ -108,7 +111,7 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
     }
     private void Virus()
     {
-        //CMefeitos.visualVirus(true);
+        TocarSom(SoundManager.Som.DesastreVirus, null);
         PostProcessScript.Instance.visualVirus(true);
         float distanciaXdoJogador_virusMax = jogadorScript.Instance.mainCamera.orthographicSize * Screen.width / Screen.height - .5f;
         float distanciaYdoJogador_virusMax = jogadorScript.Instance.mainCamera.orthographicSize - .5f;
@@ -118,6 +121,7 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
     private void ChuvaAcida()
     {
         chuvaInstance = Instantiate(chuvaParticulaPrefab, jogadorScript.Instance.transform);
+        TocarSom(SoundManager.Som.DesastreChuvaAcida, null);
         StartCoroutine(this.HitChuvaAcida());
     }
     private void ErrupcaoTerrena()
@@ -195,12 +199,13 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
     }
     private void TempoCurto()
     {
-        if (tempoRestante <= 10f)
+        if (tempoRestante <= TempoRestanteParaInicioDoAvisoDoRelogio)
             AvisoDePerigoTimer();
     }
     public void AvisoDePerigoTimer()
     {
         timer.GetComponent<Animator>().SetTrigger("PERIGO");
+        TocarSom(SomRelogio, null);
     }
     public void SortearDesastresGeral()
     {
@@ -296,7 +301,6 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
         if (enxamePrefab != null)
             Destroy(enxameInst);
         //virus
-        //CMefeitos.visualVirus(false);
         PostProcessScript.Instance.visualVirus(false);
         UIinventario.Instance.GetComponent<Canvas>().enabled = true;
         if (virusEmCena.Count > 0)
@@ -304,24 +308,23 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
             for (int i = virusEmCena.Count; i > 0; i--)
             {
                 Destroy(virusEmCena[i - 1]);
-                //virusEmCena.RemoveAt(i - 1);
             }
             virusEmCena.Clear();
         }
         //Chuva Acida
         Destroy(chuvaInstance);
         //Errupcao Terrena
-        //CMefeitos.visualErrupcaoTerrena(false);
         PostProcessScript.Instance.visualErrupcaoTerrena(false);
         if (errupcoesEmCena.Count > 0)
         {
             for (int i = errupcoesEmCena.Count; i > 0; i--)
             {
                 Destroy(errupcoesEmCena[i - 1]);
-                //errupcoesEmCena.RemoveAt(i - 1);
             }
             errupcoesEmCena.Clear();
         }
+        //Sons Desastres
+        SoundManager.Instance.PararEfeitosSonoros();
         //if (BossAlho.Instance == null)
         //    Ativar_desativarInteracoesDaBase(true, true);
         //else
@@ -467,5 +470,9 @@ public class desastreManager : MonoBehaviour /*AcoesNoTutorial*/
         //return intervaloEntreOsDesastres - BossAlho.Instance.GetReducaoIntervaloDesastres();
         else
             return intervaloEntreOsDesastres + (UIinventario.Instance.GetTempoAtual() - 1) * AumentoDeTempAoLiberarNovaFase;
+    }
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
+    {
+        SoundManager.Instance.TocarSom(som, origemSom);
     }
 }

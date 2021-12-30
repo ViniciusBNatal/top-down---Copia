@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ErrupcaoTerrena : MonoBehaviour
+public class ErrupcaoTerrena : MonoBehaviour, TocarSom
 {
     [SerializeField] private float dano;
     [SerializeField] private int qntdHits;
@@ -13,6 +13,7 @@ public class ErrupcaoTerrena : MonoBehaviour
     private void Start()
     {
         desastreManager.Instance.AdionarErrupcaoALista(this.gameObject);
+        TocarSom(SoundManager.Som.DesastreErupcao, this.transform);
     }
     private void ativarGaiser()
     {
@@ -30,5 +31,9 @@ public class ErrupcaoTerrena : MonoBehaviour
             jogadorScript.Instance.mudancaRelogio(dano, tempoStun);
             jogadorScript.Instance.Knockback(tempoStun, forca, this.transform);
         }
+    }
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
+    {
+        SoundManager.Instance.TocarSom(som, origemSom);
     }
 }

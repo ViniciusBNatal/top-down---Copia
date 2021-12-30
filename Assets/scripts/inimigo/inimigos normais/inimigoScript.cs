@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class inimigoScript : MonoBehaviour
+public class inimigoScript : MonoBehaviour, TocarSom
 {
     [Header("Caracteristicas do Inimigo")]
     [SerializeField] private bool imortal;
@@ -11,6 +11,10 @@ public class inimigoScript : MonoBehaviour
     [SerializeField] private bool disparo;
     [SerializeField] private GameObject projetil;
     [SerializeField] private Transform pontoDisparo;
+    [SerializeField] private SoundManager.Som SomAoSofrereDano;
+    [SerializeField] private SoundManager.Som SomAoDisparar;
+    public SoundManager.Som SomAtaqueMelee;
+    public bool TocarSomAtaqueMelee;
     //[SerializeField] private List<Transform> pontosDeFuga = new List<Transform>();
     //private Dictionary<string, Vector3> pontosDefuga = new Dictionary<string, Vector3>();
     private Vector3 pontoDeFuga;
@@ -59,7 +63,6 @@ public class inimigoScript : MonoBehaviour
     private Coroutine salvandoPontosDeNavegacao = null;
     private bool PrecisaRetornarAoPontoInicial = false;
     private GameObject pontoInicial;
-    private UnityAction AoReceberDano;
     //private string pontoDefugaParaTeleportar;
     private bool escondido = false;
     private bool atirando = false;
@@ -226,6 +229,7 @@ public class inimigoScript : MonoBehaviour
             direcaoProjetil = (alvo.position - pontoDisparo.position).normalized;
             inimigoAnimScript.SetDirecaoProjetil(direcaoProjetil);
             GameObject balains = Instantiate(projetil, pontoDisparo.position, Quaternion.identity);
+            TocarSom(SomAoDisparar, this.transform);
             balains.transform.Rotate(new Vector3(0f, 0f, Mathf.Atan2(direcaoProjetil.y, direcaoProjetil.x) * Mathf.Rad2Deg));
             balains.GetComponent<Rigidbody2D>().velocity = velocidadeProjetil * direcaoProjetil;
             balains.GetComponent<balaHit>().SetDano(danoRanged);
@@ -287,7 +291,7 @@ public class inimigoScript : MonoBehaviour
                 if (flash != null)
                     flash.Flash(Color.red);
                 vidaAtual += dano;
-                //SoundManager.Instance.TocarSom(SoundManager.Som.InimigoLevouHit);
+                TocarSom(SomAoSofrereDano, this.transform);
                 if (vidaAtual > vidaMaxima)
                 {
                     vidaAtual = vidaMaxima;
@@ -444,5 +448,9 @@ public class inimigoScript : MonoBehaviour
                 jogadorScript.Instance.GetAnimacoesTutorial().GetComponent<Animator>().SetBool("MOV", true);
                 break;
         }
+    }
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
+    {
+        SoundManager.Instance.TocarSom(som, origemSom);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnxameDeInsetos : MonoBehaviour
+public class EnxameDeInsetos : MonoBehaviour, TocarSom
 {
     [Header("Valores numéricos")]
     [SerializeField] private float velocidade;
@@ -20,11 +20,12 @@ public class EnxameDeInsetos : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        rb = GetComponent<Rigidbody2D>();
     }
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         alvo = jogadorScript.Instance.transform;
+        TocarSom(SoundManager.Som.DesastreEnxame, this.transform);
         StartCoroutine("movimentacao");
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -79,5 +80,9 @@ public class EnxameDeInsetos : MonoBehaviour
             jogadorScript.Instance.mudancaRelogio(dano, .15f);
             yield return new WaitForSeconds(intervaloEntreAtaques);
         }
+    }
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
+    {
+        SoundManager.Instance.TocarSom(som, origemSom);
     }
 }

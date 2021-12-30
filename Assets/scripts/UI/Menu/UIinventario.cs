@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIinventario : MonoBehaviour, AcoesNoTutorial
+public class UIinventario : MonoBehaviour, AcoesNoTutorial, TocarSom
 {
     public static UIinventario Instance { get; private set; }
     private bool inventarioAberto = false;
@@ -226,6 +226,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
                     AtualizaInventarioUI(slot.receita.itensNecessarios[tiposRecursosParaCrafting], -slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]);
                     //itens[slot.receita.itensNecessarios[tiposRecursosParaCrafting].ID].atualizaQuantidade(-slot.construcaoConfirmada().quantidadeDosRecursos[tiposRecursosParaCrafting]);
                 }
+            TocarSom(SoundManager.Som.BotaoConstruiuModulo, null);
                 jogadorScript.Instance.SetModuloConstruido(slot.construcaoConfirmada());
                 BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(true);
                 jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(BaseScript.Instance.transform, zoomOutAoConstruir);
@@ -258,6 +259,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         if (possuiTodosOsRecursos == slot.GetReceita().itensNecessarios.Count)// caso tenha todos os itens e a quantidade necessária, consome eles para criar a receita
         {
             slotReceitaMelhoriaselecionada = slot;
+            TocarSom(SoundManager.Som.BotaoConstruiuModulo, null);
             if (TutorialSetUp.Instance == null)
                 abreConfirmacaoMelhoriaBase();
             else
@@ -411,18 +413,8 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial
         else
             return true;
     }
-    private string NomeFasePorBuildIndex(int index)
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
     {
-        string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(index);//pega o caminho da cena na pasta de arquivos
-        string cenaParaAbrir = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
-        return cenaParaAbrir;
+        SoundManager.Instance.TocarSom(som, origemSom);
     }
-    //public void AbrirVitoria()
-    //{
-    //    jogadorScript.Instance.MudarEstadoJogador(5);
-    //    craftingBossFinal.SetActive(false);
-    //    inventarioAberto = true;
-    //    inventarioParent.SetActive(true);
-    //    abaVitoriaDoJogo.SetActive(true);
-    //}
 }

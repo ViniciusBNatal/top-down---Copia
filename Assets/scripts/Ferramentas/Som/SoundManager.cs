@@ -20,25 +20,48 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private Som somTestes;
     public enum Som
     {
-        Menu,
-        Tutorial,
-        BaseJogador,
-        Floresta,
-        Cidade,
-        Lixao,
-        JogadorAndando,
+        MusicaMenu,
+        MusicaTutorial,
+        MusicaBaseJogador,
+        MusicaFloresta,
+        MusicaCidade,
+        MusicaLixao,
         JogadorAtirando,
         JogadorAtqMelee,
         JogadorLevouHit,
+        JogadorColetouItem,
+        JogadorBateuEmRecurso,
         InimigoLevouHit,
         BaseExplodindo,
+        BaseDefendida,
+        BaseLevouHit,
         ModuloExplodindo,
-        ViagemNoTempo
+        ConstrucaoModulo,
+        ViagemNoTempo,
+        DesastreVirus,
+        DesastreTerremoto,
+        DesastreErupcao,
+        DesastreChuvaAcida,
+        DesastreEnxame,
+        AbelhaLevouHit,
+        RoboSentiAtirando,
+        RoboLixaoLevouHit,
+        RoboLixaoAtaque,
+        RatoLevouHit,
+        MinhocaAtirando,
+        MinhocaLevouHit,
+        AlhoSendoPlantado,
+        AreaDeGasAlho,
+        MisselEmVoo,
+        MisselExplodindo,
+        BotaoConstruiuModulo,
+        RecursosInsuficientesBotao,
+        ContagemRegressiva,
     };
     public enum TipoSom
     {
-        Global,
-        Local
+        Musica,
+        EfeitoSonoro
     };
     private void Awake()
     {
@@ -50,11 +73,13 @@ public class SoundManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
-    /*private void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
-            TocarSom(somTestes);
-    }*/
+            TocarSom(somTestes, null);
+        if (Input.GetKeyDown(KeyCode.P))
+            PararEfeitosSonoros();
+    }
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -76,38 +101,41 @@ public class SoundManager : MonoBehaviour
             }
         }
     }
-    public void TocarSom(Som tipoDoSom)
+    public void TocarSom(Som tipoDoSom, Transform origemSom)
     {
         if (PodeTocarSom(tipoDoSom))
         {
             if (SomGobj == null)
             {
-                SomGobj = Instantiate(SomEfeitosGobjPrefab, this.transform);//new GameObject("Somgobj")
+                SomGobj = Instantiate(SomEfeitosGobjPrefab, this.transform);
                 SomEfeitosSource = SomGobj.GetComponent<AudioSource>();
                 SomGobj.transform.SetParent(this.transform);
             }
-            SomConfig somEscolhido = PegarSom(tipoDoSom);
-            SomEfeitosSource.volume = somEscolhido.Volume;
-            SomEfeitosSource.pitch = somEscolhido.Pitch;
-            SomEfeitosSource.loop = somEscolhido.Loop;
-            switch (somEscolhido.tipoSom)
+            if (origemSom != null)
             {
-                case TipoSom.Global:
-                    SomEfeitosSource.clip = somEscolhido.ArquivosDESom[(int)Random.Range(0, somEscolhido.ArquivosDESom.Length)]; 
-                    SomEfeitosSource.Play();
-                    break;
-                case TipoSom.Local:
-                    SomEfeitosSource.PlayOneShot(somEscolhido.ArquivosDESom[(int)Random.Range(0, somEscolhido.ArquivosDESom.Length)]);
-                    break;
+                if (origemSom.gameObject.GetComponentInChildren<AudioSource>())
+                {
+                    origemSom.gameObject.GetComponentInChildren<AudioSource>().PlayOneShot(AudioSourceConfiguracao(PegarSom(tipoDoSom).som, SomEfeitosSource).ArquivosDESom[Random.Range(0, PegarSom(tipoDoSom).ArquivosDESom.Length)]);
+                }
+                else
+                {
+                    GameObject gobj = Instantiate(SomEfeitosGobjPrefab, origemSom.position, Quaternion.identity, origemSom);//new GameObject("Somgobj")
+                    gobj.GetComponent<AudioSource>().PlayOneShot(AudioSourceConfiguracao(PegarSom(tipoDoSom).som, SomEfeitosSource).ArquivosDESom[Random.Range(0, PegarSom(tipoDoSom).ArquivosDESom.Length)]);
+                }
+            }
+            else
+            {
+                SomEfeitosSource.PlayOneShot(AudioSourceConfiguracao(PegarSom(tipoDoSom).som, SomEfeitosSource).ArquivosDESom[Random.Range(0, PegarSom(tipoDoSom).ArquivosDESom.Length)]);
             }
         }
-        //switch (tipoDoSom)
-        //{
-        //    default:
-        //        SomSource.Play()
-        //
-        //        break;
-        //}
+    }
+    private SomConfig AudioSourceConfiguracao(Som tipoDoSom, AudioSource ausc)
+    {
+        SomConfig somEscolhido = PegarSom(tipoDoSom);
+        ausc.volume = somEscolhido.Volume;
+        ausc.pitch = somEscolhido.Pitch;
+        ausc.loop = somEscolhido.Loop;
+        return somEscolhido;
     }
     private SomConfig PegarSom(Som tipoSom)
     {
@@ -156,10 +184,10 @@ public class SoundManager : MonoBehaviour
         }
         string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(SceneManager.GetActiveScene().buildIndex);//pega o caminho da cena na pasta de arquivos
         string cenaAtualNome = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
-        if (SonsDicionario.ContainsKey(cenaAtualNome))
+        if (SonsDicionario.ContainsKey("Musica" + cenaAtualNome))
         {
             SonsDicionario[cenaAtualNome].Loop = true;
-            SonsDicionario[cenaAtualNome].tipoSom = TipoSom.Global;
+            //SonsDicionario[cenaAtualNome].tipoSom = TipoSom.Musica;
             SomMusicaSource.volume = SonsDicionario[cenaAtualNome].Volume;
             SomMusicaSource.pitch = SonsDicionario[cenaAtualNome].Pitch;
             SomMusicaSource.loop = SonsDicionario[cenaAtualNome].Loop;
@@ -168,17 +196,22 @@ public class SoundManager : MonoBehaviour
                 SomMusicaSource.Play();
         }
     }
-    private string NomeFasePorBuildIndex(int index)
+    public void PararEfeitosSonoros()
     {
-        string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(index);//pega o caminho da cena na pasta de arquivos
-        string cena = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
-        return cena;
+        SomEfeitosSource.Stop();
     }
+    //private string NomeFasePorBuildIndex(int index)
+    //{
+    //    string CaminhoCena = SceneUtility.GetScenePathByBuildIndex(index);//pega o caminho da cena na pasta de arquivos
+    //    string cena = CaminhoCena.Substring(0, CaminhoCena.Length - 6).Substring(CaminhoCena.LastIndexOf('/') + 1);//retira o .unity e começa do ultimo /+1 char para pegar o nome
+    //    return cena;
+    //}
     [System.Serializable]
     public class SomConfig
     {
+        public string nomeElemento;
         public Som som;
-        public TipoSom tipoSom;
+        //public TipoSom tipoSom;
         public AudioClip[] ArquivosDESom;
         [Range(0f, 1f)]
         public float Volume;

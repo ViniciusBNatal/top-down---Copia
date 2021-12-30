@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class jogadorScript : MonoBehaviour, AcoesNoTutorial
+public class jogadorScript : MonoBehaviour, AcoesNoTutorial, TocarSom
 {
     public static jogadorScript Instance { get; private set; }
     //variáveis publicas
@@ -59,7 +59,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
     private Vector2 direcaoProjetil = Vector2.zero;
     [SerializeField] private GameObject caixaComTudo;
     private GameObject balaDisparada = null;
-    [SerializeField] private Missao m;
+    //[SerializeField] private Missao m;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -115,7 +115,6 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         //    MissoesManager.Instance.AdicionarMissao(m);
         //if (Input.GetKeyDown(KeyCode.KeypadEnter))
         //    MissoesManager.Instance.ConcluirMissao(m);
-        //    SoundManager.Instance.TocarSom(SoundManager.Som.ModuloExplodindo);
         //    Debug.Log(TutorialSetUp.Instance);
         //    SceneManager.LoadScene("testes");
     }
@@ -162,7 +161,6 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 Vector3 dirAnim = (PegaPosicoMouse() - transform.position).normalized;
                 direcaoProjetil = (PegaPosicoMouse() - pontoDeDisparo.position).normalized;
                 JogadorAnimScript.Instance.AnimarDisparo(dirAnim.x, dirAnim.y, taxaDeDisparo, atirando);
-                //SoundManager.Instance.TocarSom(SoundManager.TipoSom.JogadorAtirando);
             }
         }
     }
@@ -203,8 +201,8 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         if (atacando)
         {
             Collider2D[] objetosAcertados = Physics2D.OverlapCircleAll(posicaoMelee.position, alcanceMelee, objetosAcertaveisLayer);//hit em objetos
-            //if (objetosAcertados.Length == 0)
-            //    SoundManager.Instance.TocarSom(SoundManager.Som.JogadorAtqMelee);
+            if (objetosAcertados.Length == 0)
+                TocarSom(SoundManager.Som.JogadorAtqMelee, this.transform);
             foreach (Collider2D objeto in objetosAcertados)
             {
                 if (objeto.gameObject.layer == 8)
@@ -213,6 +211,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
                 }
                 else if (objeto.gameObject.layer == 9 && !desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
                 {
+                    TocarSom(SoundManager.Som.JogadorBateuEmRecurso, this.transform);
                     objeto.gameObject.GetComponentInParent<CentroDeRecurso>().RecebeuHit();
                 }
             }
@@ -348,6 +347,7 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         {
             atacando = false;
         }
+        TocarSom(SoundManager.Som.JogadorLevouHit, this.transform);
         JogadorAnimScript.Instance.Hit(duracaoStn);
         desastreManager.Instance.AvisoDePerigoTimer();
         //if (desastreManager.Instance.VerificarSeUmDesastreEstaAcontecendo())
@@ -462,5 +462,13 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial
         }
         else
             desaceleracao = valor;
+    }
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
+    {
+        SoundManager.Instance.TocarSom(som, origemSom);
+    }
+    public void TocarSomPorAnimacao(SoundManager.Som som)
+    {
+        SoundManager.Instance.TocarSom(som, this.transform);
     }
 }

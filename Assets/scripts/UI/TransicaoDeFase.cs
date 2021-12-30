@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class TransicaoDeFase : MonoBehaviour
+public class TransicaoDeFase : MonoBehaviour, TocarSom
 {
     public static string faseParaCarregar;
     private Image sprite;
@@ -24,9 +24,13 @@ public class TransicaoDeFase : MonoBehaviour
             jogadorScript.Instance.MudarEstadoJogador(0);
         this.gameObject.SetActive(false);
     }
-    public void SomTrocaDeCena()
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
+    {
+        SoundManager.Instance.TocarSom(som, origemSom);
+    }
+    public void TocarSomPorAnimacao(SoundManager.Som som)
     {
         sprite.enabled = true;
-        //SoundManager.Instance.TocarSom(SoundManager.Som.ViagemNoTempo);
+        SoundManager.Instance.TocarSom(som, null);
     }
 }

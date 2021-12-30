@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class craftingSlot : MonoBehaviour
+public class craftingSlot : MonoBehaviour, TocarSom
 {
     public ReceitaDeCrafting receita;
     [SerializeField] private Image[] botoesDeForca = new Image[3];
@@ -94,6 +94,7 @@ public class craftingSlot : MonoBehaviour
                 iconesDeRecursosNecessarios[recurso].SetTrigger("INEXISTENTE");
                 break;
         }
+        TocarSom(SoundManager.Som.RecursosInsuficientesBotao, null);
     }
     public ReceitaDeCrafting construcaoConfirmada()
     {
@@ -111,12 +112,8 @@ public class craftingSlot : MonoBehaviour
     {
         return forca;
     }
-    //public bool GetForcaFoiSelecionada()
-    //{
-    //    return forcaSelecionada;
-    //}
-    //public void SetForcaFoiSelecionada(bool b)
-    //{
-    //    forcaSelecionada = b;
-    //}
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
+    {
+        SoundManager.Instance.TocarSom(som, origemSom);
+    }
 }

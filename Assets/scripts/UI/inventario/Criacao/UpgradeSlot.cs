@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class UpgradeSlot : MonoBehaviour
+public class UpgradeSlot : MonoBehaviour, TocarSom
 {
     [Header("Confugurações do Slot de Upgrade")]
     [SerializeField] private ReceitaDeCrafting receita;
@@ -58,6 +58,7 @@ public class UpgradeSlot : MonoBehaviour
                 iconesDeRecursosNecessarios[recurso].SetTrigger("INEXISTENTE");
                 break;
         }
+        TocarSom(SoundManager.Som.RecursosInsuficientesBotao, null);
     }
     public ReceitaDeCrafting GetReceita()
     {
@@ -66,5 +67,9 @@ public class UpgradeSlot : MonoBehaviour
     public string GetFaseParaAbrir()
     {
         return FaseParaAbrir;
+    }
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
+    {
+        SoundManager.Instance.TocarSom(som, origemSom);
     }
 }

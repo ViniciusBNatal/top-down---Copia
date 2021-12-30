@@ -45,8 +45,23 @@ PrefabInstance:
       objectReference: {fileID: 3604400109592697169}
     - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}
+      propertyPath: SomAoDisparar
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
       propertyPath: forcaRepulsao
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: SomAtaqueMelee
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
+        type: 3}
+      propertyPath: SomAoSofrereDano
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 566375125526406915, guid: 6959c447e85d94e4fac3d623cdfa8a03,
         type: 3}

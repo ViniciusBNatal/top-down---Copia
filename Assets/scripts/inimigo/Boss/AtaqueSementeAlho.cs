@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AtaqueSementeAlho : MonoBehaviour
+public class AtaqueSementeAlho : MonoBehaviour, TocarSom
 {
     [Header("Valores Numéricos")]
     [SerializeField] private float velocidade;
@@ -94,5 +94,13 @@ public class AtaqueSementeAlho : MonoBehaviour
     public float GetIntervaloHitsAraToxica()
     {
         return intervaloEntreHitsNaAreaToxica;
+    }
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
+    {
+        SoundManager.Instance.TocarSom(som, origemSom);
+    }
+    public void TocarSomPorAnimacao(SoundManager.Som som)
+    {
+        SoundManager.Instance.TocarSom(som, this.transform);
     }
 }

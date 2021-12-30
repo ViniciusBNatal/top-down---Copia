@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
+public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, TocarSom
 {
     public static BaseScript Instance { get; private set; }
     [Header("COMPONENTES DA BASE")]
@@ -419,13 +419,17 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas
         desastreManager.Instance.PararTodasCorotinas();
         animator.SetTrigger("DESTRUIDO");
     }
-    public void SomPortalDestruido()
-    {
-        //SoundManager.Instance.TocarSom(SoundManager.Som.BaseExplodindo);
-    }
     public void AbrirGameOver()
     {
         InterfaceMenu.Instance.AbrirGameOver();
         //UIinventario.Instance.abrirAbaDeGameOver();
+    }
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
+    {
+        SoundManager.Instance.TocarSom(som, origemSom);
+    }
+    public void TocarSomPorAnimacao(SoundManager.Som som)
+    {
+        SoundManager.Instance.TocarSom(som, this.transform);
     }
 }

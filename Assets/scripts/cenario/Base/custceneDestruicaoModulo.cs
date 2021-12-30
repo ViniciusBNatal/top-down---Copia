@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class custceneDestruicaoModulo : MonoBehaviour
+public class custceneDestruicaoModulo : MonoBehaviour, TocarSom
 {
     [HideInInspector] public static bool OcorreuCustcene { get; set; }
     public void FimCutscene()
@@ -25,8 +25,8 @@ public class custceneDestruicaoModulo : MonoBehaviour
             //    BaseScript.Instance.RecomecarDesastres();
         }
     }
-    public void SomModuloExplodindo()
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
     {
-        SoundManager.Instance.TocarSom(SoundManager.Som.ModuloExplodindo);
+        SoundManager.Instance.TocarSom(som, origemSom);
     }
 }

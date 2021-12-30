@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &399573667741273273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 399573667741273274}
+  - component: {fileID: 399573667741273279}
+  - component: {fileID: 399573667741273278}
+  - component: {fileID: 399573667741273277}
+  - component: {fileID: 399573667741273276}
+  - component: {fileID: 399573667741273275}
+  m_Layer: 11
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &399573667741273274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399573667741273273}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &399573667741273279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399573667741273273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7925e10f5bb7246439a4b2f7a9e5ac2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intervaloEntreOsDesastres: 240
+  chanceDeDesastre: 75
+  TempoMinimoRestante: 30
+  TempoRestanteParaInicioDoAvisoDoRelogio: 10
+  AumentoDeTempAoLiberarNovaFase: 60
+  SomRelogio: 36
+  intensidadeScreenShakeTerremoto: 3
+  taxaDeMudancaDosControles: 0.5
+  unidadesX: 1
+  unidadesY: 1
+  forcaTerremoto: 5
+  enxamePrefab: {fileID: 4469575966397712580, guid: 365505ebc0523a54eae4c63922d371e4,
+    type: 3}
+  velocidadeEnxame: 3
+  danoEnxame: 0.1
+  intervaloEntreAtaques: 1
+  intervaloEntreSpawnsVirus: 4
+  tempParaSumirUI: 2
+  paredeVirusPrefab: {fileID: 5412659093879239038, guid: 2d7f9d67aea68e743a70694a659e361c,
+    type: 3}
+  distanciaXdoJogador_virusMin: 1
+  distanciaYdoJogador_virusMin: 1
+  chuvaParticulaPrefab: {fileID: 4346469235372037461, guid: 852ab737df9886942b65552fe40e0bea,
+    type: 3}
+  danoDoAcido: 1
+  intervaloEntreHitsChuvaAcida: 1
+  errupcaoPrefab: {fileID: 9143283159188315436, guid: 229f1bd0ea6d8cf4493ecdb4a4333136,
+    type: 3}
+  intervaloEntreSpawnsErrupcao: 3
+  distanciaXdoJogador_errupcaoMin: 3
+  distanciaYdoJogador_errupcaoMin: 3
+  timer: {fileID: 0}
+  desastresSorteados:
+  - 
+  - 
+  - 
+  - 
+  - 
+  forcasSorteados: 0000000000000000000000000000000000000000
+--- !u!114 &399573667741273278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399573667741273273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab452d6adb9fab94f9b8d4ae554362a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desastreNome:
+  - TERREMOTO
+  - ERRUPCAO TERRENA
+  - NUVEM DE INSETOS
+  - VIRUS
+  - CHUVA ACIDA
+  - CANHAO
+  ativar: 0101000000
+  iconesModulos:
+  - {fileID: 21300000, guid: 434758122da944744a210148b3df4709, type: 3}
+  - {fileID: 21300000, guid: 7456af79cbd48ef4199daaae308c76fb, type: 3}
+  iconesMultiplicador:
+  - {fileID: 21300000, guid: bc66f9cf2d22cb24da6f9acfdc69d067, type: 3}
+  - {fileID: 21300000, guid: 05bd5779e27d66548b024d8c671d8bd2, type: 3}
+  - {fileID: 21300000, guid: 61edaed37600bb14c85aa30b847eea92, type: 3}
+  iconesDesastre:
+  - {fileID: 21300000, guid: b156cf50e718d3d43a790431c07bc7a4, type: 3}
+  - {fileID: 21300000, guid: 14d3a65f16d87794b994137b683b7b86, type: 3}
+  - {fileID: 21300000, guid: cec87da207db9714da4dcc0bd415c067, type: 3}
+  - {fileID: 21300000, guid: 6fceeabbd7355464d9567918e66605af, type: 3}
+  - {fileID: 21300000, guid: 67f5e11fb65cc2e4f850713e9995db8d, type: 3}
+--- !u!114 &399573667741273277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399573667741273273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 363884d96319e724e8135d3cc297eb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConteudoMissaoPrefab: {fileID: 5535220580627860416, guid: 27cc717c93cd6274e9f84d0adf924c51,
+    type: 3}
+  scrollViewConteudo: {fileID: 0}
+  TrackerMissoes: {fileID: 0}
+  textoObjetivo: {fileID: 0}
+  posicaoMissoesNoTracker: []
+--- !u!114 &399573667741273276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399573667741273273}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2ef34d9e9f3e74586bac9434320ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &399573667741273275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399573667741273273}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd680629d296b64e915eabe40e6c8d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

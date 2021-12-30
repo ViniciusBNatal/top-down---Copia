@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
+public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas, TocarSom
 {
     [SerializeField] private item item;
     [SerializeField] private int qntd;
@@ -52,6 +52,7 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     }
     public void ColetaItem()
     {
+        TocarSom(SoundManager.Som.JogadorColetouItem, null);
         GameObject gobj = Instantiate(AnimacaoTextoColetaPrefab, transform.position + new Vector3(0f, 1f, 0f), Quaternion.identity);
         AnimTextoFlutuanteScript script = gobj.GetComponentInChildren<AnimTextoFlutuanteScript>();
         script.SetVelocidadeAnim(velocidadeAnimTextoFlutuante);
@@ -122,5 +123,9 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas
     public void SetNPC(GameObject npc)
     {
         NPCRelacionado = npc;
+    }
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
+    {
+        SoundManager.Instance.TocarSom(som, origemSom);
     }
 }

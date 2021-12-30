@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, SalvamentoEntreCenas, ClickInter
+public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, SalvamentoEntreCenas, ClickInter, TocarSom
 {
     [SerializeField] private SpriteRenderer iconeDoModulo;
     [SerializeField] private SpriteRenderer iconeDoDesastre;
@@ -35,6 +35,7 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
     public void ConstruirModulo(int forca, string desastre, int modulo)
     {
         BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(false);
+        TocarSom(SoundManager.Som.ConstrucaoModulo, this.transform);
         if (modulo == 2)
         {
             SetModulo(modulo);
@@ -166,5 +167,10 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
             if (iconeSlotDeModulo.material != materiais[0])
                 iconeSlotDeModulo.material = materiais[0];
         }
+    }
+
+    public void TocarSom(SoundManager.Som som, Transform origemSom)
+    {
+        SoundManager.Instance.TocarSom(som, origemSom);
     }
 }
