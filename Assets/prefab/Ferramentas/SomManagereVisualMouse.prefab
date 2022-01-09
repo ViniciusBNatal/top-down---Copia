@@ -54,16 +54,16 @@ MonoBehaviour:
     ArquivosDESom:
     - {fileID: 8300000, guid: 696940f082bf7364abf1898cad6bd207, type: 3}
     - {fileID: 8300000, guid: 8302f19eb723aa046934c41bed31a4de, type: 3}
-    Volume: 0.062
-    Pitch: 0.34
+    Volume: 0.42
+    Pitch: 0.77
     Loop: 0
     intervaloEntreSons: 0.5
   - nomeElemento: Base Defendida
     som: 13
     ArquivosDESom:
     - {fileID: 8300000, guid: 5e16bf81ed068be499c7b561bfbce0e2, type: 3}
-    Volume: 0.092
-    Pitch: 0.59
+    Volume: 0.583
+    Pitch: 0.83
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Base Explodindo
@@ -71,56 +71,56 @@ MonoBehaviour:
     ArquivosDESom:
     - {fileID: 8300000, guid: 696940f082bf7364abf1898cad6bd207, type: 3}
     - {fileID: 8300000, guid: 8302f19eb723aa046934c41bed31a4de, type: 3}
-    Volume: 0.122
-    Pitch: 0.3
+    Volume: 0.45
+    Pitch: 0.75
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Base Levou Hit
     som: 14
     ArquivosDESom:
     - {fileID: 8300000, guid: 7807a6fc86b3cd4429ed6f15be0d9e5e, type: 3}
-    Volume: 0.317
-    Pitch: 0.72
+    Volume: 0.65
+    Pitch: 1
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Construcao Modulo
     som: 16
     ArquivosDESom:
     - {fileID: 8300000, guid: 0fdf4349c0798f848a820f9248f03b8c, type: 3}
-    Volume: 0.122
-    Pitch: 0.3
+    Volume: 0.61
+    Pitch: 1.04
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Desastre Virus
     som: 18
     ArquivosDESom:
     - {fileID: 8300000, guid: 815c0b4d24093754caa55f593b3a2c24, type: 3}
-    Volume: 0.579
-    Pitch: 1.94
+    Volume: 1
+    Pitch: 1.51
     Loop: 1
     intervaloEntreSons: 0
   - nomeElemento: Desastre Chuva Acida
     som: 21
     ArquivosDESom:
     - {fileID: 8300000, guid: 9b6ee9df9d7524045bba8b964768196f, type: 3}
-    Volume: 0.122
-    Pitch: 0.3
+    Volume: 0.09
+    Pitch: 1
     Loop: 1
     intervaloEntreSons: 0
   - nomeElemento: Desastre Enxame
     som: 22
     ArquivosDESom:
     - {fileID: 8300000, guid: 2172d5b04a1c28e48a89461be8dc1851, type: 3}
-    Volume: 0.838
-    Pitch: 2.42
+    Volume: 0.8
+    Pitch: 1
     Loop: 1
     intervaloEntreSons: 0
   - nomeElemento: Desastre Terremoto
     som: 19
     ArquivosDESom:
     - {fileID: 8300000, guid: 71a1a92666d75294085b06e5b5944c74, type: 3}
-    Volume: 0.122
-    Pitch: 0.3
+    Volume: 0.436
+    Pitch: 1.26
     Loop: 1
     intervaloEntreSons: 0
   - nomeElemento: Desastre Erupcao
@@ -128,88 +128,88 @@ MonoBehaviour:
     ArquivosDESom:
     - {fileID: 8300000, guid: 82e7a530bef904f4f900bae8483433e1, type: 3}
     - {fileID: 8300000, guid: f2460fa8174819145b8e51d78e5988d9, type: 3}
-    Volume: 0.122
-    Pitch: 0.3
+    Volume: 0.265
+    Pitch: 0.75
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Abelha levou Hit
     som: 23
     ArquivosDESom:
     - {fileID: 8300000, guid: 8ce4df743bd21f14bb6833cd57485b71, type: 3}
-    Volume: 0.491
-    Pitch: 0.89
+    Volume: 0.817
+    Pitch: 0.1
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Robo Sentinela Atirando
     som: 24
     ArquivosDESom:
     - {fileID: 8300000, guid: a5071cd08f6359940adb21eb85a33dd7, type: 3}
-    Volume: 0.497
-    Pitch: 1.35
+    Volume: 0.869
+    Pitch: 1
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Robo Lixao Levou hit
     som: 25
     ArquivosDESom:
     - {fileID: 8300000, guid: 3784635f4c9bd054c9546501cae952dc, type: 3}
-    Volume: 0.461
-    Pitch: 1.55
+    Volume: 0.75
+    Pitch: 1.06
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Rato Levou Hit
     som: 27
     ArquivosDESom:
     - {fileID: 8300000, guid: 74363beb6650d8a43a9c1d8d8212624d, type: 3}
-    Volume: 0.449
-    Pitch: 1.26
+    Volume: 0.44
+    Pitch: 1
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Minhoca Atirando
     som: 28
     ArquivosDESom:
     - {fileID: 8300000, guid: e8b54efaed1a25d4e8ce2c7f027f1708, type: 3}
-    Volume: 0.479
-    Pitch: 1.17
+    Volume: 0.75
+    Pitch: 1.13
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Minhoca Levou Hit
     som: 29
     ArquivosDESom:
     - {fileID: 8300000, guid: e8b54efaed1a25d4e8ce2c7f027f1708, type: 3}
-    Volume: 0.365
-    Pitch: 0.89
+    Volume: 0.519
+    Pitch: 0.86
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Confirmacao Criacao Botao
     som: 34
     ArquivosDESom:
     - {fileID: 8300000, guid: cdd99ff79cbbec94e9d922eef58d2fd4, type: 3}
-    Volume: 0.365
-    Pitch: 0.89
+    Volume: 0.758
+    Pitch: 1
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Falha Na Construcao Botao
     som: 35
     ArquivosDESom:
     - {fileID: 8300000, guid: 61aa0dbac409e254999cc08e99ad6c8f, type: 3}
-    Volume: 0.365
-    Pitch: 0.89
+    Volume: 0.678
+    Pitch: 1
     Loop: 0
     intervaloEntreSons: 1
   - nomeElemento: Contagem Regressiva Relogio
     som: 36
     ArquivosDESom:
     - {fileID: 8300000, guid: 2cf26db9a8c064448abb9de57b0893d1, type: 3}
-    Volume: 0.365
-    Pitch: 0.89
+    Volume: 0.555
+    Pitch: 1
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Viagem No Tempo
     som: 17
     ArquivosDESom:
     - {fileID: 8300000, guid: efc62a6244485034aa0aa761d3a70fad, type: 3}
-    Volume: 0.365
-    Pitch: 0.89
+    Volume: 0.5
+    Pitch: 0.86
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Jogador Atirando
@@ -217,16 +217,16 @@ MonoBehaviour:
     ArquivosDESom:
     - {fileID: 8300000, guid: d850afd6f66246547a58a1d5483a4eca, type: 3}
     - {fileID: 8300000, guid: a781a48d7e67e49438059b59e021db21, type: 3}
-    Volume: 0.365
-    Pitch: 0.89
+    Volume: 0.944
+    Pitch: 1
     Loop: 0
     intervaloEntreSons: 0.02
   - nomeElemento: Jogadoe Ataque Melee
     som: 7
     ArquivosDESom:
     - {fileID: 8300000, guid: eccceb9542b15844082ab8060e0d1c27, type: 3}
-    Volume: 0.365
-    Pitch: 0.89
+    Volume: 0.885
+    Pitch: 1
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Jogador Levou Hit
@@ -234,8 +234,8 @@ MonoBehaviour:
     ArquivosDESom:
     - {fileID: 8300000, guid: 45d15946cffeec54e91236ea90fce273, type: 3}
     - {fileID: 8300000, guid: 9cea154ab7036614492981fd832d922e, type: 3}
-    Volume: 0.365
-    Pitch: 0.89
+    Volume: 0.9
+    Pitch: 1
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Jogador Coletou Item
@@ -243,18 +243,18 @@ MonoBehaviour:
     ArquivosDESom:
     - {fileID: 8300000, guid: ad6f3cc4003786b46a6ae95eb08d4e25, type: 3}
     Volume: 0.365
-    Pitch: 0.89
+    Pitch: 1
     Loop: 0
     intervaloEntreSons: 0
   - nomeElemento: Jogador Bateu Em Recurso
     som: 10
     ArquivosDESom:
     - {fileID: 8300000, guid: a1407ec8b3443c649addc64c17419a40, type: 3}
-    Volume: 0.365
-    Pitch: 0.89
+    Volume: 0.37
+    Pitch: 1
     Loop: 0
     intervaloEntreSons: 0.3
-  somTestes: 13
+  somTestes: 36
 --- !u!114 &6767783231081190106
 MonoBehaviour:
   m_ObjectHideFlags: 0
