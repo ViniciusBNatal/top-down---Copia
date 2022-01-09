@@ -93,40 +93,43 @@ public class IndicadorDosDesastres : MonoBehaviour
     }
     public void AtualizarCheckDeModuloConstruido()
     {
-        for (int i = 0; i < iconesDesenhados.Count; i++)
+        if (BaseScript.Instance != null)
         {
-            int forcaTotal = 0;
-            int ModulosNaoCorrespondentes = 0;
-            for (int a = 0; a < BaseScript.Instance.GetQntdModulos(); a++)
+            for (int i = 0; i < iconesDesenhados.Count; i++)
             {
-                if (BaseScript.Instance.GetModuloNaLista(a).GetNomeDesastre() == iconesDesenhados[i].desastre && BaseScript.Instance.GetModuloNaLista(a).GetModulo() == 1)
+                int forcaTotal = 0;
+                int ModulosNaoCorrespondentes = 0;
+                for (int a = 0; a < BaseScript.Instance.GetQntdModulos(); a++)
                 {
-                    if (BaseScript.Instance.GetModuloNaLista(a).GetForca() >= iconesDesenhados[i].forca)
+                    if (BaseScript.Instance.GetModuloNaLista(a).GetNomeDesastre() == iconesDesenhados[i].desastre && BaseScript.Instance.GetModuloNaLista(a).GetModulo() == 1)
                     {
-                        iconesDesenhados[i].caixaDeCheck.enabled = true;
-                        break;
-                    }
-                    else
-                    {
-                        forcaTotal += BaseScript.Instance.GetModuloNaLista(a).GetForca();
-                        if (forcaTotal >= iconesDesenhados[i].forca)
+                        if (BaseScript.Instance.GetModuloNaLista(a).GetForca() >= iconesDesenhados[i].forca)
                         {
                             iconesDesenhados[i].caixaDeCheck.enabled = true;
                             break;
                         }
                         else
+                        {
+                            forcaTotal += BaseScript.Instance.GetModuloNaLista(a).GetForca();
+                            if (forcaTotal >= iconesDesenhados[i].forca)
+                            {
+                                iconesDesenhados[i].caixaDeCheck.enabled = true;
+                                break;
+                            }
+                            else
+                                iconesDesenhados[i].caixaDeCheck.enabled = false;
+                        }
+                    }
+                    else
+                    {
+                        ModulosNaoCorrespondentes++;
+                        if (ModulosNaoCorrespondentes == BaseScript.Instance.GetQntdModulos())
                             iconesDesenhados[i].caixaDeCheck.enabled = false;
                     }
                 }
-                else
-                {
-                    ModulosNaoCorrespondentes++;
-                    if (ModulosNaoCorrespondentes == BaseScript.Instance.GetQntdModulos())
-                        iconesDesenhados[i].caixaDeCheck.enabled = false;
-                }
             }
+            VerificarSeDefesaEstaPronta();
         }
-        VerificarSeDefesaEstaPronta();
     }
     public void VerificarSeDefesaEstaPronta()
     {
@@ -136,7 +139,7 @@ public class IndicadorDosDesastres : MonoBehaviour
             if (iconesDesenhados[i].caixaDeCheck.enabled)
                 defesasProntas++;
         }
-        if (defesasProntas == iconesDesenhados.Count && BaseScript.Instance.GetDuranteDefesaParaMelhorarBase())
+        if (defesasProntas == iconesDesenhados.Count && BaseScript.duranteMelhoria)
             desastreManager.Instance.ConfigurarTimer(3f, desastreManager.Instance.GetTempoAcumuladoParaDesastre(), false);
     }
 }

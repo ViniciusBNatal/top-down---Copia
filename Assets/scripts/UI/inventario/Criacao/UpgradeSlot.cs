@@ -40,6 +40,7 @@ public class UpgradeSlot : MonoBehaviour, TocarSom
         BtnConstruirUpgrade.GetComponent<Button>().enabled = false; // desliga a oção de pressionar o botão de criar o upgrade
         BtnTrocartempo.SetActive(true);
         Destroy(recursosGrid.gameObject);
+        receita = null;
     }
     //public string FaseParaAbrir()
     //{

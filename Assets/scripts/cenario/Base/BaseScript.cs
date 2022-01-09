@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -19,7 +20,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, 
     [SerializeField] private GameObject animNovoTempo;
     [SerializeField] private AnimationClip animDestruicaoModulo;
     [SerializeField] private Missao missaoDefenderBase;
-    private bool duranteMelhoria = false;
+    [NonSerialized] public static bool duranteMelhoria = false;
     private List<SlotModulo> listaModulos = new List<SlotModulo>();
     private int vidaAtual;
     private int DefesasOcorridasDuranteMelhoriaBase = 0;
@@ -369,14 +370,6 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, 
         duranteMelhoria = b;
         if (b)
             MissoesManager.Instance.AdicionarMissao(missaoDefenderBase);
-    }
-    public Transform GetPosicaoParaTeleporte()
-    {
-        return posicaoDeChegadaPorTeleporte;
-    }
-    public bool GetDuranteDefesaParaMelhorarBase()
-    {
-        return duranteMelhoria;
     }
     public float GetIntervaloDuranteOAprimoramentoDaBase()
     {

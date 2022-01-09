@@ -7,7 +7,7 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial, TocarSom
 {
     public static UIinventario Instance { get; private set; }
     private bool inventarioAberto = false;
-    [SerializeField] private List<UpgradeSlot> listaSlotUpgradesBase = new List<UpgradeSlot>();
+    public List<UpgradeSlot> listaSlotUpgradesBase = new List<UpgradeSlot>();
     public float zoomOutAoConstruir;
     private Dictionary<string, ItemSlot> itens = new Dictionary<string, ItemSlot>();
     [Header("Nao Mexer")]

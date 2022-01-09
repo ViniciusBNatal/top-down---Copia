@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lixao.unity
     guid: a2df564d4eece32469c913f819a842de
+  - enabled: 1
+    path: Assets/Scenes/PularTutorial.unity
+    guid: 74f1e83a5083c3d43811161e46c2a465
   - enabled: 0
     path: Assets/Scenes/testes.unity
     guid: 8d35f859356e5b044b4b9005229c0fb8

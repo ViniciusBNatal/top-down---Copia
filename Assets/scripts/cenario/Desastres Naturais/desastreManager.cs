@@ -216,7 +216,7 @@ public class desastreManager : MonoBehaviour, TocarSom /*AcoesNoTutorial*/
             if (DesastresList.Instance.ativar[i] == true)
                 desastresPossiveis++;
         }
-        if (BaseScript.Instance.GetDuranteDefesaParaMelhorarBase())//se estiver durante uma defesa sempre acontecerá todos os desastres possíveis
+        if (BaseScript.duranteMelhoria)//se estiver durante uma defesa sempre acontecerá todos os desastres possíveis            
             DefinirQntdDeDesastresParaOcorrer(desastresPossiveis);
         else
         {
