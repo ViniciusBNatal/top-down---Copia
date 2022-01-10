@@ -18,7 +18,7 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas, TocarSom
     private GameObject NPCRelacionado = null;
     private Rigidbody2D rb;
     private SpriteRenderer icone;
-    private GameObject jogador = null;
+    private jogadorScript jogador = null;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -35,7 +35,7 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas, TocarSom
     {
         if (collision.gameObject.tag == "Player" && jogador == null)
         {
-            jogador = collision.gameObject;
+            jogador = collision.gameObject.GetComponent<jogadorScript>();
             StartCoroutine(this.MagnetismoItem());
         }
     }
@@ -61,7 +61,7 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas, TocarSom
         else
             gobj.GetComponentInChildren<AnimTextoFlutuanteScript>().texto.text = ConteudoTextoFlutuante;
         gobj.transform.SetParent(null);
-        jogador.GetComponent<jogadorScript>().InterfaceJogador.AtualizaInventarioUI(item, qntd);
+        jogador.InterfaceJogador.AtualizaInventarioUI(item, qntd);
         SalvarEstado();
         Destroy(this.gameObject);
     }

@@ -168,6 +168,17 @@ public class jogadorScript : MonoBehaviour, AcoesNoTutorial, TocarSom
     {
         atirando = false;
         JogadorAnimScript.Instance.AnimarDisparo(0f, 0f, taxaDeDisparo, atirando);
+        if (GetComponentInChildren<AudioSource>().isPlaying)
+        {
+            for (int i = 0; i < SoundManager.Instance.PegarSom(SoundManager.Som.JogadorAtirando).ArquivosDESom.Length; i++)
+            {
+                if (GetComponentInChildren<AudioSource>().clip == SoundManager.Instance.PegarSom(SoundManager.Som.JogadorAtirando).ArquivosDESom[i])
+                {
+                    GetComponentInChildren<AudioSource>().Stop();
+                    break;
+                }
+            }
+        }
         if (TutorialSetUp.Instance != null)
         {
             if (TutorialSetUp.Instance.GetSequenciaDialogos() > 2)

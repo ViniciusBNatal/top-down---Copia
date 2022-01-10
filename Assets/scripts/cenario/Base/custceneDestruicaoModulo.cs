@@ -29,4 +29,8 @@ public class custceneDestruicaoModulo : MonoBehaviour, TocarSom
     {
         SoundManager.Instance.TocarSom(som, origemSom);
     }
+    public void TocarSomPorAnimacao(SoundManager.Som som)
+    {
+        TocarSom(som, this.transform);
+    }
 }

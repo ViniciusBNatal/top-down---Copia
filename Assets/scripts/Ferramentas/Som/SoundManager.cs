@@ -115,12 +115,16 @@ public class SoundManager : MonoBehaviour
             {
                 if (origemSom.gameObject.GetComponentInChildren<AudioSource>())
                 {
-                    origemSom.gameObject.GetComponentInChildren<AudioSource>().PlayOneShot(AudioSourceConfiguracao(PegarSom(tipoDoSom).som, SomEfeitosSource).ArquivosDESom[Random.Range(0, PegarSom(tipoDoSom).ArquivosDESom.Length)]);
+                    AudioSourceConfiguracao(PegarSom(tipoDoSom).som, origemSom.gameObject.GetComponentInChildren<AudioSource>());
+                    origemSom.gameObject.GetComponentInChildren<AudioSource>().Play();
+                    //origemSom.gameObject.GetComponentInChildren<AudioSource>().PlayOneShot(AudioSourceConfiguracao(PegarSom(tipoDoSom).som, SomEfeitosSource).ArquivosDESom[Random.Range(0, PegarSom(tipoDoSom).ArquivosDESom.Length)]);
                 }
                 else
                 {
                     GameObject gobj = Instantiate(SomEfeitosGobjPrefab, origemSom.position, Quaternion.identity, origemSom);//new GameObject("Somgobj")
-                    gobj.GetComponent<AudioSource>().PlayOneShot(AudioSourceConfiguracao(PegarSom(tipoDoSom).som, SomEfeitosSource).ArquivosDESom[Random.Range(0, PegarSom(tipoDoSom).ArquivosDESom.Length)]);
+                    AudioSourceConfiguracao(PegarSom(tipoDoSom).som, gobj.GetComponent<AudioSource>());
+                    gobj.GetComponent<AudioSource>().Play();
+                    //gobj.GetComponent<AudioSource>().PlayOneShot(AudioSourceConfiguracao(PegarSom(tipoDoSom).som, SomEfeitosSource).ArquivosDESom[Random.Range(0, PegarSom(tipoDoSom).ArquivosDESom.Length)]);
                 }
             }
             else
@@ -132,12 +136,13 @@ public class SoundManager : MonoBehaviour
     private SomConfig AudioSourceConfiguracao(Som tipoDoSom, AudioSource ausc)
     {
         SomConfig somEscolhido = PegarSom(tipoDoSom);
-        ausc.volume = somEscolhido.Volume;
+        ausc.volume = 1;//somEscolhido.Volume;
         ausc.pitch = somEscolhido.Pitch;
         ausc.loop = somEscolhido.Loop;
+        ausc.clip = somEscolhido.ArquivosDESom[Random.Range(0, somEscolhido.ArquivosDESom.Length)];
         return somEscolhido;
     }
-    private SomConfig PegarSom(Som tipoSom)
+    public SomConfig PegarSom(Som tipoSom)
     {
         if (SonsDicionario.ContainsKey(tipoSom.ToString()))
         {
