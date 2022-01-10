@@ -152,7 +152,7 @@ MonoBehaviour:
     som: 25
     ArquivosDESom:
     - {fileID: 8300000, guid: 3784635f4c9bd054c9546501cae952dc, type: 3}
-    Volume: 0.75
+    Volume: 0.45
     Pitch: 1.06
     Loop: 0
     intervaloEntreSons: 0
