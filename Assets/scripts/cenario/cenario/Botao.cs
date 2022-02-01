@@ -79,11 +79,11 @@ public class Botao : MonoBehaviour, SalvamentoEntreCenas
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
         {
-            GetComponent<SalvarEstadoDoObjeto>().SalvarSeJaFoiModificado();
+            GetComponent<SalvarEstadoDoObjeto>().AtivarCarregamentoDoObjeto();
             GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosBotoes(this, 0);
         }
     }
-    public void AcaoSeEstadoJaModificado()
+    public void CarregarDados()
     {
         GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosBotoes(this, 1);
         EstadoBotao();

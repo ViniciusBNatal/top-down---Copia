@@ -16,7 +16,6 @@ public class Teleportador : MonoBehaviour
     public void TeleportarPorInteracao()
     {
         SalvamentoDosCentrosDeRecursosManager.Instance.SalvarTempoDeSaida();
-        SalvamentoDosCentrosDeRecursosManager.Instance.SalvarCentrosDeRecursoDaCenaAtual();
         jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);
         TransicaoDeFase.faseParaCarregar = NomeFaseDeRotornoDosteleportes;
         UIinventario.Instance.transicaoLevelsAnimacao.SetActive(true);

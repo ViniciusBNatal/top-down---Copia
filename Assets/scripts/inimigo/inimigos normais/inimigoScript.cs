@@ -337,7 +337,7 @@ public class inimigoScript : MonoBehaviour, TocarSom
     IEnumerator Paralisar(float temp)
     {
         paralisado = true;
-        rb.velocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Static;
         if (TutorialSetUp.Instance == null)
             inimigoAnimScript.GetAnimator().enabled = false;
         VisualParalisado(true);
@@ -347,6 +347,7 @@ public class inimigoScript : MonoBehaviour, TocarSom
     private void FinalizacaoParalisar()
     {
         VisualParalisado(false);
+        rb.bodyType = RigidbodyType2D.Dynamic;
         inimigoAnimScript.GetAnimator().enabled = true;
         paralisado = false;
         paralisar = null;

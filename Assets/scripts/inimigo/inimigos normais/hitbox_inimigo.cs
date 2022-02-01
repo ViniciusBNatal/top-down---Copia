@@ -14,7 +14,7 @@ public class hitbox_inimigo : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player" && inimigo.isActiveAndEnabled)
+        if (collision.gameObject.tag == "Player" && inimigo.isActiveAndEnabled && !inimigo.GetParalisado())
         {
             inimigo.GetAnimScript().AtaqueMelee();
             if (inimigo.danoMelee != 0)

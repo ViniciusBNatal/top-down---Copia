@@ -73,13 +73,13 @@ public class SoundManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-            TocarSom(somTestes, null);
-        if (Input.GetKeyDown(KeyCode.P))
-            PararEfeitosSonoros();
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.L))
+    //        TocarSom(somTestes, null);
+    //    if (Input.GetKeyDown(KeyCode.P))
+    //        PararEfeitosSonoros();
+    //}
     private void Start()
     {
         DontDestroyOnLoad(gameObject);

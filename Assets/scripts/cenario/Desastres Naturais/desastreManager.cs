@@ -10,7 +10,6 @@ public class desastreManager : MonoBehaviour, TocarSom /*AcoesNoTutorial*/
     [SerializeField] private float intervaloEntreOsDesastres;
     [SerializeField] private int chanceDeDesastre;
     [SerializeField] private float TempoMinimoRestante;
-    [SerializeField] private float TempoRestanteParaInicioDoAvisoDoRelogio;
     [SerializeField] private float AumentoDeTempAoLiberarNovaFase;
     [SerializeField] private SoundManager.Som SomRelogio;
     private int minutos;
@@ -159,17 +158,6 @@ public class desastreManager : MonoBehaviour, TocarSom /*AcoesNoTutorial*/
     }
     private IEnumerator LogicaDesastres(/*bool sortearDesastres*/)
     {
-        /*if (sortearDesastres)
-        {
-            SortearGeral();
-        }*/
-        //qntdDeDesastresParaOcorrer = 1;
-        //desastresSorteados[0] = "terremoto";
-        //forcasSorteados[0] = 1;
-        //desastresSorteados[1] = 2;
-        //forcasSorteados[1] = 2;
-        //desastresSorteados[2] = 3;
-        //forcasSorteados[2] = 3;
         IndicadorDosDesastres.Instance.PreenchePlaca();
         while (!desastreAcontecendo)
         {
@@ -199,7 +187,7 @@ public class desastreManager : MonoBehaviour, TocarSom /*AcoesNoTutorial*/
     }
     private void TempoCurto()
     {
-        if (tempoRestante <= TempoRestanteParaInicioDoAvisoDoRelogio)
+        if (tempoRestante <= TempoMinimoRestante && tempoRestante!= 0)
             AvisoDePerigoTimer();
     }
     public void AvisoDePerigoTimer()

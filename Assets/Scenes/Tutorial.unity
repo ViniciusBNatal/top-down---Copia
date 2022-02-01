@@ -54912,24 +54912,24 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_MethodName: AdicionarMissao
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: 1c67d83c3d523a140b7e787b21d0a66f,
-              type: 2}
-            m_ObjectArgumentAssemblyTypeName: Missao, Assembly-CSharp
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1837283354}
           m_MethodName: TeleportarJogador
           m_Mode: 2
           m_Arguments:
             m_ObjectArgument: {fileID: 963939991}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1905888142}
+          m_MethodName: AdicionarMissao
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 1c67d83c3d523a140b7e787b21d0a66f,
+              type: 2}
+            m_ObjectArgumentAssemblyTypeName: Missao, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -54945,7 +54945,7 @@ MonoBehaviour:
     EventosDuranteDialogo:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1905888142}
           m_MethodName: ConcluirMissao
           m_Mode: 2
           m_Arguments:
@@ -54957,7 +54957,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1905888142}
           m_MethodName: AdicionarMissao
           m_Mode: 2
           m_Arguments:
@@ -54991,7 +54991,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1905888142}
           m_MethodName: ConcluirMissao
           m_Mode: 2
           m_Arguments:
@@ -55003,7 +55003,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1905888142}
           m_MethodName: AdicionarMissao
           m_Mode: 2
           m_Arguments:
@@ -55053,7 +55053,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1905888142}
           m_MethodName: ConcluirMissao
           m_Mode: 2
           m_Arguments:
@@ -55065,7 +55065,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1905888142}
           m_MethodName: AdicionarMissao
           m_Mode: 2
           m_Arguments:
@@ -55090,7 +55090,7 @@ MonoBehaviour:
     EventosDuranteDialogo:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1905888142}
           m_MethodName: ConcluirMissao
           m_Mode: 2
           m_Arguments:
@@ -55102,7 +55102,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1905888142}
           m_MethodName: AdicionarMissao
           m_Mode: 2
           m_Arguments:
@@ -55141,7 +55141,7 @@ MonoBehaviour:
     EventosDuranteDialogo:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1905888142}
           m_MethodName: ConcluirMissao
           m_Mode: 2
           m_Arguments:
@@ -55153,7 +55153,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1905888142}
           m_MethodName: AdicionarMissao
           m_Mode: 2
           m_Arguments:
@@ -55188,7 +55188,7 @@ MonoBehaviour:
     EventosDuranteDialogo:
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1905888142}
           m_MethodName: ConcluirMissao
           m_Mode: 2
           m_Arguments:
@@ -55200,7 +55200,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1905888142}
           m_MethodName: AdicionarMissao
           m_Mode: 2
           m_Arguments:
@@ -55375,6 +55375,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1905888136}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1905888142 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 174995524376590392, guid: 12d957b0bba43564ab63f14f1452f23a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1905888136}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 363884d96319e724e8135d3cc297eb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1937151800
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, 
     [SerializeField] private Missao missaoDefenderBase;
     [NonSerialized] public static bool duranteMelhoria = false;
     private List<SlotModulo> listaModulos = new List<SlotModulo>();
-    private int vidaAtual;
+    public static int vidaAtual;
     private int DefesasOcorridasDuranteMelhoriaBase = 0;
     private int defesasContraDisastre;
     [HideInInspector] public Animator animator { get; private set; }
@@ -132,41 +132,6 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, 
         {
             if (TutorialSetUp.Instance == null)
                 animator.SetTrigger("HIT");
-            //vidaAtual -= desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre;
-            //vidaAtualText.text = vidaAtual.ToString();
-            //if (vidaAtual <= 0)
-            //{
-            //    GameOver();
-            //    Debug.Log("Perdeu");
-            //}
-            //else
-            //{
-                //if (TutorialSetUp.Instance == null)
-                //    animator.SetTrigger("HIT");
-                //if (defesasContraDisastre == 0)// caso não defendeu nada cancela a animação de destruição dos modulos
-                //{
-                //    desastreManager.Instance.encerramentoDesastres();
-                //    jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform, 0f);
-                //    jogadorScript.Instance.MudarEstadoJogador(0);
-                //    RecomecarDesastres();
-                //}
-            //}
-            //if (!tutorial)
-            //{
-            //for (int i = 0; i < desastreManager.Instance.GetQntdDesastresParaOcorrer() - defendido; i++)
-            //{
-            //    vidaAtual--;
-            //    vidaAtualText.text = vidaAtual.ToString();
-            //    if (vidaAtual <= 0)
-            //    {
-            //        GameOver();
-            //        //Debug.Log("Perdeu");
-            //    }
-            //    
-            //}
-            //Debug.Log(vidaAtual);
-            //
-            //}
         }
     }
     public void MudancaVida()
@@ -281,6 +246,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, 
             jogadorScript.Instance.comportamentoCamera.MudaFocoCamera(jogadorScript.Instance.transform, 0f);
             jogadorScript.Instance.MudarEstadoJogador(0);
             desastreManager.Instance.Ativar_desativarInteracoesDaBase(true, true);
+
         }
         else
             desastreManager.Instance.Ativar_desativarInteracoesDaBase(false, true);
@@ -375,22 +341,15 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, 
     {
         return intervaloDuranteADefesa;
     }
-    public void SalvarEstadosDosModulos()
-    {
-        for (int i = 0; i < listaModulos.Count; i++)
-        {
-            listaModulos[i].SalvarEstado();
-        }
-    }
     public void SalvarEstado()
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
         {
-            GetComponent<SalvarEstadoDoObjeto>().SalvarSeJaFoiModificado();
+            GetComponent<SalvarEstadoDoObjeto>().AtivarCarregamentoDoObjeto();
             GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDaBase(this, 0);
         }
     }
-    public void AcaoSeEstadoJaModificado()
+    public void CarregarDados()
     {
         GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDaBase(this, 1);
     }
@@ -399,6 +358,7 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, 
         vidaAtual = i;
         vidaAtualText.text = vidaAtual.ToString();
         VidaImagem.fillAmount -= (1f / vidaMax) * (vidaMax - vidaAtual);
+        SalvarEstado();
     }
     public int GetVidaAtual()
     {

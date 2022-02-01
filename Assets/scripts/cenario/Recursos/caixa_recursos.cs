@@ -29,7 +29,7 @@ public class caixa_recursos : MonoBehaviour, CentroDeRecurso, SalvamentoEntreCen
     }
     public void CriaRecurso(int i)
     {
-        GameObject recurso = Instantiate(recursoColetavelPreFab, transform.position, Quaternion.identity);
+        GameObject recurso = Instantiate(recursoColetavelPreFab, transform.position + new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f), 0f), Quaternion.identity);
         //recurso.transform.localScale = Vector3.one;
         //recurso.transform.SetParent(null);
         recurso.GetComponent<recurso_coletavel>().DefineItem(itens[i]);
@@ -40,9 +40,9 @@ public class caixa_recursos : MonoBehaviour, CentroDeRecurso, SalvamentoEntreCen
     public void SalvarEstado()
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
-            GetComponent<SalvarEstadoDoObjeto>().SalvarSeJaFoiModificado();
+            GetComponent<SalvarEstadoDoObjeto>().AtivarCarregamentoDoObjeto();
     }
-    public void AcaoSeEstadoJaModificado()
+    public void CarregarDados()
     {
         Destroy(this.gameObject);
     }

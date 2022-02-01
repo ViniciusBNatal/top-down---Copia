@@ -126,12 +126,12 @@ public class NPCscript : MonoBehaviour, SalvamentoEntreCenas
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
         {
-            GetComponent<SalvarEstadoDoObjeto>().SalvarSeJaFoiModificado();
+            GetComponent<SalvarEstadoDoObjeto>().AtivarCarregamentoDoObjeto();
             GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosNPCs(this, 0);
         }
     }
 
-    public void AcaoSeEstadoJaModificado()
+    public void CarregarDados()
     {
         GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosNPCs(this, 1);
         if (nDeDialogos == 3)

@@ -1310,6 +1310,7 @@ GameObject:
   - component: {fileID: 2536157053065534087}
   - component: {fileID: 2536157053065534084}
   - component: {fileID: 2536157053065534085}
+  - component: {fileID: 174995524376590392}
   - component: {fileID: 2536157053065534083}
   m_Layer: 5
   m_Name: Interface Jogador
@@ -1484,6 +1485,23 @@ MonoBehaviour:
   salvarTempoDeSaidasScript: {fileID: 0}
   pausado: 0
   podePausar: 1
+--- !u!114 &174995524376590392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536157053065533816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 363884d96319e724e8135d3cc297eb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConteudoMissaoPrefab: {fileID: 5535220580627860416, guid: 27cc717c93cd6274e9f84d0adf924c51,
+    type: 3}
+  scrollViewConteudo: {fileID: 2536157054399371141}
+  TrackerMissoes: {fileID: 2536157052910692933}
+  textoObjetivoUI: {fileID: 2536157054546745231}
 --- !u!114 &2536157053065534083
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -291,11 +291,6 @@ public class UIinventario : MonoBehaviour, AcoesNoTutorial, TocarSom
         fechaMenuDeTempos();
         TransicaoDeFase.faseParaCarregar = slot.GetFaseParaAbrir();
         jogadorScript.Instance.IndicarInteracaoPossivel(0, false);
-        if (BaseScript.Instance != null)
-        {
-            BaseScript.Instance.SalvarEstado();
-            BaseScript.Instance.SalvarEstadosDosModulos();
-        }
         transicaoLevelsAnimacao.SetActive(true);
         Ativar_DesativarTransicaoDeFase(true);
         //jogadorScript.Instance.IndicarInteracaoPossivel(0f, false);

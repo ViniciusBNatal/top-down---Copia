@@ -39,19 +39,19 @@ public class SalvarEstadoDoObjeto : MonoBehaviour
     //}
     public void CarregarDadosDoObj()
     {
-        AdicionarALista();
+        AdicionarAListaDeObjetosParaSerCarregados();
         if (objsSalvos[this.gameObject.name])
         {
             if (gameObject.GetComponent<SalvamentoEntreCenas>() != null)
-                gameObject.GetComponent<SalvamentoEntreCenas>().AcaoSeEstadoJaModificado();
+                gameObject.GetComponent<SalvamentoEntreCenas>().CarregarDados();
         }
     }
-    public void AdicionarALista()
+    public void AdicionarAListaDeObjetosParaSerCarregados()
     {
         if (!objsSalvos.ContainsKey(this.gameObject.name))
             objsSalvos.Add(this.gameObject.name, false);
     }
-    public void SalvarSeJaFoiModificado()
+    public void AtivarCarregamentoDoObjeto()
     {
         if (objsSalvos.ContainsKey(this.gameObject.name))
             objsSalvos[this.gameObject.name] = true;

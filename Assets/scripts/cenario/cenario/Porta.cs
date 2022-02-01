@@ -119,11 +119,11 @@ public class Porta : MonoBehaviour, SalvamentoEntreCenas
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
         {
-            GetComponent<SalvarEstadoDoObjeto>().SalvarSeJaFoiModificado();
+            GetComponent<SalvarEstadoDoObjeto>().AtivarCarregamentoDoObjeto();
             GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDasPortas(this, 0);
         }
     }
-    public void AcaoSeEstadoJaModificado()
+    public void CarregarDados()
     {
         GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDasPortas(this, 1);
         colisao = GetComponent<BoxCollider2D>();

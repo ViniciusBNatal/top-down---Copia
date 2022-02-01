@@ -96,6 +96,7 @@ public class InterfaceMenu : MonoBehaviour
         jogadorScript.Instance.MudarEstadoJogador(0);
         abaMenus.SetActive(true);
         AbrirMenu(menus[menus.Count - 2]);
+        SoundManager.Instance.PararEfeitosSonoros();
     }
     public void AbrirVitoria()//sempre deve ser o ultimo menu na lista
     {

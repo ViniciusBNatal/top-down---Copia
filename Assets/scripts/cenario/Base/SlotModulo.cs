@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, SalvamentoEntreCenas, ClickInter, TocarSom
+public class SlotModulo : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, ClickInter, TocarSom
 {
     [SerializeField] private SpriteRenderer iconeDoModulo;
     [SerializeField] private SpriteRenderer iconeDoDesastre;
@@ -30,45 +30,51 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
     public void Acao(jogadorScript jogador)
     {
         ConstruirModulo(jogador.GetModuloConstruido().GetForca(), jogador.GetModuloConstruido().desastre, jogador.GetModuloConstruido().modulo);
+        TocarSom(SoundManager.Som.ConstrucaoModulo, this.transform);
+        IndicadorDosDesastres.Instance.AtualizarCheckDeModuloConstruido();
         RetornarCameraEMudarEstadoJogador();
     }
     public void ConstruirModulo(int forca, string desastre, int modulo)
     {
-        BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(false);
-        TocarSom(SoundManager.Som.ConstrucaoModulo, this.transform);
-        if (modulo == 2)
+        if (modulo != 0)
         {
-            SetModulo(modulo);
-            SetSpriteDoModulo(DesastresList.Instance.SelecionaSpriteModulo(modulo));
-            if (BossAlho.Instance != null)
-                BossAlho.Instance.BossDerotado();
-            return;
-        }
-        else
-        {
-            if (forca != 0 && modulo != 0 && desastre != "")
+            BaseScript.Instance.Ativar_DesativarVisualConstrucaoModulos(false);
+            if (modulo == 2)
             {
-                SetForca(forca);
-                SetNomeDesastre(desastre);
                 SetModulo(modulo);
-                //aplica o sprite do modulo dependendo do modulo no crafting
                 SetSpriteDoModulo(DesastresList.Instance.SelecionaSpriteModulo(modulo));
-                //cria o icone do desastre dependedo do desastre natural do crafting
-                SetSpriteDoDesastre(DesastresList.Instance.SelecionaSpriteDesastre(NomeDesastre));
-                //cria o icone de multiplicador dependedo do nivel do crafting
-                SetSpriteDoMultiplicador(DesastresList.Instance.SelecionaSpriteMultiplicador(forcaModulo));
-                IndicadorDosDesastres.Instance.AtualizarCheckDeModuloConstruido();
+                if (BossAlho.Instance != null)
+                    BossAlho.Instance.BossDerotado();
+                return;
             }
+            else
+            {
+                if (forca != 0 && desastre != "")
+                {
+                    SetForca(forca);
+                    SetNomeDesastre(desastre);
+                    SetModulo(modulo);
+                    //aplica o sprite do modulo dependendo do modulo no crafting
+                    SetSpriteDoModulo(DesastresList.Instance.SelecionaSpriteModulo(modulo));
+                    //cria o icone do desastre dependedo do desastre natural do crafting
+                    SetSpriteDoDesastre(DesastresList.Instance.SelecionaSpriteDesastre(NomeDesastre));
+                    //cria o icone de multiplicador dependedo do nivel do crafting
+                    SetSpriteDoMultiplicador(DesastresList.Instance.SelecionaSpriteMultiplicador(forcaModulo));
+                }
+            }
+            SalvarEstado();
         }
     }
     public void RemoverModulo()
     {
-        animacaoDestruicaoModulo.GetComponent<Animator>().SetTrigger("EXPLODIR");
         SetSpriteDoModulo(null);
         SetSpriteDoDesastre(null);
         SetSpriteDoMultiplicador(null);
         SetForca(0);
         SetNomeDesastre("");
+        SetModulo(0);
+        SalvarEstado();
+        animacaoDestruicaoModulo.GetComponent<Animator>().SetTrigger("EXPLODIR");
     }
     public void SetSpriteDoModulo(Sprite Sprite)
     {
@@ -124,11 +130,11 @@ public class SlotModulo : MonoBehaviour, /*Clicavel*/ AcoesNoTutorial, Salvament
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
         {
-            GetComponent<SalvarEstadoDoObjeto>().SalvarSeJaFoiModificado();
+            GetComponent<SalvarEstadoDoObjeto>().AtivarCarregamentoDoObjeto();
             GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosModulos(this, 0);
         }
     }
-    public void AcaoSeEstadoJaModificado()
+    public void CarregarDados()
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
         {

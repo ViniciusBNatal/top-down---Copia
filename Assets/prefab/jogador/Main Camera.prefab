@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 287717142869363298}
   - component: {fileID: 287717142869363309}
   - component: {fileID: 287717142869363308}
-  - component: {fileID: 287717142869363311}
   - component: {fileID: 287717142869363310}
   - component: {fileID: 287717142869363299}
   m_Layer: 11
@@ -50,9 +49,8 @@ MonoBehaviour:
   intervaloEntreOsDesastres: 240
   chanceDeDesastre: 75
   TempoMinimoRestante: 30
-  TempoRestanteParaInicioDoAvisoDoRelogio: 0
   AumentoDeTempAoLiberarNovaFase: 60
-  SomRelogio: 0
+  SomRelogio: 36
   intensidadeScreenShakeTerremoto: 3
   taxaDeMudancaDosControles: 0.5
   unidadesX: 1
@@ -119,24 +117,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cec87da207db9714da4dcc0bd415c067, type: 3}
   - {fileID: 21300000, guid: 6fceeabbd7355464d9567918e66605af, type: 3}
   - {fileID: 21300000, guid: 67f5e11fb65cc2e4f850713e9995db8d, type: 3}
---- !u!114 &287717142869363311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 287717142869363305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 363884d96319e724e8135d3cc297eb24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConteudoMissaoPrefab: {fileID: 5535220580627860416, guid: 27cc717c93cd6274e9f84d0adf924c51,
-    type: 3}
-  scrollViewConteudo: {fileID: 0}
-  TrackerMissoes: {fileID: 0}
-  textoObjetivo: {fileID: 0}
-  posicaoMissoesNoTracker: []
 --- !u!114 &287717142869363310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +170,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287717143434574690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -5, z: -9}
+  m_LocalPosition: {x: 9.09, y: -7.66, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 287717142869363298}

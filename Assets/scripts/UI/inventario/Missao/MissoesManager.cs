@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +10,10 @@ public class MissoesManager : MonoBehaviour
     [SerializeField] private GameObject ConteudoMissaoPrefab;
     [SerializeField] private Transform scrollViewConteudo;
     [SerializeField] private Transform TrackerMissoes;
-    [SerializeField] private GameObject textoObjetivo;
-    public Dictionary<Missao, missaoPrefabScript> missoesAtivasMenu = new Dictionary<Missao, missaoPrefabScript>();
-    public Dictionary<Missao, missaoPrefabScript> missoesAtivasTracker = new Dictionary<Missao, missaoPrefabScript>();
-    public List<GameObject> posicaoMissoesNoTracker = new List<GameObject>();
+    [SerializeField] private GameObject textoObjetivoUI;
+    [NonSerialized] public Dictionary<Missao, missaoPrefabScript> missoesAtivasMenu = new Dictionary<Missao, missaoPrefabScript>();
+    [NonSerialized] public Dictionary<Missao, missaoPrefabScript> missoesAtivasTracker = new Dictionary<Missao, missaoPrefabScript>();
+    [NonSerialized] public List<GameObject> posicaoMissoesNoTracker = new List<GameObject>();
     // Start is called before the first frame update
     private void Awake()
     {
@@ -33,7 +34,7 @@ public class MissoesManager : MonoBehaviour
     {
         if (!missoesAtivasMenu.ContainsKey(missaoScrObj) && !missoesAtivasTracker.ContainsKey(missaoScrObj))
         {
-            textoObjetivo.SetActive(true);
+            textoObjetivoUI.SetActive(true);
             //cria a missão na aba de missões
             GameObject missao = Instantiate(ConteudoMissaoPrefab, scrollViewConteudo.position, Quaternion.identity, scrollViewConteudo);
             missaoPrefabScript missaoScript = missao.GetComponent<missaoPrefabScript>();

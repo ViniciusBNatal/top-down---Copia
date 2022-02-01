@@ -53,7 +53,6 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     }
     private void Start()
     {
-        SalvamentoDosCentrosDeRecursosManager.Instance.AdicionarCentroALista(this.gameObject);
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
         {
             if (!GetComponent<SalvarEstadoDoObjeto>().GetObjNaListaDeSalvos(this.gameObject.name))//faz n ter conflito entre esse start e o do salvarEstadoDoObjeto
@@ -91,6 +90,7 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
         {
             CriaRecurso();
         }
+        SalvarEstado();
     }
     private void CriaRecurso()
     {
@@ -253,11 +253,11 @@ public class CentroDeRecursoInfinito : MonoBehaviour, CentroDeRecurso, Salvament
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
         {
-            GetComponent<SalvarEstadoDoObjeto>().SalvarSeJaFoiModificado();
+            GetComponent<SalvarEstadoDoObjeto>().AtivarCarregamentoDoObjeto();
             GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosCentrosDeRecursos(this, 0);
         }
     }
-    public void AcaoSeEstadoJaModificado()
+    public void CarregarDados()
     {
         GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosCentrosDeRecursos(this, 1);
         DefineEstado();

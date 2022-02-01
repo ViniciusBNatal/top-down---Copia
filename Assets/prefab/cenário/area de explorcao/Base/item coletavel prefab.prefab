@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1287505487485014365}
   - component: {fileID: 6897099166718318095}
   - component: {fileID: 3291379234467560333}
-  - component: {fileID: 3925802245581034200}
   m_Layer: 0
   m_Name: item coletavel prefab
   m_TagString: Untagged
@@ -131,7 +130,6 @@ MonoBehaviour:
   ConteudoTextoFlutuante: 
   velocidadeAnimTextoFlutuante: 1
   areaMagnetismo: {fileID: 1287505487485014365}
-  areaFisica: {fileID: 3925802245581034200}
   areaDetectaColeta: {fileID: 2548494403855456508}
   AnimacaoTextoColetaPrefab: {fileID: 1373097053553321454, guid: 740fbceedd091db4fb9e0618b3e5e436,
     type: 3}
@@ -156,32 +154,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &3925802245581034200
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 769133423071464344}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &6246315243888094937
 GameObject:
   m_ObjectHideFlags: 0

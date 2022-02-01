@@ -12,7 +12,6 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas, TocarSom
     [Range(0.05f, 1f)]
     [SerializeField] private float velocidadeAnimTextoFlutuante;
     [SerializeField] private BoxCollider2D areaMagnetismo;
-    [SerializeField] private BoxCollider2D areaFisica;
     [SerializeField] private BoxCollider2D areaDetectaColeta;
     [SerializeField] private GameObject AnimacaoTextoColetaPrefab;
     private GameObject NPCRelacionado = null;
@@ -29,7 +28,7 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas, TocarSom
     {
         icone.sprite = item.icone;
         if (areaMagnetismo.enabled == false)
-            StartCoroutine(this.ligarColeta());
+            StartCoroutine(this.ligarMagnetismo());
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -41,8 +40,8 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas, TocarSom
     }
     IEnumerator MagnetismoItem()
     {
-        areaFisica.enabled = false;
         rb.bodyType = RigidbodyType2D.Kinematic;
+        areaDetectaColeta.enabled = true;
         while (jogador != null)
         {
             Vector2 direcao = jogador.transform.position - transform.position;
@@ -100,23 +99,21 @@ public class recurso_coletavel : MonoBehaviour, SalvamentoEntreCenas, TocarSom
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector2(localDeDropX, localDeDropY).normalized * forca);
     }
-    IEnumerator ligarColeta()
+    IEnumerator ligarMagnetismo()
     {
         yield return new WaitForSeconds(tempoParaLiberarColeta);
         areaMagnetismo.enabled = true;
-        areaFisica.enabled = true;
-        areaDetectaColeta.enabled = true;
     }
     public void SalvarEstado()
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
         {
-            GetComponent<SalvarEstadoDoObjeto>().SalvarSeJaFoiModificado();
+            GetComponent<SalvarEstadoDoObjeto>().AtivarCarregamentoDoObjeto();
             if (NPCRelacionado != null)
                 NPCRelacionado.GetComponent<NPCscript>().SalvarEstado();//salvar item necessário para quest
         }
     }
-    public void AcaoSeEstadoJaModificado()
+    public void CarregarDados()
     {
         Destroy(this.gameObject);
     }

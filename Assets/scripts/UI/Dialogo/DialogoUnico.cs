@@ -18,11 +18,11 @@ public class DialogoUnico : MonoBehaviour, SalvamentoEntreCenas
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
         {
-            GetComponent<SalvarEstadoDoObjeto>().SalvarSeJaFoiModificado();
+            GetComponent<SalvarEstadoDoObjeto>().AtivarCarregamentoDoObjeto();
             GetComponent<SalvarEstadoDoObjeto>().Salvar_CarregarDadosDosDialogosUnicos(this, 0);
         }
     }
-    public void AcaoSeEstadoJaModificado()
+    public void CarregarDados()
     {
         if (GetComponent<SalvarEstadoDoObjeto>() != null)
         {

@@ -5,5 +5,5 @@ using UnityEngine;
 public interface SalvamentoEntreCenas
 {
     void SalvarEstado();
-    void AcaoSeEstadoJaModificado();
+    void CarregarDados();
 }
