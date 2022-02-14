@@ -50,7 +50,7 @@ MonoBehaviour:
   chanceDeDesastre: 75
   TempoMinimoRestante: 30
   AumentoDeTempAoLiberarNovaFase: 60
-  SomRelogio: 36
+  SomRelogio: 8
   intensidadeScreenShakeTerremoto: 3
   taxaDeMudancaDosControles: 0.5
   unidadesX: 1
