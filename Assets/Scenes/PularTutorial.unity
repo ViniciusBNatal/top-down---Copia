@@ -422,13 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c71a2c9bff104542b73a504e73f3129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &537704643 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2536157054399371141, guid: 12d957b0bba43564ab63f14f1452f23a,
-    type: 3}
-  m_PrefabInstance: {fileID: 537704641}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &537704644 stripped
+--- !u!114 &537704643 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536157053425914724, guid: 12d957b0bba43564ab63f14f1452f23a,
     type: 3}
@@ -440,18 +434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &537704645 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2536157054546745231, guid: 12d957b0bba43564ab63f14f1452f23a,
-    type: 3}
-  m_PrefabInstance: {fileID: 537704641}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &537704646 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2536157052910692933, guid: 12d957b0bba43564ab63f14f1452f23a,
-    type: 3}
-  m_PrefabInstance: {fileID: 537704641}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &778767206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -531,26 +513,6 @@ PrefabInstance:
     - target: {fileID: 287717142869363309, guid: 915dae1e28bbf094daed10a402740785,
         type: 3}
       propertyPath: timer
-      value: 
-      objectReference: {fileID: 537704644}
-    - target: {fileID: 287717142869363309, guid: 915dae1e28bbf094daed10a402740785,
-        type: 3}
-      propertyPath: SomRelogio
-      value: 36
-      objectReference: {fileID: 0}
-    - target: {fileID: 287717142869363311, guid: 915dae1e28bbf094daed10a402740785,
-        type: 3}
-      propertyPath: textoObjetivo
-      value: 
-      objectReference: {fileID: 537704645}
-    - target: {fileID: 287717142869363311, guid: 915dae1e28bbf094daed10a402740785,
-        type: 3}
-      propertyPath: TrackerMissoes
-      value: 
-      objectReference: {fileID: 537704646}
-    - target: {fileID: 287717142869363311, guid: 915dae1e28bbf094daed10a402740785,
-        type: 3}
-      propertyPath: scrollViewConteudo
       value: 
       objectReference: {fileID: 537704643}
     - target: {fileID: 287717143434574690, guid: 915dae1e28bbf094daed10a402740785,

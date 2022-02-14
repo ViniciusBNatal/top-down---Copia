@@ -232,7 +232,6 @@ MonoBehaviour:
   - nomeElemento: Jogador Levou Hit
     som: 8
     ArquivosDESom:
-    - {fileID: 8300000, guid: 45d15946cffeec54e91236ea90fce273, type: 3}
     - {fileID: 8300000, guid: 9cea154ab7036614492981fd832d922e, type: 3}
     Volume: 0.9
     Pitch: 1
@@ -254,7 +253,7 @@ MonoBehaviour:
     Pitch: 1
     Loop: 0
     intervaloEntreSons: 0.3
-  somTestes: 36
+  somTestes: 0
 --- !u!114 &6767783231081190106
 MonoBehaviour:
   m_ObjectHideFlags: 0
