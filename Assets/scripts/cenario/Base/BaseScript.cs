@@ -15,7 +15,6 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, 
     [SerializeField] private float intervaloDuranteADefesa;
     [SerializeField] private int QntdDeDefesasNecessarias;
     [SerializeField] private GameObject BossPrefab;
-    [SerializeField] private TMP_Text vidaAtualText;
     [SerializeField] private Image VidaImagem;
     [SerializeField] private GameObject animNovoTempo;
     [SerializeField] private AnimationClip animDestruicaoModulo;
@@ -33,7 +32,6 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, 
             Instance = this;
         animator = GetComponent<Animator>();
         vidaAtual = vidaMax;
-        vidaAtualText.text = vidaAtual.ToString();
     }
     private void Start()
     {
@@ -136,9 +134,8 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, 
     }
     public void MudancaVida()
     {
-        //vidaAtual -= desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre;
-        //VidaImagem.fillAmount -= (1f / vidaMax) * (desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre);
-        vidaAtualText.text = vidaAtual.ToString();
+        vidaAtual -= desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre;
+        VidaImagem.fillAmount -= (1f / vidaMax) * (desastreManager.Instance.GetQntdDesastresParaOcorrer() - defesasContraDisastre);
         if (vidaAtual <= 0)
         {
             GameOver();
@@ -356,7 +353,6 @@ public class BaseScript : MonoBehaviour, AcoesNoTutorial, SalvamentoEntreCenas, 
     public void SetVidaAtual(int i)
     {
         vidaAtual = i;
-        vidaAtualText.text = vidaAtual.ToString();
         VidaImagem.fillAmount -= (1f / vidaMax) * (vidaMax - vidaAtual);
         SalvarEstado();
     }
